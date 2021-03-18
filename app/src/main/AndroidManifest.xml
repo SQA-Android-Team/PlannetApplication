@@ -19,11 +19,22 @@
         <activity android:name=".activity.subject.SubjectCreateActivity" />
         <activity android:name=".activity.subject.SubjectDetailActivity"/>
         <activity android:name=".activity.subject.SubjectEditActivity"/>
-        <activity android:name=".activity.subject.SubjectViewActivity"/>
+        <activity android:name=".activity.subject.SubjectViewActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activity.teacher.TeacherCreateActivity"/>
         <activity android:name=".activity.teacher.TeacherDetailActivity"/>
         <activity android:name=".activity.teacher.TeacherEditActivity"/>
-        <activity android:name=".activity.teacher.TeacherViewActivity"/>
+        <activity android:name=".activity.teacher.TeacherViewActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
 
 
