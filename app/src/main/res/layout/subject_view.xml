@@ -44,7 +44,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/subject_theme"
 
-                android:contentDescription="@string/subject_header"
+                android:contentDescription="Subject header"
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax" />
 
@@ -82,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:backgroundTint="#FC70BF"
-        android:contentDescription="@string/add_button"
+        android:contentDescription="Add button"
         android:src="@drawable/round_add_white_36dp"
         app:backgroundTint="#002B2B2B"
         app:backgroundTintMode="src_in"
