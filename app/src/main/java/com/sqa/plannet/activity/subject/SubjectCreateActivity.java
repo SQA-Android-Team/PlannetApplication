@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +17,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class SubjectCreateActivity extends AppCompatActivity {
 
     Button addBtn;
-    CircleImageView backBtn;
+    ImageButton backBtn;
     EditText subjectTitleEdt;
     EditText subjectCreditEdt;
     EditText subjectNoteEdt;
@@ -31,6 +32,15 @@ public class SubjectCreateActivity extends AppCompatActivity {
         subjectTitleEdt = findViewById(R.id.subjectTitleEdt);
         subjectCreditEdt = findViewById(R.id.subjectCreditEdt);
         subjectNoteEdt = findViewById(R.id.subjectNoteEdt);
+
+        // add event listener for backBtn
+        backBtn = findViewById(R.id.backBtn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
 
 

@@ -9,43 +9,59 @@
     android:orientation="vertical"
     tools:context=".activity.subject.SubjectDetailActivity">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/main_grad_theme"
-        android:orientation="horizontal">
+        >
 
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_weight="1"
-            android:layout_margin="10dp"
-            android:src="@drawable/back_button" />
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="#00FFFFFF"
+            android:scaleType="fitXY"
+            android:src="@drawable/back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/subjectTitle"
+            app:layout_constraintHorizontal_bias="0.457"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@id/subjectTitle"
-            android:layout_width="311dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="144dp"
+            android:layout_marginRight="144dp"
+            android:layout_weight="1"
             android:fontFamily="@font/pt_sans_caption"
             android:padding="15dp"
-            android:layout_weight="1"
             android:text="Subject Name"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
-        <ImageView
-            android:layout_weight="1"
+        <ImageButton
+            android:id="@+id/imageButton"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="#00FFFFF"
             android:padding="10dp"
             android:src="@drawable/ic_baseline_delete_24"
-            />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:id="@+id/subjectDetail"
