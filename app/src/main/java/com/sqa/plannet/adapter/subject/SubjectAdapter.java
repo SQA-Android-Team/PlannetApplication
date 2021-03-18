@@ -18,21 +18,7 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectV
     public void setData(List<Subject> list){
         this.listSubject = list;
         notifyDataSetChanged();
-
-
-
-
-
-
-
-
-
     }
-
-
-
-
-
 
     @NonNull
     @Override
