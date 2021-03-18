@@ -6,6 +6,8 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.sqa.plannet.R;
+
 public class SubjectEditActivity extends AppCompatActivity {
     Button addBtn;
     EditText subjectTitleEdt;

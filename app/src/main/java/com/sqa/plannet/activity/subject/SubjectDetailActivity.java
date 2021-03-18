@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.sqa.plannet.R;
+
 public class SubjectDetailActivity extends AppCompatActivity {
 
     @Override
