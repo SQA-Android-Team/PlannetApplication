@@ -24,6 +24,10 @@ public class Subject {
         this.objective = objective;
     }
 
+    public Subject(String subjectTitle){
+        this.subjectTitle = subjectTitle;
+    }
+
     public int getSubjectID() {
         return subjectID;
     }

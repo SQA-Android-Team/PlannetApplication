@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+    <item
+        android:id="@+id/navHome"
+        android:title="Home"
+        android:icon="@drawable/menu_home"
+
+        />
+     <item
+         android:id="@+id/navOverview"
+         android:title="Overview"
+         android:icon="@drawable/menu_overview"
+         />
+        <item
+            android:id="@+id/navTodo"
+            android:title="Todo"
+            android:icon="@drawable/menu_todo"
+            />
+        <item
+            android:id="@+id/navTimetable"
+            android:title="Timetable"
+            android:icon="@drawable/menu_timetable"
+            />
+
+        <item
+            android:id="@+id/navCalendar"
+            android:title="Calendar"
+            android:icon="@drawable/menu_calendar"
+            />
+        <item
+            android:id="@+id/navSubject"
+            android:title="Subject"
+            android:icon="@drawable/menu_subject"
+            />
+        <item
+            android:id="@+id/navTeacher"
+            android:title="Teacher"
+            android:icon="@drawable/menu_teacher"
+            />
+
+
+    </group>
+
+    <group android:checkableBehavior="single">
+
+
+
+
+
+            <item
+                android:id="@+id/navSettings"
+                android:title="Settings"
+                android:icon="@drawable/menu_setting"
+                />
+
+            <item
+                android:id="@+id/navHelp"
+                android:title="Help &amp; Feedbacks"
+                android:icon="@drawable/menu_help"
+                />
+
+
+
+
+
+
+
+
+
+    </group>
+
+
+
+</menu>

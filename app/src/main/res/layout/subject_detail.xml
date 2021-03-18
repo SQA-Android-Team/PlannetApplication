@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="#f3f3f3"
+    android:orientation="vertical"
+    tools:context=".SubjectDetailActivity">
+
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/main_grad_theme"
+        android:orientation="horizontal">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:src="@drawable/back_button" />
+
+        <TextView
+            android:id="@id/subjectTitle"
+            android:layout_width="311dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pt_sans_caption"
+            android:padding="15dp"
+            android:layout_weight="1"
+            android:text="Subject Name"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_weight="1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_baseline_delete_24"
+            />
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/subjectDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:id="@+id/generalInfo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_corner_card"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="15dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/number" />
+
+                <TextView
+                    android:id="@+id/subjectCreditTxv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#fff"
+                    android:ems="10"
+                    android:fontFamily="@font/pt_sans_caption"
+                    android:hint="Number of credits"
+                    android:inputType="number"
+                    android:padding="10dp"
+                    android:textColorHint="#FF676767"
+                    android:textSize="14sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="15dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/subject_note" />
+
+                <TextView
+                    android:id="@+id/subjectNoteTxv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#fff"
+                    android:ems="10"
+                    android:fontFamily="@font/pt_sans_caption"
+                    android:hint="Note"
+                    android:inputType="textPersonName"
+                    android:padding="10dp"
+                    android:textColorHint="#FF676767"
+                    android:textSize="14sp" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#8C8C8C" />
+
+            <LinearLayout
+                android:id="@+id/editSubjectBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="15dp"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pt_sans_caption_bold"
+                    android:padding="10dp"
+                    android:text="EDIT"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_baseline_arrow_forward_24" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner_card"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="15dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="45dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_baseline_touch_app_24" />
+
+                <TextView
+
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:fontFamily="@font/pt_sans_caption_bold"
+
+                    android:padding="10dp"
+                    android:text="Set your goal"
+                    android:textColor="@color/black"
+                    android:textColorHint="#FF676767"
+                    android:textSize="14sp" />
+
+                <Spinner
+                    android:id="@+id/rangeCharTxv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:spinnerMode="dropdown" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_baseline_arrow_forward_24" />
+
+                <TextView
+                    android:id="@+id/rangeDecimalTxv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/pt_sans_caption"
+                    android:padding="10dp"
+
+
+                    android:text="8.0 - 8.5"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_corner_card"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="15dp">
+
+                <ImageView
+                    android:padding="10dp"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/subject_attendance" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+
+                    android:fontFamily="@font/pt_sans_caption"
+                    android:padding="10dp"
+                    android:text="Attendance (10%)"
+                    android:textColor="#F57C00"
+                    android:textColorHint="#FF676767"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/attendanceTxv"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/pt_sans_caption_bold"
+                    android:padding="10dp"
+                    android:text="10"
+                    android:textColor="#F57C00"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="15dp">
+
+                <ImageView
+                    android:padding="10dp"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/menu_midterm" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    android:ems="10"
+
+                    android:fontFamily="@font/pt_sans_caption"
+                    android:padding="10dp"
+                    android:text="Progess (30%)"
+                    android:textColor="#388E3C"
+                    android:textColorHint="#FF676767"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/midtermTxv"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/pt_sans_caption_bold"
+                    android:padding="10dp"
+                    android:text="10"
+                    android:textColor="#388E3C"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="15dp">
+
+                <ImageView
+                    android:padding="10dp"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/subject_final" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:fontFamily="@font/pt_sans_caption"
+                    android:padding="10dp"
+                    android:text="Final (60%)"
+                    android:textColor="#0288D1"
+                    android:textColorHint="#FF676767"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/finalTxv"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/pt_sans_caption_bold"
+                    android:padding="10dp"
+                    android:text="10"
+                    android:textColor="#0288D1"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="15dp">
+
+                <ImageView
+                    android:padding="10dp"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/subject_final_result" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:fontFamily="@font/pt_sans_caption_bold"
+                    android:padding="10dp"
+                    android:text="Overall"
+                    android:textColor="#CD0000"
+                    android:textColorHint="#FF676767"
+                    android:textSize="16sp"
+                    android:textStyle="bold
+" />
+
+                <TextView
+                    android:id="@+id/overallTxv"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/pt_sans_caption_bold"
+                    android:padding="10dp"
+                    android:text="10"
+                    android:textColor="#CD0000"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#8C8C8C" />
+
+            <LinearLayout
+                android:id="@+id/editGradeBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="15dp"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pt_sans_caption_bold"
+                    android:padding="10dp"
+                    android:text="EDIT"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_baseline_arrow_forward_24" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
