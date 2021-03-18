@@ -2,4 +2,5 @@
     <string name="app_name">PlannetApplication</string>
     <string name="nav_open">open nav</string>
     <string name="nav_close">close nav</string>
+    <string name="teacher_header">teacher header</string>
 </resources>

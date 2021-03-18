@@ -16,6 +16,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.subject.SubjectCreateActivity" />
+        <activity android:name=".activity.subject.SubjectDetailActivity"/>
+        <activity android:name=".activity.subject.SubjectEditActivity"/>
+        <activity android:name=".activity.subject.SubjectViewActivity"/>
+        <activity android:name=".activity.teacher.TeacherCreateActivity"/>
+        <activity android:name=".activity.teacher.TeacherDetailActivity"/>
+        <activity android:name=".activity.teacher.TeacherEditActivity"/>
+        <activity android:name=".activity.teacher.TeacherViewActivity"/>
+
+
+
     </application>
 
 </manifest>

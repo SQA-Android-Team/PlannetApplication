@@ -7,7 +7,7 @@
 
     android:background="#FFFFFF"
     android:orientation="vertical"
-    tools:context=".SubjectCreateActivity">
+    tools:context=".activity.subject.SubjectCreateActivity">
 
     <RelativeLayout
         android:id="@+id/toolbar"
