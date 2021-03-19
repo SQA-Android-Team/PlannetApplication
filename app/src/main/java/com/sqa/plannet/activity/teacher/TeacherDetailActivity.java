@@ -1,5 +1,6 @@
 package com.sqa.plannet.activity.teacher;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.sqa.plannet.R;
@@ -38,9 +40,9 @@ public class TeacherDetailActivity extends AppCompatActivity {
         initUI();
         onBackBtnClick();
         onEditBtnClick();
-
         onPhoneCallBtnClick();
         onEmailSendBtn();
+        onDeleteBtn();
 
 
 
@@ -136,8 +138,37 @@ public class TeacherDetailActivity extends AppCompatActivity {
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+
+                AlertDialog deleteConfirm = new AlertDialog.Builder(TeacherDetailActivity.this)
+                        .setTitle("Confirmation")
+                        .setMessage("Do you really want to delete this ")
+                        .setIcon(R.drawable.ic_baseline_delete_24)
+                        .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int i) {
+                                // deleting code
+                                dialog.dismiss();
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int i) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .create();
+
+                deleteConfirm.show();
+
             }
         });
     }
+
+
+
+
+
+
+
+
 }
