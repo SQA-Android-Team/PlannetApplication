@@ -76,21 +76,17 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
     />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:backgroundTint="#FC70BF"
-        android:contentDescription="Add button"
-        android:src="@drawable/round_add_white_36dp"
-        app:backgroundTint="#002B2B2B"
-        app:backgroundTintMode="src_in"
-
-
-        app:fabSize="normal"
-        app:layout_anchor="@id/appBarLayout"
-        app:layout_anchorGravity="bottom|end|right" />
+        <ImageButton
+            android:scaleType="fitCenter"
+            android:id="@+id/fabAdd"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="16dp"
+            android:background="@drawable/button_add"
+            android:contentDescription="Add button"
+            android:src="@drawable/round_add_white_36dp"
+            app:layout_anchor="@id/appBarLayout"
+            app:layout_anchorGravity="bottom|end|right" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
