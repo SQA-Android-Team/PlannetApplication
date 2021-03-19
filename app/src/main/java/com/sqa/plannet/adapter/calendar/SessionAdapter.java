@@ -10,16 +10,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import com.sqa.plannet.R;
 import com.sqa.plannet.model.Session;
 
 import java.util.List;
 
-public class ClassesAdapter extends RecyclerView.Adapter<ClassesAdapter.ClassesHolder> {
+public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ClassesHolder> {
 
     List<Session> classes;
 
-    public ClassesAdapter(List<Session> classes) {
+    public SessionAdapter(List<Session> classes) {
         this.classes = classes;
     }
 
@@ -54,7 +55,7 @@ public class ClassesAdapter extends RecyclerView.Adapter<ClassesAdapter.ClassesH
         private TextView txtTitle;
         private TextView txtType;
         private TextView txtDay;
-//        private TextView txtMonth;
+        //        private TextView txtMonth;
         private TextView txtLocation;
         private TextView txtStartTime;
         private LinearLayout todayEvent;
@@ -66,7 +67,7 @@ public class ClassesAdapter extends RecyclerView.Adapter<ClassesAdapter.ClassesH
             txtTitle =itemView.findViewById(R.id.txtTitle);
             txtType =itemView.findViewById(R.id.txtType);
             txtDay =itemView.findViewById(R.id.txtDay);
-//            txtMonth= itemView.findViewById(R.id.txtMonth);
+
             txtLocation = itemView.findViewById(R.id.txtLocation);
             txtStartTime = itemView.findViewById(R.id.txtStartTime);
             todayEvent = itemView.findViewById(R.id.todayEvent);
@@ -78,8 +79,7 @@ public class ClassesAdapter extends RecyclerView.Adapter<ClassesAdapter.ClassesH
             txtTitle.setText(classes1.getSessionTitle());
             txtType.setText(classes1.getType());
             txtLocation.setText(classes1.getLocation());
-            txtStartTime.setText(classes1.getStartTime())
-            ;
+            txtStartTime.setText(classes1.getStartTime());
             txtDay.setText(classes1.getDate());
 
 
