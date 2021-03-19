@@ -142,9 +142,9 @@ public class CalendarViewActivity extends AppCompatActivity {
             List<Session> classes = new ArrayList<>();
             //TODO: thêm constructor cho session + sửa list bên dưới
 
-           classes.add(new Session(1,3,5,"MPR", "10:00", "12:00","Mon", "801C", "Lecture"));
-
-
+           classes.add(new Session(1,3,5,"MPR", "10:00","12:00", "23/08/1993","Mon", "801C", "Lecture"));
+            classes.add(new Session(1,3,5,"SQA", "10:00","12:00", "23/08/1993","Mon", "801C", "Lecture"));
+            classes.add(new Session(1,3,5,"SE2", "10:00","12:00", "23/08/1993","Mon", "801C", "Lecture"));
             // setup recycle view
             // adapter
             SessionAdapter sessionAdapter = new SessionAdapter(classes);
