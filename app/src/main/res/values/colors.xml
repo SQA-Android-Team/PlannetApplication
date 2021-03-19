@@ -7,4 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-</resources>
+    <color name="chosen_date">#FD9DB9</color>
+    <color name="today">#FEC8D7</color>
+    <color name="White_smoke">#F5F5F5</color>
+    <color name="today_event">#fff0f4</color>
+    </resources>

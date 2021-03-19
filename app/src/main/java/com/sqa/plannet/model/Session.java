@@ -1,27 +1,43 @@
 package com.sqa.plannet.model;
 
-import java.sql.Date;
+import java.lang.String;
 
 public class Session {
     private int sessionID;
     private int timetableID;
     private int subjectID;
     private String sessionTitle;
-    private Date startTime;
-    private Date endTime;
+    private String startTime;
+    private String endTime;
+    private String date;
+    private String weekDay;
     private String location;
     private String type;
 
     public Session() {
     }
 
-    public Session(int sessionID, int timetableID, int subjectID, String sessionTitle, Date startTime, Date endTime, String location, String type) {
+    public Session(int sessionID, int timetableID, int subjectID, String sessionTitle, String startTime, String endTime, String date, String weekDay, String location, String type) {
         this.sessionID = sessionID;
         this.timetableID = timetableID;
         this.subjectID = subjectID;
         this.sessionTitle = sessionTitle;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.date = date;
+        this.weekDay = weekDay;
+        this.location = location;
+        this.type = type;
+    }
+    public Session( int timetableID, int subjectID, String sessionTitle, String startTime, String endTime, String date, String weekDay, String location, String type) {
+
+        this.timetableID = timetableID;
+        this.subjectID = subjectID;
+        this.sessionTitle = sessionTitle;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.date = date;
+        this.weekDay = weekDay;
         this.location = location;
         this.type = type;
     }
@@ -58,19 +74,19 @@ public class Session {
         this.sessionTitle = sessionTitle;
     }
 
-    public Date getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 
@@ -88,5 +104,21 @@ public class Session {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getWeekDay() {
+        return weekDay;
+    }
+
+    public void setWeekDay(String weekDay) {
+        this.weekDay = weekDay;
     }
 }
