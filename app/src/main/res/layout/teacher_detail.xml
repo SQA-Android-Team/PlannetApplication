@@ -77,10 +77,10 @@
             android:orientation="vertical"
             android:padding="15dp">
             <ImageView
-                android:padding="8dp"
+                android:padding="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:src="@drawable/ic_baseline_account_circle_24"/>
+                android:src="@drawable/bookmark_ic"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -136,7 +136,7 @@
                     >
 
                     <TextView
-                        android:id="@+id/subjectCreditTxv"
+                        android:id="@+id/teacherPhoneTxvTxv"
                         android:layout_width="308dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

@@ -111,7 +111,6 @@
             <ImageView
                 android:layout_width="9dp"
                 android:layout_height="match_parent"
-
                 android:layout_weight="1"
                 android:src="@drawable/ic_forward" />
 

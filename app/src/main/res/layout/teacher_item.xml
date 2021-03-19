@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#f1f1f1"
+    android:background="#F1F1F1"
     android:orientation="vertical"
     android:padding="10dp">
 
@@ -12,21 +12,34 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-
+        android:background="@drawable/rounded_corner_card"
+        android:padding="10dp"
         >
         <ImageView
             android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_account_circle_24"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:src="@drawable/bookmark_ic"
             />
 
         <TextView
             android:id="@+id/teacherNameTxv"
-            android:text="teacherNameTxv"
-            android:layout_width="match_parent"
+            android:layout_width="307dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:text="teacherNameTxv"
+            android:textSize="16sp"
+
 
             />
+
+        <ImageView
+            android:layout_width="9dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_forward" />
 
 
 
