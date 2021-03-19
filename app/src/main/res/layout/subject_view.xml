@@ -85,6 +85,7 @@
             android:src="@drawable/round_add_white_36dp"
             android:backgroundTint="@color/purple_200"
             app:backgroundTint="#00ffffff"
+
             android:contentDescription="Add button"
 
             app:layout_anchor="@id/appBarLayout"

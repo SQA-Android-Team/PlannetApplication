@@ -90,7 +90,7 @@
 
             app:layout_anchor="@id/appBarLayout"
             app:layout_anchorGravity="bottom|end|right"
-             />
+            />
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
