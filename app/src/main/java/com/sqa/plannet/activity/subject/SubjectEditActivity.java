@@ -13,7 +13,7 @@ import com.sqa.plannet.R;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SubjectEditActivity extends AppCompatActivity {
-    Button addBtn;
+    Button editBtn;
     ImageButton backBtn;
     EditText subjectTitleEdt;
     EditText subjectCreditEdt;

@@ -10,6 +10,7 @@ import com.sqa.plannet.R;
 
 public class SubjectDetailActivity extends AppCompatActivity {
     ImageButton backBtn;
+    ImageButton deleteBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

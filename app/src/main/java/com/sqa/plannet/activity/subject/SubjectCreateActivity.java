@@ -82,7 +82,5 @@ public class SubjectCreateActivity extends AppCompatActivity {
     }
 
 
-    protected void onBackBtnClick(View view){
-        onBackBtnClick(view);
-    }
+
 }
