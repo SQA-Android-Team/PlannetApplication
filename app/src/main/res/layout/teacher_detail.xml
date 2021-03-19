@@ -136,25 +136,27 @@
                     >
 
                     <TextView
-                        android:id="@+id/teacherPhoneTxvTxv"
+                        android:id="@+id/teacherPhoneTxv"
                         android:layout_width="308dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:backgroundTint="#fff"
                         android:ems="10"
-                        android:hint="0382063144"
+                        android:text="0382063144"
                         android:inputType="number"
                         android:padding="10dp"
                         android:textColorHint="#131313"
                         android:textSize="16sp" />
 
                     <ImageButton
+                        android:id="@+id/teacherPhoneBtn"
                         android:background="#00FFFFFF"
                         android:layout_width="30dp"
                         android:layout_height="match_parent"
                         android:src="@drawable/ic_baseline_phone_forwarded_24"/>
                 </LinearLayout>
                 <View
+
                     android:layout_gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -194,13 +196,14 @@
                         android:layout_weight="1"
                         android:backgroundTint="#fff"
                         android:ems="10"
-                        android:hint="Email address"
+                        android:text="dunghoangthidaihoc@gmail.com"
                         android:inputType="textPersonName"
                         android:padding="10dp"
                         android:textColorHint="#FF131313"
                         android:textSize="16sp" />
 
                     <ImageButton
+                        android:id="@+id/teacherEmailBtn"
                         android:background="#00FFFFFF"
                         android:layout_width="30dp"
                         android:layout_height="match_parent"

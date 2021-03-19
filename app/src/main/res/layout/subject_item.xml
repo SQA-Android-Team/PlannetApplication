@@ -58,7 +58,8 @@
                         android:layout_width="35dp"
                         android:layout_height="30dp"
                         android:paddingRight="5dp"
-                        android:src="@drawable/mday" />
+                        android:src="@drawable/mday"
+                        android:visibility="invisible"/>
 
 
                     <de.hdodenhof.circleimageview.CircleImageView
@@ -67,42 +68,47 @@
                         android:layout_height="30dp"
                         android:paddingRight="5dp"
                         android:src="@drawable/tday"
-                        tools:visibility="visible" />
+                        tools:visibility="invisible" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/wed"
                         android:layout_width="35dp"
                         android:layout_height="30dp"
                         android:paddingRight="5dp"
-                        android:src="@drawable/wday" />
+                        android:src="@drawable/wday"
+                        android:visibility="invisible"/>
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/thu"
                         android:layout_width="35dp"
                         android:layout_height="30dp"
                         android:paddingRight="5dp"
-                        android:src="@drawable/tday" />
+                        android:src="@drawable/tday"
+                        android:visibility="invisible"/>
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/fri"
                         android:layout_width="35dp"
                         android:layout_height="30dp"
                         android:paddingRight="5dp"
-                        android:src="@drawable/fday" />
+                        android:src="@drawable/fday"
+                        android:visibility="invisible"/>
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/sat"
                         android:layout_width="35dp"
                         android:layout_height="30dp"
                         android:paddingRight="5dp"
-                        android:src="@drawable/sday" />
+                        android:src="@drawable/sday"
+                        android:visibility="invisible"/>
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/sun"
                         android:layout_width="35dp"
                         android:layout_height="30dp"
                         android:paddingRight="5dp"
-                        android:src="@drawable/sday" />
+                        android:src="@drawable/sday"
+                        android:visibility="invisible"/>
                 </LinearLayout>
 
 

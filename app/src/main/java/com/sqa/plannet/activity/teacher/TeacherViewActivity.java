@@ -2,6 +2,7 @@ package com.sqa.plannet.activity.teacher;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -28,11 +29,14 @@ public class TeacherViewActivity extends AppCompatActivity {
     private AppBarLayout appBarLayout;
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private Toolbar toolbar;
-    private ImageButton addBtn;
+    private FloatingActionButton addBtn;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private RecyclerView recyclerView;
     private TeacherAdapter teacherAdapter;
+
+    private Menu menu;
+    private boolean isExpanded = true;
 
 
     @Override

@@ -2,6 +2,7 @@ package com.sqa.plannet.activity.subject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -27,11 +28,15 @@ public class SubjectViewActivity extends AppCompatActivity {
     private AppBarLayout appBarLayout;
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private Toolbar toolbar;
-    private ImageButton addBtn;
+    private FloatingActionButton addBtn;
     private RecyclerView recyclerView;
     private SubjectAdapter subjectAdapter;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
+
+    private Menu menu;
+
+    private boolean isExpanded = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

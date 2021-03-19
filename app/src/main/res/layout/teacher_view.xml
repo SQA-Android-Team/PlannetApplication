@@ -70,23 +70,27 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_teacher"
-            android:background="#f1f1f1"
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             />
 
-        <ImageButton
-            android:scaleType="center"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+
             android:id="@+id/fabAdd"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:background="@drawable/round_gradient_3"
-            android:contentDescription="Add button"
             android:src="@drawable/round_add_white_36dp"
+            android:backgroundTint="@color/purple_200"
+            app:backgroundTint="#00ffffff"
+
+            android:contentDescription="Add button"
+
             app:layout_anchor="@id/appBarLayout"
-            app:layout_anchorGravity="bottom|end|right" />
+            app:layout_anchorGravity="bottom|end|right"
+             />
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
