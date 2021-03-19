@@ -3,6 +3,7 @@ package com.sqa.plannet.activity.subject;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,7 +27,7 @@ public class SubjectViewActivity extends AppCompatActivity {
     private AppBarLayout appBarLayout;
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private Toolbar toolbar;
-    private FloatingActionButton fab;
+    private ImageButton addBtn;
     private RecyclerView recyclerView;
     private SubjectAdapter subjectAdapter;
     private DrawerLayout drawerLayout;
@@ -39,13 +40,8 @@ public class SubjectViewActivity extends AppCompatActivity {
         initToolbar();
         initRecycleView();
 
-        drawerLayout = findViewById(R.id.subjectViewDrawer);
-        toolbar = findViewById(R.id.subjectViewToolbar);
 
-
-        navigationView = findViewById(R.id.navView);
-        fab = findViewById(R.id.fabAdd);
-        fab.setOnClickListener(new View.OnClickListener() {
+        addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SubjectViewActivity.this, SubjectCreateActivity.class);
@@ -63,16 +59,24 @@ public class SubjectViewActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * TODO: Initiate all necessary UI elements
+     */
     private void initUI(){
+        drawerLayout = findViewById(R.id.subjectViewDrawer);
+        toolbar = findViewById(R.id.subjectViewToolbar);
+        navigationView = findViewById(R.id.navView);
+        addBtn = findViewById(R.id.fabAdd);
         appBarLayout = findViewById(R.id.appBarLayout);
         collapsingToolbarLayout = findViewById(R.id.colToolbar);
-        toolbar = findViewById(R.id.subjectViewToolbar);
-        fab = findViewById(R.id.fabAdd);
         recyclerView = findViewById(R.id.rv_subject);
 
     }
 
 
+    /**
+     * TODO: Initiate the toolbar
+     */
     private void initToolbar(){
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
@@ -80,6 +84,9 @@ public class SubjectViewActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * TODO: Allocate all subjects to the RecycleView
+     */
     private void initRecycleView() {
         recyclerView.setHasFixedSize(true);
 
@@ -91,6 +98,10 @@ public class SubjectViewActivity extends AppCompatActivity {
         recyclerView.setAdapter(subjectAdapter);
     }
 
+    /**
+     * TODO: Get a list of all subjects
+     * @return Either the list of subjects or null
+     */
     private List<Subject> getListSubject(){
 
         List<Subject> list = new ArrayList<Subject>();

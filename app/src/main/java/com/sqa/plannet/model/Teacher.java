@@ -16,6 +16,16 @@ public class Teacher {
     public Teacher() {
     }
 
+    public Teacher(String teacherName) {
+        this.teacherName = teacherName;
+    }
+
+    public Teacher(String teacherName, String phone, String email) {
+        this.teacherName = teacherName;
+        this.phone = phone;
+        this.email = email;
+    }
+
     public int getTeacherID() {
         return teacherID;
     }

@@ -16,7 +16,7 @@ import java.util.List;
 public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.TeacherViewHolder> {
     private List<Teacher> listTeacher;
 
-    public void seData(List<Teacher> list){
+    public void setData(List<Teacher> list){
         this.listTeacher = list;
         notifyDataSetChanged();
     }
