@@ -15,8 +15,9 @@
         android:padding="10dp"
         android:text="Plannet"
         android:textColor="#FFFFFF"
-        android:textSize="36sp"
-        android:textStyle="bold" />
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_weight="1"/>
 
 
 </LinearLayout>
