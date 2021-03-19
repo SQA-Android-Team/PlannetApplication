@@ -38,6 +38,7 @@ public class TeacherDetailActivity extends AppCompatActivity {
         initUI();
         onBackBtnClick();
         onEditBtnClick();
+
         onPhoneCallBtnClick();
         onEmailSendBtn();
 
@@ -126,5 +127,17 @@ public class TeacherDetailActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    /**
+     * TODO: add event for Delete button
+     */
+    private void onDeleteBtn() {
+        deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
+            }
+        });
     }
 }

@@ -9,10 +9,11 @@
     >
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/kaushan_script"
-        android:padding="10dp"
+
         android:text="Plannet"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
