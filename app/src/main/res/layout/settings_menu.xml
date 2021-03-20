@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".activity.settings.SettingsMenuActivity"
+    tools:openDrawer="start"
+    android:id="@+id/settingsViewDrawer">
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/header"
+        app:menu="@menu/menu_main" />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/colToolBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/cover_picture_settings_list"
+                    android:contentDescription="settings header"
+                    android:scaleType="centerCrop"
+                    app:layout_collapseMode="parallax" />
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/settingsViewToolBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:theme="@style/ThemeOverlay.AppCompat.Light"
+                    app:layout_collapseMode="pin"
+                    app:navigationIcon="@drawable/ic_baseline_menu_24" />
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <Button
+                android:id="@+id/generalBtn"
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:layout_gravity="start"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_corners_settings_list"
+                android:drawableLeft="@drawable/ic_general"
+                android:drawablePadding="40dp"
+                android:paddingLeft="25dp"
+                android:text="General"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#AC7FFC"
+                android:textSize="22dp"
+                android:textStyle="bold"
+                app:backgroundTint="#FFFFFF" />
+
+            <Button
+                android:id="@+id/notificationsBtn"
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:layout_gravity="start"
+                android:layout_marginTop="11dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_corners_settings_list"
+                android:drawableLeft="@drawable/ic_notifications"
+                android:drawablePadding="40dp"
+                android:paddingLeft="25dp"
+                android:text="Notifications"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#AC7FFC"
+                android:textSize="22dp"
+                android:textStyle="bold"
+                app:backgroundTint="#FFFFFF" />
+
+            <Button
+                android:id="@+id/backUpBtn"
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:layout_gravity="start"
+                android:layout_marginTop="11dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_corners_settings_list"
+                android:drawableLeft="@drawable/ic_backup"
+                android:drawablePadding="40dp"
+                android:paddingLeft="25dp"
+                android:text="Back up"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#AC7FFC"
+                android:textSize="22dp"
+                android:textStyle="bold"
+                app:backgroundTint="#FFFFFF" />
+
+            <Button
+                android:id="@+id/ratingAppBtn"
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:layout_gravity="start"
+                android:layout_marginTop="11dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_corners_settings_list"
+                android:drawableLeft="@drawable/ic_rating"
+                android:drawablePadding="40dp"
+                android:paddingLeft="25dp"
+                android:text="Rating app"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#AC7FFC"
+                android:textSize="22dp"
+                android:textStyle="bold"
+                app:backgroundTint="#FFFFFF" />
+
+            <Button
+                android:id="@+id/aboutBtn"
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:layout_gravity="start"
+                android:layout_marginTop="11dp"
+                android:layout_marginBottom="30dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_corners_settings_list"
+                android:drawableLeft="@drawable/ic_about"
+                android:drawablePadding="40dp"
+                android:paddingLeft="25dp"
+                android:text="About"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#AC7FFC"
+                android:textSize="22dp"
+                android:textStyle="bold"
+                app:backgroundTint="#FFFFFF" />
+        </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
