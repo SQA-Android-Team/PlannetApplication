@@ -28,4 +28,38 @@
     <string name="txtEnd">End at:</string>
     <string name="txtSessionColor">Color:</string>
     <string name="txtSessionDayOfWeek">Day of week:</string>
+
+    <string name="started">Get Started</string>
+    <string name="btn_login">Log In</string>
+    <string name="btn_sign_up">Sign Up</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forget_password">Forget your password</string>
+    <string name="name">Name</string>
+    <string name="repeat_password">Repeat Password</string>
+    <string name="overview">Overview</string>
+    <string name="calendar">Calendar</string>
+    <string name="todo">Todo</string>
+    <string name="btnTimetable">Timetable</string>
+    <string name="add_class">Add class</string>
+    <string name="cancel">Cancel</string>
+    <string name="new_class">New Class</string>
+    <string name="finish">Finish</string>
+    <string name="sun">SUN</string>
+    <string name="mon">MON</string>
+    <string name="tue">TUE</string>
+    <string name="wed">WED</string>
+    <string name="thu">THU</string>
+    <string name="fri">FRI</string>
+    <string name="sat">SAT</string>
+
+    <string-array name="dateOfWeek">
+        <item>Monday</item>
+        <item>Tueday</item>
+        <item>Wednesday</item>
+        <item>Thurday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
 </resources>

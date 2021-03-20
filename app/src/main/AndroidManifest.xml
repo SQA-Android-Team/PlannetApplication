@@ -9,6 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PlannetApplication">
+        <activity android:name=".activity.home.HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.timetable.TimetableViewActivity"></activity>
+        <activity android:name=".activity.timetable.TimetableAddSession"/>
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".activity.subject.SubjectCreateActivity" />
         <activity android:name=".activity.subject.SubjectDetailActivity" />
