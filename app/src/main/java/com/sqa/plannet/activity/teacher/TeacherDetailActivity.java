@@ -141,7 +141,7 @@ public class TeacherDetailActivity extends AppCompatActivity {
 
                 AlertDialog deleteConfirm = new AlertDialog.Builder(TeacherDetailActivity.this)
                         .setTitle("Confirmation")
-                        .setMessage("Do you really want to delete this ")
+                        .setMessage("Do you really want to delete this teacher?")
                         .setIcon(R.drawable.ic_baseline_delete_24)
                         .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                             @Override

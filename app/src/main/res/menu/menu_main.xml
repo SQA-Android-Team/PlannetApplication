@@ -7,38 +7,45 @@
         android:id="@+id/navHome"
         android:title="Home"
         android:icon="@drawable/menu_home"
+        android:checkable="true"
 
         />
      <item
          android:id="@+id/navOverview"
          android:title="Overview"
          android:icon="@drawable/menu_overview"
+         android:checkable="true"
          />
         <item
             android:id="@+id/navTodo"
             android:title="Todo"
             android:icon="@drawable/menu_todo"
+            android:checkable="true"
             />
         <item
             android:id="@+id/navTimetable"
             android:title="Timetable"
             android:icon="@drawable/menu_timetable"
+            android:checkable="true"
             />
 
         <item
             android:id="@+id/navCalendar"
             android:title="Calendar"
             android:icon="@drawable/menu_calendar"
+            android:checkable="true"
             />
         <item
             android:id="@+id/navSubject"
             android:title="Subject"
             android:icon="@drawable/menu_subject"
+            android:checkable="true"
             />
         <item
             android:id="@+id/navTeacher"
             android:title="Teacher"
             android:icon="@drawable/menu_teacher"
+            android:checkable="true"
             />
 
 
@@ -54,12 +61,15 @@
                 android:id="@+id/navSettings"
                 android:title="Settings"
                 android:icon="@drawable/menu_setting"
+                android:checkable="true"
                 />
 
             <item
                 android:id="@+id/navHelp"
                 android:title="Help &amp; Feedbacks"
                 android:icon="@drawable/menu_help"
+                android:checkable="true"
+
                 />
 
 

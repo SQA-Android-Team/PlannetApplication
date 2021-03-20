@@ -56,7 +56,7 @@ public class SubjectDetailActivity extends AppCompatActivity {
 
                 AlertDialog deleteConfirm = new AlertDialog.Builder(SubjectDetailActivity.this)
                         .setTitle("Confirmation")
-                        .setMessage("Do you really want to delete this ")
+                        .setMessage("Do you really want to delete this subject?")
                         .setIcon(R.drawable.ic_baseline_delete_24)
                         .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                             @Override
