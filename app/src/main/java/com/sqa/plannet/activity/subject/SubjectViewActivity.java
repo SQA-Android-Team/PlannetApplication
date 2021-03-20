@@ -42,7 +42,7 @@ public class SubjectViewActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
 
-    private Menu menu;
+    private Menu subMenu;
 
     private boolean isExpanded = true;
     @Override
@@ -55,6 +55,7 @@ public class SubjectViewActivity extends AppCompatActivity {
         onAddBtnClick();
         onNavigationItemClick();
         initDrawer();
+        initToolbarAnimation();
     }
 
     /**
@@ -79,7 +80,7 @@ public class SubjectViewActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle("Subjects");
+
         }
     }
 
@@ -87,6 +88,8 @@ public class SubjectViewActivity extends AppCompatActivity {
      * TODO: Intitialise drawer menu
      */
     private void initDrawer(){
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Subjects");
         drawerLayout.bringToFront();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.nav_open, R.string.nav_close);
         drawerLayout.addDrawerListener(toggle);
@@ -149,8 +152,58 @@ public class SubjectViewActivity extends AppCompatActivity {
             @Override
             public void onGenerated(@Nullable Palette palette) {
                // TODO: https://www.youtube.com/watch?v=-WIp6uNpWcE&t=1615s 32:56
+                int collapsedColor = palette.getVibrantColor(getResources().getColor(R.color.cutie_pink));
+                collapsingToolbarLayout.setContentScrimColor(collapsedColor);
+                collapsingToolbarLayout.setStatusBarScrimColor(getResources().getColor(R.color.black_trans));
+
             }
         });
+
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                if (Math.abs(verticalOffset) > 180){
+                    isExpanded = false;
+                } else {
+                    isExpanded = true;
+                }
+                invalidateOptionsMenu();
+            }
+        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        subMenu = menu;
+        return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        if (subMenu != null & ( !isExpanded || subMenu.size() != 1)){
+            subMenu.add("Add").setIcon(R.drawable.round_add_white_36dp).setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+        } else {
+
+        }
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.subMenuSetting:
+                // INCOMPLETE
+                return true;
+
+        }
+        if (item.getTitle().equals("Add")){
+            Intent intent = new Intent(SubjectViewActivity.this, SubjectCreateActivity.class);
+            intent.putExtra("parent_class", SubjectViewActivity.class);
+            startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     /**
@@ -184,12 +237,6 @@ public class SubjectViewActivity extends AppCompatActivity {
                         return true;
                     case R.id.navHelp:
                         return true;
-
-
-
-
-
-
 
                 }
                 return false;

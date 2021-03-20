@@ -11,4 +11,9 @@
     <color name="today">#FEC8D7</color>
     <color name="White_smoke">#F5F5F5</color>
     <color name="today_event">#fff0f4</color>
+
+
+    <color name="collapsed_toolbar">#F595B8</color>
+    <color name="cutie_pink">#F595B8</color>
+    <color name="black_trans">#33000000</color>
     </resources>
