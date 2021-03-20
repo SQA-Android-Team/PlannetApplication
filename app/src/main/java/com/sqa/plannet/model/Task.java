@@ -5,14 +5,14 @@ import java.sql.Date;
 public class Task {
     private int taskID;
     private String taskTitle;
-    private Date dueDate;
+    private String dueDate;
     private String taskNote;
     private String taskType;
 
     public Task() {
     }
 
-    public Task(int taskID, String taskTitle, Date dueDate, String taskNote, String taskType) {
+    public Task(int taskID, String taskTitle, String dueDate, String taskNote, String taskType) {
         this.taskID = taskID;
         this.taskTitle = taskTitle;
         this.dueDate = dueDate;
@@ -36,11 +36,11 @@ public class Task {
         this.taskTitle = taskTitle;
     }
 
-    public Date getDueDate() {
+    public String getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(Date dueDate) {
+    public void setDueDate(String dueDate) {
         this.dueDate = dueDate;
     }
 

@@ -14,11 +14,11 @@ import com.sqa.plannet.model.Task;
 
 import java.util.List;
 
-public class EventsAdapter extends  RecyclerView.Adapter<EventsAdapter.EventsHolder> {
+public class TaskAdapter extends  RecyclerView.Adapter<TaskAdapter.EventsHolder> {
 
     private List<Task> events;
 
-    public EventsAdapter(List<Task> events) {
+    public TaskAdapter(List<Task> events) {
         this.events = events;
     }
 
