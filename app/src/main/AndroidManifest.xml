@@ -34,6 +34,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".activity.teacher.TeacherEditActivity" />
         <activity android:name=".activity.teacher.TeacherViewActivity">
             <intent-filter>
@@ -49,6 +50,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.overview.OverviewMainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+
+            </intent-filter>
+        </activity>
         <activity android:name=".activity.settings.SettingsMenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -60,6 +68,7 @@
         <activity android:name=".activity.settings.SettingsAboutActivity" />
         <activity android:name=".activity.settings.SettingsRatingActivity" />
         <activity android:name=".activity.helpAndFeedbacks.HelpAndFeedbacksActivity" />
+
 
 
     </application>
