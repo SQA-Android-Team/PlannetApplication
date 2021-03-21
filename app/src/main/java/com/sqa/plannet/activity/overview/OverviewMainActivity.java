@@ -60,7 +60,7 @@ public class OverviewMainActivity extends AppCompatActivity implements OnChartVa
         mChart.setCenterTextSize(50);
         mChart.setDrawEntryLabels(false);
         mChart.setCenterText("85%");
-        mChart.setCenterTextColor(R.color.gradient);
+        mChart.setCenterTextColor(Color.parseColor("#A680EA"));
 
 
         addDataSet(mChart);
@@ -124,7 +124,9 @@ public class OverviewMainActivity extends AppCompatActivity implements OnChartVa
         colors.add(R.color.gradient);
         colors.add(R.color.White_smoke);
 
-        pieDataSet.setColors(colors);
+
+        pieDataSet.setColors(new int[]{Color.parseColor("#A680EA"),
+                Color.parseColor("#F595B8")});
 
 
         Legend legend=pieChart.getLegend();
