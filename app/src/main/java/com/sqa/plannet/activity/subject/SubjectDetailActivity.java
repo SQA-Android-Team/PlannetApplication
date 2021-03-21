@@ -4,10 +4,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +19,7 @@ import com.sqa.plannet.R;
 import com.sqa.plannet.activity.teacher.TeacherDetailActivity;
 import com.sqa.plannet.model.Subject;
 
-public class SubjectDetailActivity extends AppCompatActivity {
+public class SubjectDetailActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private Subject subject;
     private ImageButton backBtn;
     private ImageButton deleteBtn;
@@ -49,7 +52,7 @@ public class SubjectDetailActivity extends AppCompatActivity {
 
         initUI();
         // TODO: fix the line below
-        setText(null);
+//        setText(null);
         initSpinner();
         onBackBtnClick();
         onDeleteBtn();
@@ -107,8 +110,15 @@ public class SubjectDetailActivity extends AppCompatActivity {
     private void initSpinner(){
 
 
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.range, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        rangeSpinner.setAdapter(adapter);
+        rangeSpinner.setOnItemClickListener(this::onItemSelected);
+
 
     }
+
+
 
 
 
@@ -175,6 +185,17 @@ public class SubjectDetailActivity extends AppCompatActivity {
         // TODO:
 
         startActivity(intent);
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String text = parent.getItemAtPosition(position).toString();
+        Toast.makeText(parent.getContext(),text, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
 }
