@@ -9,21 +9,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PlannetApplication">
+        <activity android:name=".activity.subject.GradeEditActivity"></activity>
         <activity android:name=".activity.home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.timetable.TimetableViewActivity"></activity>
-        <activity android:name=".activity.timetable.TimetableAddSession"/>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".activity.timetable.TimetableViewActivity" />
+        <activity android:name=".activity.timetable.TimetableAddSession" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".activity.subject.SubjectCreateActivity" />
-        <activity android:name=".activity.subject.SubjectDetailActivity" />
+        <activity android:name=".activity.subject.SubjectDetailActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity android:name=".activity.subject.SubjectEditActivity" />
         <activity android:name=".activity.subject.SubjectViewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -31,10 +41,10 @@
         <activity android:name=".activity.teacher.TeacherDetailActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".activity.teacher.TeacherEditActivity" />
         <activity android:name=".activity.teacher.TeacherViewActivity">
             <intent-filter>
@@ -53,8 +63,8 @@
         <activity android:name=".activity.overview.OverviewMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".activity.settings.SettingsMenuActivity">
@@ -64,13 +74,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".activity.settings.SettingsAboutActivity" />
         <activity android:name=".activity.settings.SettingsRatingActivity" />
         <activity android:name=".activity.helpAndFeedbacks.HelpAndFeedbacksActivity" />
-
-
-
     </application>
 
 </manifest>
