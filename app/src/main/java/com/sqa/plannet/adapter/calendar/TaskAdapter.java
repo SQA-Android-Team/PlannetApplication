@@ -1,15 +1,21 @@
 package com.sqa.plannet.adapter.calendar;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sqa.plannet.R;
+import com.sqa.plannet.activity.calendar.CalendarViewActivity;
+import com.sqa.plannet.activity.subject.SubjectDetailActivity;
+import com.sqa.plannet.activity.subject.SubjectViewActivity;
+import com.sqa.plannet.activity.todo.TodoMainActivity;
 import com.sqa.plannet.model.Task;
 
 import java.util.List;
@@ -56,26 +62,42 @@ public class TaskAdapter extends  RecyclerView.Adapter<TaskAdapter.EventsHolder>
 
         private TextView txtTitle;
         private TextView txtType;
-        private TextView txtDay;
-//        private TextView txtMonth;
+
+
+        private LinearLayout todayEvent;
+
 
 
 
         public EventsHolder(@NonNull View itemView) {
             super(itemView);
-
+            todayEvent = itemView.findViewById(R.id.todayEvent);
             txtTitle =itemView.findViewById(R.id.txtTitle);
             txtType =itemView.findViewById(R.id.txtType);
-            txtDay =itemView.findViewById(R.id.txtDay);
-//            txtMonth= itemView.findViewById(R.id.txtMonth);
+
+
 
 
         }
         public void bind(Task events){
             txtTitle.setText(events.getTaskTitle());
             txtType.setText(events.getTaskType());
-            txtDay.setText(events.getDueDate().toString());
+
+
             // handle onclick
+            todayEvent.setOnClickListener(new View.OnClickListener() {
+                                              @Override
+                                              public void onClick(View v) {
+                                                  Context  context = v.getContext();
+                                                  Intent intent = new Intent(context,
+                                                          SubjectDetailActivity.class);
+
+                                                  context.startActivity(intent);
+
+                                              }
+                                          }
+            );
+
 
         }
 

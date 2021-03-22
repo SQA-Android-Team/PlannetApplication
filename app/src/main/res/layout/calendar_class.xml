@@ -7,7 +7,7 @@
 
 
     <LinearLayout
-        android:id="@+id/todayEvent"
+        android:id="@+id/Session"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -30,15 +30,6 @@
             android:layout_weight="0.25"
             android:orientation="vertical">
 
-<!--            <TextView-->
-<!--                android:id="@+id/txtMonth"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:layout_margin="0dp"-->
-<!--                android:fontFamily="@font/pt_bold"-->
-<!--                android:text="@string/txtMonth"-->
-<!--                android:textSize="20sp" />-->
 
             <TextView
                 android:id="@+id/txtDay"

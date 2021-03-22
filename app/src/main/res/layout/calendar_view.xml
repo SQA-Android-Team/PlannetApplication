@@ -97,7 +97,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/rounded_corner_card"
-                                android:layout_margin="10dp"></CalendarView>
+                                android:layout_margin="10dp"
+                                android:theme="@style/CalenderViewCustom"></CalendarView>
 
                             <TextView
                                 android:id="@+id/txtTodayEvent"

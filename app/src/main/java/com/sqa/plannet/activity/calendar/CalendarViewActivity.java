@@ -51,21 +51,6 @@ public class CalendarViewActivity extends AppCompatActivity {
         initUI();
         initToolbar();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         drawerLayout = findViewById(R.id.subjectViewDrawer);
         toolbar = findViewById(R.id.subjectViewToolbar);
         navigationView = findViewById(R.id.navView);
@@ -135,16 +120,16 @@ public class CalendarViewActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             //recycle view
-            rvTodayEvent= findViewById(R.id.rvTodayEvent);
+            rvTodayEvent = findViewById(R.id.rvTodayEvent);
             rvReminders = findViewById(R.id.rvReminders);
 
             //demo data
             List<Session> classes = new ArrayList<>();
             //TODO: thêm constructor cho session + sửa list bên dưới
 
-           classes.add(new Session(1,3,5,"MPR", "10:00","12:00", "23/08/1993","Mon", "801C", "Lecture"));
-            classes.add(new Session(1,3,5,"SQA", "10:00","12:00", "23/08/1993","Mon", "801C", "Lecture"));
-            classes.add(new Session(1,3,5,"SE2", "10:00","12:00", "23/08/1993","Mon", "801C", "Lecture"));
+            classes.add(new Session(1, 3, 5, "MPR", "10:00", "12:00", "23/08/1993", "Mon", "801C", "Lecture"));
+            classes.add(new Session(1, 3, 5, "SQA", "10:00", "12:00", "23/08/1993", "Mon", "801C", "Lecture"));
+            classes.add(new Session(1, 3, 5, "SE2", "10:00", "12:00", "23/08/1993", "Mon", "801C", "Lecture"));
             // setup recycle view
             // adapter
             SessionAdapter sessionAdapter = new SessionAdapter(classes);
@@ -153,14 +138,13 @@ public class CalendarViewActivity extends AppCompatActivity {
             rvReminders.setLayoutManager(new LinearLayoutManager(this));
 
 
-
             // demo data
             List<Task> events = new ArrayList<>();
             //TODO: thêm constructor cho task + sửa list bên dưới
 
-            events.add(new Task(1,"NHCam","20/8/2000","abc", "Homework"));
-            events.add(new Task(2,"Seo Hyerin","23/8/1993","Idle", "Project"));
-            events.add(new Task(4,"Nothing","23/8/1993","OMG", "Assignment"));
+            events.add(new Task(1, "NHCam", "20/8/2000", "abc", "Homework"));
+            events.add(new Task(2, "Seo Hyerin", "23/8/1993", "Idle", "Project"));
+            events.add(new Task(4, "Nothing", "23/8/1993", "OMG", "Assignment"));
 
 
             // setup recycle view
@@ -170,6 +154,7 @@ public class CalendarViewActivity extends AppCompatActivity {
             rvTodayEvent.setAdapter(taskAdapter);
             //layout manager
             rvTodayEvent.setLayoutManager(new LinearLayoutManager(this));
+
 
 
 

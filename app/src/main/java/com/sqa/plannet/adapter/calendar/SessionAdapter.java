@@ -1,6 +1,7 @@
 package com.sqa.plannet.adapter.calendar;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.sqa.plannet.R;
+import com.sqa.plannet.activity.subject.SubjectDetailActivity;
+import com.sqa.plannet.activity.subject.SubjectViewActivity;
+import com.sqa.plannet.activity.timetable.Timetable_SessionDetail;
 import com.sqa.plannet.model.Session;
 
 import java.util.List;
@@ -41,8 +45,8 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ClassesH
 
     @Override
     public void onBindViewHolder(@NonNull ClassesHolder holder, int position) {
-        Session classes1 = classes.get(position);
-        holder.bind(classes1);
+        Session newClasses = classes.get(position);
+        holder.bind(newClasses);
 
     }
 
@@ -58,7 +62,7 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ClassesH
         //        private TextView txtMonth;
         private TextView txtLocation;
         private TextView txtStartTime;
-        private LinearLayout todayEvent;
+        private LinearLayout Session;
         private Context context;
 
         public ClassesHolder(@NonNull View itemView, Context context) {
@@ -70,32 +74,30 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ClassesH
 
             txtLocation = itemView.findViewById(R.id.txtLocation);
             txtStartTime = itemView.findViewById(R.id.txtStartTime);
-            todayEvent = itemView.findViewById(R.id.todayEvent);
+            Session = itemView.findViewById(R.id.Session);
 
 
 
         }
-        public void  bind(Session classes1){
-            txtTitle.setText(classes1.getSessionTitle());
-            txtType.setText(classes1.getType());
-            txtLocation.setText(classes1.getLocation());
-            txtStartTime.setText(classes1.getStartTime());
-            txtDay.setText(classes1.getDate());
+        public void  bind(Session classes){
+            txtTitle.setText(classes.getSessionTitle());
+            txtType.setText(classes.getType());
+            txtLocation.setText(classes.getLocation());
+            txtStartTime.setText(classes.getStartTime());
+            txtDay.setText(classes.getWeekDay());
 
 
             // handle onclick
 
-            todayEvent.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-//                    Intent intent = new Intent(CalendarViewActivity.this, TodoActivity.this);
-//                    intent.putExtra("DATE", (Serializable) txtDay);
-//                    intent.putExtra("MONTH", (Serializable) txtMonth);
-//
-//                    context.startActivity(intent);
+           Session.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                  Context context = v.getContext();
+                  Intent intent = new Intent(context, SubjectDetailActivity.class);
+                  context.startActivity(intent);
 
-                }
-            });
+               }
+           });
 
         }
     }

@@ -28,4 +28,5 @@
     <string name="txtEnd">End at:</string>
     <string name="txtSessionColor">Color:</string>
     <string name="txtSessionDayOfWeek">Day of week:</string>
+    <string name="txtDueDate">Due to:</string>
 </resources>
