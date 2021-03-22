@@ -6,9 +6,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.Toolbar;
-
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.appbar.AppBarLayout;
@@ -33,10 +32,10 @@ public class SettingsMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_menu);
         initUI();
-
-        requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
-        getSupportActionBar().hide(); // hide the title bar
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
+//
+//        requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
+//        getSupportActionBar().hide(); // hide the title bar
+//        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
 
 
         onRatingAppBtnClick();
@@ -50,8 +49,8 @@ public class SettingsMenuActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.settingsViewToolBar);
         appBarLayout = findViewById(R.id.appBarLayout);
         navigationView = findViewById(R.id.navView);
-        ratingAppBtn.findViewById(R.id.ratingAppBtn);
-        aboutBtn.findViewById(R.id.aboutBtn);
+        ratingAppBtn=findViewById(R.id.ratingAppBtn);
+        aboutBtn=findViewById(R.id.aboutBtn);
         collapsingToolbarLayout = findViewById(R.id.colToolBar);
     }
 
@@ -74,7 +73,7 @@ public class SettingsMenuActivity extends AppCompatActivity {
      * TODO: Add event listener for about button
      */
     private void onAboutBtnClick() {
-        ratingAppBtn.setOnClickListener(new View.OnClickListener() {
+        aboutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SettingsMenuActivity.this, SettingsAboutActivity.class);
