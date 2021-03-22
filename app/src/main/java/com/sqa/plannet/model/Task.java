@@ -1,62 +1,104 @@
 package com.sqa.plannet.model;
 
-import java.sql.Date;
-
 public class Task {
-    private int taskID;
-    private String taskTitle;
-    private String dueDate;
-    private String taskNote;
-    private String taskType;
+   private int id;
+   public String title ;
+   public String type;
+   private String location;
+   public String time;
+   private String note;
+   private boolean remind;
+   private boolean important;
 
-    public Task() {
+   public Task(){}
+
+    public Task(int id, String title, String type, String location, String time, String note, boolean remind, boolean important) {
+       super();
+        this.id = id;
+        this.title = title;
+        this.type = type;
+        this.location = location;
+        this.time = time;
+        this.note = note;
+        this.remind = remind;
+        this.important = important;
     }
 
-    public Task(int taskID, String taskTitle, String dueDate, String taskNote, String taskType) {
-        this.taskID = taskID;
-        this.taskTitle = taskTitle;
-        this.dueDate = dueDate;
-        this.taskNote = taskNote;
-        this.taskType = taskType;
+    public int getId() {
+        return id;
     }
 
-    public int getTaskID() {
-        return taskID;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setTaskID(int taskID) {
-        this.taskID = taskID;
+    public String getTitle() {
+        return title;
     }
 
-    public String getTaskTitle() {
-        return taskTitle;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void setTaskTitle(String taskTitle) {
-        this.taskTitle = taskTitle;
+    public String getType() {
+        return type;
     }
 
-    public String getDueDate() {
-        return dueDate;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public void setDueDate(String dueDate) {
-        this.dueDate = dueDate;
+    public String getLocation() {
+        return location;
     }
 
-    public String getTaskNote() {
-        return taskNote;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
-    public void setTaskNote(String taskNote) {
-        this.taskNote = taskNote;
+    public String getTime() {
+        return time;
     }
 
-    public String getTaskType() {
-        return taskType;
+    public void setTime(String time) {
+        this.time = time;
     }
 
-    public void setTaskType(String taskType) {
-        this.taskType = taskType;
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public boolean isRemind() {
+        return remind;
+    }
+
+    public void setRemind(boolean remind) {
+        this.remind = remind;
+    }
+
+    public boolean isImportant() {
+        return important;
+    }
+
+    public void setImportant(boolean important) {
+        this.important = important;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", type='" + type + '\'' +
+                ", location='" + location + '\'' +
+                ", time='" + time + '\'' +
+                ", note='" + note + '\'' +
+                ", remind=" + remind +
+                ", important=" + important +
+                '}';
     }
 }

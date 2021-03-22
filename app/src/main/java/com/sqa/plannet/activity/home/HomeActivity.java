@@ -15,8 +15,10 @@ import com.google.android.material.navigation.NavigationView;
 import com.sqa.plannet.R;
 import com.sqa.plannet.activity.calendar.CalendarViewActivity;
 import com.sqa.plannet.activity.timetable.TimetableViewActivity;
+import com.sqa.plannet.activity.todo.CreateActivity;
+import com.sqa.plannet.activity.todo.TodoMainActivity;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener{
     private Button btnTimetable, btnTodo, btnOverview, btnCalendar;
     private ImageButton btnExitApp;
     private Toolbar toolbar;
@@ -27,59 +29,56 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_view);
-        initDrawer();
-    }
+        mapping();
 
-    private void initDrawer(){
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        drawerLayout = findViewById(R.id.homeViewDrawer);
-        navigationView = findViewById(R.id.navView);
-        drawerLayout.bringToFront();
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.nav_open, R.string.nav_close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
+        btnCalendar.setOnClickListener(this);
+        btnExitApp.setOnClickListener(this);
+        btnOverview.setOnClickListener(this);
+        btnTimetable.setOnClickListener(this);
+        btnTodo.setOnClickListener(this);
 
     }
 
-    /**
-     * TODO: Add event listener for choose activity button
-     */
-    public void btnChooseActivity(View view) {
-
+    private void mapping() {
         btnTimetable = findViewById(R.id.btnTimetable);
         btnTodo = findViewById(R.id.btnTodo);
         btnOverview = findViewById(R.id.btnOverview);
         btnCalendar = findViewById(R.id.btnCalendar);
-
-        btnCalendar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, CalendarViewActivity.class));
-            }
-        });
-
-        btnTimetable.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, TimetableViewActivity.class));
-            }
-        });
-
+        btnExitApp = findViewById(R.id.btnExitApp);
+        drawerLayout = findViewById(R.id.homeViewDrawer);
+        navigationView = findViewById(R.id.navView);
+        toolbar = findViewById(R.id.toolbar);
     }
 
-    /**
-     * TODO: Add event listener for exit button
-     */
-    public void exitApp(View view) {
-        btnExitApp = findViewById(R.id.btnExitApp);
-        btnExitApp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    private void initDrawer(){
+        setSupportActionBar(toolbar);
+        drawerLayout.bringToFront();
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.nav_open, R.string.nav_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btnTimetable:
+                startActivity(new Intent(HomeActivity.this, TimetableViewActivity.class));
+                break;
+            case R.id.btnTodo:
+                Intent intent = new Intent(HomeActivity.this, TodoMainActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btnOverview:
+                break;
+            case R.id.btnCalendar:
+                startActivity(new Intent(HomeActivity.this, CalendarViewActivity.class));
+                break;
+            case R.id.btnExitApp:
                 finish();
                 System.exit(0);
-            }
-        });
-
+                break;
+            default:
+        }
     }
 }

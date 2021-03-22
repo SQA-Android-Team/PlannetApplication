@@ -3,7 +3,7 @@ package com.sqa.plannet.activity.calendar;
 import android.content.Context;
 import android.os.Bundle;
 import android.widget.CalendarView;
-import android.widget.Toast;
+import android.widget.ListAdapter;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,16 +17,15 @@ import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.sqa.plannet.R;
+import com.sqa.plannet.activity.todo.TodoMainActivity;
 import com.sqa.plannet.adapter.calendar.SessionAdapter;
 import com.sqa.plannet.adapter.calendar.TaskAdapter;
 import com.sqa.plannet.model.Session;
 import com.sqa.plannet.model.Task;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 
@@ -50,21 +49,6 @@ public class CalendarViewActivity extends AppCompatActivity {
         setContentView(R.layout.calendar_view);
         initUI();
         initToolbar();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         drawerLayout = findViewById(R.id.subjectViewDrawer);
         toolbar = findViewById(R.id.subjectViewToolbar);
@@ -155,19 +139,23 @@ public class CalendarViewActivity extends AppCompatActivity {
 
 
             // demo data
-            List<Task> events = new ArrayList<>();
-            //TODO: thêm constructor cho task + sửa list bên dưới
-
-            events.add(new Task(1,"NHCam","20/8/2000","abc", "Homework"));
-            events.add(new Task(2,"Seo Hyerin","23/8/1993","Idle", "Project"));
-            events.add(new Task(4,"Nothing","23/8/1993","OMG", "Assignment"));
-
+//            List<Task> events = new ArrayList<>();
+//            //TODO: thêm constructor cho task + sửa list bên dưới
+//
+//            events.add(new Task(4,"SE: midterm","homework","home", "13:55", "read lecture from 1-5", true, false));
+//            events.add(new Task(5,"SE: bla blaa","homework","home", "13:55", "read lecture from 1-5", true, false));
+//            events.add(new Task(6,"Shi hi","homework","home", "13:55", "read lecture from 1-5", true, false));
 
             // setup recycle view
             // adapter
-            TaskAdapter taskAdapter;
-            taskAdapter = new TaskAdapter(events);
-            rvTodayEvent.setAdapter(taskAdapter);
+//            TaskAdapter taskAdapter;
+//            taskAdapter = new TaskAdapter(events);
+//            rvTodayEvent.setAdapter(taskAdapter);
+
+//           TaskAdapter adapter = new TaskAdapter(CalendarViewActivity.this, R.layout.todo_item_does, listTask);
+//            lstTask.setAdapter((ListAdapter) adapter);
+//            adapter.notifyDataSetChanged();
+
             //layout manager
             rvTodayEvent.setLayoutManager(new LinearLayoutManager(this));
 

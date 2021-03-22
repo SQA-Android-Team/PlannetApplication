@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/lntask"
+        android:weightSum="10"
+        android:layout_margin="5dp"
+        android:layout_height="90dp"
+        android:background="@drawable/our_does"
+        android:orientation="horizontal"
+        android:layout_width="match_parent">
+
+        <RadioButton
+            android:id="@+id/check"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+        </RadioButton>
+
+        <LinearLayout
+            android:layout_weight="9"
+            android:orientation="vertical"
+            android:layout_width="220dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:padding="0dp"
+                android:id="@+id/titledoes"
+                android:layout_marginTop="10dp"
+                android:textSize="24sp"
+                android:text="SQA: Draw use case"
+                android:textStyle="bold"
+                android:textColor="#7880AF"
+                android:textAlignment="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
+            </TextView>
+
+            <LinearLayout
+                android:weightSum="10"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="5"
+                    android:id="@+id/typedoes"
+                    android:textSize="16sp"
+                    android:textColor="#3F512C"
+                    android:text="Homework"
+                    android:textAlignment="center"
+                    android:background="@drawable/btn_button_green"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"></TextView>
+
+                <TextView
+                    android:layout_weight="5"
+                    android:id="@+id/timedoes"
+                    android:textSize="18sp"
+                    android:textColor="#BC1D1D"
+                    android:text="9:00 - 12:00 AM"
+                    android:textAlignment="center"
+                    android:layout_marginLeft="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal">
+                </TextView>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btnEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ic_edit"></ImageButton>
+
+            <ImageButton
+                android:id="@+id/btnDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/ic_delete"></ImageButton>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
+

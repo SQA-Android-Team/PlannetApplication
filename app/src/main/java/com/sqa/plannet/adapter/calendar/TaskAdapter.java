@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sqa.plannet.R;
+import com.sqa.plannet.activity.todo.TodoMainActivity;
 import com.sqa.plannet.model.Task;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class TaskAdapter extends  RecyclerView.Adapter<TaskAdapter.EventsHolder>
 
     private List<Task> events;
 
-    public TaskAdapter(List<Task> events) {
+    public TaskAdapter(TodoMainActivity todoMainActivity, int todo_item_does, List<Task> events) {
         this.events = events;
     }
 
@@ -72,9 +73,9 @@ public class TaskAdapter extends  RecyclerView.Adapter<TaskAdapter.EventsHolder>
 
         }
         public void bind(Task events){
-            txtTitle.setText(events.getTaskTitle());
-            txtType.setText(events.getTaskType());
-            txtDay.setText(events.getDueDate().toString());
+            txtTitle.setText(events.getTitle());
+            txtType.setText(events.getType());
+            txtDay.setText(events.getTime().toString());
             // handle onclick
 
         }
