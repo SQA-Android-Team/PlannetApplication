@@ -89,7 +89,7 @@ public class TeacherDetailActivity extends AppCompatActivity {
                 Intent intent = new Intent(TeacherDetailActivity.this, TeacherEditActivity.class);
                 intent.putExtra("teacher", "");
                 startActivity(intent);
-                // INCOMPLETE
+                // TODO: INCOMPLETE
             }
         });
     }

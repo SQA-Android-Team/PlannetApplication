@@ -85,7 +85,7 @@
                 android:text="Attendance (10%)"
                 android:textColor="#F57C00"
                 android:textColorHint="#FF676767"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/attendanceEdt"
@@ -96,8 +96,9 @@
                 android:padding="10dp"
                 android:text="10"
                 android:textColor="#F57C00"
-                android:textSize="18dp"
-                android:textStyle="bold" />
+                android:textSize="14sp"
+                android:textStyle="bold"
+                />
 
 
         </LinearLayout>
@@ -127,7 +128,7 @@
                 android:text="Progess (30%)"
                 android:textColor="#388E3C"
                 android:textColorHint="#FF676767"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/midtermEdt"
@@ -138,7 +139,7 @@
                 android:padding="10dp"
                 android:text="10"
                 android:textColor="#388E3C"
-                android:textSize="18dp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
 
@@ -165,7 +166,7 @@
                 android:text="Final (60%)"
                 android:textColor="#0288D1"
                 android:textColorHint="#FF676767"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/finalEdt"
@@ -176,7 +177,7 @@
                 android:padding="10dp"
                 android:text="10"
                 android:textColor="#0288D1"
-                android:textSize="18dp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
 

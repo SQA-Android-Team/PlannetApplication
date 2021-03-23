@@ -27,24 +27,37 @@ public class SubjectCreateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.subject_create);
 
+
+        initUI();
+        onBackBtnClick();
+        onAddBtnClick();
+
+
+
+
+
+
+    }
+
+    private void initUI(){
         // find views by their id
         addBtn = findViewById(R.id.addBtn);
         subjectTitleEdt = findViewById(R.id.subjectTitleEdt);
         subjectCreditEdt = findViewById(R.id.subjectCreditEdt);
         subjectNoteEdt = findViewById(R.id.subjectNoteEdt);
-
-        // add event listener for backBtn
         backBtn = findViewById(R.id.backBtn);
+    }
+
+    private void onBackBtnClick(){
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
+    }
 
-
-
-
+    private void onAddBtnClick(){
         // add event listener for addBtn
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,12 +86,11 @@ public class SubjectCreateActivity extends AppCompatActivity {
 
                 Toast.makeText(SubjectCreateActivity.this, subject.getSubjectTitle() + "-" + subject.getSubjectCredit() + "-" +subject.getSubjectNote(), Toast.LENGTH_SHORT).show();
 
-               // finish activity
+                // finish activity
                 finish();
 
             }
         });
-
     }
 
 

@@ -28,13 +28,13 @@
             android:scaleType="fitXY"
             android:src="@drawable/back"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/subjectTitle"
+            app:layout_constraintEnd_toStartOf="@+id/subjectTitleTxv"
             app:layout_constraintHorizontal_bias="0.457"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@id/subjectTitle"
+            android:id="@id/subjectTitleTxv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="144dp"
@@ -43,7 +43,7 @@
             android:fontFamily="@font/pt_sans_caption"
             android:padding="15dp"
             android:text="Subject Name"
-            android:textSize="18sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/deleteBtn"
             app:layout_constraintTop_toTopOf="parent"
@@ -62,7 +62,9 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     <LinearLayout
         android:id="@+id/subjectDetail"
         android:layout_width="match_parent"
@@ -145,7 +147,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingStart="15dp"
-                android:paddingLeft="15dp">
+                android:paddingLeft="15dp"
+                android:onClick="onEditSubjectClick">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -200,10 +203,11 @@
                     android:textSize="14sp" />
 
                 <Spinner
-                    android:id="@+id/rangeCharTxv"
+                    android:id="@+id/rangeSpinner"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:spinnerMode="dropdown" />
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:spinnerMode="dialog" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -401,7 +405,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingStart="15dp"
-                android:paddingLeft="15dp">
+                android:paddingLeft="15dp"
+                android:onClick="onEditGradeClick">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -422,7 +427,7 @@
         </LinearLayout>
 
     </LinearLayout>
-
+</ScrollView>
 
 </LinearLayout>
 

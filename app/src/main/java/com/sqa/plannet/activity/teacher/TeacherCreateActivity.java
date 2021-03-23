@@ -5,18 +5,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.sqa.plannet.R;
+import com.sqa.plannet.model.Teacher;
 
 public class TeacherCreateActivity extends AppCompatActivity {
 
     ImageButton backBtn;
     Button addBtn;
-    TextView teacherNameTxv;
-    TextView teacherPhoneTxv;
-    TextView teacherEmailTxv;
+    TextView teacherNameEdt;
+    TextView teacherPhoneEdt;
+    TextView teacherEmailEdt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +41,9 @@ public class TeacherCreateActivity extends AppCompatActivity {
     private void initUI(){
         backBtn = findViewById(R.id.backBtn);
         addBtn = findViewById(R.id.addBtn);
-        teacherNameTxv = findViewById(R.id.teacherNameTxv);
-        teacherPhoneTxv = findViewById(R.id.teacherPhoneTxv);
-        teacherEmailTxv = findViewById(R.id.teacherEmailTxv);
+        teacherNameEdt= findViewById(R.id.teacherNameEdt);
+        teacherPhoneEdt= findViewById(R.id.teacherPhoneEdt);
+        teacherEmailEdt = findViewById(R.id.teacherEmailEdt);
     }
 
     /**
@@ -63,6 +65,20 @@ public class TeacherCreateActivity extends AppCompatActivity {
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                String teacherName = teacherNameEdt.getText().toString();
+                String teacherPhone = teacherPhoneEdt.getText().toString();
+                String teacherEmail = teacherEmailEdt.getText().toString();
+
+                if (teacherName == null){
+                    Toast.makeText(TeacherCreateActivity.this, "Invalid name", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                Teacher teacher = new Teacher(teacherName, teacherPhone, teacherEmail);
+
+
+                //TODO: incomplete
 
 
 

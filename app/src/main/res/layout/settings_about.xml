@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.settings.SettingsAboutActivity">
+
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/main_grad_theme">
+
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:scaleType="fitXY"
+            android:id="@+id/backBtn"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="14dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="#00FFFFFF"
+            android:src="@drawable/back" />
+    </RelativeLayout>
+
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:text="About Us"
+                android:textAlignment="center"
+                android:textColor="#80000000"
+                android:textSize="40dp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:lineHeight="19dp"
+                android:text="We do things a bit differently, and that’s the way we like it!"
+                android:textAlignment="center"
+                android:textColor="#60000000"
+                android:textSize="16dp"
+                android:layout_gravity="center_horizontal" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="185dp"
+                android:layout_marginTop="30dp"
+                android:adjustViewBounds="true"
+                tools:srcCompat="@tools:sample/backgrounds/scenic[1]" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginRight="5dp"
+                android:lineHeight="19dp"
+                android:text="Our Team"
+                android:textColor="#80000000"
+                android:textSize="25dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginRight="5dp"
+                android:lineHeight="19dp"
+                android:text=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tortor est, fermentum sit amet rutrum sit amet, interdum luctus ex. Curabitur varius ipsum nec nunc feugiat feugiat at eget nisl. Suspendisse potenti. Proin sit amet lacinia tellus. Etiam eget commodo velit, a rhoncus augue."
+                android:textColor="#60000000"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginRight="5dp"
+                android:lineHeight="19dp"
+                android:text="Our Story"
+                android:textColor="#80000000"
+                android:textSize="25dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginRight="5dp"
+                android:lineHeight="19dp"
+                android:text=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tortor est, fermentum sit amet rutrum sit amet, interdum luctus ex. Curabitur varius ipsum nec nunc feugiat feugiat at eget nisl. Suspendisse potenti. Proin sit amet lacinia tellus. Etiam eget commodo velit, a rhoncus augue."
+                android:textColor="#60000000"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="50dp"
+                android:text="-SQA Project-"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

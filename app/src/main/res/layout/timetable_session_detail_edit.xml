@@ -143,7 +143,7 @@
                 tools:layout_editor_absoluteX="15dp">
 
                 <TextView
-                    android:id="@+id/txtSessionStartime"
+                    android:id="@+id/txtSessionStartTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/pt_bold"
@@ -172,7 +172,7 @@
                 tools:layout_editor_absoluteX="15dp">
 
                 <TextView
-                    android:id="@+id/txtEndtime"
+                    android:id="@+id/txtEndTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/pt_bold"

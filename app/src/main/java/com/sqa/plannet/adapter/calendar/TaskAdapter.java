@@ -15,6 +15,7 @@ import com.sqa.plannet.R;
 import com.sqa.plannet.activity.calendar.CalendarViewActivity;
 import com.sqa.plannet.activity.subject.SubjectDetailActivity;
 import com.sqa.plannet.activity.subject.SubjectViewActivity;
+import com.sqa.plannet.activity.timetable.Timetable_SessionDetail;
 import com.sqa.plannet.activity.todo.TodoMainActivity;
 import com.sqa.plannet.model.Task;
 

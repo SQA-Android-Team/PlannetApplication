@@ -93,7 +93,7 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ClassesH
                @Override
                public void onClick(View v) {
                   Context context = v.getContext();
-                  Intent intent = new Intent(context, SubjectDetailActivity.class);
+                  Intent intent = new Intent(context, Timetable_SessionDetail.class);
                   context.startActivity(intent);
 
                }

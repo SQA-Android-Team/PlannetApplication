@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/round_gradient_1"
     android:orientation="vertical"
+    android:layout_marginTop="24dp"
     android:gravity="bottom"
     >
 
@@ -12,6 +13,7 @@
         android:layout_margin="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="5dp"
         android:fontFamily="@font/kaushan_script"
 
         android:text="Plannet"
