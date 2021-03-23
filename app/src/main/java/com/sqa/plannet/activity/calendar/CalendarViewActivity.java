@@ -1,9 +1,12 @@
 package com.sqa.plannet.activity.calendar;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.CalendarView;
-import android.widget.Toast;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,16 +20,17 @@ import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.sqa.plannet.R;
+import com.sqa.plannet.activity.todo.TodoMainActivity;
 import com.sqa.plannet.adapter.calendar.SessionAdapter;
 import com.sqa.plannet.adapter.calendar.TaskAdapter;
+import com.sqa.plannet.adapter.todo.TodoTaskAdapter;
+import com.sqa.plannet.database.MyDatabase;
 import com.sqa.plannet.model.Session;
 import com.sqa.plannet.model.Task;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 
@@ -36,20 +40,36 @@ public class CalendarViewActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private FloatingActionButton fab;
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter EventsAdapter;
+    public RecyclerView.Adapter EventsAdapter;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
-    private RecyclerView rvTodayEvent;
-    private RecyclerView rvReminders;
+    public ListView rvTodayEvent;
+    private ListView rvReminders;
     public String selectedDate;
 
+
     private CalendarView calendarView;
+
+    ArrayList<Task> listTask = new ArrayList<>();
+    TaskAdapter adapter;
+    public static MyDatabase myDatabase;
+    public static String TABLE_NAME = "tasks";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendar_view);
         initUI();
         initToolbar();
+        myDatabase = new MyDatabase(CalendarViewActivity.this, "manageTask.sqlite", null, 1);
+        String sql_create_table = "create table  if not exists tasks(id integer primary key autoincrement, " +
+                "title varchar(100), " +
+                "type varchar(15), " +
+                "location varchar(50), " +
+                "time varchar(20), " +
+                "note varchar(300), " +
+                "remind bit, " +
+                "important bit)";
+        myDatabase.excuteSQL(sql_create_table);
 
         drawerLayout = findViewById(R.id.subjectViewDrawer);
         toolbar = findViewById(R.id.subjectViewToolbar);
@@ -67,7 +87,7 @@ public class CalendarViewActivity extends AppCompatActivity {
 
         // chose the date
         calendarView = (CalendarView) findViewById(R.id.calendarView);
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
 
         final Context context = this;
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -79,30 +99,35 @@ public class CalendarViewActivity extends AppCompatActivity {
                 Calendar calendar = Calendar.getInstance();
                 selectedDate = dayOfMonth +"/" +( month +1) +"/"+ year;
 
-//                try {
-//                    Date date = simpleDateFormat.parse(selectedDate);
-//                } catch (ParseException e) {
-//                    e.printStackTrace();
-//                }
-//
-////
-////               if(chDate.after(events.))
-//                int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-//
-//                Toast.makeText(context, "" + selectedDate, Toast.LENGTH_LONG ).show();
-//
-//
-//
-//
-//                //recycle view
-//                rvTodayEvent= findViewById(R.id.rvTodayEvent);
-//                rvReminders = findViewById(R.id.rvReminders);
-                
             }
         });
 
+        listTask = getAllTask();
+        adapter = new TaskAdapter(CalendarViewActivity.this, R.layout.calendar_view, listTask);
+        rvTodayEvent.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
 
 
+
+    }
+    public static ArrayList<Task> getAllTask() {
+        ArrayList<Task> list = new ArrayList<>();
+        String sql_select = "SELECT * FROM " + TABLE_NAME;
+        Cursor cs = myDatabase.rawQuery(sql_select);
+        list.clear();
+        while (cs.moveToNext()) {
+            int id = cs.getInt(0);
+            String title = cs.getString(1);
+            String type = cs.getString(2);
+            String location = cs.getString(3);
+            String time = cs.getString(4);
+            String note = cs.getString(5);
+            boolean remind = cs.getString(6).equals("0");
+            boolean important = cs.getString(7).equals("0");
+            Task task = new Task(id, title, type, location, time, note, remind, important);
+            list.add(task);
+        }
+        return list;
     }
 
     private void initUI(){
@@ -122,41 +147,6 @@ public class CalendarViewActivity extends AppCompatActivity {
             //recycle view
             rvTodayEvent = findViewById(R.id.rvTodayEvent);
             rvReminders = findViewById(R.id.rvReminders);
-
-            //demo data
-            List<Session> classes = new ArrayList<>();
-            //TODO: thêm constructor cho session + sửa list bên dưới
-
-            classes.add(new Session(1, 3, 5, "MPR", "10:00", "12:00", "23/08/1993", "Mon", "801C", "Lecture"));
-            classes.add(new Session(1, 3, 5, "SQA", "10:00", "12:00", "23/08/1993", "Mon", "801C", "Lecture"));
-            classes.add(new Session(1, 3, 5, "SE2", "10:00", "12:00", "23/08/1993", "Mon", "801C", "Lecture"));
-            // setup recycle view
-            // adapter
-            SessionAdapter sessionAdapter = new SessionAdapter(classes);
-            rvReminders.setAdapter(sessionAdapter);
-            //layout manager
-            rvReminders.setLayoutManager(new LinearLayoutManager(this));
-
-
-            // demo data
-            List<Task> events = new ArrayList<>();
-            //TODO: thêm constructor cho task + sửa list bên dưới
-
-            events.add(new Task(1, "NHCam", "20/8/2000", "abc", "Homework"));
-            events.add(new Task(2, "Seo Hyerin", "23/8/1993", "Idle", "Project"));
-            events.add(new Task(4, "Nothing", "23/8/1993", "OMG", "Assignment"));
-
-
-            // setup recycle view
-            // adapter
-            TaskAdapter taskAdapter;
-            taskAdapter = new TaskAdapter(events);
-            rvTodayEvent.setAdapter(taskAdapter);
-            //layout manager
-            rvTodayEvent.setLayoutManager(new LinearLayoutManager(this));
-
-
-
 
         }
 

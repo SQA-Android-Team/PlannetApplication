@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@drawable/header_todo"
+        android:layout_width="match_parent"
+        android:layout_height="190dp">
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_margin="10dp"
+            android:background="@drawable/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></ImageButton>
+        <TextView
+            android:layout_marginTop="90dp"
+            android:textSize="28sp"
+            android:textColor="#FDFCFC"
+            android:text="TODO"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></TextView>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/titledoes"
+        android:hint="Title"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        android:textColor="#928395"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ></TextView>
+
+    <LinearLayout
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtvType"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:textSize="15sp"
+            android:textAlignment="center"
+            android:background="@drawable/btn_button_blue"
+            android:hint="Homework"
+            android:layout_height="wrap_content">
+        </TextView>
+        <TextView
+            android:id="@+id/txtvimportant"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:textSize="15sp"
+            android:textAlignment="center"
+            android:background="@drawable/btn_button_red"
+            android:hint="Important"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+        </TextView>
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/txtvRemind"
+        android:drawableLeft="@mipmap/ic_alert"
+        android:textColor="#950A0A"
+        android:padding="5sp"
+        android:textSize="15sp"
+        android:visibility="gone"
+        android:drawablePadding="10dp"
+        android:text="Remind me about this"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></TextView>
+
+    <TextView
+        android:id="@+id/txtvNotRemind"
+        android:drawableLeft="@mipmap/ic_alert"
+        android:textColor="#950A0A"
+        android:padding="5sp"
+        android:textSize="15sp"
+        android:visibility="gone"
+        android:drawablePadding="10dp"
+        android:text="Dont remind me about this"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></TextView>
+    <TextView
+        android:id="@+id/txtvTime"
+        android:padding="5sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Time and Date"
+        android:textSize="16sp"
+        android:drawableLeft="@drawable/ic_time"
+        android:drawablePadding="10dp">
+    </TextView>
+
+    <TextView
+        android:id="@+id/txtvLocation"
+        android:padding="5sp"
+        android:layout_width="match_parent"
+        android:text="Location"
+        android:textSize="16sp"
+        android:drawableLeft="@drawable/ic_location"
+        android:drawablePadding="10dp"
+        android:layout_height="wrap_content"></TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Notes : "
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="#928395"></TextView>
+    <TextView
+        android:id="@+id/txtvNote"
+        android:textSize="16sp"
+        android:layout_margin="10dp"
+        android:textAlignment="viewStart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"></TextView>
+
+</LinearLayout>
