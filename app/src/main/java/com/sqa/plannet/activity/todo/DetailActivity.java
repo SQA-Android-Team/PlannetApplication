@@ -24,13 +24,8 @@ public class DetailActivity extends AppCompatActivity  {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        getSupportActionBar().hide();
-//        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.to_detail_task);
         mapping();
-
         loadData();
 
 
@@ -64,11 +59,6 @@ public class DetailActivity extends AppCompatActivity  {
         txtvLocation.setText("Location: " +list.get(0).getLocation()+ "");
         txtvimportant.setText("Important: " +list.get(0).isImportant()+ "");
         txtvRemind.setText("Remind: " +list.get(0).isRemind() + "");
-        txtvNote.setText("Note: " +list.get(0).getNote()+ "");
+        txtvNote.setText("" +list.get(0).getNote()+ "");
     }
-
-
-
-
-
 }
