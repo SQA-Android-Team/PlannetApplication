@@ -44,7 +44,7 @@ public class TodoMainActivity extends AppCompatActivity implements View.OnClickL
 
         listTask = getAllTask();
 
-        adapter = new TodoTaskAdapter(TodoMainActivity.this, R.layout.todo_item_does, listTask);
+        adapter = new TodoTaskAdapter(TodoMainActivity.this, R.layout.calendar_todayevent, listTask);
         lstTask.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 

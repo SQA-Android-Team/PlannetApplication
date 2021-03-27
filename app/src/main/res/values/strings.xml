@@ -29,6 +29,9 @@
     <string name="txtSessionColor">Color:</string>
     <string name="txtSessionDayOfWeek">Day of week:</string>
 
+    <string name="txtDueDate">Due to:</string>
+
+
     <string name="started">Get Started</string>
     <string name="btn_login">Log In</string>
     <string name="btn_sign_up">Sign Up</string>
@@ -71,4 +74,5 @@
         <item>C+</item>
         <item>C</item>
     </string-array>
+
 </resources>
