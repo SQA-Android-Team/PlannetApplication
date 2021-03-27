@@ -43,10 +43,6 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        getSupportActionBar().hide();
-//        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.todo_create);
         mapping();
 
@@ -72,7 +68,6 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
         swImportant = findViewById(R.id.swImportant);
         btnCreate = findViewById(R.id.btnCreate);
         btnBack = findViewById(R.id.btnBack);
-
     }
 
     @Override
@@ -124,10 +119,7 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
                 builder.setMultiChoiceItems(typeArray, selectedType, new DialogInterface.OnMultiChoiceClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-                        //check condition
                         if (isChecked) {
-                            //when checkbox selected
-                            //add position in type list
                             typeList.add(which);
                             //sort type list
                             Collections.sort(typeList);
@@ -141,13 +133,9 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //Initialize string builder
                         StringBuilder stringBuilder = new StringBuilder();
-                        //use for loop
                         for (int j = 0; j < typeList.size(); j++) {
-                            //concat array value
                             stringBuilder.append(typeArray[typeList.get(j)]);
-                            //check condition
                             if (j != typeList.size() - 1) {
                                 stringBuilder.append(", ");
                             }
