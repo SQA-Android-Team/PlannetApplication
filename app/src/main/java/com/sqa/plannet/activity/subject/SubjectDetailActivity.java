@@ -20,7 +20,7 @@ import com.sqa.plannet.R;
 import com.sqa.plannet.activity.teacher.TeacherDetailActivity;
 import com.sqa.plannet.model.Subject;
 
-public class SubjectDetailActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class SubjectDetailActivity extends AppCompatActivity implements  View.OnClickListener {
     private Subject subject;
     private ImageButton backBtn;
     private ImageButton deleteBtn;
@@ -49,16 +49,16 @@ public class SubjectDetailActivity extends AppCompatActivity implements AdapterV
         setContentView(R.layout.subject_detail);
 
 
-        try {
+
             initUI();
             // TODO: fix the line below
 //        setText(null);
-            initSpinner();
-            onBackBtnClick();
-            onDeleteBtn();
-        } catch (Exception e) {
-            Log.i(e.getMessage(), "onCreate: ");
-        }
+//            initSpinner();
+            backBtn.setOnClickListener(this);
+            deleteBtn.setOnClickListener(this);
+            editGradeBtn.setOnClickListener(this);
+            editSubjectBtn.setOnClickListener(this);
+
 
 
 
@@ -112,44 +112,36 @@ public class SubjectDetailActivity extends AppCompatActivity implements AdapterV
     /**
      * TODO: grade range spinner
      */
-    private void initSpinner(){
+//    private void initSpinner(){
+//
+//
+//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.range, android.R.layout.simple_spinner_item);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        rangeSpinner.setAdapter(adapter);
+//        rangeSpinner.setOnItemClickListener(this::onItemSelected);
+//
+//
+//    }
 
+//    @Override
+//    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//        String text = parent.getItemAtPosition(position).toString();
+//        Toast.makeText(parent.getContext(),text, Toast.LENGTH_SHORT).show();
+//    }
+//
+//    @Override
+//    public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//    }
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.range, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        rangeSpinner.setAdapter(adapter);
-        rangeSpinner.setOnItemClickListener(this::onItemSelected);
+    @Override
+    public void onClick(View v) {
 
-
-    }
-
-
-
-
-
-
-
-
-    /**
-     * TODO:  add event listener for backBtn
-     */
-    private void onBackBtnClick() {
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        switch (v.getId()){
+            case R.id.backBtn:
                 finish();
-            }
-        });
-    }
-    /**
-     * TODO: add event listener for delete button
-     * INCOMPLETE
-     */
-    private void onDeleteBtn(){
-        deleteBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
+                break;
+            case R.id.deleteBtn:
                 AlertDialog deleteConfirm = new AlertDialog.Builder(SubjectDetailActivity.this)
                         .setTitle("Confirmation")
                         .setMessage("Do you really want to delete this subject?")
@@ -157,7 +149,7 @@ public class SubjectDetailActivity extends AppCompatActivity implements AdapterV
                         .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int i) {
-                                // deleting code
+                                // TODO: deleting code
                                 dialog.dismiss();
                             }
                         })
@@ -168,39 +160,20 @@ public class SubjectDetailActivity extends AppCompatActivity implements AdapterV
                             }
                         })
                         .create();
-
                 deleteConfirm.show();
+                break;
+            case R.id.editSubjectBtn:
+                Intent intent = new Intent(SubjectDetailActivity.this, SubjectEditActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.editGradeBtn:
+                Intent intent1 = new Intent(SubjectDetailActivity.this, GradeEditActivity.class);
+                startActivity(intent1);
+                break;
 
-            }
-        });
-    }
 
-    public void onEditSubjectClick(View view){
-        Intent intent = new Intent(SubjectDetailActivity.this, GradeEditActivity.class);
 
-        // TODO:
 
-        startActivity(intent);
-
-    }
-
-    public void onEditGradeClick(View view){
-        Intent intent = new Intent(SubjectDetailActivity.this, GradeEditActivity.class);
-
-        // TODO:
-
-        startActivity(intent);
-
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String text = parent.getItemAtPosition(position).toString();
-        Toast.makeText(parent.getContext(),text, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
+        }
     }
 }

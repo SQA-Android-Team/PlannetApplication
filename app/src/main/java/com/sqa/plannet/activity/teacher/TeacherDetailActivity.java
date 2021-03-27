@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.sqa.plannet.R;
 import com.sqa.plannet.model.Teacher;
 
-public class TeacherDetailActivity extends AppCompatActivity {
+public class TeacherDetailActivity extends AppCompatActivity implements View.OnClickListener{
 
     ImageButton backBtn;
     ImageButton editBtn;
@@ -38,11 +38,16 @@ public class TeacherDetailActivity extends AppCompatActivity {
         setContentView(R.layout.teacher_detail);
 
         initUI();
-        onBackBtnClick();
-        onEditBtnClick();
-        onPhoneCallBtnClick();
-        onEmailSendBtn();
-        onDeleteBtn();
+
+        backBtn.setOnClickListener(this);
+        editBtn.setOnClickListener(this);
+        deleteBtn.setOnClickListener(this);
+        phoneCallBtn.setOnClickListener(this);
+        emailSendBtn.setOnClickListener(this);
+
+
+
+
 
 
 
@@ -62,83 +67,43 @@ public class TeacherDetailActivity extends AppCompatActivity {
         teacherEmailTxv = findViewById(R.id.teacherEmailTxv);
     }
 
-    /**
-     * TODO: add event listener for backBtn
-     */
-    private void onBackBtnClick(){
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+
+
+
+
+
+
+
+
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()){
+            case R.id.backBtn:
                 finish();
-            }
-        });
-
-    }
-
-    /**
-     * TODO: add event listener for Edit btn
-     */
-    private void onEditBtnClick() {
-        editBtn.setOnClickListener(new View.OnClickListener() {
-            /**
-             * TODO: PLEASE COMPLETE THE FLOW
-             * @param view
-             */
-            @Override
-            public void onClick(View view) {
+                break;
+            case R.id.editBtn:
                 Intent intent = new Intent(TeacherDetailActivity.this, TeacherEditActivity.class);
                 intent.putExtra("teacher", "");
                 startActivity(intent);
                 // TODO: INCOMPLETE
-            }
-        });
-    }
-
-    /**
-     * TODO: add event for Phone call button
-     *          open android dialer
-     */
-    private void onPhoneCallBtnClick(){
-
-        phoneCallBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                break;
+            case R.id.teacherPhoneBtn:
                 String phoneNumber = teacherPhoneTxv.getText().toString();
                 Toast.makeText(TeacherDetailActivity.this, phoneNumber, Toast.LENGTH_SHORT).show();
                 Uri call = Uri.parse("tel:" + phoneNumber);
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(call);
-                startActivity(intent);
-
-            }
-        });
-
-    }
-
-    /**
-     * TODO: add event for Email send button
-     */
-    private void onEmailSendBtn() {
-        emailSendBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                Intent intent1 = new Intent(Intent.ACTION_DIAL);
+                intent1.setData(call);
+                startActivity(intent1);
+                break;
+            case R.id.teacherEmailBtn:
                 String mailAddress = teacherEmailTxv.getText().toString();
-                Intent intent = new Intent(Intent.ACTION_SENDTO);
-                intent.setData(Uri.parse("mailto:"+Uri.encode(mailAddress)));
-                startActivity(intent);
-            }
-        });
-
-    }
-
-    /**
-     * TODO: add event for Delete button
-     */
-    private void onDeleteBtn() {
-        deleteBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
+                Intent intent2 = new Intent(Intent.ACTION_SENDTO);
+                intent2.setData(Uri.parse("mailto:"+Uri.encode(mailAddress)));
+                startActivity(intent2);
+                break;
+            case R.id.deleteBtn:
                 AlertDialog deleteConfirm = new AlertDialog.Builder(TeacherDetailActivity.this)
                         .setTitle("Confirmation")
                         .setMessage("Do you really want to delete this teacher?")
@@ -159,16 +124,9 @@ public class TeacherDetailActivity extends AppCompatActivity {
                         .create();
 
                 deleteConfirm.show();
+                break;
 
-            }
-        });
+        }
+
     }
-
-
-
-
-
-
-
-
 }
