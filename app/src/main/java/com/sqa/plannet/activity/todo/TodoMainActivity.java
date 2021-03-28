@@ -28,14 +28,8 @@ public class TodoMainActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        getSupportActionBar().hide();
-//        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.todo_activity_main);
         mapping();
-
-        //addControls();
 
         myDatabase = new MyDatabase(TodoMainActivity.this, "manageTask.sqlite", null, 1);
         String sql_create_table = "create table  if not exists tasks(id integer primary key autoincrement, " +
@@ -44,18 +38,9 @@ public class TodoMainActivity extends AppCompatActivity implements View.OnClickL
                 "location varchar(50), " +
                 "time varchar(20), " +
                 "note varchar(300), " +
-                "remind bit, " +
-                "important bit)";
+                "remind integer, " +
+                "important integer)";
         myDatabase.excuteSQL(sql_create_table);
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("id", "7");
-        contentValues.put("title", "readbook");
-        contentValues.put("type", "funny");
-        contentValues.put("location", "library");
-        contentValues.put("time", "13:00");
-        contentValues.put("note", "hihihi i love reading book");
-        contentValues.put("remind", true);
-        contentValues.put("important", true);
 
         listTask = getAllTask();
 

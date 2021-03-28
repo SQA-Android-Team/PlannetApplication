@@ -25,16 +25,16 @@ public class DetailActivity extends AppCompatActivity  {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        getSupportActionBar().hide();
-//        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.to_detail_task);
         mapping();
+<<<<<<< HEAD
+        loadData();
+=======
 
 //        loadData();
         loadData2();
 
+>>>>>>> 9eaeac73ff1d189d9be0ec4152f1ef634cbfbc16
 
 
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -67,8 +67,10 @@ public class DetailActivity extends AppCompatActivity  {
         txtvLocation.setText("Location: " +list.get(0).getLocation()+ "");
         txtvimportant.setText("Important: " +list.get(0).isImportant()+ "");
         txtvRemind.setText("Remind: " +list.get(0).isRemind() + "");
-        txtvNote.setText("Note: " +list.get(0).getNote()+ "");
+        txtvNote.setText("" +list.get(0).getNote()+ "");
     }
+<<<<<<< HEAD
+=======
     private  void loadData2(){
         List<Task> list = CalendarViewActivity.getAllTask();
         titledoes.setText( "Title: " +list.get(0).getTitle());
@@ -86,4 +88,5 @@ public class DetailActivity extends AppCompatActivity  {
 
 
 
+>>>>>>> 9eaeac73ff1d189d9be0ec4152f1ef634cbfbc16
 }
