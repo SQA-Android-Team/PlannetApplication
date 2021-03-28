@@ -3,25 +3,26 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="horizontal"
-    android:background="@color/white"
     android:layout_height="match_parent">
     <LinearLayout
         android:id="@+id/lntask"
         android:weightSum="10"
-        android:layout_margin="5dp"
-        android:layout_height="90dp"
+        android:layout_margin="10dp"
+        android:layout_height="80dp"
         android:background="@drawable/our_does"
         android:orientation="horizontal"
         android:layout_width="match_parent">
 
         <RadioButton
             android:id="@+id/check"
+            android:checked="true"
             android:layout_width="wrap_content"
             android:layout_height="match_parent">
         </RadioButton>
 
         <LinearLayout
             android:layout_weight="9"
+            android:layout_marginLeft="5dp"
             android:orientation="vertical"
             android:layout_width="220dp"
             android:layout_height="match_parent">
@@ -30,10 +31,10 @@
                 android:padding="0dp"
                 android:id="@+id/titledoes"
                 android:layout_marginTop="10dp"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:text="SQA: Draw use case"
                 android:textStyle="bold"
-                android:textColor="#7880AF"
+                android:textColor="#111A51"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal">
@@ -41,7 +42,7 @@
 
             <LinearLayout
                 android:weightSum="10"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -52,7 +53,7 @@
                     android:textColor="#3F512C"
                     android:text="Homework"
                     android:textAlignment="center"
-                    android:background="@drawable/btn_button_green"
+                    android:background="@drawable/btn_button_orange"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"></TextView>
@@ -61,7 +62,7 @@
                     android:layout_weight="5"
                     android:id="@+id/timedoes"
                     android:textSize="18sp"
-                    android:textColor="#BC1D1D"
+                    android:textColor="#0D174A"
                     android:text="9:00 - 12:00 AM"
                     android:textAlignment="center"
                     android:layout_marginLeft="8dp"
@@ -69,6 +70,12 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal">
                 </TextView>
+
+                <ImageView
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/ic_alert"
+                    android:layout_height="wrap_content"></ImageView>
             </LinearLayout>
         </LinearLayout>
 
@@ -89,7 +96,7 @@
                 android:id="@+id/btnDelete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/ic_delete"></ImageButton>
 
         </LinearLayout>

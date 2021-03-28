@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -32,16 +33,15 @@ public class TodoMainActivity extends AppCompatActivity implements View.OnClickL
         mapping();
 
         myDatabase = new MyDatabase(TodoMainActivity.this, "manageTask.sqlite", null, 1);
-        String sql_create_table = "create table  if not exists tasks(id integer primary key autoincrement, " +
-                "title varchar(100), " +
-                "type varchar(15), " +
-                "location varchar(50), " +
-                "time varchar(20), " +
+        String sql_create_table = "create table  if not exists tasks(id integer primary key autoincrement NOT NULL, " +
+                "title varchar(100) NOT NULL, " +
+                "type varchar(15) NOT NULL, " +
+                "location varchar(50) NOT NULL, " +
+                "time varchar(20) NOT NULL, " +
                 "note varchar(300), " +
                 "remind integer, " +
                 "important integer)";
         myDatabase.excuteSQL(sql_create_table);
-
         listTask = getAllTask();
 
         adapter = new TodoTaskAdapter(TodoMainActivity.this, R.layout.calendar_todayevent, listTask);

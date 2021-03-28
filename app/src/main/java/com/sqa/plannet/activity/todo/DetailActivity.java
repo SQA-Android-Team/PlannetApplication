@@ -27,15 +27,8 @@ public class DetailActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.to_detail_task);
         mapping();
-<<<<<<< HEAD
+
         loadData();
-=======
-
-//        loadData();
-        loadData2();
-
->>>>>>> 9eaeac73ff1d189d9be0ec4152f1ef634cbfbc16
-
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,28 +58,9 @@ public class DetailActivity extends AppCompatActivity  {
         txtvType.setText("" +list.get(0).getType()+ "");
         txtvTime.setText("Time: " +list.get(0).getTime()+ "");
         txtvLocation.setText("Location: " +list.get(0).getLocation()+ "");
-        txtvimportant.setText("Important: " +list.get(0).isImportant()+ "");
-        txtvRemind.setText("Remind: " +list.get(0).isRemind() + "");
         txtvNote.setText("" +list.get(0).getNote()+ "");
-    }
-<<<<<<< HEAD
-=======
-    private  void loadData2(){
-        List<Task> list = CalendarViewActivity.getAllTask();
-        titledoes.setText( "Title: " +list.get(0).getTitle());
-        txtvType.setText("" +list.get(0).getType()+ "");
-        txtvTime.setText("Time: " +list.get(0).getTime()+ "");
-        txtvLocation.setText("Location: " +list.get(0).getLocation()+ "");
         txtvimportant.setText("Important: " +list.get(0).isImportant()+ "");
         txtvRemind.setText("Remind: " +list.get(0).isRemind() + "");
-        txtvNote.setText("Note: " +list.get(0).getNote()+ "");
+
     }
-
-
-
-
-
-
-
->>>>>>> 9eaeac73ff1d189d9be0ec4152f1ef634cbfbc16
 }

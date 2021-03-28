@@ -1,6 +1,7 @@
 package com.sqa.plannet.adapter.todo;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -13,19 +14,28 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sqa.plannet.R;
 import com.sqa.plannet.activity.todo.CreateActivity;
 import com.sqa.plannet.activity.todo.DetailActivity;
+import com.sqa.plannet.activity.todo.TodoMainActivity;
+import com.sqa.plannet.activity.todo.UpdateActivity;
+import com.sqa.plannet.database.MyDatabase;
 import com.sqa.plannet.model.Task;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.sqa.plannet.activity.todo.TodoMainActivity.TABLE_NAME;
+import static com.sqa.plannet.activity.todo.TodoMainActivity.myDatabase;
+
 public class TodoTaskAdapter extends BaseAdapter {
     Context context;
     int layout;
     List<Task> list ;
+    String whereClause = "id = ?";
+    String[] whereArgs = {"1"};
 
     public TodoTaskAdapter(Activity context, int item_does, ArrayList<Task> list) {
         this.context = context;
@@ -57,20 +67,20 @@ public class TodoTaskAdapter extends BaseAdapter {
         LinearLayout lntask = view.findViewById(R.id.lntask);
 
         Task task = list.get(position);
-       // check.setText(task.getStatus());
         titledoes.setText(task.getTitle());
         timedoes.setText(task.getTime());
         typedoes.setText(task.getType());
+        check.setChecked(false);
+
 
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // MyDatabase.upd
-                Intent intent = new Intent(context, CreateActivity.class);
-                context.startActivity(intent);
+            Intent intent = new Intent(context, UpdateActivity.class);
+            intent.putExtra("TaskEdit", task);
+            context.startActivity(intent);
             }
         });
-
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,6 +95,21 @@ public class TodoTaskAdapter extends BaseAdapter {
                 context.startActivity(intent);
             }
         });
+
+        check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (check.isChecked()){
+                    check.setChecked(true);
+                }else{
+                    check.setChecked(false);
+                }
+            }
+        });
+
         return view;
     }
+
+
+
 }

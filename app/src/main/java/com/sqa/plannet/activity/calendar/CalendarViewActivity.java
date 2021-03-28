@@ -33,6 +33,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import static com.sqa.plannet.activity.todo.TodoMainActivity.TABLE_NAME;
+import static com.sqa.plannet.activity.todo.TodoMainActivity.getAllTask;
+import static com.sqa.plannet.activity.todo.TodoMainActivity.myDatabase;
+
 
 public class CalendarViewActivity extends AppCompatActivity {
     private AppBarLayout appBarLayout;
@@ -52,25 +56,12 @@ public class CalendarViewActivity extends AppCompatActivity {
 
     ArrayList<Task> listTask = new ArrayList<>();
     TaskAdapter adapter;
-    public static MyDatabase myDatabase;
-    public static String TABLE_NAME = "tasks";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendar_view);
         initUI();
         initToolbar();
-        myDatabase = new MyDatabase(CalendarViewActivity.this, "manageTask.sqlite", null, 1);
-        String sql_create_table = "create table  if not exists tasks(id integer primary key autoincrement, " +
-                "title varchar(100), " +
-                "type varchar(15), " +
-                "location varchar(50), " +
-                "time varchar(20), " +
-                "note varchar(300), " +
-                "remind bit, " +
-                "important bit)";
-        myDatabase.excuteSQL(sql_create_table);
-
         drawerLayout = findViewById(R.id.subjectViewDrawer);
         toolbar = findViewById(R.id.subjectViewToolbar);
         navigationView = findViewById(R.id.navView);
@@ -82,12 +73,8 @@ public class CalendarViewActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-
-
-
         // chose the date
         calendarView = (CalendarView) findViewById(R.id.calendarView);
-
 
         final Context context = this;
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -98,7 +85,6 @@ public class CalendarViewActivity extends AppCompatActivity {
                                             int dayOfMonth) {
                 Calendar calendar = Calendar.getInstance();
                 selectedDate = dayOfMonth +"/" +( month +1) +"/"+ year;
-
             }
         });
 
@@ -106,48 +92,22 @@ public class CalendarViewActivity extends AppCompatActivity {
         adapter = new TaskAdapter(CalendarViewActivity.this, R.layout.calendar_view, listTask);
         rvTodayEvent.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-
-
-
-    }
-    public static ArrayList<Task> getAllTask() {
-        ArrayList<Task> list = new ArrayList<>();
-        String sql_select = "SELECT * FROM " + TABLE_NAME;
-        Cursor cs = myDatabase.rawQuery(sql_select);
-        list.clear();
-        while (cs.moveToNext()) {
-            int id = cs.getInt(0);
-            String title = cs.getString(1);
-            String type = cs.getString(2);
-            String location = cs.getString(3);
-            String time = cs.getString(4);
-            String note = cs.getString(5);
-            boolean remind = cs.getString(6).equals("0");
-            boolean important = cs.getString(7).equals("0");
-            Task task = new Task(id, title, type, location, time, note, remind, important);
-            list.add(task);
-        }
-        return list;
     }
 
     private void initUI(){
         appBarLayout = findViewById(R.id.appBarLayout);
         collapsingToolbarLayout = findViewById(R.id.colToolbar);
         toolbar = findViewById(R.id.subjectViewToolbar);
-
-
     }
 
 
     private void initToolbar(){
-
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             //recycle view
             rvTodayEvent = findViewById(R.id.rvTodayEvent);
             rvReminders = findViewById(R.id.rvReminders);
-
         }
 
     }

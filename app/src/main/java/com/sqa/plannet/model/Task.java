@@ -1,6 +1,8 @@
 package com.sqa.plannet.model;
 
-public class Task {
+import java.io.Serializable;
+
+public class Task implements Serializable {
    private int id;
    public String title ;
    public String type;
@@ -13,7 +15,6 @@ public class Task {
    public Task(){}
 
     public Task(int id, String title, String type, String location, String time, String note, boolean remind, boolean important) {
-       super();
         this.id = id;
         this.title = title;
         this.type = type;

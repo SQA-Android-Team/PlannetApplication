@@ -35,7 +35,7 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
     EditText edtDo, edtLocation, edtNote;
     Switch swRemind, swImportant;
     Button btnCreate;
-    ImageButton    btnBack;
+    ImageButton  btnBack;
     boolean[] selectedType;
     ArrayList<Integer> typeList = new ArrayList<>();
     String[] typeArray = {"Homework", "Fun", "School", "Others"};
@@ -46,7 +46,6 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.todo_create);
         mapping();
 
-        //Initialze selected type array
         selectedType = new boolean[typeArray.length];
 
         tvType.setOnClickListener(this);
@@ -196,7 +195,6 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
         else
             important = false;
         ContentValues contentValues = new ContentValues();
-       // contentValues.put("id", type);
         contentValues.put("title", does);
         contentValues.put("type", type);
         contentValues.put("location", location);
@@ -205,7 +203,6 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
         contentValues.put("remind", remind);
         contentValues.put("important", important);
         TodoMainActivity.myDatabase.insertTask(TodoMainActivity.TABLE_NAME, null, contentValues);
-        Toast.makeText(this, "" + contentValues , Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(CreateActivity.this, TodoMainActivity.class);
         startActivity(intent);
     }

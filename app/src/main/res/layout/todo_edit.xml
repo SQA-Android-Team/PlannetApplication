@@ -1,6 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#F2E7F4"
     android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="@drawable/header_todo"
+            android:layout_width="match_parent"
+            android:layout_height="190dp">
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_margin="10dp"
+                android:background="@drawable/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></ImageButton>
+            <TextView
+                android:layout_marginTop="90dp"
+                android:textSize="28sp"
+                android:textColor="#FDFCFC"
+                android:text="TODO"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></TextView>
+        </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:text="Update content of the task :"
+            android:textStyle="bold"
+            android:textColor="#9F84A5"
+            android:textSize="18sp"
+            android:layout_height="wrap_content"></TextView>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:text="Categoried Your New Task As"
+            android:textSize="15sp"
+            android:paddingLeft="10dp"
+            android:textColor="#111"
+            android:layout_height="wrap_content">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tvType"
+            android:hint="Select type"
+            android:background="#FBFBFB"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:drawablePadding="16dp"
+            android:padding="10dp"
+            android:textSize="18sp"
+            android:drawableEnd="@android:drawable/arrow_down_float"
+            android:layout_height="wrap_content"
+            android:drawableRight="@android:drawable/arrow_down_float">
+        </TextView>
+
+        <EditText
+            android:id="@+id/edtDo"
+            android:layout_margin="10dp"
+            android:background="#FBFBFB"
+            android:hint="  Title :"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"></EditText>
+
+        <EditText
+            android:id="@+id/edtLocation"
+            android:layout_margin="10dp"
+            android:background="#FBFBFB"
+            android:padding="5sp"
+            android:layout_width="match_parent"
+            android:hint="  Location"
+            android:drawableRight="@drawable/ic_location"
+            android:drawablePadding="10dp"
+            android:layout_height="wrap_content"></EditText>
+
+        <LinearLayout
+            android:weightSum="10"
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:padding="5sp"
+                android:layout_weight="5"
+                android:id="@+id/tvTime"
+                android:textColor="#111"
+                android:background="#FBFBFB"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Select Time"
+                android:drawableRight="@android:drawable/arrow_down_float"
+                android:drawableLeft="@drawable/ic_time"
+                android:drawablePadding="10dp">
+            </TextView>
+
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:background="#FBFBFB"
+                android:padding="5sp"
+                android:textColor="#111"
+                android:layout_marginLeft="25dp"
+                android:layout_weight="5"
+                android:layout_width="0dp"
+                android:drawableRight="@android:drawable/arrow_down_float"
+                android:layout_height="wrap_content"
+                android:hint="Select Date"
+                android:drawableLeft="@drawable/ic_date"
+                android:drawablePadding="10dp">
+            </TextView>
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/edtNote"
+            android:layout_margin="10dp"
+            android:background="#FBFBFB"
+            android:hint="  Additonal Notes: "
+            android:padding="5sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            ></EditText>
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <Switch
+                android:id="@+id/swRemind"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:textColor="#111"
+                android:text="Reminds me about this"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <Switch
+                android:id="@+id/swImportant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:textColor="#111"
+                android:text=" Hightlight title as important ( color red)"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></TextView>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnUpdate"
+            android:text="UPDATE"
+            android:background="@drawable/custom_btn"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:layout_width="200dp"
+            android:layout_marginBottom="15dp"
+            android:layout_height="50dp"></Button>
+    </LinearLayout>
+
+</ScrollView>

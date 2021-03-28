@@ -13,77 +13,25 @@
         <activity android:name=".activity.home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            </intent-filter></activity>
         <activity android:name=".activity.timetable.TimetableViewActivity" />
         <activity android:name=".activity.timetable.TimetableAddSession" />
         <activity android:name=".activity.subject.SubjectCreateActivity" />
-        <activity android:name=".activity.subject.SubjectDetailActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
+        <activity android:name=".activity.subject.SubjectDetailActivity" ></activity>
         <activity android:name=".activity.subject.SubjectEditActivity" />
-        <activity android:name=".activity.subject.SubjectViewActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".activity.subject.SubjectViewActivity"></activity>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".activity.teacher.TeacherCreateActivity" />
-        <activity android:name=".activity.teacher.TeacherDetailActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".activity.teacher.TeacherDetailActivity"></activity>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".activity.teacher.TeacherEditActivity" />
-        <activity android:name=".activity.teacher.TeacherViewActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".activity.teacher.TeacherViewActivity"></activity>
+        <activity android:name=".activity.calendar.CalendarViewActivity"></activity>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activity.calendar.CalendarViewActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".activity.timetable.Timetable_SessionDetail"></activity>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".activity.timetable.Timetable_SessionDetail">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".activity.overview.OverviewMainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activity.settings.SettingsMenuActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
+        <activity android:name=".activity.overview.OverviewMainActivity"></activity>
         <activity android:name=".activity.settings.SettingsAboutActivity" />
         <activity android:name=".activity.settings.SettingsRatingActivity" />
         <activity android:name=".activity.helpAndFeedbacks.HelpAndFeedbacksActivity" />
@@ -91,6 +39,7 @@
         <activity android:name=".activity.todo.DetailActivity"></activity>
         <activity android:name=".activity.todo.CreateActivity"></activity>
         <activity android:name=".activity.todo.TodoMainActivity"></activity>
+        <activity android:name=".activity.todo.UpdateActivity"></activity>
     </application>
 
 </manifest>
