@@ -1,6 +1,8 @@
 package com.sqa.plannet.activity.subject;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -27,12 +29,13 @@ import com.sqa.plannet.R;
 import com.sqa.plannet.activity.calendar.CalendarViewActivity;
 import com.sqa.plannet.activity.teacher.TeacherViewActivity;
 import com.sqa.plannet.adapter.subject.SubjectAdapter;
+import com.sqa.plannet.database.MyDatabase;
 import com.sqa.plannet.model.Subject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SubjectViewActivity extends AppCompatActivity {
+public class SubjectViewActivity extends AppCompatActivity implements View.OnClickListener {
     private AppBarLayout appBarLayout;
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private Toolbar toolbar;
@@ -42,8 +45,13 @@ public class SubjectViewActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
 
-    private Menu subMenu;
 
+    public static MyDatabase myDatabase;
+    public static String TABLE_NAME = "subject";
+
+
+
+    private Menu subMenu;
     private boolean isExpanded = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,11 +59,26 @@ public class SubjectViewActivity extends AppCompatActivity {
         setContentView(R.layout.subject_view);
         initUI();
         initToolbar();
-        initRecycleView();
-        onAddBtnClick();
-        onNavigationItemClick();
+
         initDrawer();
         initToolbarAnimation();
+        addBtn.setOnClickListener(this);
+
+
+        myDatabase = new MyDatabase(SubjectViewActivity.this, "manageTask.sqlite", null, 1);
+        String sql_create_table = "create table if not exists subject(subjectID integer primary key autoincrement, " +
+                "subjectTitle varchar(100), " +
+                "subjectNote varchar(2000), " +
+                "subjectCredit integer, " +
+                "attendance float, " +
+                "midterm float, " +
+                "finalTest float, " +
+                "objective varchar(10))";
+        myDatabase.excuteSQL(sql_create_table);
+
+
+        initRecycleView();
+
     }
 
     /**
@@ -80,7 +103,6 @@ public class SubjectViewActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         }
     }
 
@@ -109,6 +131,7 @@ public class SubjectViewActivity extends AppCompatActivity {
         subjectAdapter = new SubjectAdapter();
         subjectAdapter.setData(getListSubject());
         recyclerView.setAdapter(subjectAdapter);
+        subjectAdapter.notifyDataSetChanged();
     }
 
     /**
@@ -118,35 +141,32 @@ public class SubjectViewActivity extends AppCompatActivity {
     private List<Subject> getListSubject(){
 
         List<Subject> list = new ArrayList<Subject>();
-        list.add(new Subject("System Analysis and Design"));
-        list.add(new Subject("System Analysis and Design"));
-        list.add(new Subject("System Analysis and Design"));
-        list.add(new Subject("System Analysis and Design"));
-        list.add(new Subject("System Analysis and Design"));
+        String sql_select = "SELECT * FROM " + TABLE_NAME;
+        Cursor cs = myDatabase.rawQuery(sql_select);
+        list.clear();
+        while (cs.moveToNext()){
+            int subjectID = cs.getInt(0);
+            String subjectTitle = cs.getString(1);
+            String subjectNote = cs.getString(2);
+            int subjectCredit = cs.getInt(3);
+            float attendance = cs.getFloat(4);
+            float midterm = cs.getFloat(5);
+            float finalTest = cs.getFloat(6);
+            String objective = cs.getString(7);
+            Subject subject = new Subject(subjectID, subjectTitle, subjectNote, subjectCredit, attendance, midterm, finalTest, objective);
+            list.add(subject);
+        }
 
         return list;
     }
 
-    /**
-     * TODO: Add event listener for add button
-     */
-    private void onAddBtnClick(){
-        addBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SubjectViewActivity.this, SubjectCreateActivity.class);
-                intent.putExtra("parent_class", SubjectViewActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
+
 
 
     /**
      * TODO: Initialise Toolbar animation
      */
     private void initToolbarAnimation(){
-
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.subject_theme);
         Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
             @Override
@@ -206,44 +226,15 @@ public class SubjectViewActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * TODO: Set menu drawer item onClick
-     */
-    private void onNavigationItemClick(){
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Intent intent = null;
-                switch (item.getItemId()){
-                    case R.id.navHome:
-                        return true;
-                    case R.id.navTodo:
-                        return true;
-                    case R.id.navTimetable:
-                        return true;
-                    case R.id.navCalendar:
-                        intent = new Intent(SubjectViewActivity.this, CalendarViewActivity.class);
-                        startActivity(intent);
-                        return true;
-                    case R.id.navTeacher:
-                        intent = new Intent(SubjectViewActivity.this, TeacherViewActivity.class);
-                        startActivity(intent);
-                        return true;
-                    case R.id.navSubject:
-                         intent = new Intent(SubjectViewActivity.this, SubjectViewActivity.class);
-                        startActivity(intent);
-                        return true;
-                    case R.id.navSettings:
-                        return true;
-                    case R.id.navHelp:
-                        return true;
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.fabAdd:
+                Intent intent = new Intent(SubjectViewActivity.this, SubjectCreateActivity.class);
+                startActivity(intent);
+                break;
 
-                }
-                return false;
-            }
-        });
+        }
+
     }
-
-
-
 }

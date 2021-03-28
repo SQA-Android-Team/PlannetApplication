@@ -1,5 +1,7 @@
 package com.sqa.plannet.activity.teacher;
 
+import android.content.ContentValues;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,9 +12,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.sqa.plannet.R;
+import com.sqa.plannet.activity.subject.SubjectViewActivity;
 import com.sqa.plannet.model.Teacher;
 
-public class TeacherCreateActivity extends AppCompatActivity {
+public class TeacherCreateActivity extends AppCompatActivity implements View.OnClickListener{
 
     ImageButton backBtn;
     Button addBtn;
@@ -26,8 +29,8 @@ public class TeacherCreateActivity extends AppCompatActivity {
         setContentView(R.layout.teacher_create);
 
         initUI();
-        onBackBtnClick();
-        onAddBtnClick();
+        backBtn.setOnClickListener(this);
+        addBtn.setOnClickListener(this);
 
 
 
@@ -46,26 +49,17 @@ public class TeacherCreateActivity extends AppCompatActivity {
         teacherEmailEdt = findViewById(R.id.teacherEmailEdt);
     }
 
-    /**
-     * TODO: add event listener for back button
-     */
-    private void onBackBtnClick(){
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+
+
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()){
+            case R.id.backBtn:
                 finish();
-            }
-        });
-    }
-
-    /**
-     * TODO: add event listener for add button
-     */
-    private void onAddBtnClick(){
-        addBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
+                break;
+            case R.id.addBtn:
                 String teacherName = teacherNameEdt.getText().toString();
                 String teacherPhone = teacherPhoneEdt.getText().toString();
                 String teacherEmail = teacherEmailEdt.getText().toString();
@@ -75,18 +69,20 @@ public class TeacherCreateActivity extends AppCompatActivity {
                     return;
                 }
 
-                Teacher teacher = new Teacher(teacherName, teacherPhone, teacherEmail);
+                ContentValues contentValues = new ContentValues();
+                contentValues.put("teacherName", teacherName);
+                contentValues.put("phone", teacherPhone);
+                contentValues.put("email", teacherEmail);
 
+                TeacherViewActivity.myDatabase.insertTask(TeacherViewActivity.TABLE_NAME, null, contentValues);
 
-                //TODO: incomplete
-
-
-
-
-
+                Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(TeacherCreateActivity.this, SubjectViewActivity.class);
+                startActivity(intent);
 
                 finish();
-            }
-        });
+                break;
+        }
+
     }
 }
