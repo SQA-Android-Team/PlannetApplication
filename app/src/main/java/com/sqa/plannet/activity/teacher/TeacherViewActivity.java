@@ -1,6 +1,7 @@
 package com.sqa.plannet.activity.teacher;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -29,6 +30,7 @@ import com.sqa.plannet.activity.calendar.CalendarViewActivity;
 import com.sqa.plannet.activity.subject.SubjectCreateActivity;
 import com.sqa.plannet.activity.subject.SubjectViewActivity;
 import com.sqa.plannet.adapter.teacher.TeacherAdapter;
+import com.sqa.plannet.database.MyDatabase;
 import com.sqa.plannet.model.Teacher;
 
 import java.util.ArrayList;
@@ -44,6 +46,9 @@ public class TeacherViewActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TeacherAdapter teacherAdapter;
 
+    public static MyDatabase myDatabase;
+    public static String TABLE_NAME = "teacher";
+
     private Menu subMenu;
     private boolean isExpanded = true;
 
@@ -54,15 +59,19 @@ public class TeacherViewActivity extends AppCompatActivity {
 
         initUI();
         initToolbar();
-        initRecyclerView();
+
         onNavigationItemClick();
         onAddBtnClick();
         initToolbarAnimation();
-
-
-
         initDrawer();
 
+        myDatabase = new MyDatabase(TeacherViewActivity.this, "manageTask.sqlite", null, 1);
+        String sql_create_table = "create table if not exists teacher(teacherID integer primary key autoincrement," +
+                "teacherName varchar(50), " +
+                "phone varchar(15), " +
+                "email varchar(50))";
+        myDatabase.rawQuery(sql_create_table);
+        initRecyclerView();
 
     }
 
@@ -117,6 +126,7 @@ public class TeacherViewActivity extends AppCompatActivity {
         teacherAdapter = new TeacherAdapter();
         teacherAdapter.setData(getListTeacher());
         recyclerView.setAdapter(teacherAdapter);
+        teacherAdapter.notifyDataSetChanged();
     }
 
     /**
@@ -126,10 +136,17 @@ public class TeacherViewActivity extends AppCompatActivity {
     private List<Teacher> getListTeacher() {
         List<Teacher> list = new ArrayList<>();
 
-        list.add(new Teacher("Long NDT"));
-        list.add(new Teacher("Quan DD"));
-        list.add(new Teacher("Duc LM"));
-        list.add(new Teacher("Ngoc TB"));
+       String sql_select = "SELECT * FROM " + TABLE_NAME;
+        Cursor cs = myDatabase.rawQuery(sql_select);
+        list.clear();
+        while (cs.moveToNext()){
+            int teacherID = cs.getInt(0);
+            String teacherName = cs.getString(1);
+            String phone = cs.getString(2);
+            String email = cs.getString(3);
+            Teacher teacher = new Teacher(teacherID, teacherName, phone, email);
+            list.add(teacher);
+        }
 
         return list;
     }

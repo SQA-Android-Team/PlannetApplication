@@ -1,5 +1,7 @@
 package com.sqa.plannet.activity.subject;
 
+import android.content.ContentValues;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -62,7 +64,7 @@ public class SubjectCreateActivity extends AppCompatActivity {
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Subject subject = new Subject();
+
                 String subjectTitle = subjectTitleEdt.getText().toString();
 
                 // Get subject title from edit text; subject title must be valid
@@ -71,21 +73,31 @@ public class SubjectCreateActivity extends AppCompatActivity {
                     Toast.makeText(SubjectCreateActivity.this, "Enter a valid title", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                subject.setSubjectTitle(subjectTitle);
 
+                int subjectCredit = 0;
                 // Get number of credit from edit text
                 // if it is null, do nothing
                 // else parse it into integer
-                if (subjectCreditEdt.getText().toString() == null) {
-                    int subjectCredit = Integer.parseInt(subjectCreditEdt.getText().toString());
-                    subject.setSubjectCredit(subjectCredit);
+                if (subjectCreditEdt.getText().toString() != null) {
+                    subjectCredit = Integer.parseInt(subjectCreditEdt.getText().toString());
+
                 }
 
                 String subjectNote = subjectNoteEdt.getText().toString();
-                subject.setSubjectNote(subjectNote);
 
-                Toast.makeText(SubjectCreateActivity.this, subject.getSubjectTitle() + "-" + subject.getSubjectCredit() + "-" +subject.getSubjectNote(), Toast.LENGTH_SHORT).show();
 
+                Toast.makeText(SubjectCreateActivity.this, subjectTitle + "-" + subjectCredit + "-" +subjectNote, Toast.LENGTH_SHORT).show();
+
+
+                ContentValues contentValues = new ContentValues();
+                contentValues.put("subjectTitle", subjectTitle);
+                contentValues.put("subjectCredit", subjectCredit);
+                contentValues.put("subjectNote", subjectNote);
+
+                SubjectViewActivity.myDatabase.insertTask(SubjectViewActivity.TABLE_NAME, null, contentValues);
+
+                Intent intent = new Intent(SubjectCreateActivity.this, SubjectViewActivity.class);
+                startActivity(intent);
                 // finish activity
                 finish();
 
