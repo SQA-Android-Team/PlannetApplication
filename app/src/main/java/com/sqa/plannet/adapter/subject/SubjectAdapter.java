@@ -1,5 +1,7 @@
 package com.sqa.plannet.adapter.subject;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sqa.plannet.R;
+import com.sqa.plannet.activity.subject.SubjectCreateActivity;
+import com.sqa.plannet.activity.subject.SubjectDetailActivity;
 import com.sqa.plannet.model.Subject;
 
+import java.nio.file.LinkPermission;
 import java.util.List;
 
 public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectViewHolder> {
@@ -35,6 +40,8 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectV
             return;
         }
         holder.subjectTitle.setText(subject.getSubjectTitle());
+        holder.subject = subject;
+        holder.position = position;
 
     }
 
@@ -46,17 +53,26 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectV
         return 0;
     }
 
-    public class SubjectViewHolder extends RecyclerView.ViewHolder{
-
+    public class SubjectViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        private Subject subject;
+        private int position;
         private TextView subjectTitle;
+        private final Context context;
         public SubjectViewHolder(@NonNull View view){
             super(view);
             subjectTitle = view.findViewById(R.id.subjectTitle);
+            context = view.getContext();
+            view.setOnClickListener(this);
 
         }
 
+        @Override
+        public void onClick(View v) {
 
-
-
+            Intent intent = new Intent(context, SubjectDetailActivity.class);
+            intent.putExtra("subject", subject);
+            intent.putExtra("position", position);
+            context.startActivity(intent);
+        }
     }
 }

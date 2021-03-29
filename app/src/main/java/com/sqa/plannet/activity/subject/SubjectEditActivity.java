@@ -1,5 +1,6 @@
 package com.sqa.plannet.activity.subject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,12 +14,11 @@ import com.sqa.plannet.model.Subject;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class SubjectEditActivity extends AppCompatActivity {
+public class SubjectEditActivity extends AppCompatActivity implements View.OnClickListener{
+    private Subject subject;
     private Button editBtn;
     private ImageButton backBtn;
-    private EditText subjectTitleEdt;
-    private EditText subjectCreditEdt;
-    private EditText subjectNoteEdt;
+    private EditText subjectTitleEdt, subjectCreditEdt, subjectNoteEdt;
 
    
 
@@ -27,13 +27,16 @@ public class SubjectEditActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.subject_edit);
+        Intent intent = getIntent();
+        subject = (Subject) intent.getExtras().get("subject");
+
 
         initUI();
-        onBackBtnClick();
-        onEditBtnClick();
-        // INCOMPLETE
-//        setEdtText();
 
+        loadData();
+
+        backBtn.setOnClickListener(this);
+        editBtn.setOnClickListener(this);
 
 
     }
@@ -53,37 +56,30 @@ public class SubjectEditActivity extends AppCompatActivity {
      * TODO: set text to all fields
      * INCOMPLETE
      */
-    private void setEdtText(Subject subject){
+    private void loadData(){
         subjectTitleEdt.setText(subject.getSubjectTitle());
-        subjectCreditEdt.setText(subject.getSubjectCredit());
+        subjectCreditEdt.setText("" + subject.getSubjectCredit());
         subjectNoteEdt.setText(subject.getSubjectNote());
 
     }
 
 
-    /**
-     * TODO:
-     */
-    private void onBackBtnClick(){
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()){
+            case R.id.backBtn:
                 finish();
-            }
-        });
-    }
+                break;
+            case R.id.editBtn:
 
-    /**
-     * TODO: INCOMPLETE
-     */
-    private void onEditBtnClick(){
-        editBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
+                // TODO: complete this
                 finish();
+                break;
 
-            }
-        });
+        }
+
     }
 }

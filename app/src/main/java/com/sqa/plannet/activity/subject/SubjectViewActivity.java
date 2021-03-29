@@ -10,12 +10,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,7 +29,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.sqa.plannet.R;
 import com.sqa.plannet.activity.calendar.CalendarViewActivity;
+import com.sqa.plannet.activity.helpAndFeedbacks.HelpAndFeedbacksActivity;
+import com.sqa.plannet.activity.home.HomeActivity;
+import com.sqa.plannet.activity.overview.OverviewMainActivity;
+import com.sqa.plannet.activity.settings.SettingsMenuActivity;
 import com.sqa.plannet.activity.teacher.TeacherViewActivity;
+import com.sqa.plannet.activity.timetable.TimetableViewActivity;
+import com.sqa.plannet.activity.todo.TodoMainActivity;
 import com.sqa.plannet.adapter.subject.SubjectAdapter;
 import com.sqa.plannet.database.MyDatabase;
 import com.sqa.plannet.model.Subject;
@@ -35,7 +43,7 @@ import com.sqa.plannet.model.Subject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SubjectViewActivity extends AppCompatActivity implements View.OnClickListener {
+public class SubjectViewActivity extends AppCompatActivity implements View.OnClickListener , NavigationView.OnNavigationItemSelectedListener{
     private AppBarLayout appBarLayout;
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private Toolbar toolbar;
@@ -63,6 +71,7 @@ public class SubjectViewActivity extends AppCompatActivity implements View.OnCli
         initDrawer();
         initToolbarAnimation();
         addBtn.setOnClickListener(this);
+        navigationView.setNavigationItemSelectedListener(this);
 
 
         myDatabase = new MyDatabase(SubjectViewActivity.this, "manageTask.sqlite", null, 1);
@@ -92,6 +101,7 @@ public class SubjectViewActivity extends AppCompatActivity implements View.OnCli
         appBarLayout = findViewById(R.id.appBarLayout);
         collapsingToolbarLayout = findViewById(R.id.colToolbar);
         recyclerView = findViewById(R.id.rv_subject);
+        navigationView = findViewById(R.id.navView);
 
     }
 
@@ -138,7 +148,7 @@ public class SubjectViewActivity extends AppCompatActivity implements View.OnCli
      * TODO: Get a list of all subjects
      * @return Either the list of subjects or null
      */
-    private List<Subject> getListSubject(){
+    public static List<Subject> getListSubject(){
 
         List<Subject> list = new ArrayList<Subject>();
         String sql_select = "SELECT * FROM " + TABLE_NAME;
@@ -211,15 +221,19 @@ public class SubjectViewActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Intent intent;
         switch (item.getItemId()){
             case R.id.subMenuSetting:
-                // INCOMPLETE
+                intent = new Intent(SubjectViewActivity.this, SettingsMenuActivity.class);
+                startActivity(intent);
                 return true;
-
+            case R.id.navHome:
+                intent = new Intent(SubjectViewActivity.this, HomeActivity.class);
+                startActivity(intent);
         }
         if (item.getTitle().equals("Add")){
-            Intent intent = new Intent(SubjectViewActivity.this, SubjectCreateActivity.class);
-            intent.putExtra("parent_class", SubjectViewActivity.class);
+            intent = new Intent(SubjectViewActivity.this, SubjectCreateActivity.class);
+
             startActivity(intent);
         }
 
@@ -236,5 +250,58 @@ public class SubjectViewActivity extends AppCompatActivity implements View.OnCli
 
         }
 
+    }
+
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        Intent intent;
+        switch (item.getItemId()){
+            case R.id.navHome:
+                intent = new Intent(SubjectViewActivity.this, HomeActivity.class);
+                Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
+                startActivity(intent);
+                break;
+            case R.id.navOverview:
+                intent = new Intent(SubjectViewActivity.this, OverviewMainActivity.class);
+                Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
+                startActivity(intent);
+                break;
+            case R.id.navTodo:
+                intent = new Intent(SubjectViewActivity.this, TodoMainActivity.class);
+                Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
+                startActivity(intent);
+                break;
+            case R.id.navTimetable:
+                intent = new Intent(SubjectViewActivity.this, TimetableViewActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.navCalendar:
+                intent = new Intent(SubjectViewActivity.this, CalendarViewActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.navTeacher:
+                intent = new Intent(SubjectViewActivity.this, TeacherViewActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.navSubject:
+                intent = new Intent(SubjectViewActivity.this, SubjectViewActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.navSettings:
+                intent = new Intent(SubjectViewActivity.this, SettingsMenuActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.navHelp:
+                intent = new Intent(SubjectViewActivity.this, HelpAndFeedbacksActivity.class);
+                startActivity(intent);
+                break;
+
+
+        }
+
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
     }
 }

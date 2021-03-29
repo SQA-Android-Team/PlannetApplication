@@ -72,10 +72,6 @@ public class TeacherDetailActivity extends AppCompatActivity implements View.OnC
 
 
 
-
-
-
-
     @Override
     public void onClick(View v) {
 
@@ -107,7 +103,7 @@ public class TeacherDetailActivity extends AppCompatActivity implements View.OnC
                 AlertDialog deleteConfirm = new AlertDialog.Builder(TeacherDetailActivity.this)
                         .setTitle("Confirmation")
                         .setMessage("Do you really want to delete this teacher?")
-                        .setIcon(R.drawable.ic_baseline_delete_24)
+                        .setIcon(R.drawable.ic_baseline_warning_24)
                         .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int i) {

@@ -1,6 +1,8 @@
 package com.sqa.plannet.model;
 
-public class Subject {
+import java.io.Serializable;
+
+public class Subject implements Serializable {
     private int subjectID;
     private String subjectTitle;
     private String subjectNote;
@@ -90,5 +92,19 @@ public class Subject {
 
     public void setObjective(String objective) {
         this.objective = objective;
+    }
+
+    @Override
+    public String toString() {
+        return "Subject{" +
+                "subjectID=" + subjectID +
+                ", subjectTitle='" + subjectTitle + '\'' +
+                ", subjectNote='" + subjectNote + '\'' +
+                ", subjectCredit=" + subjectCredit +
+                ", attendance=" + attendance +
+                ", midterm=" + midterm +
+                ", finalTest=" + finalTest +
+                ", objective='" + objective + '\'' +
+                '}';
     }
 }

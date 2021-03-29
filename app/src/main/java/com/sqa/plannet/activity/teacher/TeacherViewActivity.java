@@ -27,6 +27,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.sqa.plannet.R;
 import com.sqa.plannet.activity.calendar.CalendarViewActivity;
+import com.sqa.plannet.activity.settings.SettingsMenuActivity;
 import com.sqa.plannet.activity.subject.SubjectCreateActivity;
 import com.sqa.plannet.activity.subject.SubjectViewActivity;
 import com.sqa.plannet.adapter.teacher.TeacherAdapter;
@@ -71,7 +72,7 @@ public class TeacherViewActivity extends AppCompatActivity {
                 "phone varchar(15), " +
                 "email varchar(50))";
         myDatabase.rawQuery(sql_create_table);
-        initRecyclerView();
+//        initRecyclerView();
 
     }
 
@@ -213,15 +214,17 @@ public class TeacherViewActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Intent intent;
         switch (item.getItemId()){
             case R.id.subMenuSetting:
-                // INCOMPLETE
+                intent = new Intent(TeacherViewActivity.this, SettingsMenuActivity.class);
+                startActivity(intent);
                 return true;
 
         }
         if (item.getTitle().equals("Add")){
-            Intent intent = new Intent(TeacherViewActivity.this, TeacherCreateActivity.class);
-            intent.putExtra("parent_class", SubjectViewActivity.class);
+            intent = new Intent(TeacherViewActivity.this, TeacherCreateActivity.class);
+
             startActivity(intent);
         }
 

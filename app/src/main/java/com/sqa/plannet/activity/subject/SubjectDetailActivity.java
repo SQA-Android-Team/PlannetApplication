@@ -20,27 +20,21 @@ import com.sqa.plannet.R;
 import com.sqa.plannet.activity.teacher.TeacherDetailActivity;
 import com.sqa.plannet.model.Subject;
 
+import java.util.List;
+
 public class SubjectDetailActivity extends AppCompatActivity implements  View.OnClickListener {
     private Subject subject;
-    private ImageButton backBtn;
-    private ImageButton deleteBtn;
-    private LinearLayout editSubjectBtn;
-    private LinearLayout editGradeBtn;
+    private ImageButton backBtn, deleteBtn;
+    private LinearLayout editSubjectBtn,  editGradeBtn;
     private Spinner rangeSpinner;
 
-    private TextView subjectTitleTxv;
-    private TextView subjectCreditTxv;
-    private TextView subjectNoteTxv;
+    private TextView subjectTitleTxv, subjectCreditTxv, subjectNoteTxv;
 
-    private TextView attendanceTxv;
-    private TextView midtermTxv;
-    private TextView finalTxv;
-
-    private TextView overallTxv;
-    private TextView rangeDecimalTxv;
+    private TextView attendanceTxv, midtermTxv, finalTxv,overallTxv, rangeDecimalTxv;
 
     private String[] range = {"A+" , "A", "B+", "B", "C+", "C"};
 
+    private int position;
 
 
     @Override
@@ -48,17 +42,22 @@ public class SubjectDetailActivity extends AppCompatActivity implements  View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.subject_detail);
 
-
+            Intent intent = getIntent();
+            subject = (Subject) intent.getExtras().get("subject");
+            position = (int) intent.getExtras().get("position");
+            Toast.makeText(this, subject.toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, ""+position, Toast.LENGTH_SHORT).show();
 
             initUI();
             // TODO: fix the line below
-//        setText(null);
+
 //            initSpinner();
             backBtn.setOnClickListener(this);
             deleteBtn.setOnClickListener(this);
             editGradeBtn.setOnClickListener(this);
             editSubjectBtn.setOnClickListener(this);
 
+            loadData();
 
 
 
@@ -86,23 +85,25 @@ public class SubjectDetailActivity extends AppCompatActivity implements  View.On
     }
 
 
-    /**
-     * TODO: set Text
-     */
-    private void setText(Subject subject){
+
+
+    private void loadData(){
+        List<Subject> list = SubjectViewActivity.getListSubject();
+
         subjectTitleTxv.setText(subject.getSubjectTitle());
 
-        subjectCreditTxv.setText(subject.getSubjectCredit());
 
-        subjectNoteTxv.setText(subject.getSubjectNote());
+        subjectCreditTxv.setText("Credits: " +list.get(position).getSubjectCredit());
 
-        attendanceTxv.setText("" +subject.getAttendance());
+        subjectNoteTxv.setText("Note: "+list.get(position).getSubjectNote());
 
-        midtermTxv.setText(""+subject.getMidterm());
+        attendanceTxv.setText("" + list.get(position).getAttendance());
 
-        finalTxv.setText("" + subject.getFinalTest());
+        midtermTxv.setText(""+list.get(position).getMidterm());
 
-        float overall = (float) (subject.getAttendance() * 0.1 + subject.getMidterm() * 0.3 + subject.getFinalTest() * 0.6);
+        finalTxv.setText("" + list.get(position).getMidterm());
+
+        float overall = (float) (list.get(position).getAttendance() * 0.1 + list.get(position).getMidterm() * 0.3 + list.get(position).getFinalTest() * 0.6);
 
         overallTxv.setText("" + overall);
 
@@ -136,7 +137,7 @@ public class SubjectDetailActivity extends AppCompatActivity implements  View.On
 
     @Override
     public void onClick(View v) {
-
+        Intent intent;
         switch (v.getId()){
             case R.id.backBtn:
                 finish();
@@ -145,7 +146,7 @@ public class SubjectDetailActivity extends AppCompatActivity implements  View.On
                 AlertDialog deleteConfirm = new AlertDialog.Builder(SubjectDetailActivity.this)
                         .setTitle("Confirmation")
                         .setMessage("Do you really want to delete this subject?")
-                        .setIcon(R.drawable.ic_baseline_delete_24)
+                        .setIcon(R.drawable.ic_baseline_warning_24)
                         .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int i) {
@@ -163,12 +164,14 @@ public class SubjectDetailActivity extends AppCompatActivity implements  View.On
                 deleteConfirm.show();
                 break;
             case R.id.editSubjectBtn:
-                Intent intent = new Intent(SubjectDetailActivity.this, SubjectEditActivity.class);
+                intent = new Intent(SubjectDetailActivity.this, SubjectEditActivity.class);
+                intent.putExtra("subject" , subject);
                 startActivity(intent);
                 break;
             case R.id.editGradeBtn:
-                Intent intent1 = new Intent(SubjectDetailActivity.this, GradeEditActivity.class);
-                startActivity(intent1);
+                intent = new Intent(SubjectDetailActivity.this, GradeEditActivity.class);
+                intent.putExtra("subject" , subject);
+                startActivity(intent);
                 break;
 
 
