@@ -60,6 +60,8 @@ public class CalendarViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendar_view);
+
+
         initUI();
         initToolbar();
         drawerLayout = findViewById(R.id.subjectViewDrawer);

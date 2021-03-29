@@ -14,7 +14,7 @@ public class Session {
     private String location;
     private String type;
 
-    public Session(int timetableID, int subjectID, int i, String sqa, String endTime, String date, String mon, String location, String lecture) {
+    public Session(int timetableID, String sqa, String endTime, String date, String mon, String location, String lecture) {
     }
 
     public Session(int sessionID, int timetableID, int subjectID, String sessionTitle, String startTime, String endTime, String date, String weekDay, String location, String type) {
