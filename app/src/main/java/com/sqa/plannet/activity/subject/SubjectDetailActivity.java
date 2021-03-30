@@ -26,11 +26,11 @@ public class SubjectDetailActivity extends AppCompatActivity implements  View.On
     private Subject subject;
     private ImageButton backBtn, deleteBtn;
     private LinearLayout editSubjectBtn,  editGradeBtn;
-    private Spinner rangeSpinner;
+
 
     private TextView subjectTitleTxv, subjectCreditTxv, subjectNoteTxv;
 
-    private TextView attendanceTxv, midtermTxv, finalTxv,overallTxv, rangeDecimalTxv;
+    private TextView attendanceTxv, midtermTxv, finalTxv,overallTxv;
 
     private String[] range = {"A+" , "A", "B+", "B", "C+", "C"};
 
@@ -73,7 +73,7 @@ public class SubjectDetailActivity extends AppCompatActivity implements  View.On
         deleteBtn = findViewById(R.id.deleteBtn);
         editSubjectBtn = findViewById(R.id.editSubjectBtn);
         editGradeBtn = findViewById(R.id.editGradeBtn);
-        rangeSpinner = findViewById(R.id.rangeSpinner);
+
         subjectTitleTxv = findViewById(R.id.subjectTitleTxv);
         subjectCreditTxv = findViewById(R.id.subjectCreditTxv);
         subjectNoteTxv = findViewById(R.id.subjectNoteTxv);
@@ -81,7 +81,7 @@ public class SubjectDetailActivity extends AppCompatActivity implements  View.On
         midtermTxv = findViewById(R.id.midtermTxv);
         finalTxv = findViewById(R.id.finalTxv);
         overallTxv = findViewById(R.id.overallTxv);
-        rangeDecimalTxv = findViewById(R.id.rangeDecimalTxv);
+
     }
 
 

@@ -10,12 +10,12 @@ public class Subject implements Serializable {
     private float attendance;
     private float midterm;
     private float finalTest;
-    private String objective;
+
 
     public Subject() {
     }
 
-    public Subject(int subjectID, String subjectTitle, String subjectNote, int subjectCredit, float attendance, float midterm, float finalTest, String objective) {
+    public Subject(int subjectID, String subjectTitle, String subjectNote, int subjectCredit, float attendance, float midterm, float finalTest) {
         this.subjectID = subjectID;
         this.subjectTitle = subjectTitle;
         this.subjectNote = subjectNote;
@@ -23,7 +23,7 @@ public class Subject implements Serializable {
         this.attendance = attendance;
         this.midterm = midterm;
         this.finalTest = finalTest;
-        this.objective = objective;
+
     }
 
     public Subject(String subjectTitle){
@@ -86,14 +86,6 @@ public class Subject implements Serializable {
         this.finalTest = finalTest;
     }
 
-    public String getObjective() {
-        return objective;
-    }
-
-    public void setObjective(String objective) {
-        this.objective = objective;
-    }
-
     @Override
     public String toString() {
         return "Subject{" +
@@ -104,7 +96,6 @@ public class Subject implements Serializable {
                 ", attendance=" + attendance +
                 ", midterm=" + midterm +
                 ", finalTest=" + finalTest +
-                ", objective='" + objective + '\'' +
                 '}';
     }
 }
