@@ -88,19 +88,37 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-
-            <TextView
-                android:id="@+id/txtSemesterName"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="editSemesterName"
-                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
                 android:layout_gravity="center"
-                android:fontFamily="@font/pt_sans_caption_bold"
-                android:gravity="center"
-                android:text="Name of Semester"
-                android:textColor="#487DFF"
-                android:textSize="18sp" />
+                >
+
+                <TextView
+                    android:id="@+id/txtSemesterName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/pt_sans_caption_bold"
+                    android:text="Name of Semester"
+                    android:textColor="#487DFF"
+                    android:textSize="18sp" />
+
+                <ImageButton
+                    android:id="@+id/btnEditSemesterName"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/icon_edit"
+                    android:onClick="editSemesterName"
+                    android:scaleType="centerCrop"
+                    android:background="@null">
+
+                </ImageButton>
+
+            </LinearLayout>
 
             <RelativeLayout
                 android:id="@+id/relativeLayout1"
