@@ -7,7 +7,6 @@ public class Session implements Serializable {
     private int sessionID;
     private int timetableID;
     private int subjectID;
-    private int teacherID;
     private String sessionTitle;
     private String startTime;
     private String endTime;
@@ -19,11 +18,10 @@ public class Session implements Serializable {
     public Session() {
     }
 
-    public Session(int sessionID, int timetableID, int subjectID, int teacherID, String sessionTitle, String startTime, String endTime, String weekDay, String location, String type, String color) {
+    public Session(int sessionID, int timetableID, int subjectID, String sessionTitle, String startTime, String endTime, String weekDay, String location, String type, String color) {
         this.sessionID = sessionID;
         this.timetableID = timetableID;
         this.subjectID = subjectID;
-        this.teacherID = teacherID;
         this.sessionTitle = sessionTitle;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -33,10 +31,9 @@ public class Session implements Serializable {
         this.color = color;
     }
 
-    public Session(int timetableID, int subjectID, int teacherID, String sessionTitle, String startTime, String endTime, String weekDay, String location, String type, String color) {
+    public Session(int timetableID, int subjectID, String sessionTitle, String startTime, String endTime, String weekDay, String location, String type, String color) {
         this.timetableID = timetableID;
         this.subjectID = subjectID;
-        this.teacherID = teacherID;
         this.sessionTitle = sessionTitle;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -68,14 +65,6 @@ public class Session implements Serializable {
 
     public void setSubjectID(int subjectID) {
         this.subjectID = subjectID;
-    }
-
-    public int getTeacherID() {
-        return teacherID;
-    }
-
-    public void setTeacherID(int teacherID) {
-        this.teacherID = teacherID;
     }
 
     public String getSessionTitle() {

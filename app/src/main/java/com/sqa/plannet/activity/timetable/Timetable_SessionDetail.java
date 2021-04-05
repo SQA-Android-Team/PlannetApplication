@@ -177,8 +177,8 @@ public class Timetable_SessionDetail extends AppCompatActivity{
             String startTime = cs.getString(4);
             String endTime = cs.getString(5);
             String dateOfWeek = cs.getString(6);
-            Session session = new Session(id, title, type, location, startTime, endTime, dateOfWeek);
-            list.add(session);
+//            Session session = new Session(id, title, type, location, startTime, endTime, dateOfWeek);
+            //list.add(session);
         }
         return list;
     }
