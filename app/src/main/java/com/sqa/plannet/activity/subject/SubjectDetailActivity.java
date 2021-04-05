@@ -32,7 +32,7 @@ public class SubjectDetailActivity extends AppCompatActivity implements  View.On
 
     private TextView attendanceTxv, midtermTxv, finalTxv,overallTxv;
 
-    private String[] range = {"A+" , "A", "B+", "B", "C+", "C"};
+
 
     private int position;
 
@@ -110,30 +110,6 @@ public class SubjectDetailActivity extends AppCompatActivity implements  View.On
 
     }
 
-    /**
-     * TODO: grade range spinner
-     */
-//    private void initSpinner(){
-//
-//
-//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.range, android.R.layout.simple_spinner_item);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        rangeSpinner.setAdapter(adapter);
-//        rangeSpinner.setOnItemClickListener(this::onItemSelected);
-//
-//
-//    }
-
-//    @Override
-//    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//        String text = parent.getItemAtPosition(position).toString();
-//        Toast.makeText(parent.getContext(),text, Toast.LENGTH_SHORT).show();
-//    }
-//
-//    @Override
-//    public void onNothingSelected(AdapterView<?> adapterView) {
-//
-//    }
 
     @Override
     public void onClick(View v) {

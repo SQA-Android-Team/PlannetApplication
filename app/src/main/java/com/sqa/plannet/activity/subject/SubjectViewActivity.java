@@ -76,13 +76,12 @@ public class SubjectViewActivity extends AppCompatActivity implements View.OnCli
 
         myDatabase = new MyDatabase(SubjectViewActivity.this, "manageTask.sqlite", null, 1);
         String sql_create_table = "create table if not exists subject(subjectID integer primary key autoincrement, " +
-                "subjectTitle varchar(100), " +
-                "subjectNote varchar(2000), " +
+                "subjectTitle varchar(50), " +
+                "subjectNote varchar(300), " +
                 "subjectCredit integer, " +
                 "attendance float, " +
                 "midterm float, " +
-                "finalTest float, " +
-                "objective varchar(10))";
+                "finalTest float)";
         myDatabase.excuteSQL(sql_create_table);
 
 
