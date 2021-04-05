@@ -26,6 +26,7 @@ import android.widget.CalendarView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -164,7 +165,7 @@ public class Timetable_SessionDetail extends AppCompatActivity{
             }
         });
     }
-    public static ArrayList<Session> getAllSession() {
+    public ArrayList<Session> getAllSession() {
         ArrayList<Session> list = new ArrayList<>();
         String sql_select = "SELECT * FROM " + TABLE_NAME;
         Cursor cs = myDatabase.rawQuery(sql_select);
@@ -178,6 +179,7 @@ public class Timetable_SessionDetail extends AppCompatActivity{
             String endTime = cs.getString(5);
             String dateOfWeek = cs.getString(6);
             Session session = new Session(id, title, type, location, startTime, endTime, dateOfWeek);
+            Toast.makeText(this, "" + session, Toast.LENGTH_SHORT).show();
             list.add(session);
         }
         return list;

@@ -59,8 +59,8 @@ public class DetailActivity extends AppCompatActivity  {
         txtvTime.setText("Time: " +list.get(0).getTime()+ "");
         txtvLocation.setText("Location: " +list.get(0).getLocation()+ "");
         txtvNote.setText("" +list.get(0).getNote()+ "");
-        txtvimportant.setText("Important: " +list.get(0).isImportant()+ "");
-        txtvRemind.setText("Remind: " +list.get(0).isRemind() + "");
+        txtvimportant.setText("Important: " +list.get(0).getImportant()+ "");
+        txtvRemind.setText("Remind: " +list.get(0).getRemind() + "");
 
     }
 }

@@ -21,6 +21,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.sqa.plannet.R;
+import com.sqa.plannet.model.Task;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -50,6 +51,8 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
         tvTime.setOnClickListener(this);
         btnUpdate.setOnClickListener(this);
         btnBack.setOnClickListener(this);
+
+
     }
 
     private void mapping() {
@@ -167,7 +170,11 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
                     cancel(btnBack);
                     break;
                 case R.id.btnUpdate:
-
+                    Intent intent = getIntent();
+                    Task t = (Task) intent.getSerializableExtra("TaskEdit");
+                    edtDo.setText(t.getTitle());
+                    edtNote.setText(t.getNote());
+                    edtLocation.setText(t.getLocation());
                     break;
                 default:
             }
@@ -179,34 +186,33 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void update(Button btnUpdate) {
-        String whereClause = "id = ?";
-        String[] whereArg = {"1"};
         String type = tvType.getText().toString();
         String does = edtDo.getText().toString();
         String location = edtLocation.getText().toString();
         String time = tvTime.getText().toString();
         String date = tvDate.getText().toString();
         String note = edtNote.getText().toString();
-        boolean remind;
+        int remind;
         if (swRemind.isChecked())
-            remind = true;
+            remind = 1;
         else
-            remind = false;
-        boolean important;
+            remind = 0;
+        int important;
         if (swImportant.isChecked())
-            important = true;
+            important = 1;
         else
-            important = false;
+            important = 0;
         ContentValues contentValues = new ContentValues();
          contentValues.put("id", type);
         contentValues.put("title", does);
         contentValues.put("type", type);
         contentValues.put("location", location);
         contentValues.put("time", time);
+        contentValues.put("date", date);
         contentValues.put("note", note);
         contentValues.put("remind", remind);
         contentValues.put("important", important);
-        TodoMainActivity.myDatabase.updateTask(TABLE_NAME, contentValues, whereClause, whereArg);
+       // TodoMainActivity.myDatabase.updateTask(TABLE_NAME, contentValues, whereClause, whereArg);
         Intent intent = new Intent(UpdateActivity.this, TodoMainActivity.class);
         startActivity(intent);
     }

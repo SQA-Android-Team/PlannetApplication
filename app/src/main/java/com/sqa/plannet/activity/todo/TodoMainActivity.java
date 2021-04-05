@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.sqa.plannet.R;
 import com.sqa.plannet.adapter.todo.TodoTaskAdapter;
@@ -33,16 +34,20 @@ public class TodoMainActivity extends AppCompatActivity implements View.OnClickL
         mapping();
 
         myDatabase = new MyDatabase(TodoMainActivity.this, "manageTask.sqlite", null, 1);
-        String sql_create_table = "create table  if not exists tasks(id integer primary key autoincrement NOT NULL, " +
+        String sql_create_table = "create table if not exists tasks(id integer primary key autoincrement NOT NULL, " +
                 "title varchar(100) NOT NULL, " +
                 "type varchar(15) NOT NULL, " +
                 "location varchar(50) NOT NULL, " +
                 "time varchar(20) NOT NULL, " +
+                "date varchar(20) NOT NULL, " +
                 "note varchar(300), " +
                 "remind integer, " +
                 "important integer)";
         myDatabase.excuteSQL(sql_create_table);
         listTask = getAllTask();
+        // String d = "DROP TABLE tasks";
+//         myDatabase.excuteSQL(d);
+         Toast.makeText(this, "create ok", Toast.LENGTH_SHORT).show();
 
         adapter = new TodoTaskAdapter(TodoMainActivity.this, R.layout.calendar_todayevent, listTask);
         lstTask.setAdapter(adapter);
@@ -77,10 +82,11 @@ public class TodoMainActivity extends AppCompatActivity implements View.OnClickL
             String type = cs.getString(2);
             String location = cs.getString(3);
             String time = cs.getString(4);
-            String note = cs.getString(5);
-            boolean remind = cs.getString(6).equals("0");
-            boolean important = cs.getString(7).equals("0");
-            Task task = new Task(id, title, type, location, time, note, remind, important);
+            String date = cs.getString(5);
+            String note = cs.getString(6);
+            int remind = cs.getInt(7);
+            int important = cs.getInt(7);
+            Task task = new Task(id, title, type, location, time, date, note, remind, important);
             list.add(task);
         }
         return list;
