@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,7 +20,7 @@ import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.navigation.NavigationView;
 import com.sqa.plannet.R;
 
-public class TimetableViewActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class TimetableViewActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, EditSemesterNameDialog.EditSemesterNameListener {
     private ImageButton btnAddClass;
     private Toolbar toolbar;
     private CollapsingToolbarLayout collapsingToolbarLayout;
@@ -28,6 +29,7 @@ public class TimetableViewActivity extends AppCompatActivity implements AdapterV
     private AppBarLayout appBarLayout;
     private TextView txtSemesterName;
     private RelativeLayout relMon, relTue, relWed, relThu, relFri, relSat, relSun;
+    private ImageButton btnEditSemesterName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,15 +47,15 @@ public class TimetableViewActivity extends AppCompatActivity implements AdapterV
         getSupportActionBar().setTitle("Timetable");
         drawerLayout.bringToFront();
 
-        // get the reference of RelativeLayout
-        relMon = findViewById(R.id.relMon);
-
+//        // get the reference of RelativeLayout
+//        relMon = findViewById(R.id.relMon);
+//
 //        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 200);
 //        lp.setMargins(0, 100, 0, 0);
-//        View view = getLayoutInflater().inflate(R.layout.session_view, null);
+//        View view = getLayoutInflater().inflate(R.layout.activity_timetable_session_view, null);
 //        view.setLayoutParams(lp);
 //        relMon.addView(view);
-//
+
 //        relSun = findViewById(R.id.relSun);
 //        LinearLayout.LayoutParams ll = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 200);
 //        ll.setMargins(0, 100, 0, 0);
@@ -123,16 +125,26 @@ public class TimetableViewActivity extends AppCompatActivity implements AdapterV
 
     public void editSemesterName(View view) {
         txtSemesterName = findViewById(R.id.txtSemesterName);
-        txtSemesterName.setOnClickListener(new View.OnClickListener() {
+        btnEditSemesterName = findViewById(R.id.btnEditSemesterName);
+
+        btnEditSemesterName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                openEditSemesterNameDialog();
 
             }
         });
     }
 
+    public void openEditSemesterNameDialog(){
+        EditSemesterNameDialog semesterNameDialog  = new EditSemesterNameDialog();
+        semesterNameDialog.show(getSupportFragmentManager(), "Edit Semester Name Dialog");
+    }
 
 
+    @Override
+    public void applyText(String semesterName) {
+        txtSemesterName.setText(semesterName);
 
-
+    }
 }

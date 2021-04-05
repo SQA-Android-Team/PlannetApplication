@@ -1,6 +1,6 @@
 package com.sqa.plannet.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Timetable {
     private int timetableID;
@@ -8,14 +8,13 @@ public class Timetable {
     private Date startDate;
     private Date endDate;
 
+    public Timetable(){}
+
     public Timetable(int timetableID, String title, Date startDate, Date endDate) {
         this.timetableID = timetableID;
         this.title = title;
         this.startDate = startDate;
         this.endDate = endDate;
-    }
-
-    public Timetable() {
     }
 
     public int getTimetableID() {
@@ -50,3 +49,4 @@ public class Timetable {
         this.endDate = endDate;
     }
 }
+
