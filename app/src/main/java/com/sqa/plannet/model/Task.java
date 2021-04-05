@@ -8,18 +8,20 @@ public class Task implements Serializable {
    public String type;
    private String location;
    public String time;
+    public String date;
    private String note;
-   private boolean remind;
-   private boolean important;
+   private int remind;
+   private int important;
 
    public Task(){}
 
-    public Task(int id, String title, String type, String location, String time, String note, boolean remind, boolean important) {
+    public Task(int id, String title, String type, String location, String time, String date, String note, int remind, int important) {
         this.id = id;
         this.title = title;
         this.type = type;
         this.location = location;
         this.time = time;
+        this.date = date;
         this.note = note;
         this.remind = remind;
         this.important = important;
@@ -65,6 +67,14 @@ public class Task implements Serializable {
         this.time = time;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public String getNote() {
         return note;
     }
@@ -73,19 +83,19 @@ public class Task implements Serializable {
         this.note = note;
     }
 
-    public boolean isRemind() {
+    public int getRemind() {
         return remind;
     }
 
-    public void setRemind(boolean remind) {
+    public void setRemind(int remind) {
         this.remind = remind;
     }
 
-    public boolean isImportant() {
+    public int getImportant() {
         return important;
     }
 
-    public void setImportant(boolean important) {
+    public void setImportant(int important) {
         this.important = important;
     }
 
@@ -97,6 +107,7 @@ public class Task implements Serializable {
                 ", type='" + type + '\'' +
                 ", location='" + location + '\'' +
                 ", time='" + time + '\'' +
+                ", date='" + date + '\'' +
                 ", note='" + note + '\'' +
                 ", remind=" + remind +
                 ", important=" + important +

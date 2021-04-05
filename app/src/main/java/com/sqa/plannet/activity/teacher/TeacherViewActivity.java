@@ -73,7 +73,6 @@ public class TeacherViewActivity extends AppCompatActivity {
                 "email varchar(50))";
         myDatabase.rawQuery(sql_create_table);
 //        initRecyclerView();
-
     }
 
     /**

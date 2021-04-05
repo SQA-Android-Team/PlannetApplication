@@ -17,20 +17,30 @@ package com.sqa.plannet.activity.timetable;
 //}
 //
 import android.content.DialogInterface;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
+import android.widget.CalendarView;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.sqa.plannet.R;
+import com.sqa.plannet.activity.calendar.CalendarViewActivity;
+import com.sqa.plannet.adapter.calendar.SessionAdapter;
+import com.sqa.plannet.adapter.calendar.TaskAdapter;
+import com.sqa.plannet.database.MyDatabase;
+import com.sqa.plannet.model.Session;
+import com.sqa.plannet.model.Task;
+
+import java.util.ArrayList;
 
 
 public class Timetable_SessionDetail extends AppCompatActivity{
@@ -38,7 +48,7 @@ public class Timetable_SessionDetail extends AppCompatActivity{
     private ImageButton btnDelete;
     private ImageButton btnEdit;
     private ImageButton btnBack;
-
+    public ListView  rvReminders;
     private TextView txtSessionNameValue;
     private TextView txtSessionDescriptionValue;
     private TextView txtSessionLocationValue;
@@ -47,12 +57,34 @@ public class Timetable_SessionDetail extends AppCompatActivity{
     private TextView txtSessionColorValue;
     private TextView txtSessionDayOfWeekValue;
 
+    private CalendarView calendarView;
+
+    ArrayList<Session> listSession = new ArrayList<>();
+    SessionAdapter adapter;
+    public static MyDatabase myDatabase;
+    public static String TABLE_NAME = "sessions";
+
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
         setContentView(R.layout.timetable_session_detail);
+
+        myDatabase = new MyDatabase(Timetable_SessionDetail.this, "manageSession.sqlite", null, 1);
+        String sql_create_table = "create table  if not exists tasks(id integer primary key autoincrement NOT NULL, " +
+                "title varchar(100) NOT NULL, " +
+                "type varchar(15) NOT NULL, " +
+                "location varchar(50) NOT NULL, " +
+                "timeStart varchar(20) NOT NULL, " +
+                "timeEnd varchar(20), " +
+                "day varchar(10),";
+        myDatabase.excuteSQL(sql_create_table);
+
+        listSession = getAllSession();
+        adapter = new SessionAdapter(Timetable_SessionDetail.this, R.layout.calendar_view, listSession);
+        rvReminders.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
 //
 //        txtSessionNameValue = txtSessionNameValue.findViewById(R.id.txtSessionNameValue);
 //
@@ -132,5 +164,29 @@ public class Timetable_SessionDetail extends AppCompatActivity{
 
             }
         });
+    }
+    public ArrayList<Session> getAllSession() {
+        ArrayList<Session> list = new ArrayList<>();
+        String sql_select = "SELECT * FROM " + TABLE_NAME;
+        Cursor cs = myDatabase.rawQuery(sql_select);
+        list.clear();
+        while (cs.moveToNext()) {
+            int id = cs.getInt(0);
+            String title = cs.getString(1);
+            String type = cs.getString(2);
+            String location = cs.getString(3);
+            String startTime = cs.getString(4);
+            String endTime = cs.getString(5);
+            String dateOfWeek = cs.getString(6);
+<<<<<<< HEAD
+            Session session = new Session(id, title, type, location, startTime, endTime, dateOfWeek);
+            Toast.makeText(this, "" + session, Toast.LENGTH_SHORT).show();
+            list.add(session);
+=======
+//            Session session = new Session(id, title, type, location, startTime, endTime, dateOfWeek);
+            //list.add(session);
+>>>>>>> f3ad4fdfe5ed057b91f78dc8b5f48d232a838ca1
+        }
+        return list;
     }
 }

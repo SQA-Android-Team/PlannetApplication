@@ -14,6 +14,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 import com.sqa.plannet.R;
 import com.sqa.plannet.activity.calendar.CalendarViewActivity;
+import com.sqa.plannet.activity.overview.OverviewMainActivity;
 import com.sqa.plannet.activity.timetable.TimetableViewActivity;
 import com.sqa.plannet.activity.todo.CreateActivity;
 import com.sqa.plannet.activity.todo.TodoMainActivity;
@@ -70,6 +71,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.btnOverview:
+                Intent i = new Intent(HomeActivity.this, OverviewMainActivity.class);
+                startActivity(i);
                 break;
             case R.id.btnCalendar:
                 startActivity(new Intent(HomeActivity.this, CalendarViewActivity.class));

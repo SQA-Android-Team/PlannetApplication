@@ -184,21 +184,22 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
         String time = tvTime.getText().toString();
         String date = tvDate.getText().toString();
         String note = edtNote.getText().toString();
-        boolean remind;
+        int remind;
         if (swRemind.isChecked())
-            remind = true;
+            remind = 1;
         else
-            remind = false;
-        boolean important;
+            remind = 0;
+        int important;
         if (swImportant.isChecked())
-            important = true;
+            important = 1;
         else
-            important = false;
+            important = 0;
         ContentValues contentValues = new ContentValues();
         contentValues.put("title", does);
         contentValues.put("type", type);
         contentValues.put("location", location);
         contentValues.put("time", time);
+        contentValues.put("date", date);
         contentValues.put("note", note);
         contentValues.put("remind", remind);
         contentValues.put("important", important);

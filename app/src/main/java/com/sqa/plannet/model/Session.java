@@ -1,45 +1,46 @@
 package com.sqa.plannet.model;
 
+import java.io.Serializable;
 import java.lang.String;
 
-public class Session {
+public class Session implements Serializable {
     private int sessionID;
     private int timetableID;
     private int subjectID;
     private String sessionTitle;
     private String startTime;
     private String endTime;
-    private String date;
     private String weekDay;
     private String location;
     private String type;
+    private String color;
 
-    public Session(int timetableID, int subjectID, int i, String sqa, String endTime, String date, String mon, String location, String lecture) {
+    public Session() {
     }
 
-    public Session(int sessionID, int timetableID, int subjectID, String sessionTitle, String startTime, String endTime, String date, String weekDay, String location, String type) {
+    public Session(int sessionID, int timetableID, int subjectID, String sessionTitle, String startTime, String endTime, String weekDay, String location, String type, String color) {
         this.sessionID = sessionID;
         this.timetableID = timetableID;
         this.subjectID = subjectID;
         this.sessionTitle = sessionTitle;
         this.startTime = startTime;
         this.endTime = endTime;
-        this.date = date;
         this.weekDay = weekDay;
         this.location = location;
         this.type = type;
+        this.color = color;
     }
-    public Session( int timetableID, int subjectID, String sessionTitle, String startTime, String endTime, String date, String weekDay, String location, String type) {
 
+    public Session(int timetableID, int subjectID, String sessionTitle, String startTime, String endTime, String weekDay, String location, String type, String color) {
         this.timetableID = timetableID;
         this.subjectID = subjectID;
         this.sessionTitle = sessionTitle;
         this.startTime = startTime;
         this.endTime = endTime;
-        this.date = date;
         this.weekDay = weekDay;
         this.location = location;
         this.type = type;
+        this.color = color;
     }
 
     public int getSessionID() {
@@ -90,6 +91,14 @@ public class Session {
         this.endTime = endTime;
     }
 
+    public String getWeekDay() {
+        return weekDay;
+    }
+
+    public void setWeekDay(String weekDay) {
+        this.weekDay = weekDay;
+    }
+
     public String getLocation() {
         return location;
     }
@@ -106,19 +115,11 @@ public class Session {
         this.type = type;
     }
 
-    public String getDate() {
-        return date;
+    public String getColor() {
+        return color;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getWeekDay() {
-        return weekDay;
-    }
-
-    public void setWeekDay(String weekDay) {
-        this.weekDay = weekDay;
+    public void setColor(String color) {
+        this.color = color;
     }
 }

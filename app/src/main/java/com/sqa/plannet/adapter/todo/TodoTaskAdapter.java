@@ -34,8 +34,6 @@ public class TodoTaskAdapter extends BaseAdapter {
     Context context;
     int layout;
     List<Task> list ;
-    String whereClause = "id = ?";
-    String[] whereArgs = {"1"};
 
     public TodoTaskAdapter(Activity context, int item_does, ArrayList<Task> list) {
         this.context = context;
@@ -61,6 +59,7 @@ public class TodoTaskAdapter extends BaseAdapter {
         RadioButton check = view.findViewById(R.id.check);
         TextView titledoes =  view.findViewById(R.id.titledoes);
         TextView typedoes =  view.findViewById(R.id.typedoes);
+        TextView datedoes =  view.findViewById(R.id.txtvDate);
         TextView timedoes = view.findViewById(R.id.timedoes);
         ImageButton btnEdit =  view.findViewById(R.id.btnEdit);
         ImageButton btnDelete = view.findViewById(R.id.btnDelete);
@@ -70,12 +69,12 @@ public class TodoTaskAdapter extends BaseAdapter {
         titledoes.setText(task.getTitle());
         timedoes.setText(task.getTime());
         typedoes.setText(task.getType());
-        check.setChecked(false);
 
 
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            Toast.makeText( context, "edit" + task.getId(), Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(context, UpdateActivity.class);
             intent.putExtra("TaskEdit", task);
             context.startActivity(intent);
@@ -84,6 +83,7 @@ public class TodoTaskAdapter extends BaseAdapter {
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(context, "delete" + task.getId(), Toast.LENGTH_SHORT).show();
 
             }
         });
