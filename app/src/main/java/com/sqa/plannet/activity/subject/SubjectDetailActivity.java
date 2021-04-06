@@ -26,13 +26,13 @@ public class SubjectDetailActivity extends AppCompatActivity implements  View.On
     private Subject subject;
     private ImageButton backBtn, deleteBtn;
     private LinearLayout editSubjectBtn,  editGradeBtn;
-    private Spinner rangeSpinner;
+
 
     private TextView subjectTitleTxv, subjectCreditTxv, subjectNoteTxv;
 
-    private TextView attendanceTxv, midtermTxv, finalTxv,overallTxv, rangeDecimalTxv;
+    private TextView attendanceTxv, midtermTxv, finalTxv,overallTxv;
 
-    private String[] range = {"A+" , "A", "B+", "B", "C+", "C"};
+
 
     private int position;
 
@@ -73,7 +73,7 @@ public class SubjectDetailActivity extends AppCompatActivity implements  View.On
         deleteBtn = findViewById(R.id.deleteBtn);
         editSubjectBtn = findViewById(R.id.editSubjectBtn);
         editGradeBtn = findViewById(R.id.editGradeBtn);
-        rangeSpinner = findViewById(R.id.rangeSpinner);
+
         subjectTitleTxv = findViewById(R.id.subjectTitleTxv);
         subjectCreditTxv = findViewById(R.id.subjectCreditTxv);
         subjectNoteTxv = findViewById(R.id.subjectNoteTxv);
@@ -81,7 +81,7 @@ public class SubjectDetailActivity extends AppCompatActivity implements  View.On
         midtermTxv = findViewById(R.id.midtermTxv);
         finalTxv = findViewById(R.id.finalTxv);
         overallTxv = findViewById(R.id.overallTxv);
-        rangeDecimalTxv = findViewById(R.id.rangeDecimalTxv);
+
     }
 
 
@@ -110,30 +110,6 @@ public class SubjectDetailActivity extends AppCompatActivity implements  View.On
 
     }
 
-    /**
-     * TODO: grade range spinner
-     */
-//    private void initSpinner(){
-//
-//
-//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.range, android.R.layout.simple_spinner_item);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        rangeSpinner.setAdapter(adapter);
-//        rangeSpinner.setOnItemClickListener(this::onItemSelected);
-//
-//
-//    }
-
-//    @Override
-//    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//        String text = parent.getItemAtPosition(position).toString();
-//        Toast.makeText(parent.getContext(),text, Toast.LENGTH_SHORT).show();
-//    }
-//
-//    @Override
-//    public void onNothingSelected(AdapterView<?> adapterView) {
-//
-//    }
 
     @Override
     public void onClick(View v) {
