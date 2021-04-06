@@ -29,10 +29,12 @@ import java.util.Calendar;
 import java.util.Collections;
 
 import static com.sqa.plannet.activity.todo.TodoMainActivity.TABLE_NAME;
+import static com.sqa.plannet.activity.todo.TodoMainActivity.myDatabase;
 
 public class UpdateActivity extends AppCompatActivity implements View.OnClickListener {
     TextView tvType, tvDate, tvTime;
     EditText edtDo, edtLocation, edtNote;
+    Task t;
     Switch swRemind, swImportant;
     Button btnUpdate;
     ImageButton btnBack;
@@ -53,6 +55,11 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
         btnBack.setOnClickListener(this);
 
 
+        Intent intent = getIntent();
+        t = (Task) intent.getSerializableExtra("TaskEdit");
+        edtDo.setText(t.getTitle());
+        edtNote.setText(t.getNote());
+        edtLocation.setText(t.getLocation());
     }
 
     private void mapping() {
@@ -170,11 +177,7 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
                     cancel(btnBack);
                     break;
                 case R.id.btnUpdate:
-                    Intent intent = getIntent();
-                    Task t = (Task) intent.getSerializableExtra("TaskEdit");
-                    edtDo.setText(t.getTitle());
-                    edtNote.setText(t.getNote());
-                    edtLocation.setText(t.getLocation());
+                    update(btnUpdate);
                     break;
                 default:
             }
@@ -202,19 +205,18 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
             important = 1;
         else
             important = 0;
-        ContentValues contentValues = new ContentValues();
-         contentValues.put("id", type);
-        contentValues.put("title", does);
-        contentValues.put("type", type);
-        contentValues.put("location", location);
-        contentValues.put("time", time);
-        contentValues.put("date", date);
-        contentValues.put("note", note);
-        contentValues.put("remind", remind);
-        contentValues.put("important", important);
-       // TodoMainActivity.myDatabase.updateTask(TABLE_NAME, contentValues, whereClause, whereArg);
+        myDatabase.updateTask(String.valueOf(t.getId()), does, type, location, time, date, note, remind, important);
         Intent intent = new Intent(UpdateActivity.this, TodoMainActivity.class);
         startActivity(intent);
     }
 }
 
+//    ContentValues contentValues = new ContentValues();
+//        contentValues.put("title", does);
+//                contentValues.put("type", type);
+//                contentValues.put("location", location);
+//                contentValues.put("time", time);
+//                contentValues.put("date", date);
+//                contentValues.put("note", note);
+//                contentValues.put("remind", remind);
+//                contentValues.put("important", important);

@@ -178,14 +178,13 @@ public class Timetable_SessionDetail extends AppCompatActivity{
             String startTime = cs.getString(4);
             String endTime = cs.getString(5);
             String dateOfWeek = cs.getString(6);
-<<<<<<< HEAD
-            Session session = new Session(id, title, type, location, startTime, endTime, dateOfWeek);
-            Toast.makeText(this, "" + session, Toast.LENGTH_SHORT).show();
-            list.add(session);
-=======
+
+           // Session session = new Session(id, title, type, location, startTime, endTime, dateOfWeek);
+//            Toast.makeText(this, "" + session, Toast.LENGTH_SHORT).show();
+//            list.add(session);
+
 //            Session session = new Session(id, title, type, location, startTime, endTime, dateOfWeek);
             //list.add(session);
->>>>>>> f3ad4fdfe5ed057b91f78dc8b5f48d232a838ca1
         }
         return list;
     }

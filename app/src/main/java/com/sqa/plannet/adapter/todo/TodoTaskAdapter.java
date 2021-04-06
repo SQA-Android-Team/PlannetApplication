@@ -1,8 +1,10 @@
 package com.sqa.plannet.adapter.todo;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.sqa.plannet.activity.todo.TodoMainActivity.TABLE_NAME;
+import static com.sqa.plannet.activity.todo.TodoMainActivity.getAllTask;
 import static com.sqa.plannet.activity.todo.TodoMainActivity.myDatabase;
 
 public class TodoTaskAdapter extends BaseAdapter {
@@ -83,8 +86,7 @@ public class TodoTaskAdapter extends BaseAdapter {
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "delete" + task.getId(), Toast.LENGTH_SHORT).show();
-
+            dialogClick(position);
             }
         });
 
@@ -110,6 +112,32 @@ public class TodoTaskAdapter extends BaseAdapter {
         return view;
     }
 
+    public void dialogClick(int position) {
+        AlertDialog.Builder alert = new AlertDialog.Builder(context);
+        alert.setTitle("Confirm");
+        alert.setMessage("Do you want to delete this task ?");
+        alert.setIcon(R.drawable.ic_delete);
 
+        alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Task task = list.get(position);
+                int id = task.getId();
+                list.remove(position);
+                String delete =  "DELETE FROM " + TABLE_NAME + " WHERE id = " + task.getId();
+                myDatabase.excuteSQL(delete);
 
+                notifyDataSetChanged();
+                Toast.makeText(context, "Delete Successfull", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        alert.show();
+    }
 }
