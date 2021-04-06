@@ -203,7 +203,6 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
         else
             important = 0;
         ContentValues contentValues = new ContentValues();
-         contentValues.put("id", type);
         contentValues.put("title", does);
         contentValues.put("type", type);
         contentValues.put("location", location);
@@ -212,7 +211,8 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
         contentValues.put("note", note);
         contentValues.put("remind", remind);
         contentValues.put("important", important);
-       // TodoMainActivity.myDatabase.updateTask(TABLE_NAME, contentValues, whereClause, whereArg);
+        String whereClause = "id = ? or id=?";
+        TodoMainActivity.myDatabase.updateTask(TABLE_NAME, contentValues,  whereClause, null);
         Intent intent = new Intent(UpdateActivity.this, TodoMainActivity.class);
         startActivity(intent);
     }
