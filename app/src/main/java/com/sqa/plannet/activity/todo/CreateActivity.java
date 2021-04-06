@@ -6,6 +6,7 @@ import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 
 import android.view.Window;
@@ -194,26 +195,38 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
             important = 1;
         else
             important = 0;
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("title", does);
-        contentValues.put("type", type);
-        contentValues.put("location", location);
-        contentValues.put("time", time);
-        contentValues.put("date", date);
-        contentValues.put("note", note);
-        contentValues.put("remind", remind);
-        contentValues.put("important", important);
-        TodoMainActivity.myDatabase.insertTask(TodoMainActivity.TABLE_NAME, null, contentValues);
-        Intent intent = new Intent(CreateActivity.this, TodoMainActivity.class);
-        startActivity(intent);
+
+
+        if (TextUtils.isEmpty(type)) {
+            tvType.setError("Please choose the type");
+        } else if(TextUtils.isEmpty(does)) {
+            edtDo.setError("Please enter the title");
+        } else if(TextUtils.isEmpty(location)) {
+            edtLocation.setError("Please enter the location");
+        } else if(TextUtils.isEmpty(time)) {
+            tvTime.setError("Please pick the time");
+        }else if(TextUtils.isEmpty(date)) {
+            tvDate.setError("Please pick the date");
+        } else{
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("title", does);
+            contentValues.put("type", type);
+            contentValues.put("location", location);
+            contentValues.put("time", time);
+            contentValues.put("date", date);
+            contentValues.put("note", note);
+            contentValues.put("remind", remind);
+            contentValues.put("important", important);
+            TodoMainActivity.myDatabase.insertTask(TodoMainActivity.TABLE_NAME, null, contentValues);
+            Intent intent = new Intent(CreateActivity.this, TodoMainActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void cancel(View view) {
         Intent intent = new Intent(CreateActivity.this, TodoMainActivity.class);
         startActivity(intent);
     }
-
-
 }
 
 

@@ -112,7 +112,7 @@ public class TodoTaskAdapter extends BaseAdapter {
         return view;
     }
 
-    public void dialogClick(int id) {
+    public void dialogClick(int position) {
         AlertDialog.Builder alert = new AlertDialog.Builder(context);
         alert.setTitle("Confirm");
         alert.setMessage("Do you want to delete this task ?");
@@ -121,11 +121,12 @@ public class TodoTaskAdapter extends BaseAdapter {
         alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Task task = list.get(id);
+                Task task = list.get(position);
                 int id = task.getId();
-                String delete =  "DELETE FROM " + TABLE_NAME + " WHERE id = " + id;
+                list.remove(position);
+                String delete =  "DELETE FROM " + TABLE_NAME + " WHERE id = " + task.getId();
                 myDatabase.excuteSQL(delete);
-                list.remove(id);
+
                 notifyDataSetChanged();
                 Toast.makeText(context, "Delete Successfull", Toast.LENGTH_SHORT).show();
             }
@@ -139,7 +140,4 @@ public class TodoTaskAdapter extends BaseAdapter {
         });
         alert.show();
     }
-
-
-
 }
