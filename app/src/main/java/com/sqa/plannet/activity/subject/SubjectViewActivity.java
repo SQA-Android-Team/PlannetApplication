@@ -84,7 +84,6 @@ public class SubjectViewActivity extends AppCompatActivity implements View.OnCli
                 "finalTest float)";
         myDatabase.excuteSQL(sql_create_table);
 
-
         initRecycleView();
 
     }

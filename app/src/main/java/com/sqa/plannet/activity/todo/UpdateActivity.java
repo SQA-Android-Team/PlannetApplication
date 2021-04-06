@@ -29,6 +29,7 @@ import java.util.Calendar;
 import java.util.Collections;
 
 import static com.sqa.plannet.activity.todo.TodoMainActivity.TABLE_NAME;
+import static com.sqa.plannet.activity.todo.TodoMainActivity.myDatabase;
 
 public class UpdateActivity extends AppCompatActivity implements View.OnClickListener {
     TextView tvType, tvDate, tvTime;
@@ -53,6 +54,11 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
         btnBack.setOnClickListener(this);
 
 
+        Intent intent = getIntent();
+        Task t = (Task) intent.getSerializableExtra("TaskEdit");
+        edtDo.setText(t.getTitle());
+        edtNote.setText(t.getNote());
+        edtLocation.setText(t.getLocation());
     }
 
     private void mapping() {
@@ -170,11 +176,7 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
                     cancel(btnBack);
                     break;
                 case R.id.btnUpdate:
-                    Intent intent = getIntent();
-                    Task t = (Task) intent.getSerializableExtra("TaskEdit");
-                    edtDo.setText(t.getTitle());
-                    edtNote.setText(t.getNote());
-                    edtLocation.setText(t.getLocation());
+                    update(btnUpdate);
                     break;
                 default:
             }
@@ -211,8 +213,9 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
         contentValues.put("note", note);
         contentValues.put("remind", remind);
         contentValues.put("important", important);
-        String whereClause = "id = ? or id=?";
-        TodoMainActivity.myDatabase.updateTask(TABLE_NAME, contentValues,  whereClause, null);
+        String whereClause = "id = ?";
+        TodoMainActivity.myDatabase.updateTask(TABLE_NAME, contentValues,  whereClause , null);
+
         Intent intent = new Intent(UpdateActivity.this, TodoMainActivity.class);
         startActivity(intent);
     }
