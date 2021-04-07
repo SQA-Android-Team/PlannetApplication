@@ -19,13 +19,14 @@ import com.sqa.plannet.model.Task;
 
 import java.util.ArrayList;
 
-public class TodoMainActivity extends AppCompatActivity implements View.OnClickListener {
+import static com.sqa.plannet.activity.overview.OverviewMainActivity.myDatabase;
+
+public class TodoMainActivity<TABLE_TASK> extends AppCompatActivity implements View.OnClickListener {
     ListView lstTask;
     Button btnNew;
-    public static MyDatabase myDatabase;
-    public static String TABLE_NAME = "tasks";
     ArrayList<Task> listTask = new ArrayList<>();
     TodoTaskAdapter adapter;
+    public static String TABLE_TASK = "tasks" ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,17 +34,6 @@ public class TodoMainActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.todo_activity_main);
         mapping();
 
-        myDatabase = new MyDatabase(TodoMainActivity.this, "manageTask.sqlite", null, 1);
-        String sql_create_table = "create table if not exists tasks(id integer primary key autoincrement NOT NULL, " +
-                "title varchar(100) NOT NULL, " +
-                "type varchar(15) NOT NULL, " +
-                "location varchar(50) NOT NULL, " +
-                "time varchar(20) NOT NULL, " +
-                "date varchar(20) NOT NULL, " +
-                "note varchar(300), " +
-                "remind integer, " +
-                "important integer)";
-        myDatabase.excuteSQL(sql_create_table);
         listTask = getAllTask();
         // String d = "DROP TABLE tasks";
 //         myDatabase.excuteSQL(d);
@@ -73,7 +63,7 @@ public class TodoMainActivity extends AppCompatActivity implements View.OnClickL
 
     public static ArrayList<Task> getAllTask() {
         ArrayList<Task> list = new ArrayList<>();
-        String sql_select = "SELECT * FROM " + TABLE_NAME;
+        String sql_select = "SELECT * FROM " + TABLE_TASK ;
         Cursor cs = myDatabase.rawQuery(sql_select);
         list.clear();
         while (cs.moveToNext()) {

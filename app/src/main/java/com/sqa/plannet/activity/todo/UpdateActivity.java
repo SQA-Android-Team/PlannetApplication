@@ -28,8 +28,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 
-import static com.sqa.plannet.activity.todo.TodoMainActivity.TABLE_NAME;
-import static com.sqa.plannet.activity.todo.TodoMainActivity.myDatabase;
+import static com.sqa.plannet.activity.overview.OverviewMainActivity.myDatabase;
 
 public class UpdateActivity extends AppCompatActivity implements View.OnClickListener {
     TextView tvType, tvDate, tvTime;

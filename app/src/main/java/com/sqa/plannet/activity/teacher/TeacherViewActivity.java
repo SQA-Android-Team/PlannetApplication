@@ -37,6 +37,8 @@ import com.sqa.plannet.model.Teacher;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.sqa.plannet.activity.overview.OverviewMainActivity.myDatabase;
+
 public class TeacherViewActivity extends AppCompatActivity {
     private AppBarLayout appBarLayout;
     private CollapsingToolbarLayout collapsingToolbarLayout;
@@ -47,12 +49,10 @@ public class TeacherViewActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TeacherAdapter teacherAdapter;
 
-    public static MyDatabase myDatabase;
-    public static String TABLE_NAME = "teacher";
-
     private Menu subMenu;
     private boolean isExpanded = true;
 
+    public static String TABLE_TEACHER = "teachers" ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,13 +65,6 @@ public class TeacherViewActivity extends AppCompatActivity {
         onAddBtnClick();
         initToolbarAnimation();
         initDrawer();
-
-        myDatabase = new MyDatabase(TeacherViewActivity.this, "manageTask.sqlite", null, 1);
-        String sql_create_table = "create table if not exists teacher(teacherID integer primary key autoincrement," +
-                "teacherName varchar(50), " +
-                "phone varchar(15), " +
-                "email varchar(50))";
-        myDatabase.rawQuery(sql_create_table);
 //        initRecyclerView();
     }
 
@@ -136,7 +129,7 @@ public class TeacherViewActivity extends AppCompatActivity {
     private List<Teacher> getListTeacher() {
         List<Teacher> list = new ArrayList<>();
 
-       String sql_select = "SELECT * FROM " + TABLE_NAME;
+       String sql_select = "SELECT * FROM "  + TABLE_TEACHER;
         Cursor cs = myDatabase.rawQuery(sql_select);
         list.clear();
         while (cs.moveToNext()){

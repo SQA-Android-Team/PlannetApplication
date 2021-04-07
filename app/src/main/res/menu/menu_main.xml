@@ -7,8 +7,6 @@
         android:id="@+id/navHome"
         android:title="Home"
         android:icon="@drawable/menu_home"
-
-
         />
      <item
          android:id="@+id/navOverview"
