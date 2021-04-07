@@ -43,18 +43,15 @@
         </activity>
         <activity android:name=".activity.settings.SettingsMenuActivity">
         </activity>
-
-
         <activity android:name=".activity.settings.SettingsAboutActivity" />
         <activity android:name=".activity.settings.SettingsRatingActivity" />
         <activity android:name=".activity.helpAndFeedbacks.HelpAndFeedbacksActivity" />
-
         <activity android:name=".activity.todo.DetailActivity"></activity>
         <activity android:name=".activity.todo.CreateActivity"></activity>
         <activity android:name=".activity.todo.TodoMainActivity">
-
         </activity>
         <activity android:name=".activity.todo.UpdateActivity"></activity>
+        <receiver android:name=".activity.todo.AlarmReceiver"></receiver>
     </application>
 
 </manifest>

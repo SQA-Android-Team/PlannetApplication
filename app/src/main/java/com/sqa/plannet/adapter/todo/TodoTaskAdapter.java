@@ -29,7 +29,8 @@ import com.sqa.plannet.model.Task;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.sqa.plannet.activity.overview.OverviewMainActivity.myDatabase;
+
+import static com.sqa.plannet.activity.home.HomeActivity.myDatabase;
 import static com.sqa.plannet.activity.todo.TodoMainActivity.getAllTask;
 
 public class TodoTaskAdapter extends BaseAdapter {

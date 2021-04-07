@@ -36,40 +36,11 @@ public class OverviewMainActivity extends AppCompatActivity implements OnChartVa
     RecyclerView recentRecycler, pendingEventRecycler;
     ScheduleAdapter scheduleAdapter;
     PendingEventAdapter pendingEventAdapter;
-    public static MyDatabase myDatabase;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.overview_view);
-
-        myDatabase = new MyDatabase(OverviewMainActivity.this, "manage_app.sqlite", null, 1);
-        String table_session = "create table  if not exists sessions(id integer primary key autoincrement NOT NULL, " +
-                "title varchar(100) NOT NULL, " +
-                "type varchar(15) NOT NULL, " +
-                "location varchar(50) NOT NULL, " +
-                "timeStart varchar(20) NOT NULL, " +
-                "timeEnd varchar(20), " +
-                "day varchar(10))";
-        myDatabase.excuteSQL(table_session);
-
-        String table_todo = "create table if not exists tasks(id integer primary key autoincrement NOT NULL, " +
-                "title varchar(100) NOT NULL, " +
-                "type varchar(15) NOT NULL, " +
-                "location varchar(50) NOT NULL, " +
-                "time varchar(20) NOT NULL, " +
-                "date varchar(20) NOT NULL, " +
-                "note varchar(300), " +
-                "remind integer, " +
-                "important integer)";
-        myDatabase.excuteSQL(table_todo);
-
-        String table_teacher = "create table if not exists teachers(teacherID integer primary key autoincrement," +
-                "teacherName varchar(50), " +
-                "phone varchar(15), " +
-                "email varchar(50))";
-        myDatabase.excuteSQL(table_teacher);
 
         List<ScheduleData> scheduleDataList = new ArrayList<>();
         scheduleDataList.add(new ScheduleData("SE2", "N.T.D.Long", "801C"));

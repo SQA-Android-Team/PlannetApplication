@@ -18,6 +18,7 @@ import com.sqa.plannet.activity.overview.OverviewMainActivity;
 import com.sqa.plannet.activity.timetable.TimetableViewActivity;
 import com.sqa.plannet.activity.todo.CreateActivity;
 import com.sqa.plannet.activity.todo.TodoMainActivity;
+import com.sqa.plannet.database.MyDatabase;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener{
     private Button btnTimetable, btnTodo, btnOverview, btnCalendar;
@@ -25,12 +26,40 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
+    public static MyDatabase myDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_view);
         mapping();
+
+        myDatabase = new MyDatabase(this, "manage_app.sqlite", null, 1);
+        String table_session = "create table  if not exists sessions(id integer primary key autoincrement NOT NULL, " +
+                "title varchar(100) NOT NULL, " +
+                "type varchar(15) NOT NULL, " +
+                "location varchar(50) NOT NULL, " +
+                "timeStart varchar(20) NOT NULL, " +
+                "timeEnd varchar(20), " +
+                "day varchar(10))";
+        myDatabase.excuteSQL(table_session);
+
+        String table_todo = "create table if not exists tasks(id integer primary key autoincrement NOT NULL, " +
+                "title varchar(100) NOT NULL, " +
+                "type varchar(15) NOT NULL, " +
+                "location varchar(50) NOT NULL, " +
+                "time varchar(20) NOT NULL, " +
+                "date varchar(20) NOT NULL, " +
+                "note varchar(300), " +
+                "remind integer, " +
+                "important integer)";
+        myDatabase.excuteSQL(table_todo);
+
+        String table_teacher = "create table if not exists teachers(teacherID integer primary key autoincrement," +
+                "teacherName varchar(50), " +
+                "phone varchar(15), " +
+                "email varchar(50))";
+        myDatabase.excuteSQL(table_teacher);
 
         btnCalendar.setOnClickListener(this);
         btnExitApp.setOnClickListener(this);

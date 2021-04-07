@@ -37,26 +37,24 @@ public class TimetableAddSession extends AppCompatActivity implements AdapterVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.timetable_add_session);
+        mapping();
         initUI();
         initToolbar();
 
-        drawerLayout = findViewById(R.id.addClassViewDrawer);
-        toolbar = findViewById(R.id.addClassViewToolbar);
-        navigationView = findViewById(R.id.navView);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Add Class");
         drawerLayout.bringToFront();
 
 
-        spDateOfWeekPicker = findViewById(R.id.spDateOfWeekPicker);
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.dateOfWeek, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spDateOfWeekPicker.setAdapter(adapter);
         spDateOfWeekPicker.setOnItemSelectedListener(this);
 
 
-        txtStartTimePicker = findViewById(R.id.txtStartTimePicker);
+
         txtStartTimePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,7 +62,7 @@ public class TimetableAddSession extends AppCompatActivity implements AdapterVie
             }
         });
 
-        txtEndTimePicker = findViewById(R.id.txtEndTimePicker);
+
         txtEndTimePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,6 +70,16 @@ public class TimetableAddSession extends AppCompatActivity implements AdapterVie
             }
         });
     }
+
+    private void mapping() {
+        spDateOfWeekPicker = findViewById(R.id.spDateOfWeekPicker);
+        drawerLayout = findViewById(R.id.addClassViewDrawer);
+        toolbar = findViewById(R.id.addClassViewToolbar);
+        navigationView = findViewById(R.id.navView);
+        txtStartTimePicker = findViewById(R.id.txtStartTimePicker);
+        txtEndTimePicker = findViewById(R.id.txtEndTimePicker);
+    }
+
 
     private void initUI(){
         appBarLayout = findViewById(R.id.appBarLayout);

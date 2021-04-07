@@ -28,7 +28,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 
-import static com.sqa.plannet.activity.overview.OverviewMainActivity.myDatabase;
+import static com.sqa.plannet.activity.home.HomeActivity.myDatabase;
+
 
 public class UpdateActivity extends AppCompatActivity implements View.OnClickListener {
     TextView tvType, tvDate, tvTime;
@@ -210,12 +211,3 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
     }
 }
 
-//    ContentValues contentValues = new ContentValues();
-//        contentValues.put("title", does);
-//                contentValues.put("type", type);
-//                contentValues.put("location", location);
-//                contentValues.put("time", time);
-//                contentValues.put("date", date);
-//                contentValues.put("note", note);
-//                contentValues.put("remind", remind);
-//                contentValues.put("important", important);

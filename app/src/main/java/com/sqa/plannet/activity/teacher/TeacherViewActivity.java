@@ -37,7 +37,7 @@ import com.sqa.plannet.model.Teacher;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.sqa.plannet.activity.overview.OverviewMainActivity.myDatabase;
+import static com.sqa.plannet.activity.home.HomeActivity.myDatabase;
 
 public class TeacherViewActivity extends AppCompatActivity {
     private AppBarLayout appBarLayout;

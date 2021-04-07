@@ -1,6 +1,8 @@
 package com.sqa.plannet.activity.todo;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
@@ -25,6 +27,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.sqa.plannet.R;
+import com.sqa.plannet.activity.home.HomeActivity;
 import com.sqa.plannet.activity.overview.OverviewMainActivity;
 
 import java.text.SimpleDateFormat;
@@ -197,7 +200,6 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
         else
             important = 0;
 
-
         if (TextUtils.isEmpty(type)) {
             tvType.setError("Please choose the type");
         } else if(TextUtils.isEmpty(does)) {
@@ -218,7 +220,19 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
             contentValues.put("note", note);
             contentValues.put("remind", remind);
             contentValues.put("important", important);
-            OverviewMainActivity.myDatabase.insertTask(TodoMainActivity.TABLE_TASK, null, contentValues);
+//            if(remind == 1){
+//                Intent it = new Intent(this, AlarmReceiver.class);
+//               // it.putExtra("notificationId", id);
+//                it.putExtra("title", does);
+//                PendingIntent alarmIntent = PendingIntent.getBroadcast(this, 0, it, PendingIntent.FLAG_CANCEL_CURRENT);
+//                AlarmManager alarm = (AlarmManager) getSystemService(ALARM_SERVICE);
+//                long alarmStartTime = Long.parseLong(time);
+//                alarm.set(AlarmManager.RTC_WAKEUP, alarmStartTime, alarmIntent);
+//                Toast.makeText(this, "Done!", Toast.LENGTH_SHORT).show();
+//            }else{
+//                Toast.makeText(this, "Don't remind me about this.", Toast.LENGTH_SHORT).show();
+//            }
+            HomeActivity.myDatabase.insertTask(TodoMainActivity.TABLE_TASK, null, contentValues);
             Intent intent = new Intent(CreateActivity.this, TodoMainActivity.class);
             startActivity(intent);
         }
