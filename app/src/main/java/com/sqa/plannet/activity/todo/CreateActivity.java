@@ -25,6 +25,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.sqa.plannet.R;
+import com.sqa.plannet.activity.overview.OverviewMainActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -217,7 +218,7 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
             contentValues.put("note", note);
             contentValues.put("remind", remind);
             contentValues.put("important", important);
-            TodoMainActivity.myDatabase.insertTask(TodoMainActivity.TABLE_NAME, null, contentValues);
+            OverviewMainActivity.myDatabase.insertTask(TodoMainActivity.TABLE_TASK, null, contentValues);
             Intent intent = new Intent(CreateActivity.this, TodoMainActivity.class);
             startActivity(intent);
         }

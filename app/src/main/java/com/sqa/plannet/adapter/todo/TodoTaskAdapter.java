@@ -29,9 +29,8 @@ import com.sqa.plannet.model.Task;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.sqa.plannet.activity.todo.TodoMainActivity.TABLE_NAME;
+import static com.sqa.plannet.activity.overview.OverviewMainActivity.myDatabase;
 import static com.sqa.plannet.activity.todo.TodoMainActivity.getAllTask;
-import static com.sqa.plannet.activity.todo.TodoMainActivity.myDatabase;
 
 public class TodoTaskAdapter extends BaseAdapter {
     Context context;
@@ -124,7 +123,7 @@ public class TodoTaskAdapter extends BaseAdapter {
                 Task task = list.get(position);
                 int id = task.getId();
                 list.remove(position);
-                String delete =  "DELETE FROM " + TABLE_NAME + " WHERE id = " + task.getId();
+                String delete =  "DELETE FROM sessions WHERE id = " + task.getId();
                 myDatabase.excuteSQL(delete);
 
                 notifyDataSetChanged();

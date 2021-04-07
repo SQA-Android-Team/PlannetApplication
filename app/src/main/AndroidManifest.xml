@@ -23,10 +23,6 @@
 
         <activity android:name=".activity.subject.SubjectEditActivity" />
         <activity android:name=".activity.subject.SubjectViewActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity android:name=".activity.teacher.TeacherCreateActivity" />
@@ -35,10 +31,6 @@
 
         <activity android:name=".activity.teacher.TeacherEditActivity" />
         <activity android:name=".activity.teacher.TeacherViewActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".activity.calendar.CalendarViewActivity"></activity>
 
@@ -50,10 +42,6 @@
 
         </activity>
         <activity android:name=".activity.settings.SettingsMenuActivity">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
         </activity>
 
 
@@ -64,10 +52,7 @@
         <activity android:name=".activity.todo.DetailActivity"></activity>
         <activity android:name=".activity.todo.CreateActivity"></activity>
         <activity android:name=".activity.todo.TodoMainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".activity.todo.UpdateActivity"></activity>
     </application>

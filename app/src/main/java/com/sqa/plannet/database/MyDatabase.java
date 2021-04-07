@@ -58,16 +58,8 @@ Context context;
             Toast.makeText(context, "Successfull", Toast.LENGTH_SHORT).show();
         }
     }
-//    public int updateTask(String title, ContentValues values, String whereClause, String[] whereArgs){
-//        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-//        return sqLiteDatabase.update(table, values, whereClause, whereArgs);
-//    }
 
 
-    public int deleteTask(String table, String whereClause, String[] whereArgs){
-        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        return sqLiteDatabase.delete(table, whereClause, whereArgs);
-    }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

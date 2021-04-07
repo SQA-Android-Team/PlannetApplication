@@ -33,10 +33,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import static com.sqa.plannet.activity.todo.TodoMainActivity.TABLE_NAME;
 import static com.sqa.plannet.activity.todo.TodoMainActivity.getAllTask;
-import static com.sqa.plannet.activity.todo.TodoMainActivity.myDatabase;
-
 
 public class CalendarViewActivity extends AppCompatActivity {
     private AppBarLayout appBarLayout;

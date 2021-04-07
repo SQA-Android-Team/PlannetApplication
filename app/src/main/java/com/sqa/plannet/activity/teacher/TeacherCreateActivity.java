@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.sqa.plannet.R;
+import com.sqa.plannet.activity.overview.OverviewMainActivity;
 import com.sqa.plannet.activity.subject.SubjectViewActivity;
 import com.sqa.plannet.model.Teacher;
 
@@ -31,11 +32,7 @@ public class TeacherCreateActivity extends AppCompatActivity implements View.OnC
         initUI();
         backBtn.setOnClickListener(this);
         addBtn.setOnClickListener(this);
-
-
-
-
-    }
+ }
 
 
     /**
@@ -74,7 +71,7 @@ public class TeacherCreateActivity extends AppCompatActivity implements View.OnC
                 contentValues.put("phone", teacherPhone);
                 contentValues.put("email", teacherEmail);
 
-                TeacherViewActivity.myDatabase.insertTask(TeacherViewActivity.TABLE_NAME, null, contentValues);
+                OverviewMainActivity.myDatabase.insertTask(TeacherViewActivity.TABLE_TEACHER, null, contentValues);
 
                 Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(TeacherCreateActivity.this, SubjectViewActivity.class);
