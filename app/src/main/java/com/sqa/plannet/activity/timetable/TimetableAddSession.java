@@ -34,10 +34,9 @@ public class TimetableAddSession extends AppCompatActivity implements AdapterVie
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
-    private Spinner spDateOfWeekPicker, sessionNamePicker;
+    private Spinner spDateOfWeekPicker;
     private ImageButton btnBack;
     private EditText edtSessionName,edtSessionDesc, edtLocation;
-    ArrayAdapter<String> spinnerArrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,12 +49,6 @@ public class TimetableAddSession extends AppCompatActivity implements AdapterVie
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Add Session");
         drawerLayout.bringToFront();
-
-
-        ArrayAdapter<CharSequence> adapterName = ArrayAdapter.createFromResource(this, R.array.subjectName, android.R.layout.simple_spinner_item);
-        adapterName.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sessionNamePicker.setAdapter(adapterName);
-        sessionNamePicker.setOnItemSelectedListener(this);
 
         // date of week picker
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.dateOfWeek, android.R.layout.simple_spinner_item);
@@ -86,7 +79,7 @@ public class TimetableAddSession extends AppCompatActivity implements AdapterVie
         drawerLayout = findViewById(R.id.addClassViewDrawer);
         navigationView = findViewById(R.id.navView);
         edtSessionDesc = findViewById(R.id.edtSessionDesc);
-        sessionNamePicker = findViewById(R.id.sessionNamePicker);
+        edtSessionName = findViewById(R.id.edtSessionName);
         txtStartTimePicker = findViewById(R.id.txtStartTimePicker);
         txtEndTimePicker = findViewById(R.id.txtEndTimePicker);
         btnBack = findViewById(R.id.btnBack);
@@ -187,14 +180,17 @@ public class TimetableAddSession extends AppCompatActivity implements AdapterVie
     }
 
     public void createSession(View view) {
-        String name = sessionNamePicker.getSelectedItem().toString();
+        String name = edtSessionName.getText().toString();
         String des = edtSessionDesc.getText().toString();
         String sessionLocation = edtLocation.getText().toString();
         String dateOfWeek = spDateOfWeekPicker.getSelectedItem().toString();
         String startTime = txtStartTimePicker.getText().toString();
         String endTime = txtEndTimePicker.getText().toString();
 
-         if(TextUtils.isEmpty(des)) {
+        if(TextUtils.isEmpty(name)){
+            edtSessionName.setError("Please enter the session name");
+        }
+         else if(TextUtils.isEmpty(des)) {
             edtSessionDesc.setError("Please enter the description");
         } else if(TextUtils.isEmpty(sessionLocation)) {
             edtLocation.setError("Please enter the location");

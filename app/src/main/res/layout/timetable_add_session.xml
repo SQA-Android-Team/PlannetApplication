@@ -142,13 +142,13 @@
                             android:paddingRight="20dp"
                             android:src="@drawable/icon_class_name" />
 
-                        <Spinner
-                            android:id="@+id/sessionNamePicker"
+                        <EditText
+                            android:id="@+id/edtSessionName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/pt_sans_caption"
-                            android:textColor="@color/black"
-                            android:textSize="12sp"/>
+                            android:hint="Add a new class name"
+                            android:textSize="14sp" />
 
                     </LinearLayout>
 
