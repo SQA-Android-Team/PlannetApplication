@@ -5,8 +5,6 @@ import java.lang.String;
 
 public class Session implements Serializable {
     private int sessionID;
-    private int timetableID;
-    private int subjectID;
     private String sessionTitle;
     private String startTime;
     private String endTime;
@@ -18,10 +16,8 @@ public class Session implements Serializable {
     public Session() {
     }
 
-    public Session(int sessionID, int timetableID, int subjectID, String sessionTitle, String startTime, String endTime, String weekDay, String location, String type, String color) {
+    public Session(int sessionID, String sessionTitle, String startTime, String endTime, String weekDay, String location, String type, String color) {
         this.sessionID = sessionID;
-        this.timetableID = timetableID;
-        this.subjectID = subjectID;
         this.sessionTitle = sessionTitle;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -31,9 +27,7 @@ public class Session implements Serializable {
         this.color = color;
     }
 
-    public Session(int timetableID, int subjectID, String sessionTitle, String startTime, String endTime, String weekDay, String location, String type, String color) {
-        this.timetableID = timetableID;
-        this.subjectID = subjectID;
+    public Session(String sessionTitle, String startTime, String endTime, String weekDay, String location, String type, String color) {
         this.sessionTitle = sessionTitle;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -49,22 +43,6 @@ public class Session implements Serializable {
 
     public void setSessionID(int sessionID) {
         this.sessionID = sessionID;
-    }
-
-    public int getTimetableID() {
-        return timetableID;
-    }
-
-    public void setTimetableID(int timetableID) {
-        this.timetableID = timetableID;
-    }
-
-    public int getSubjectID() {
-        return subjectID;
-    }
-
-    public void setSubjectID(int subjectID) {
-        this.subjectID = subjectID;
     }
 
     public String getSessionTitle() {

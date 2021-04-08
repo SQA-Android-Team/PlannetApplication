@@ -75,4 +75,18 @@
         <item>C</item>
     </string-array>
 
+    <string-array name="subjectName">
+        <item>Select name of session</item>
+        <item>SQA</item>
+        <item>MPR</item>
+        <item>SE2</item>
+        <item>PR1</item>
+        <item>HCI</item>
+        <item>RMC</item>
+        <item>CGR</item>
+        <item>BDM</item>
+        <item>SE1</item>
+        <item>IWS</item>
+    </string-array>
+
 </resources>
