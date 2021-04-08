@@ -87,6 +87,7 @@
                     android:backgroundTint="#fff"
                     android:ems="10"
                     android:hint="Add a name"
+                    android:text="Mr Quan"
                     android:inputType="textPersonName"
                     android:textColorHint="#676767"
                     android:textSize="18sp" />
@@ -122,6 +123,7 @@
                     android:layout_weight="1"
                     android:backgroundTint="#fff"
                     android:ems="10"
+                    android:text="0132546565"
                     android:hint="Phone number"
                     android:inputType="number"
                     android:padding="10dp"
@@ -161,6 +163,7 @@
                     android:layout_weight="1"
                     android:backgroundTint="#fff"
                     android:ems="10"
+                    android:text="quandd@s.hanu.edu.vn"
                     android:hint="Email address"
                     android:inputType="textPersonName"
                     android:textColorHint="#FF676767"

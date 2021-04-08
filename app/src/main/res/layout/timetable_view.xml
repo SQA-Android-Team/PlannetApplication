@@ -7,7 +7,8 @@
     tools:openDrawer="start"
     android:id="@+id/timetableViewDrawer"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".activity.timetable.TimetableViewActivity">
+    tools:context=".activity.timetable.TimetableViewActivity"
+    android:background="#F8F8F8">
 
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
