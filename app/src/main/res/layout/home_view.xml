@@ -72,7 +72,7 @@
                 android:drawableTop="@drawable/icon_overview"
                 android:fontFamily="@font/pt_sans_caption_bold"
                 android:paddingTop="18dp"
-                android:onClick="btnChooseActivity"
+
                 android:paddingBottom="8dp"
                 android:text="@string/overview"
                 android:textAllCaps="false"
@@ -89,7 +89,7 @@
                 android:layout_marginTop="30dp"
                 android:paddingTop="5dp"
                 android:paddingBottom="8dp"
-                android:onClick="btnChooseActivity"
+
                 android:background="@drawable/button_home"
                 android:fontFamily="@font/pt_sans_caption_bold"
                 android:textAllCaps="false"
@@ -113,7 +113,7 @@
                 android:background="@drawable/button_home"
                 android:fontFamily="@font/pt_sans_caption_bold"
                 android:textAllCaps="false"
-                android:onClick="btnChooseActivity"
+
                 android:drawableTop="@drawable/icon_todo"
                 android:paddingTop="10dp"
                 android:textColor="#AC7FFC"
@@ -129,7 +129,7 @@
                 android:background="@drawable/button_home"
                 android:drawableTop="@drawable/icon_timetable"
                 android:fontFamily="@font/pt_sans_caption_bold"
-                android:onClick="btnChooseActivity"
+
                 android:paddingTop="15dp"
                 android:text="@string/btnTimetable"
                 android:textAllCaps="false"
@@ -141,7 +141,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:onClick="exitApp"
+
                 android:src="@drawable/btn_logout"
                 android:layout_marginTop="270dp"
                 android:layout_marginLeft="100dp"/>
