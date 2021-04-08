@@ -164,7 +164,7 @@ public class TimetableAddSession extends AppCompatActivity implements AdapterVie
             public void onClick(View v) {
                 Intent intent = new Intent(TimetableAddSession.this, TimetableViewActivity.class);
                 startActivity(intent);
-
+                createSession(txtFinish);
             }
         });
     }
