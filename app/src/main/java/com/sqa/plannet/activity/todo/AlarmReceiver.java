@@ -11,11 +11,12 @@ import com.sqa.plannet.R;
 
 
 public class AlarmReceiver extends BroadcastReceiver {
+    private static final String CHANNEL_ID  = "SAMPLE_CHANNEL";
 
     @Override
     public void onReceive(Context context, Intent intent) {
         int notificationId = intent.getIntExtra("notificationId", 0);
-         String title = intent.getStringExtra("title");
+        String title = intent.getStringExtra("title");
 
         Intent mainIntent = new Intent(context, CreateActivity.class);
         PendingIntent contentIntent = PendingIntent.getActivity(context, 0, mainIntent, 0);
