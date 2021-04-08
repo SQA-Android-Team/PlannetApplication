@@ -6,6 +6,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +33,7 @@ import java.util.List;
 
 
 import static com.sqa.plannet.activity.home.HomeActivity.myDatabase;
+import static com.sqa.plannet.activity.todo.TodoMainActivity.TABLE_TASK;
 import static com.sqa.plannet.activity.todo.TodoMainActivity.getAllTask;
 
 public class TodoTaskAdapter extends BaseAdapter {
@@ -72,6 +75,16 @@ public class TodoTaskAdapter extends BaseAdapter {
         titledoes.setText(task.getTitle());
         timedoes.setText(task.getTime());
         typedoes.setText(task.getType());
+
+        if (typedoes.equals("Others")){
+            typedoes.setBackgroundColor(Color.parseColor("#FFF1CD99"));
+        }else if (typedoes.equals("Fun")){
+            typedoes.setBackgroundColor((Color.parseColor("#8087CF8A")));
+        }else if (typedoes.equals("School")){
+            typedoes.setBackgroundColor((Color.parseColor("#E6BCD0EA")));
+        }else {
+            typedoes.setBackgroundColor((Color.parseColor("#E6D2EA")));
+        }
 
 
         btnEdit.setOnClickListener(new View.OnClickListener() {
@@ -124,7 +137,7 @@ public class TodoTaskAdapter extends BaseAdapter {
                 Task task = list.get(position);
                 int id = task.getId();
                 list.remove(position);
-                String delete =  "DELETE FROM sessions WHERE id = " + task.getId();
+                String delete =  "DELETE FROM " + TABLE_TASK + " WHERE id = " + task.getId();
                 myDatabase.excuteSQL(delete);
 
                 notifyDataSetChanged();

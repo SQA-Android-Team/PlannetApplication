@@ -20,6 +20,10 @@ import com.sqa.plannet.activity.todo.CreateActivity;
 import com.sqa.plannet.activity.todo.TodoMainActivity;
 import com.sqa.plannet.database.MyDatabase;
 
+import static com.sqa.plannet.activity.teacher.TeacherViewActivity.TABLE_TEACHER;
+import static com.sqa.plannet.activity.timetable.Timetable_SessionDetail.TABLE_SESSION;
+import static com.sqa.plannet.activity.todo.TodoMainActivity.TABLE_TASK;
+
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener{
     private Button btnTimetable, btnTodo, btnOverview, btnCalendar;
     private ImageButton btnExitApp;
@@ -35,7 +39,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         mapping();
 
         myDatabase = new MyDatabase(this, "manage_app.sqlite", null, 1);
-        String table_session = "create table  if not exists sessions(id integer primary key autoincrement NOT NULL, " +
+        String table_session = "create table  if not exists " + TABLE_SESSION +"(id integer primary key autoincrement NOT NULL, " +
                 "title varchar(100) NOT NULL, " +
                 "type varchar(15) NOT NULL, " +
                 "location varchar(50) NOT NULL, " +
@@ -44,7 +48,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 "day varchar(10))";
         myDatabase.excuteSQL(table_session);
 
-        String table_todo = "create table if not exists tasks(id integer primary key autoincrement NOT NULL, " +
+        String table_todo = "create table if not exists " + TABLE_TASK + "(id integer primary key autoincrement NOT NULL, " +
                 "title varchar(100) NOT NULL, " +
                 "type varchar(15) NOT NULL, " +
                 "location varchar(50) NOT NULL, " +
@@ -55,7 +59,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 "important integer)";
         myDatabase.excuteSQL(table_todo);
 
-        String table_teacher = "create table if not exists teachers(teacherID integer primary key autoincrement," +
+        String table_teacher = "create table if not exists " + TABLE_TEACHER + "(teacherID integer primary key autoincrement," +
                 "teacherName varchar(50), " +
                 "phone varchar(15), " +
                 "email varchar(50))";

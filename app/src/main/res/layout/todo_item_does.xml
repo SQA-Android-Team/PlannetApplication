@@ -34,7 +34,7 @@
                 android:textSize="20sp"
                 android:text="SQA: Draw use case"
                 android:textStyle="bold"
-                android:textColor="#111A51"
+                android:textColor="#221E18"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal">

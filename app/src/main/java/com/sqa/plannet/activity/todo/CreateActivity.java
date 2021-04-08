@@ -238,6 +238,7 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
             }else{
                 Toast.makeText(this, "Don't remind me about this.", Toast.LENGTH_SHORT).show();
             }
+
         }
     }
 
