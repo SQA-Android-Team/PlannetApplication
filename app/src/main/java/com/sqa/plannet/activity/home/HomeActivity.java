@@ -21,6 +21,7 @@ import com.sqa.plannet.activity.todo.CreateActivity;
 import com.sqa.plannet.activity.todo.TodoMainActivity;
 import com.sqa.plannet.database.MyDatabase;
 
+import static com.sqa.plannet.activity.subject.SubjectViewActivity.TABLE_SUBJECT;
 import static com.sqa.plannet.activity.teacher.TeacherViewActivity.TABLE_TEACHER;
 import static com.sqa.plannet.activity.timetable.Timetable_SessionDetail.TABLE_SESSION;
 import static com.sqa.plannet.activity.todo.TodoMainActivity.TABLE_TASK;
@@ -67,6 +68,15 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 "phone varchar(15), " +
                 "email varchar(50))";
         myDatabase.excuteSQL(table_teacher);
+
+        String sql_create_table = "create table if not exists " + TABLE_SUBJECT + " (subjectID integer primary key autoincrement, " +
+                "subjectTitle varchar(50), " +
+                "subjectNote varchar(300), " +
+                "subjectCredit integer, " +
+                "attendance float, " +
+                "midterm float, " +
+                "finalTest float)";
+        myDatabase.excuteSQL(sql_create_table);
 
         btnCalendar.setOnClickListener(this);
         btnExitApp.setOnClickListener(this);

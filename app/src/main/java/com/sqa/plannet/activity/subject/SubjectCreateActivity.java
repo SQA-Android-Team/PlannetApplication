@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.sqa.plannet.R;
+import com.sqa.plannet.activity.home.HomeActivity;
 import com.sqa.plannet.model.Subject;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -87,7 +88,7 @@ public class SubjectCreateActivity extends AppCompatActivity {
                 contentValues.put("subjectCredit", subjectCredit);
                 contentValues.put("subjectNote", subjectNote);
 
-                SubjectViewActivity.myDatabase.insertTask(SubjectViewActivity.TABLE_NAME, null, contentValues);
+                HomeActivity.myDatabase.insertTask(SubjectViewActivity.TABLE_SUBJECT, null, contentValues);
 
                 Intent intent = new Intent(SubjectCreateActivity.this, SubjectViewActivity.class);
                 startActivity(intent);
