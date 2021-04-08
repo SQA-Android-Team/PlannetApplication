@@ -75,16 +75,17 @@ public class TodoTaskAdapter extends BaseAdapter {
         titledoes.setText(task.getTitle());
         timedoes.setText(task.getTime());
         typedoes.setText(task.getType());
+        //datedoes.setText(task.getDate());
+        
 
-        if (typedoes.equals("Others")){
-            typedoes.setBackgroundColor(Color.parseColor("#FFF1CD99"));
-        }else if (typedoes.equals("Fun")){
-            typedoes.setBackgroundColor((Color.parseColor("#8087CF8A")));
-        }else if (typedoes.equals("School")){
-            typedoes.setBackgroundColor((Color.parseColor("#E6BCD0EA")));
-        }else {
-            typedoes.setBackgroundColor((Color.parseColor("#E6D2EA")));
+        if (typedoes.equals("Homework")) {
+            typedoes.setBackgroundResource(R.drawable.btn_button_blue);
         }
+//        }else if (typedoes.equals("Fun")){
+//            typedoes.setBackgroundColor((Color.parseColor("#8087CF8A")));
+//        }else if (typedoes.equals("School")){
+//            typedoes.setBackgroundColor((Color.parseColor("#E6BCD0EA")));
+//        }
 
 
         btnEdit.setOnClickListener(new View.OnClickListener() {
@@ -107,7 +108,7 @@ public class TodoTaskAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, DetailActivity.class);
-                context.startActivity(intent);
+                intent.putExtra("TaskEdit", task);
             }
         });
 

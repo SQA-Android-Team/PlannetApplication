@@ -1,6 +1,7 @@
 package com.sqa.plannet.activity.todo;
 
 import android.content.Intent;;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -20,14 +21,13 @@ import java.util.List;
 
 public class DetailActivity extends AppCompatActivity  {
     ImageButton btnBack;
-    TextView titledoes, txtvType, txtvimportant,txtvTime, txtvLocation, txtvNote, txtvRemind, txtvNotRemind ;
+    TextView titledoes, txtvType, txtvimportant,txtvTime, txtvLocation, txtvNote, txtvRemind, txtvDate ;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.to_detail_task);
         mapping();
-
         loadData();
 
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -37,6 +37,12 @@ public class DetailActivity extends AppCompatActivity  {
                 startActivity(intent);
             }
         });
+
+        if(txtvType.equals("Homework")){
+            txtvType.setBackgroundColor(Color.parseColor("#FFF1CD99"));
+        }else if(titledoes.equals("Fun")){
+            txtvType.setBackgroundColor(Color.parseColor("#8087CF8A"));
+        }
     }
 
     private void mapping() {
@@ -48,17 +54,19 @@ public class DetailActivity extends AppCompatActivity  {
         txtvLocation = findViewById(R.id.txtvLocation);
         txtvNote = findViewById(R.id.txtvNote);
         txtvRemind = findViewById(R.id.txtvRemind);
-        txtvNotRemind = findViewById(R.id.txtvNotRemind);
+        txtvDate = findViewById(R.id.txtvDate);
     }
 
     private  void loadData(){
-        List<Task> list = TodoMainActivity.getAllTask();
-        titledoes.setText( "Title: " +list.get(0).getTitle());
-        txtvType.setText("" +list.get(0).getType()+ "");
-        txtvTime.setText("Time: " +list.get(0).getTime()+ "");
-        txtvLocation.setText("Location: " +list.get(0).getLocation()+ "");
-        txtvNote.setText("" +list.get(0).getNote()+ "");
-        txtvimportant.setText("Important: " +list.get(0).getImportant()+ "");
-        txtvRemind.setText("Remind: " +list.get(0).getRemind() + "");
+        Intent intent = getIntent();
+        Task task = (Task) intent.getSerializableExtra("task");
+        titledoes.setText(task.getTitle());
+        txtvType.setText(task.getType());
+        txtvTime.setText(task.getTime());
+        txtvDate.setText(task.getDate());
+        txtvLocation.setText(task.getLocation());
+        txtvNote.setText(task.getNote());
+        txtvimportant.setText(task.getRemind());
+        txtvimportant.setText(task.getImportant());
     }
 }

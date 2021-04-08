@@ -72,6 +72,7 @@
                 </TextView>
 
                 <ImageView
+                    android:id="@+id/remind"
                     android:layout_marginLeft="5dp"
                     android:layout_width="wrap_content"
                     android:background="@drawable/ic_alert"

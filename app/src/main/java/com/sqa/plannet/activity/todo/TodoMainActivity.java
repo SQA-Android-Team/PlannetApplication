@@ -37,6 +37,9 @@ public class TodoMainActivity<TABLE_TASK> extends AppCompatActivity implements V
         mapping();
 
         listTask = getAllTask();
+        Task t = listTask.get(0);
+        String title = t.getTitle();
+        Toast.makeText(this, "ok" + title, Toast.LENGTH_SHORT).show();
         adapter = new TodoTaskAdapter(TodoMainActivity.this, R.layout.calendar_todayevent, listTask);
         lstTask.setAdapter(adapter);
         adapter.notifyDataSetChanged();
@@ -73,7 +76,7 @@ public class TodoMainActivity<TABLE_TASK> extends AppCompatActivity implements V
             String date = cs.getString(5);
             String note = cs.getString(6);
             int remind = cs.getInt(7);
-            int important = cs.getInt(7);
+            int important = cs.getInt(8);
             Task task = new Task(id, title, type, location, time, date, note, remind, important);
             list.add(task);
         }
