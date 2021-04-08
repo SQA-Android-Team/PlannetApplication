@@ -2,6 +2,8 @@ package com.sqa.plannet.activity.todo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -19,7 +21,7 @@ import com.sqa.plannet.model.Task;
 
 import java.util.ArrayList;
 
-import static com.sqa.plannet.activity.overview.OverviewMainActivity.myDatabase;
+import static com.sqa.plannet.activity.home.HomeActivity.myDatabase;
 
 public class TodoMainActivity<TABLE_TASK> extends AppCompatActivity implements View.OnClickListener {
     ListView lstTask;
@@ -35,10 +37,6 @@ public class TodoMainActivity<TABLE_TASK> extends AppCompatActivity implements V
         mapping();
 
         listTask = getAllTask();
-        // String d = "DROP TABLE tasks";
-//         myDatabase.excuteSQL(d);
-         Toast.makeText(this, "create ok", Toast.LENGTH_SHORT).show();
-
         adapter = new TodoTaskAdapter(TodoMainActivity.this, R.layout.calendar_todayevent, listTask);
         lstTask.setAdapter(adapter);
         adapter.notifyDataSetChanged();

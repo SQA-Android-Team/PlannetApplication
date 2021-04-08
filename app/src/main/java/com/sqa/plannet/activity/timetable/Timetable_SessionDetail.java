@@ -26,7 +26,7 @@ import com.sqa.plannet.model.Task;
 
 import java.util.ArrayList;
 
-import static com.sqa.plannet.activity.overview.OverviewMainActivity.myDatabase;
+import static com.sqa.plannet.activity.home.HomeActivity.myDatabase;
 
 
 public class Timetable_SessionDetail extends AppCompatActivity{

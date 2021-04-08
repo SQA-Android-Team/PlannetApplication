@@ -1,6 +1,8 @@
 package com.sqa.plannet.activity.todo;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
@@ -25,6 +27,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.sqa.plannet.R;
+import com.sqa.plannet.activity.home.HomeActivity;
 import com.sqa.plannet.activity.overview.OverviewMainActivity;
 
 import java.text.SimpleDateFormat;
@@ -41,6 +44,8 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
     boolean[] selectedType;
     ArrayList<Integer> typeList = new ArrayList<>();
     String[] typeArray = {"Homework", "Fun", "School", "Others"};
+    private int notificationId = 1;
+     long alramStartTime;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -79,6 +84,7 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
+         alramStartTime = calendar.getTimeInMillis();
         switch (view.getId()) {
             case R.id.tvDate:
                 DatePickerDialog datePickerDialog = new DatePickerDialog(CreateActivity.this,
@@ -174,6 +180,8 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.btnCreate:
                 create(btnCreate);
+                Intent intent = new Intent(CreateActivity.this, TodoMainActivity.class);
+                startActivity(intent);
                 break;
             default:
         }
@@ -197,7 +205,6 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
         else
             important = 0;
 
-
         if (TextUtils.isEmpty(type)) {
             tvType.setError("Please choose the type");
         } else if(TextUtils.isEmpty(does)) {
@@ -218,9 +225,20 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
             contentValues.put("note", note);
             contentValues.put("remind", remind);
             contentValues.put("important", important);
-            OverviewMainActivity.myDatabase.insertTask(TodoMainActivity.TABLE_TASK, null, contentValues);
-            Intent intent = new Intent(CreateActivity.this, TodoMainActivity.class);
-            startActivity(intent);
+            HomeActivity.myDatabase.insertTask(TodoMainActivity.TABLE_TASK, null, contentValues);
+            if(remind == 1){
+                Intent it = new Intent(this, AlarmReceiver.class);
+                it.putExtra("notificationId", notificationId);
+                it.putExtra("title", does);
+                PendingIntent alarmIntent = PendingIntent.getBroadcast(this, 0, it, PendingIntent.FLAG_CANCEL_CURRENT);
+                AlarmManager alarm = (AlarmManager) getSystemService(ALARM_SERVICE);
+                alarm.set(AlarmManager.RTC_WAKEUP, alramStartTime, alarmIntent);
+
+                Toast.makeText(this, "Remind me about this!", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(this, "Don't remind me about this.", Toast.LENGTH_SHORT).show();
+            }
+
         }
     }
 

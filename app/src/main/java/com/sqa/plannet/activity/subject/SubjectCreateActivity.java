@@ -29,16 +29,9 @@ public class SubjectCreateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.subject_create);
 
-
         initUI();
         onBackBtnClick();
         onAddBtnClick();
-
-
-
-
-
-
     }
 
     private void initUI(){

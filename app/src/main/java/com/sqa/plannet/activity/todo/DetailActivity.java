@@ -37,7 +37,6 @@ public class DetailActivity extends AppCompatActivity  {
                 startActivity(intent);
             }
         });
-
     }
 
     private void mapping() {
@@ -61,6 +60,5 @@ public class DetailActivity extends AppCompatActivity  {
         txtvNote.setText("" +list.get(0).getNote()+ "");
         txtvimportant.setText("Important: " +list.get(0).getImportant()+ "");
         txtvRemind.setText("Remind: " +list.get(0).getRemind() + "");
-
     }
 }
