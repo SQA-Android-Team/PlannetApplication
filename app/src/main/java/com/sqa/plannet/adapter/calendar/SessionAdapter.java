@@ -153,14 +153,15 @@ public class SessionAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        convertView = inflater.inflate(R.layout.calendar_todayevent, null);
+        LayoutInflater iflat = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+
         TextView txtTitle = convertView.findViewById(R.id.txtTitle);
         TextView txtType = convertView.findViewById(R.id.txtType);
         TextView txtStartTime = convertView.findViewById(R.id.txtStartTime);
         TextView txtLocation = convertView.findViewById(R.id.txtLocation);
         TextView txtDay = convertView.findViewById(R.id.txtDay);
-        LinearLayout Session = convertView.findViewById(R.id.todayEvent);
+        LinearLayout Session = convertView.findViewById(R.id.Session);
 
         Session session = list.get(position);
         txtStartTime.setText(session.getStartTime());

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,14 +40,16 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         mapping();
 
         myDatabase = new MyDatabase(this, "manage_app.sqlite", null, 1);
-        String table_session = "create table  if not exists " + TABLE_SESSION +"(id integer primary key autoincrement NOT NULL, " +
-                "title varchar(100) NOT NULL, " +
-                "type varchar(15) NOT NULL, " +
-                "location varchar(50) NOT NULL, " +
-                "timeStart varchar(20) NOT NULL, " +
-                "timeEnd varchar(20), " +
-                "day varchar(10))";
+        String table_session = "create table  if not exists " + TABLE_SESSION +"(sessionID integer primary key autoincrement NOT NULL, " +
+                "sessionTitle varchar(100) NOT NULL, " +
+                "startTime varchar(50) NOT NULL, " +
+                "endTime varchar(50) NOT NULL, " +
+                "weekDay varchar(10) NOT NULL, " +
+                "location varchar(20), " +
+                "type varchar(20), "+
+                "color varchar(10))";
         myDatabase.excuteSQL(table_session);
+
 
         String table_todo = "create table if not exists " + TABLE_TASK + "(id integer primary key autoincrement NOT NULL, " +
                 "title varchar(100) NOT NULL, " +

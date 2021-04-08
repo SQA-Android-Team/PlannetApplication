@@ -4,24 +4,22 @@ import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.util.Log;
+
 import android.view.View;
 import android.widget.CalendarView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.sqa.plannet.R;
-import com.sqa.plannet.activity.calendar.CalendarViewActivity;
-import com.sqa.plannet.activity.todo.TodoMainActivity;
+
 import com.sqa.plannet.adapter.calendar.SessionAdapter;
-import com.sqa.plannet.adapter.calendar.TaskAdapter;
-import com.sqa.plannet.database.MyDatabase;
+
 import com.sqa.plannet.model.Session;
 import com.sqa.plannet.model.Task;
 
@@ -55,31 +53,28 @@ public class Timetable_SessionDetail extends AppCompatActivity{
 
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.timetable_session_detail);
 
-        listSession = getAllSession();
-        adapter = new SessionAdapter(Timetable_SessionDetail.this, R.layout.calendar_view, listSession);
-        rvReminders.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+//        listSession = getAllSession();
+//        adapter = new SessionAdapter(Timetable_SessionDetail.this, R.layout.calendar_view, listSession);
+//        rvReminders.setAdapter(adapter);
+//        adapter.notifyDataSetChanged();
 //
 //        txtSessionNameValue = txtSessionNameValue.findViewById(R.id.txtSessionNameValue);
 //
 //        txtSessionNameValue.setText("abc");
-
-        try {
-            initUI();
-            onBackBtnClick();
-            onDeleteBtn();
+//
+//            initUI();
+//            onBackBtnClick();
+//            onDeleteBtn();
             // TODO: fix the line below
 //        setText(null);
 
-            onBackBtnClick();
-            onDeleteBtn();
-        } catch (Exception e) {
-            Log.i(e.getMessage(), "onCreate: ");
-        }
+//            onBackBtnClick();
+//            onDeleteBtn();
+            loadData();
 
 
 
@@ -101,6 +96,7 @@ public class Timetable_SessionDetail extends AppCompatActivity{
         txtSessionDayOfWeekValue = findViewById(R.id.txtSessionDayOfWeekValue);
 
     }
+
     /**
      * TODO:  add event listener for backBtn
      */
@@ -163,13 +159,13 @@ public class Timetable_SessionDetail extends AppCompatActivity{
         return list;
     }
     private  void loadData(){
-//        List<Task> list = TodoMainActivity.getAllTask();
-//        titledoes.setText( "Title: " +list.get(0).getTitle());
-//        txtvType.setText("" +list.get(0).getType()+ "");
-//        txtvTime.setText("Time: " +list.get(0).getTime()+ "");
-//        txtvLocation.setText("Location: " +list.get(0).getLocation()+ "");
-//        txtvNote.setText("" +list.get(0).getNote()+ "");
-//        txtvimportant.setText("Important: " +list.get(0).getImportant()+ "");
-//        txtvRemind.setText("Remind: " +list.get(0).getRemind() + "");
+        List<Session> list = TimetableViewActivity.getAllSession();
+        txtSessionNameValue.setText( "Title: " +list.get(0).getSessionTitle());
+        txtSessionDescriptionValue.setText("" +list.get(0).getType()+ "");
+        txtSessionStartTimeValue.setText("Time: " +list.get(0).getStartTime()+ "");
+        txtSessionLocationValue.setText("Location: " +list.get(0).getLocation()+ "");
+        txtSessionEndTimeValue.setText("" +list.get(0).getEndTime()+ "");
+        txtSessionColorValue.setText("Important: " +list.get(0).getColor()+ "");
+        txtSessionDayOfWeekValue.setText("Remind: " +list.get(0).getWeekDay() + "");
     }
 }

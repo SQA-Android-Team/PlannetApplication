@@ -20,6 +20,7 @@ import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.sqa.plannet.R;
+import com.sqa.plannet.activity.timetable.TimetableViewActivity;
 import com.sqa.plannet.activity.todo.TodoMainActivity;
 import com.sqa.plannet.adapter.calendar.SessionAdapter;
 import com.sqa.plannet.adapter.calendar.TaskAdapter;
@@ -34,8 +35,9 @@ import java.util.Calendar;
 import java.util.List;
 
 import static com.sqa.plannet.activity.home.HomeActivity.myDatabase;
+import static com.sqa.plannet.activity.timetable.TimetableViewActivity.getAllSession;
 import static com.sqa.plannet.activity.todo.TodoMainActivity.getAllTask;
-import static com.sqa.plannet.activity.todo.TodoMainActivity.getTaskByDate;
+//import static com.sqa.plannet.activity.todo.TodoMainActivity.getTaskByDate;
 
 public class CalendarViewActivity extends AppCompatActivity {
     private static final String TABLE_TASK = "tasks";
@@ -92,11 +94,17 @@ public class CalendarViewActivity extends AppCompatActivity {
                 selectedDate = dayOfMonth +"/" +( month +1) +"/"+ year;
             }
         });
-
-        listTask = getTaskByDate();
+        listTask = getAllTask();
+//        listTask = getTaskByDate();
         taskAdapter = new TaskAdapter(CalendarViewActivity.this, R.layout.calendar_view, listTask);
         rvTodayEvent.setAdapter(taskAdapter);
         taskAdapter.notifyDataSetChanged();
+
+        listSession = getAllSession();
+//        listTask = getTaskByDate();
+        sessionAdapter = new SessionAdapter(CalendarViewActivity.this, R.layout.calendar_view, listSession);
+        rvReminders.setAdapter(sessionAdapter);
+        sessionAdapter.notifyDataSetChanged();
 
 
     }
@@ -119,17 +127,17 @@ public class CalendarViewActivity extends AppCompatActivity {
 
     }
 
-    private void compareDate(){
-        String sql_select_task = "SELECT * FROM " + TABLE_TASK ;
-        Cursor cs = myDatabase.rawQuery(sql_select_task);
-        String taskDate = cs.getString(5);
-        String sql_select_session = "SELECT * FROM " + TABLE_SESSION ;
-        Cursor cu = myDatabase.rawQuery(sql_select_session);
-        String sessionDate = cs.getString(4);
-        if(selectedDate.equals(taskDate) || selectedDate.equals(sessionDate)){
-            // Todo
-        }
-    }
+//    private void compareDate(){
+//        String sql_select_task = "SELECT * FROM " + TABLE_TASK ;
+//        Cursor cs = myDatabase.rawQuery(sql_select_task);
+//        String taskDate = cs.getString(5);
+//        String sql_select_session = "SELECT * FROM " + TABLE_SESSION ;
+//        Cursor cu = myDatabase.rawQuery(sql_select_session);
+//        String sessionDate = cs.getString(4);
+//        if(selectedDate.equals(taskDate) || selectedDate.equals(sessionDate)){
+//            // Todo
+//        }
+//    }
 
 
 

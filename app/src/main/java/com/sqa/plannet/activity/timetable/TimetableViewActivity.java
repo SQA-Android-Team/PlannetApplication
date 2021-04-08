@@ -1,6 +1,7 @@
 package com.sqa.plannet.activity.timetable;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,6 +20,12 @@ import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.navigation.NavigationView;
 import com.sqa.plannet.R;
+import com.sqa.plannet.model.Session;
+import com.sqa.plannet.model.Task;
+
+import java.util.ArrayList;
+
+import static com.sqa.plannet.activity.home.HomeActivity.myDatabase;
 
 public class TimetableViewActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, EditSemesterNameDialog.EditSemesterNameListener {
     private ImageButton btnAddClass;
@@ -30,7 +37,8 @@ public class TimetableViewActivity extends AppCompatActivity implements AdapterV
     private TextView txtSemesterName;
     private RelativeLayout relMon, relTue, relWed, relThu, relFri, relSat, relSun;
     private ImageButton btnEditSemesterName;
-
+    public static String TABLE_SESION = "sessions";
+    ArrayList<Session> listSesion = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +54,10 @@ public class TimetableViewActivity extends AppCompatActivity implements AdapterV
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Timetable");
         drawerLayout.bringToFront();
+        listSesion = getAllSession();
+        Toast.makeText(this, "ok "+ listSesion, Toast.LENGTH_SHORT).show();
+
+
 
 //        // get the reference of RelativeLayout
 //        relMon = findViewById(R.id.relMon);
@@ -146,5 +158,25 @@ public class TimetableViewActivity extends AppCompatActivity implements AdapterV
     public void applyText(String semesterName) {
         txtSemesterName.setText(semesterName);
 
+    }
+
+    public static ArrayList<Session> getAllSession() {
+        ArrayList<Session> list = new ArrayList<>();
+        String sql_select = "SELECT * FROM " + TABLE_SESION ;
+        Cursor cs = myDatabase.rawQuery(sql_select);
+        list.clear();
+        while (cs.moveToNext()) {
+            int sessionID = cs.getInt(0);
+            String sessionTitle = cs.getString(1);
+            String startTime = cs.getString(2);
+            String endTime = cs.getString(3);
+            String weekDay = cs.getString(4);
+            String location = cs.getString(5);
+            String type = cs.getString(6);
+            String color = cs.getString(7);
+            Session session = new Session(sessionID, sessionTitle, startTime, endTime, weekDay, location, type, color);
+            list.add(session);
+        }
+        return list;
     }
 }
