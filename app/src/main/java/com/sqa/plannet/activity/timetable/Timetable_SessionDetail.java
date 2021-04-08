@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.sqa.plannet.R;
 import com.sqa.plannet.activity.calendar.CalendarViewActivity;
+import com.sqa.plannet.activity.todo.TodoMainActivity;
 import com.sqa.plannet.adapter.calendar.SessionAdapter;
 import com.sqa.plannet.adapter.calendar.TaskAdapter;
 import com.sqa.plannet.database.MyDatabase;
@@ -25,6 +26,7 @@ import com.sqa.plannet.model.Session;
 import com.sqa.plannet.model.Task;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.sqa.plannet.activity.home.HomeActivity.myDatabase;
 
@@ -68,6 +70,8 @@ public class Timetable_SessionDetail extends AppCompatActivity{
 
         try {
             initUI();
+            onBackBtnClick();
+            onDeleteBtn();
             // TODO: fix the line below
 //        setText(null);
 
@@ -157,5 +161,15 @@ public class Timetable_SessionDetail extends AppCompatActivity{
 
         }
         return list;
+    }
+    private  void loadData(){
+//        List<Task> list = TodoMainActivity.getAllTask();
+//        titledoes.setText( "Title: " +list.get(0).getTitle());
+//        txtvType.setText("" +list.get(0).getType()+ "");
+//        txtvTime.setText("Time: " +list.get(0).getTime()+ "");
+//        txtvLocation.setText("Location: " +list.get(0).getLocation()+ "");
+//        txtvNote.setText("" +list.get(0).getNote()+ "");
+//        txtvimportant.setText("Important: " +list.get(0).getImportant()+ "");
+//        txtvRemind.setText("Remind: " +list.get(0).getRemind() + "");
     }
 }

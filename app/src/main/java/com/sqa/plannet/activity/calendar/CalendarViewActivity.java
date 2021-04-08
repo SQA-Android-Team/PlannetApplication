@@ -33,9 +33,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import static com.sqa.plannet.activity.home.HomeActivity.myDatabase;
 import static com.sqa.plannet.activity.todo.TodoMainActivity.getAllTask;
+import static com.sqa.plannet.activity.todo.TodoMainActivity.getTaskByDate;
 
 public class CalendarViewActivity extends AppCompatActivity {
+    private static final String TABLE_TASK = "tasks";
+    private static final String TABLE_SESSION ="sessions" ;
     private AppBarLayout appBarLayout;
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private Toolbar toolbar;
@@ -46,13 +50,15 @@ public class CalendarViewActivity extends AppCompatActivity {
     private NavigationView navigationView;
     public ListView rvTodayEvent;
     private ListView rvReminders;
-    public String selectedDate;
+    public static String selectedDate;
 
 
     private CalendarView calendarView;
 
     ArrayList<Task> listTask = new ArrayList<>();
-    TaskAdapter adapter;
+    ArrayList<Session> listSession = new ArrayList<>();
+    SessionAdapter sessionAdapter;
+    TaskAdapter taskAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,10 +93,12 @@ public class CalendarViewActivity extends AppCompatActivity {
             }
         });
 
-        listTask = getAllTask();
-        adapter = new TaskAdapter(CalendarViewActivity.this, R.layout.calendar_view, listTask);
-        rvTodayEvent.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+        listTask = getTaskByDate();
+        taskAdapter = new TaskAdapter(CalendarViewActivity.this, R.layout.calendar_view, listTask);
+        rvTodayEvent.setAdapter(taskAdapter);
+        taskAdapter.notifyDataSetChanged();
+
+
     }
 
     private void initUI(){
@@ -111,7 +119,17 @@ public class CalendarViewActivity extends AppCompatActivity {
 
     }
 
-
+    private void compareDate(){
+        String sql_select_task = "SELECT * FROM " + TABLE_TASK ;
+        Cursor cs = myDatabase.rawQuery(sql_select_task);
+        String taskDate = cs.getString(5);
+        String sql_select_session = "SELECT * FROM " + TABLE_SESSION ;
+        Cursor cu = myDatabase.rawQuery(sql_select_session);
+        String sessionDate = cs.getString(4);
+        if(selectedDate.equals(taskDate) || selectedDate.equals(sessionDate)){
+            // Todo
+        }
+    }
 
 
 
