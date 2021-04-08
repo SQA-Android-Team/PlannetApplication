@@ -10,7 +10,7 @@
 
 
     <TextView
-        android:id="@+id/date"
+        android:id="@+id/event_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -31,8 +31,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="D.D.Quan"
-        app:layout_constraintStart_toStartOf="@+id/date"
-        app:layout_constraintTop_toBottomOf="@+id/date" />
+        app:layout_constraintStart_toStartOf="@+id/event_date"
+        app:layout_constraintTop_toBottomOf="@+id/event_date" />
 
     <TextView
         android:id="@+id/room"

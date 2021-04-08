@@ -40,6 +40,11 @@
 
         <activity android:name=".activity.overview.OverviewMainActivity">
 
+
+        </activity>
+
+        <activity android:name=".activity.overview.DetailsActivity">
+
         </activity>
         <activity android:name=".activity.settings.SettingsMenuActivity">
         </activity>

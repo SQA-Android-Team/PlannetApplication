@@ -148,7 +148,6 @@ public class SubjectViewActivity extends AppCompatActivity implements View.OnCli
             float attendance = cs.getFloat(4);
             float midterm = cs.getFloat(5);
             float finalTest = cs.getFloat(6);
-            String objective = cs.getString(7);
             Subject subject = new Subject(subjectID, subjectTitle, subjectNote, subjectCredit, attendance, midterm, finalTest);
             list.add(subject);
         }
