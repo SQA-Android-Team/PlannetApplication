@@ -69,7 +69,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 "email varchar(50))";
         myDatabase.excuteSQL(table_teacher);
 
-        String sql_create_table = "create table if not exists " + TABLE_SUBJECT + " (subjectID integer primary key autoincrement, " +
+        String sql_create_table = "create table if not exists " + TABLE_SUBJECT + "(subjectID integer primary key autoincrement, " +
                 "subjectTitle varchar(50), " +
                 "subjectNote varchar(300), " +
                 "subjectCredit integer, " +
