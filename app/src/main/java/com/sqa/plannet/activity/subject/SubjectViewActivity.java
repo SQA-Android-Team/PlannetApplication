@@ -53,9 +53,7 @@ public class SubjectViewActivity extends AppCompatActivity implements View.OnCli
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
 
-
-    public static MyDatabase myDatabase;
-    public static String TABLE_NAME = "subject";
+    public static String TABLE_SUBJECT = "subject";
 
 
 
@@ -73,16 +71,6 @@ public class SubjectViewActivity extends AppCompatActivity implements View.OnCli
         addBtn.setOnClickListener(this);
         navigationView.setNavigationItemSelectedListener(this);
 
-
-        myDatabase = new MyDatabase(SubjectViewActivity.this, "manageTask.sqlite", null, 1);
-        String sql_create_table = "create table if not exists subject(subjectID integer primary key autoincrement, " +
-                "subjectTitle varchar(50), " +
-                "subjectNote varchar(300), " +
-                "subjectCredit integer, " +
-                "attendance float, " +
-                "midterm float, " +
-                "finalTest float)";
-        myDatabase.excuteSQL(sql_create_table);
 
         initRecycleView();
 
@@ -149,8 +137,8 @@ public class SubjectViewActivity extends AppCompatActivity implements View.OnCli
     public static List<Subject> getListSubject(){
 
         List<Subject> list = new ArrayList<Subject>();
-        String sql_select = "SELECT * FROM " + TABLE_NAME;
-        Cursor cs = myDatabase.rawQuery(sql_select);
+        String sql_select = "SELECT * FROM " + TABLE_SUBJECT;
+        Cursor cs = HomeActivity.myDatabase.rawQuery(sql_select);
         list.clear();
         while (cs.moveToNext()){
             int subjectID = cs.getInt(0);
@@ -160,7 +148,6 @@ public class SubjectViewActivity extends AppCompatActivity implements View.OnCli
             float attendance = cs.getFloat(4);
             float midterm = cs.getFloat(5);
             float finalTest = cs.getFloat(6);
-            String objective = cs.getString(7);
             Subject subject = new Subject(subjectID, subjectTitle, subjectNote, subjectCredit, attendance, midterm, finalTest);
             list.add(subject);
         }

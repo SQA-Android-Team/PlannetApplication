@@ -21,6 +21,7 @@ import com.sqa.plannet.activity.todo.CreateActivity;
 import com.sqa.plannet.activity.todo.TodoMainActivity;
 import com.sqa.plannet.database.MyDatabase;
 
+import static com.sqa.plannet.activity.subject.SubjectViewActivity.TABLE_SUBJECT;
 import static com.sqa.plannet.activity.teacher.TeacherViewActivity.TABLE_TEACHER;
 import static com.sqa.plannet.activity.timetable.Timetable_SessionDetail.TABLE_SESSION;
 import static com.sqa.plannet.activity.todo.TodoMainActivity.TABLE_TASK;
@@ -40,16 +41,16 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         mapping();
 
         myDatabase = new MyDatabase(this, "manage_app.sqlite", null, 1);
-        String table_session = "create table  if not exists " + TABLE_SESSION +"(sessionID integer primary key autoincrement NOT NULL, " +
-                "sessionTitle varchar(100) NOT NULL, " +
+        String table_session = "create table if not exists " + TABLE_SESSION +"(sessionID integer primary key autoincrement NOT NULL, " +
+                "name varchar(100) NOT NULL, " +
+                "des varchar(20), "+
+                "sessionLocation varchar(20), " +
+                "dateOfWeek varchar(10) NOT NULL, " +
                 "startTime varchar(50) NOT NULL, " +
                 "endTime varchar(50) NOT NULL, " +
-                "weekDay varchar(10) NOT NULL, " +
-                "location varchar(20), " +
-                "type varchar(20), "+
                 "color varchar(10))";
-        myDatabase.excuteSQL(table_session);
 
+        myDatabase.excuteSQL(table_session);
 
         String table_todo = "create table if not exists " + TABLE_TASK + "(id integer primary key autoincrement NOT NULL, " +
                 "title varchar(100) NOT NULL, " +
@@ -67,6 +68,15 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 "phone varchar(15), " +
                 "email varchar(50))";
         myDatabase.excuteSQL(table_teacher);
+
+        String sql_create_table = "create table if not exists " + TABLE_SUBJECT + " (subjectID integer primary key autoincrement, " +
+                "subjectTitle varchar(50), " +
+                "subjectNote varchar(300), " +
+                "subjectCredit integer, " +
+                "attendance float, " +
+                "midterm float, " +
+                "finalTest float)";
+        myDatabase.excuteSQL(sql_create_table);
 
         btnCalendar.setOnClickListener(this);
         btnExitApp.setOnClickListener(this);

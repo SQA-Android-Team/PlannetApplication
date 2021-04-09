@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -34,10 +35,9 @@ public class TimetableAddSession extends AppCompatActivity implements AdapterVie
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
-    private Spinner spDateOfWeekPicker, sessionNamePicker;
+    private Spinner spDateOfWeekPicker;
     private ImageButton btnBack;
     private EditText edtSessionName,edtSessionDesc, edtLocation;
-    ArrayAdapter<String> spinnerArrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,12 +50,6 @@ public class TimetableAddSession extends AppCompatActivity implements AdapterVie
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Add Session");
         drawerLayout.bringToFront();
-
-
-        ArrayAdapter<CharSequence> adapterName = ArrayAdapter.createFromResource(this, R.array.subjectName, android.R.layout.simple_spinner_item);
-        adapterName.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sessionNamePicker.setAdapter(adapterName);
-        sessionNamePicker.setOnItemSelectedListener(this);
 
         // date of week picker
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.dateOfWeek, android.R.layout.simple_spinner_item);
@@ -86,7 +80,7 @@ public class TimetableAddSession extends AppCompatActivity implements AdapterVie
         drawerLayout = findViewById(R.id.addClassViewDrawer);
         navigationView = findViewById(R.id.navView);
         edtSessionDesc = findViewById(R.id.edtSessionDesc);
-        sessionNamePicker = findViewById(R.id.sessionNamePicker);
+        edtSessionName = findViewById(R.id.edtSessionName);
         txtStartTimePicker = findViewById(R.id.txtStartTimePicker);
         txtEndTimePicker = findViewById(R.id.txtEndTimePicker);
         btnBack = findViewById(R.id.btnBack);
@@ -122,7 +116,7 @@ public class TimetableAddSession extends AppCompatActivity implements AdapterVie
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
                 calendar.set(0,0,0, hourOfDay, minute);
-                txtStartTimePicker.setText("Start - " + simpleDateFormat.format(calendar.getTime()));
+                txtStartTimePicker.setText(""+ simpleDateFormat.format(calendar.getTime()));
 
             }
         }, hour,minute, true);
@@ -139,7 +133,7 @@ public class TimetableAddSession extends AppCompatActivity implements AdapterVie
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
                 calendar.set(0,0,0, hourOfDay, minute);
-                txtEndTimePicker.setText("End - " + simpleDateFormat.format(calendar.getTime()));
+                txtEndTimePicker.setText(""+ simpleDateFormat.format(calendar.getTime()));
 
             }
         }, hour,minute, true);
@@ -171,7 +165,7 @@ public class TimetableAddSession extends AppCompatActivity implements AdapterVie
             public void onClick(View v) {
                 Intent intent = new Intent(TimetableAddSession.this, TimetableViewActivity.class);
                 startActivity(intent);
-
+                createSession(txtFinish);
             }
         });
     }
@@ -187,14 +181,17 @@ public class TimetableAddSession extends AppCompatActivity implements AdapterVie
     }
 
     public void createSession(View view) {
-        String name = sessionNamePicker.getSelectedItem().toString();
+        String name = edtSessionName.getText().toString();
         String des = edtSessionDesc.getText().toString();
         String sessionLocation = edtLocation.getText().toString();
         String dateOfWeek = spDateOfWeekPicker.getSelectedItem().toString();
         String startTime = txtStartTimePicker.getText().toString();
         String endTime = txtEndTimePicker.getText().toString();
 
-         if(TextUtils.isEmpty(des)) {
+        if(TextUtils.isEmpty(name)){
+            edtSessionName.setError("Please enter the session name");
+        }
+         else if(TextUtils.isEmpty(des)) {
             edtSessionDesc.setError("Please enter the description");
         } else if(TextUtils.isEmpty(sessionLocation)) {
             edtLocation.setError("Please enter the location");
@@ -203,6 +200,7 @@ public class TimetableAddSession extends AppCompatActivity implements AdapterVie
         }else if(TextUtils.isEmpty(endTime)) {
              txtEndTimePicker.setError("Please pick the end time");
         } else{
+
             ContentValues contentValues = new ContentValues();
             contentValues.put("name", name);
             contentValues.put("des", des);
@@ -210,6 +208,7 @@ public class TimetableAddSession extends AppCompatActivity implements AdapterVie
             contentValues.put("dateOfWeek", dateOfWeek);
             contentValues.put("startTime", startTime);
             contentValues.put("endTime", endTime);
+
             HomeActivity.myDatabase.insertTask(TimetableViewActivity.TABLE_SESION, null, contentValues);
 
         }

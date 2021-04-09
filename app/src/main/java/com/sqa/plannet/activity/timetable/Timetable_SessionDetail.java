@@ -1,6 +1,7 @@
 package com.sqa.plannet.activity.timetable;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -66,14 +67,15 @@ public class Timetable_SessionDetail extends AppCompatActivity{
 //
 //        txtSessionNameValue.setText("abc");
 //
-//            initUI();
+            initUI();
 //            onBackBtnClick();
 //            onDeleteBtn();
             // TODO: fix the line below
 //        setText(null);
 
-//            onBackBtnClick();
-//            onDeleteBtn();
+            onBackBtnClick();
+            onDeleteBtn();
+        onEditBtnClick();
             loadData();
 
 
@@ -105,6 +107,16 @@ public class Timetable_SessionDetail extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+    }
+
+
+    private  void onEditBtnClick(){
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Timetable_SessionDetail.this, Timetable_SessionDetail_Edit.class));
             }
         });
     }
@@ -141,31 +153,31 @@ public class Timetable_SessionDetail extends AppCompatActivity{
             }
         });
     }
-    public ArrayList<Session> getAllSession() {
-        ArrayList<Session> list = new ArrayList<>();
-        String sql_select = "SELECT * FROM " + TABLE_SESSION;
-        Cursor cs = myDatabase.rawQuery(sql_select);
-        list.clear();
-        while (cs.moveToNext()) {
-            int id = cs.getInt(0);
-            String title = cs.getString(1);
-            String type = cs.getString(2);
-            String location = cs.getString(3);
-            String startTime = cs.getString(4);
-            String endTime = cs.getString(5);
-            String dateOfWeek = cs.getString(6);
-
-        }
-        return list;
-    }
+//    public ArrayList<Session> getAllSession() {
+//        ArrayList<Session> list = new ArrayList<>();
+//        String sql_select = "SELECT * FROM " + TABLE_SESSION;
+//        Cursor cs = myDatabase.rawQuery(sql_select);
+//        list.clear();
+//        while (cs.moveToNext()) {
+//            int id = cs.getInt(0);
+//            String title = cs.getString(1);
+//            String type = cs.getString(2);
+//            String location = cs.getString(3);
+//            String startTime = cs.getString(4);
+//            String endTime = cs.getString(5);
+//            String dateOfWeek = cs.getString(6);
+//
+//        }
+//        return list;
+//    }
     private  void loadData(){
         List<Session> list = TimetableViewActivity.getAllSession();
-        txtSessionNameValue.setText( "Title: " +list.get(0).getSessionTitle());
-        txtSessionDescriptionValue.setText("" +list.get(0).getType()+ "");
-        txtSessionStartTimeValue.setText("Time: " +list.get(0).getStartTime()+ "");
-        txtSessionLocationValue.setText("Location: " +list.get(0).getLocation()+ "");
-        txtSessionEndTimeValue.setText("" +list.get(0).getEndTime()+ "");
-        txtSessionColorValue.setText("Important: " +list.get(0).getColor()+ "");
-        txtSessionDayOfWeekValue.setText("Remind: " +list.get(0).getWeekDay() + "");
+        txtSessionNameValue.setText(list.get(0).getSessionTitle()+"");
+        txtSessionDescriptionValue.setText(list.get(0).getType()+ "");
+        txtSessionStartTimeValue.setText(list.get(0).getStartTime()+ "");
+        txtSessionLocationValue.setText(list.get(0).getLocation()+ "");
+        txtSessionEndTimeValue.setText(list.get(0).getEndTime()+ "");
+        txtSessionColorValue.setText(list.get(0).getColor()+ "");
+        txtSessionDayOfWeekValue.setText(list.get(0).getWeekDay() + "");
     }
 }

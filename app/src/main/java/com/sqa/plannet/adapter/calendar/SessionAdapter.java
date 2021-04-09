@@ -109,6 +109,7 @@ package com.sqa.plannet.adapter.calendar;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -153,8 +154,9 @@ public class SessionAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater iflat = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        convertView = inflater.inflate(R.layout.calendar_class, null);
 
         TextView txtTitle = convertView.findViewById(R.id.txtTitle);
         TextView txtType = convertView.findViewById(R.id.txtType);

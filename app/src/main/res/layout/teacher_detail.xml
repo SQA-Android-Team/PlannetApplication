@@ -96,6 +96,7 @@
                     android:textStyle="bold"
                     android:backgroundTint="#fff"
                     android:ems="10"
+                    android:text="Mr Dung"
                     android:hint="Add a name"
                     android:inputType="textPersonName"
                     android:padding="10dp"

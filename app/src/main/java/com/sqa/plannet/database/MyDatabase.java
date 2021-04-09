@@ -40,6 +40,7 @@ Context context;
         return sqLiteDatabase.insert(table, nullColumnHack, values);
     }
 
+
     public  void  updateTask(String row_id, String title, String type, String location, String time, String date, String note, int remind, int important){
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
             ContentValues contentValues = new ContentValues();

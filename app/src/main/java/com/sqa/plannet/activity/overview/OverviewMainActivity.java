@@ -1,5 +1,6 @@
 package com.sqa.plannet.activity.overview;
 
+import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -9,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
@@ -18,14 +18,11 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.sqa.plannet.R;
-import com.sqa.plannet.activity.teacher.TeacherViewActivity;
-import com.sqa.plannet.activity.timetable.Timetable_SessionDetail;
-import com.sqa.plannet.activity.todo.TodoMainActivity;
+import com.sqa.plannet.activity.home.HomeActivity;
 import com.sqa.plannet.adapter.overview.PendingEventAdapter;
 import com.sqa.plannet.adapter.overview.ScheduleAdapter;
-import com.sqa.plannet.database.MyDatabase;
-import com.sqa.plannet.model.PendingEventData;
 import com.sqa.plannet.model.ScheduleData;
+import com.sqa.plannet.model.Task;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,9 +30,13 @@ import java.util.List;
 
 public class OverviewMainActivity extends AppCompatActivity implements OnChartValueSelectedListener {
     private PieChart mChart;
-    RecyclerView recentRecycler, pendingEventRecycler;
+    RecyclerView recentRecycler;
     ScheduleAdapter scheduleAdapter;
     PendingEventAdapter pendingEventAdapter;
+    RecyclerView PendingEvent;
+    ArrayList<Task> eventList;
+
+    public static String TABLE_TASK = "tasks";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,12 +51,22 @@ public class OverviewMainActivity extends AppCompatActivity implements OnChartVa
 
         setRecentRecycler(scheduleDataList);
 
-        List<PendingEventData> pendingEventDataList = new ArrayList<>();
-        pendingEventDataList.add(new PendingEventData("12", "Mar", "IWS Assigment 1"));
-        pendingEventDataList.add(new PendingEventData("13", "Apr", "Midterm SE2"));
-        pendingEventDataList.add(new PendingEventData("14", "May", "Presentation SQA"));
+        PendingEvent= (RecyclerView)findViewById(R.id.event_recycler);
+        PendingEvent.setLayoutManager(new LinearLayoutManager(this));
 
-        pendingEventRecycler(pendingEventDataList);
+        ArrayList<Task> eventList = new ArrayList<>();
+        String sql_select = "SELECT * FROM " + TABLE_TASK ;
+        Cursor cs = HomeActivity.myDatabase.rawQuery(sql_select);
+        eventList.clear();
+        while (cs.moveToNext()) {
+
+            Task ev = new Task(cs.getInt(0),cs.getString(1), cs.getString(2), cs.getString(3),cs.getString(4),cs.getString(5),cs.getString(6),cs.getInt(7),cs.getInt(7));
+            eventList.add(ev);
+
+        }
+        PendingEventAdapter adapter=new PendingEventAdapter(eventList);
+        PendingEvent.setAdapter(adapter);
+
 
         mChart = (PieChart) findViewById(R.id.piechart);
         mChart.setRotationEnabled(true);
@@ -79,15 +90,15 @@ public class OverviewMainActivity extends AppCompatActivity implements OnChartVa
 
     }
 
-    private void pendingEventRecycler(List<PendingEventData> pendingEventDataList) {
-
-        pendingEventRecycler = findViewById(R.id.event_recycler);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
-        pendingEventRecycler.setLayoutManager(layoutManager);
-        pendingEventAdapter = new PendingEventAdapter(this, pendingEventDataList);
-        pendingEventRecycler.setAdapter(pendingEventAdapter);
-
-    }
+//    private void pendingEventRecycler(List<PendingEventData> pendingEventDataList) {
+//
+//        pendingEventRecycler = findViewById(R.id.event_recycler);
+//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
+//        pendingEventRecycler.setLayoutManager(layoutManager);
+//        pendingEventAdapter = new PendingEventAdapter(this, pendingEventDataList);
+//        pendingEventRecycler.setAdapter(pendingEventAdapter);
+//
+//    }
 
     @Override
     public void onValueSelected(Entry e, Highlight h) {

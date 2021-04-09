@@ -117,7 +117,7 @@
                             <ListView
                                 android:id="@+id/rvTodayEvent"
                                 android:layout_width="match_parent"
-                                android:layout_height="122dp"
+                                android:layout_height="173dp"
                                 android:layout_margin="10dp"
                                 android:background="@drawable/rounded_corner_card" />
 
@@ -135,7 +135,7 @@
                             <ListView
                                 android:id="@+id/rvReminders"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="211dp"
                                 android:layout_margin="10dp"
                                 android:background="@drawable/rounded_corner_card" />
 
