@@ -52,6 +52,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         initDrawer();
 
         myDatabase = new MyDatabase(this, "manage_app.sqlite", null, 1);
+<<<<<<< HEAD
         String table_session = "create table  if not exists " + TABLE_SESSION + "(sessionID integer primary key autoincrement NOT NULL, " +
                 "sessionTitle varchar(100) NOT NULL, " +
                 "startTime varchar(50) NOT NULL, " +
@@ -59,9 +60,18 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 "weekDay varchar(10) NOT NULL, " +
                 "location varchar(20), " +
                 "type varchar(20), " +
+=======
+        String table_session = "create table if not exists " + TABLE_SESSION +"(sessionID integer primary key autoincrement NOT NULL, " +
+                "name varchar(100) NOT NULL, " +
+                "des varchar(20), "+
+                "sessionLocation varchar(20), " +
+                "dateOfWeek varchar(10) NOT NULL, " +
+                "startTime varchar(50) NOT NULL, " +
+                "endTime varchar(50) NOT NULL, " +
+>>>>>>> 8dbe71bcdcfb79022eafb05e50046e7a68f94f28
                 "color varchar(10))";
-        myDatabase.excuteSQL(table_session);
 
+        myDatabase.excuteSQL(table_session);
 
         String table_todo = "create table if not exists " + TABLE_TASK + "(id integer primary key autoincrement NOT NULL, " +
                 "title varchar(100) NOT NULL, " +
@@ -80,7 +90,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 "email varchar(50))";
         myDatabase.excuteSQL(table_teacher);
 
-        String sql_create_table = "create table if not exists " + TABLE_SUBJECT + " (subjectID integer primary key autoincrement, " +
+        String sql_create_table = "create table if not exists " + TABLE_SUBJECT + "(subjectID integer primary key autoincrement, " +
                 "subjectTitle varchar(50), " +
                 "subjectNote varchar(300), " +
                 "subjectCredit integer, " +

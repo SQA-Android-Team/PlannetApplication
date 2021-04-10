@@ -2,6 +2,7 @@ package com.sqa.plannet.activity.timetable;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.icu.text.CaseMap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -55,7 +56,9 @@ public class TimetableViewActivity extends AppCompatActivity implements AdapterV
         getSupportActionBar().setTitle("Timetable");
         drawerLayout.bringToFront();
         listSesion = getAllSession();
-        Toast.makeText(this, "ok "+ listSesion, Toast.LENGTH_SHORT).show();
+//        Session s = listSesion.get(0);
+//        String t = s.getType();
+//        Toast.makeText(this, "ok " , Toast.LENGTH_SHORT).show();
 
 
 
@@ -167,14 +170,14 @@ public class TimetableViewActivity extends AppCompatActivity implements AdapterV
         list.clear();
         while (cs.moveToNext()) {
             int sessionID = cs.getInt(0);
-            String sessionTitle = cs.getString(1);
-            String startTime = cs.getString(2);
-            String endTime = cs.getString(3);
-            String weekDay = cs.getString(4);
-            String location = cs.getString(5);
-            String type = cs.getString(6);
+            String name = cs.getString(1);
+            String des = cs.getString(2);
+            String sessionLocation = cs.getString(3);
+            String dateOfWeek = cs.getString(4);
+            String startTime = cs.getString(5);
+            String endTime = cs.getString(6);
             String color = cs.getString(7);
-            Session session = new Session(sessionID, sessionTitle, startTime, endTime, weekDay, location, type, color);
+            Session session = new Session(sessionID, name,des, sessionLocation, dateOfWeek, startTime, endTime, color);
             list.add(session);
         }
         return list;

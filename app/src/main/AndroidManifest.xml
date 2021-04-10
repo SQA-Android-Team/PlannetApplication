@@ -9,54 +9,40 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PlannetApplication">
-        <activity android:name=".activity.subject.GradeEditActivity"></activity>
+        <activity android:name=".activity.timetable.Timetable_SessionDetail_Edit">
+        </activity>
+        <activity android:name=".activity.timetable.SessionDetail" />
+        <activity android:name=".activity.subject.GradeEditActivity" />
         <activity android:name=".activity.home.HomeActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter></activity>
+            </intent-filter>
+        </activity>
         <activity android:name=".activity.timetable.TimetableViewActivity" />
         <activity android:name=".activity.timetable.TimetableAddSession" />
         <activity android:name=".activity.subject.SubjectCreateActivity" />
-        <activity android:name=".activity.subject.SubjectDetailActivity" ></activity>
-
+        <activity android:name=".activity.subject.SubjectDetailActivity" />
         <activity android:name=".activity.subject.SubjectEditActivity" />
-        <activity android:name=".activity.subject.SubjectViewActivity">
-        </activity>
-
+        <activity android:name=".activity.subject.SubjectViewActivity" />
         <activity android:name=".activity.teacher.TeacherCreateActivity" />
-
-        <activity android:name=".activity.teacher.TeacherDetailActivity"></activity>
-
+        <activity android:name=".activity.teacher.TeacherDetailActivity" />
         <activity android:name=".activity.teacher.TeacherEditActivity" />
-        <activity android:name=".activity.teacher.TeacherViewActivity">
-        </activity>
-        <activity android:name=".activity.calendar.CalendarViewActivity"></activity>
-
-        <activity android:name=".activity.timetable.Timetable_SessionDetail"></activity>
-
-
-
-        <activity android:name=".activity.overview.OverviewMainActivity">
-
-
-        </activity>
-
-        <activity android:name=".activity.overview.DetailsActivity">
-
-        </activity>
-        <activity android:name=".activity.settings.SettingsMenuActivity">
-        </activity>
+        <activity android:name=".activity.teacher.TeacherViewActivity" />
+        <activity android:name=".activity.calendar.CalendarViewActivity" />
+        <activity android:name=".activity.timetable.Timetable_SessionDetail" />
+        <activity android:name=".activity.overview.OverviewMainActivity" />
+        <activity android:name=".activity.settings.SettingsMenuActivity" />
         <activity android:name=".activity.settings.SettingsAboutActivity" />
         <activity android:name=".activity.settings.SettingsRatingActivity" />
         <activity android:name=".activity.helpAndFeedbacks.HelpAndFeedbacksActivity" />
-        <activity android:name=".activity.todo.DetailActivity"></activity>
-        <activity android:name=".activity.todo.CreateActivity"></activity>
-        <activity android:name=".activity.todo.TodoMainActivity">
-        </activity>
-        <activity android:name=".activity.todo.UpdateActivity"></activity>
-        <receiver android:name=".activity.todo.AlarmReceiver"></receiver>
+        <activity android:name=".activity.todo.DetailActivity" />
+        <activity android:name=".activity.todo.CreateActivity" />
+        <activity android:name=".activity.todo.TodoMainActivity" />
+        <activity android:name=".activity.todo.UpdateActivity" />
+
+        <receiver android:name=".activity.todo.AlarmReceiver" />
     </application>
 
 </manifest>

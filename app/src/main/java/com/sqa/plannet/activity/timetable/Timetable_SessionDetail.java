@@ -1,30 +1,31 @@
 package com.sqa.plannet.activity.timetable;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.util.Log;
+
 import android.view.View;
 import android.widget.CalendarView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.sqa.plannet.R;
-import com.sqa.plannet.activity.calendar.CalendarViewActivity;
+
 import com.sqa.plannet.adapter.calendar.SessionAdapter;
-import com.sqa.plannet.adapter.calendar.TaskAdapter;
-import com.sqa.plannet.database.MyDatabase;
+
 import com.sqa.plannet.model.Session;
 import com.sqa.plannet.model.Task;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.sqa.plannet.activity.home.HomeActivity.myDatabase;
 
@@ -53,29 +54,29 @@ public class Timetable_SessionDetail extends AppCompatActivity{
 
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.timetable_session_detail);
 
-        listSession = getAllSession();
-        adapter = new SessionAdapter(Timetable_SessionDetail.this, R.layout.calendar_view, listSession);
-        rvReminders.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+//        listSession = getAllSession();
+//        adapter = new SessionAdapter(Timetable_SessionDetail.this, R.layout.calendar_view, listSession);
+//        rvReminders.setAdapter(adapter);
+//        adapter.notifyDataSetChanged();
 //
 //        txtSessionNameValue = txtSessionNameValue.findViewById(R.id.txtSessionNameValue);
 //
 //        txtSessionNameValue.setText("abc");
-
-        try {
+//
             initUI();
+//            onBackBtnClick();
+//            onDeleteBtn();
             // TODO: fix the line below
 //        setText(null);
 
             onBackBtnClick();
             onDeleteBtn();
-        } catch (Exception e) {
-            Log.i(e.getMessage(), "onCreate: ");
-        }
+        onEditBtnClick();
+            loadData();
 
 
 
@@ -97,6 +98,7 @@ public class Timetable_SessionDetail extends AppCompatActivity{
         txtSessionDayOfWeekValue = findViewById(R.id.txtSessionDayOfWeekValue);
 
     }
+
     /**
      * TODO:  add event listener for backBtn
      */
@@ -105,6 +107,16 @@ public class Timetable_SessionDetail extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+    }
+
+
+    private  void onEditBtnClick(){
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Timetable_SessionDetail.this, Timetable_SessionDetail_Edit.class));
             }
         });
     }
@@ -141,21 +153,31 @@ public class Timetable_SessionDetail extends AppCompatActivity{
             }
         });
     }
-    public ArrayList<Session> getAllSession() {
-        ArrayList<Session> list = new ArrayList<>();
-        String sql_select = "SELECT * FROM " + TABLE_SESSION;
-        Cursor cs = myDatabase.rawQuery(sql_select);
-        list.clear();
-        while (cs.moveToNext()) {
-            int id = cs.getInt(0);
-            String title = cs.getString(1);
-            String type = cs.getString(2);
-            String location = cs.getString(3);
-            String startTime = cs.getString(4);
-            String endTime = cs.getString(5);
-            String dateOfWeek = cs.getString(6);
-
-        }
-        return list;
+//    public ArrayList<Session> getAllSession() {
+//        ArrayList<Session> list = new ArrayList<>();
+//        String sql_select = "SELECT * FROM " + TABLE_SESSION;
+//        Cursor cs = myDatabase.rawQuery(sql_select);
+//        list.clear();
+//        while (cs.moveToNext()) {
+//            int id = cs.getInt(0);
+//            String title = cs.getString(1);
+//            String type = cs.getString(2);
+//            String location = cs.getString(3);
+//            String startTime = cs.getString(4);
+//            String endTime = cs.getString(5);
+//            String dateOfWeek = cs.getString(6);
+//
+//        }
+//        return list;
+//    }
+    private  void loadData(){
+        List<Session> list = TimetableViewActivity.getAllSession();
+        txtSessionNameValue.setText(list.get(0).getSessionTitle()+"");
+        txtSessionDescriptionValue.setText(list.get(0).getType()+ "");
+        txtSessionStartTimeValue.setText(list.get(0).getStartTime()+ "");
+        txtSessionLocationValue.setText(list.get(0).getLocation()+ "");
+        txtSessionEndTimeValue.setText(list.get(0).getEndTime()+ "");
+        txtSessionColorValue.setText(list.get(0).getColor()+ "");
+        txtSessionDayOfWeekValue.setText(list.get(0).getWeekDay() + "");
     }
 }

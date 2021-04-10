@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -115,7 +116,7 @@ public class TimetableAddSession extends AppCompatActivity implements AdapterVie
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
                 calendar.set(0,0,0, hourOfDay, minute);
-                txtStartTimePicker.setText("Start - " + simpleDateFormat.format(calendar.getTime()));
+                txtStartTimePicker.setText(""+ simpleDateFormat.format(calendar.getTime()));
 
             }
         }, hour,minute, true);
@@ -132,7 +133,7 @@ public class TimetableAddSession extends AppCompatActivity implements AdapterVie
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
                 calendar.set(0,0,0, hourOfDay, minute);
-                txtEndTimePicker.setText("End - " + simpleDateFormat.format(calendar.getTime()));
+                txtEndTimePicker.setText(""+ simpleDateFormat.format(calendar.getTime()));
 
             }
         }, hour,minute, true);
@@ -200,6 +201,7 @@ public class TimetableAddSession extends AppCompatActivity implements AdapterVie
         }else if(TextUtils.isEmpty(endTime)) {
              txtEndTimePicker.setError("Please pick the end time");
         } else{
+<<<<<<< HEAD
             ContentValues cv = new ContentValues();
             cv.put("sessionTitle", name);
             cv.put("des", des);
@@ -208,6 +210,19 @@ public class TimetableAddSession extends AppCompatActivity implements AdapterVie
             cv.put("startTime", startTime);
             cv.put("endTime", endTime);
             HomeActivity.myDatabase.insertTask(TimetableViewActivity.TABLE_SESION, null, cv);
+=======
+
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("name", name);
+            contentValues.put("des", des);
+            contentValues.put("sessionLocation", sessionLocation);
+            contentValues.put("dateOfWeek", dateOfWeek);
+            contentValues.put("startTime", startTime);
+            contentValues.put("endTime", endTime);
+
+            HomeActivity.myDatabase.insertTask(TimetableViewActivity.TABLE_SESION, null, contentValues);
+
+>>>>>>> 8dbe71bcdcfb79022eafb05e50046e7a68f94f28
         }
     }
 
