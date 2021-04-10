@@ -1,154 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:openDrawer="start"
-    tools:context=".activity.home.HomeActivity"
-    android:id="@+id/homeViewDrawer"
-    >
-    <com.google.android.material.navigation.NavigationView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/navView"
-        app:headerLayout="@layout/header"
-        app:menu="@menu/menu_main"
-        android:layout_gravity = "start">
-
-    </com.google.android.material.navigation.NavigationView>
-
-
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:background="@drawable/background_home">
 
-    <androidx.appcompat.widget.Toolbar
+    <androidx.drawerlayout.widget.DrawerLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_collapseMode="pin"
-        app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
-        app:navigationIcon="@drawable/ic_menu">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:id="@+id/homeViewDrawer">
 
-        <LinearLayout
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/homeToolbar"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
+                app:navigationIcon="@drawable/ic_menu">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <ImageButton
+                        android:layout_alignParentRight="true"
+                        android:id="@+id/btnAccount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_account_circle_24"
+                        android:background="@null"
+                        android:layout_marginRight="20dp">
+
+                    </ImageButton>
+                </RelativeLayout>
+
+
+            </androidx.appcompat.widget.Toolbar>
+        </RelativeLayout>
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent" >
 
-
-            <ImageButton
-                android:id="@+id/btnAccount"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_baseline_account_circle_24"
-                android:background="@null"
-                android:layout_marginLeft="300dp">
-
-            </ImageButton>
-
-        </LinearLayout>
-
-    </androidx.appcompat.widget.Toolbar>
-
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="110dp"
-        android:layout_marginLeft="20dp">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/btnOverview"
-                android:layout_width="186dp"
-                android:layout_height="122dp"
-                android:background="@drawable/button_home"
-                android:drawableTop="@drawable/icon_overview"
-                android:fontFamily="@font/pt_sans_caption_bold"
-                android:paddingTop="18dp"
-                android:onClick="btnChooseActivity"
-                android:paddingBottom="8dp"
-                android:text="@string/overview"
-                android:textAllCaps="false"
-                android:textColor="#AC7FFC"
-                android:textSize="22sp" />
-
-            <Button
-                android:id="@+id/btnCalendar"
-                android:layout_width="163dp"
-                android:layout_height="91dp"
-                android:drawableTop="@drawable/icon_calendar"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="30dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="8dp"
-                android:onClick="btnChooseActivity"
-                android:background="@drawable/button_home"
-                android:fontFamily="@font/pt_sans_caption_bold"
-                android:textAllCaps="false"
-                android:text="@string/calendar"
-                android:textColor="#AC7FFC"
-                android:textSize="22sp"
-                android:gravity="center_horizontal" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="60dp">
-
-            <Button
-                android:id="@+id/btnTodo"
-                android:layout_width="145dp"
-                android:layout_height="85dp"
-                android:background="@drawable/button_home"
-                android:fontFamily="@font/pt_sans_caption_bold"
-                android:textAllCaps="false"
-                android:onClick="btnChooseActivity"
-                android:drawableTop="@drawable/icon_todo"
-                android:paddingTop="10dp"
-                android:textColor="#AC7FFC"
-                android:text="@string/todo"
-                android:textSize="22sp"
-                />
-
-            <Button
-                android:id="@+id/btnTimetable"
-                android:layout_width="168dp"
-                android:layout_height="110dp"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/button_home"
-                android:drawableTop="@drawable/icon_timetable"
-                android:fontFamily="@font/pt_sans_caption_bold"
-                android:onClick="btnChooseActivity"
-                android:paddingTop="15dp"
-                android:text="@string/btnTimetable"
-                android:textAllCaps="false"
-                android:textColor="#AC7FFC"
-                android:textSize="22sp" />
-
-            <ImageButton
-                android:id="@+id/btnExitApp"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:onClick="exitApp"
-                android:src="@drawable/btn_logout"
-                android:layout_marginTop="270dp"
-                android:layout_marginLeft="100dp"/>
-        </LinearLayout>
+                android:orientation="horizontal"
+                android:layout_marginTop="110dp"
+                android:layout_marginLeft="20dp">
 
-    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
+                    <Button
+                        android:id="@+id/btnOverview"
+                        android:layout_width="186dp"
+                        android:layout_height="122dp"
+                        android:background="@drawable/button_home"
+                        android:drawableTop="@drawable/icon_overview"
+                        android:fontFamily="@font/pt_sans_caption_bold"
+                        android:paddingTop="18dp"
+                        android:onClick="btnChooseActivity"
+                        android:paddingBottom="8dp"
+                        android:text="@string/overview"
+                        android:textAllCaps="false"
+                        android:textColor="#AC7FFC"
+                        android:textSize="22sp" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
-</androidx.drawerlayout.widget.DrawerLayout>
+                    <Button
+                        android:id="@+id/btnCalendar"
+                        android:layout_width="163dp"
+                        android:layout_height="91dp"
+                        android:drawableTop="@drawable/icon_calendar"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="30dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="8dp"
+                        android:onClick="btnChooseActivity"
+                        android:background="@drawable/button_home"
+                        android:fontFamily="@font/pt_sans_caption_bold"
+                        android:textAllCaps="false"
+                        android:text="@string/calendar"
+                        android:textColor="#AC7FFC"
+                        android:textSize="22sp"
+                        android:gravity="center_horizontal" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="60dp">
+
+                    <Button
+                        android:id="@+id/btnTodo"
+                        android:layout_width="145dp"
+                        android:layout_height="85dp"
+                        android:background="@drawable/button_home"
+                        android:fontFamily="@font/pt_sans_caption_bold"
+                        android:textAllCaps="false"
+                        android:onClick="btnChooseActivity"
+                        android:drawableTop="@drawable/icon_todo"
+                        android:paddingTop="10dp"
+                        android:textColor="#AC7FFC"
+                        android:text="@string/todo"
+                        android:textSize="22sp"
+                        />
+
+                    <Button
+                        android:id="@+id/btnTimetable"
+                        android:layout_width="168dp"
+                        android:layout_height="110dp"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/button_home"
+                        android:drawableTop="@drawable/icon_timetable"
+                        android:fontFamily="@font/pt_sans_caption_bold"
+                        android:onClick="btnChooseActivity"
+                        android:paddingTop="15dp"
+                        android:text="@string/btnTimetable"
+                        android:textAllCaps="false"
+                        android:textColor="#AC7FFC"
+                        android:textSize="22sp" />
+
+                    <ImageButton
+                        android:id="@+id/btnExitApp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:onClick="exitApp"
+                        android:src="@drawable/btn_logout"
+                        android:layout_marginTop="270dp"
+                        android:layout_marginLeft="100dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_home"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:menu="@menu/menu_main"
+            android:layout_gravity="start"/>
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</LinearLayout>

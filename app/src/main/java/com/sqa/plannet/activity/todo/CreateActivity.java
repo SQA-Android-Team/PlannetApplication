@@ -45,7 +45,7 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
     ArrayList<Integer> typeList = new ArrayList<>();
     String[] typeArray = {"Homework", "Fun", "School", "Others"};
     private int notificationId = 1;
-     long alramStartTime;
+    long alramStartTime;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -84,7 +84,7 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
-         alramStartTime = calendar.getTimeInMillis();
+        alramStartTime = calendar.getTimeInMillis();
         switch (view.getId()) {
             case R.id.tvDate:
                 DatePickerDialog datePickerDialog = new DatePickerDialog(CreateActivity.this,

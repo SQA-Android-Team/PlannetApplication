@@ -66,7 +66,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
         public ScheduleViewHolder (@NonNull View itemView) {
             super(itemView);
 
-            courseName = itemView.findViewById(R.id.date);
+            courseName = itemView.findViewById(R.id.event_date);
             professor = itemView.findViewById(R.id.professor);
             room = itemView.findViewById(R.id.room);
 

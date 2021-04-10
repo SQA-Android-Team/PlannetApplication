@@ -13,9 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +43,7 @@ public class TodoTaskAdapter extends BaseAdapter {
     Context context;
     int layout;
     List<Task> list ;
+    Task task;
 
     public TodoTaskAdapter(Activity context, int item_does, ArrayList<Task> list) {
         this.context = context;
@@ -62,7 +66,7 @@ public class TodoTaskAdapter extends BaseAdapter {
     public View getView(int position, View view, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.todo_item_does, null);
-        RadioButton check = view.findViewById(R.id.check);
+        CheckBox check = view.findViewById(R.id.check);
         TextView titledoes =  view.findViewById(R.id.titledoes);
         TextView typedoes =  view.findViewById(R.id.typedoes);
         TextView datedoes =  view.findViewById(R.id.txtvDate);
@@ -70,23 +74,30 @@ public class TodoTaskAdapter extends BaseAdapter {
         ImageButton btnEdit =  view.findViewById(R.id.btnEdit);
         ImageButton btnDelete = view.findViewById(R.id.btnDelete);
         LinearLayout lntask = view.findViewById(R.id.lntask);
+        LinearLayout complete = view.findViewById(R.id.completeTask);
 
-        Task task = list.get(position);
+         task = list.get(position);
         titledoes.setText(task.getTitle());
         timedoes.setText(task.getTime());
         typedoes.setText(task.getType());
         //datedoes.setText(task.getDate());
         
 
-        if (typedoes.equals("Homework")) {
+        String Trang = typedoes.getText().toString();
+        if (Trang.equals("Homework")) {
             typedoes.setBackgroundResource(R.drawable.btn_button_blue);
+        }else if(Trang.equals("Fun")){
+            typedoes.setBackgroundResource(R.drawable.btn_button_green);
+        }else if(Trang.equals("School")){
+            typedoes.setBackgroundResource(R.drawable.btn_button_orange);
+        }else if(Trang.equals("Others")){
+            typedoes.setBackgroundResource(R.drawable.btn_button_purple);
         }
 //        }else if (typedoes.equals("Fun")){
 //            typedoes.setBackgroundColor((Color.parseColor("#8087CF8A")));
 //        }else if (typedoes.equals("School")){
 //            typedoes.setBackgroundColor((Color.parseColor("#E6BCD0EA")));
 //        }
-
 
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,25 +114,31 @@ public class TodoTaskAdapter extends BaseAdapter {
             dialogClick(position);
             }
         });
-
-        lntask.setOnClickListener(new View.OnClickListener() {
+        check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, DetailActivity.class);
-                intent.putExtra("TaskEdit", task);
-            }
-        });
-
-        check.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (check.isChecked()){
-                    check.setChecked(true);
-                }else{
-                    check.setChecked(false);
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    complete.setVisibility(LinearLayout.VISIBLE);
+                    notifyDataSetChanged();
+                }else if(!isChecked){
+                    Toast.makeText(context, "fail", Toast.LENGTH_SHORT).show();
+                    complete.setVisibility(LinearLayout.GONE);
                 }
             }
         });
+////        check.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//            if(check.isChecked()){
+//                Toast.makeText(context, "ok", Toast.LENGTH_SHORT).show();
+//                complete.setVisibility(LinearLayout.VISIBLE);
+//                notifyDataSetChanged();
+//            }else if(!check.isChecked()){
+//                Toast.makeText(context, "fail", Toast.LENGTH_SHORT).show();
+//                complete.setVisibility(LinearLayout.GONE);
+//            }
+//            }
+//        });
 
         return view;
     }

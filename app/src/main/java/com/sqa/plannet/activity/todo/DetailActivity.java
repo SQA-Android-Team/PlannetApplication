@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -22,6 +23,7 @@ import java.util.List;
 public class DetailActivity extends AppCompatActivity  {
     ImageButton btnBack;
     TextView titledoes, txtvType, txtvimportant,txtvTime, txtvLocation, txtvNote, txtvRemind, txtvDate ;
+    Task t;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,14 +61,14 @@ public class DetailActivity extends AppCompatActivity  {
 
     private  void loadData(){
         Intent intent = getIntent();
-        Task task = (Task) intent.getSerializableExtra("task");
-        titledoes.setText(task.getTitle());
-        txtvType.setText(task.getType());
-        txtvTime.setText(task.getTime());
-        txtvDate.setText(task.getDate());
-        txtvLocation.setText(task.getLocation());
-        txtvNote.setText(task.getNote());
-        txtvimportant.setText(task.getRemind());
-        txtvimportant.setText(task.getImportant());
+        t = (Task) intent.getSerializableExtra("Task");
+        titledoes.setText("Title : " + t.getTitle());
+        txtvType.setText("" + t.getType());
+        txtvTime.setText("Time : " + t.getTime());
+        txtvDate.setText("Date : " + t.getDate());
+        txtvLocation.setText("Location : " + t.getLocation());
+        txtvNote.setText("" + t.getNote());
+        txtvRemind.setText("" + t.getRemind());
+        txtvimportant.setText("" + t.getLocation());
     }
 }

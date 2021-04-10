@@ -37,14 +37,19 @@ public class TodoMainActivity<TABLE_TASK> extends AppCompatActivity implements V
         mapping();
 
         listTask = getAllTask();
-        Task t = listTask.get(0);
-        String title = t.getTitle();
-        Toast.makeText(this, "ok" + title, Toast.LENGTH_SHORT).show();
         adapter = new TodoTaskAdapter(TodoMainActivity.this, R.layout.calendar_todayevent, listTask);
         lstTask.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
         btnNew.setOnClickListener(this);
+        lstTask.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(TodoMainActivity.this, DetailActivity.class);
+                intent.putExtra("Task", listTask.get(position));
+                startActivity(intent);
+            }
+        });
     }
 
     private void mapping() {

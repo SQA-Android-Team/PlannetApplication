@@ -7,7 +7,8 @@
     tools:openDrawer="start"
     android:id="@+id/timetableViewDrawer"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".activity.timetable.TimetableViewActivity">
+    tools:context=".activity.timetable.TimetableViewActivity"
+    android:background="#F8F8F8">
 
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
@@ -215,13 +216,11 @@
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="0dp"
                 android:scrollbars="none">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="0dp">
+                    android:layout_height="wrap_content">
 
                     <View
                         android:layout_width="fill_parent"
