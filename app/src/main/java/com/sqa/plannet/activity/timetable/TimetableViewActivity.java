@@ -131,11 +131,12 @@ public class TimetableViewActivity extends AppCompatActivity implements AdapterV
         toolbar = findViewById(R.id.timetableViewToolbar);
         sessionDetail= findViewById(R.id.sessionDetail);
         drawerLayout = findViewById(R.id.timetableViewDrawer);
-        navigationView = findViewById(R.id.navTimeView);
+        navigationView = findViewById(R.id.navView);
     }
 
     private void initToolbar(){
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Timetable");
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
