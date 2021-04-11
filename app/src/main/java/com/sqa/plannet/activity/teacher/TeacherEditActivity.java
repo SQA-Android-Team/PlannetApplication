@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.sqa.plannet.R;
 import com.sqa.plannet.activity.home.HomeActivity;
 import com.sqa.plannet.model.Subject;
+import com.sqa.plannet.model.Task;
 import com.sqa.plannet.model.Teacher;
 
 public class TeacherEditActivity extends AppCompatActivity implements  View.OnClickListener{
@@ -24,6 +25,7 @@ public class TeacherEditActivity extends AppCompatActivity implements  View.OnCl
     private EditText teacherPhoneEdt;
     private EditText teacherEmailEdt;
     private int position;
+    Teacher t;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,11 +60,11 @@ public class TeacherEditActivity extends AppCompatActivity implements  View.OnCl
      * INCOMPLETE
      */
     private void loadData(){
-        teacherNameEdt.setText(TeacherViewActivity.teacherList.get(position).getTeacherName());
-        teacherPhoneEdt.setText(TeacherViewActivity.teacherList.get(position).getPhone());
-        teacherEmailEdt.setText(TeacherViewActivity.teacherList.get(position).getEmail());
-
-
+        Intent intent = getIntent();
+        t = (Teacher) intent.getSerializableExtra("TeacherEdit");
+        teacherNameEdt.setText(t.getTeacherName());
+        teacherPhoneEdt.setText(t.getPhone());
+        teacherEmailEdt.setText(t.getEmail());
     }
 
 

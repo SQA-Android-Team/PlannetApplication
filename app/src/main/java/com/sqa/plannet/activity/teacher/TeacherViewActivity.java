@@ -8,14 +8,17 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -30,7 +33,10 @@ import com.sqa.plannet.activity.calendar.CalendarViewActivity;
 import com.sqa.plannet.activity.settings.SettingsMenuActivity;
 import com.sqa.plannet.activity.subject.SubjectCreateActivity;
 import com.sqa.plannet.activity.subject.SubjectViewActivity;
+import com.sqa.plannet.activity.todo.DetailActivity;
+import com.sqa.plannet.activity.todo.TodoMainActivity;
 import com.sqa.plannet.adapter.teacher.TeacherAdapter;
+import com.sqa.plannet.adapter.todo.TodoTaskAdapter;
 import com.sqa.plannet.database.MyDatabase;
 import com.sqa.plannet.model.Teacher;
 
@@ -39,20 +45,20 @@ import java.util.List;
 
 import static com.sqa.plannet.activity.home.HomeActivity.myDatabase;
 
-public class TeacherViewActivity extends AppCompatActivity {
+public class TeacherViewActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private AppBarLayout appBarLayout;
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private Toolbar toolbar;
     private FloatingActionButton addBtn;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
-    private RecyclerView recyclerView;
+    private ListView listView;
     private TeacherAdapter teacherAdapter;
 
     private Menu subMenu;
     private boolean isExpanded = true;
 
-    public static List<Teacher> teacherList;
+    public static ArrayList<Teacher> teacherList;
 
     public static String TABLE_TEACHER = "teacher" ;
     @Override
@@ -63,11 +69,28 @@ public class TeacherViewActivity extends AppCompatActivity {
         initUI();
         initToolbar();
 
-        onNavigationItemClick();
+        //onNavigationItemClick();
         onAddBtnClick();
         initToolbarAnimation();
         initDrawer();
-        initRecyclerView();
+        //initRecyclerView();
+
+        teacherList = getListTeacher();
+        teacherAdapter = new TeacherAdapter(TeacherViewActivity.this, R.layout.teacher_item, teacherList);
+        listView.setAdapter(teacherAdapter);
+        teacherAdapter.notifyDataSetChanged();
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(TeacherViewActivity.this, TeacherDetailActivity.class);
+                intent.putExtra("Teacher", teacherList.get(position));
+                startActivity(intent);
+            }
+        });
+
+        navigationView.setNavigationItemSelectedListener(this::onNavigationItemSelected);
     }
 
     /**
@@ -78,9 +101,9 @@ public class TeacherViewActivity extends AppCompatActivity {
         collapsingToolbarLayout = findViewById(R.id.colToolbar);
         addBtn = findViewById(R.id.fabAdd);
         drawerLayout= findViewById(R.id.teacherViewDrawer);
-        navigationView= findViewById(R.id.navView);
+        navigationView= findViewById(R.id.navTeacherView);
         toolbar = findViewById(R.id.teacherViewToolbar);
-        recyclerView = findViewById(R.id.rv_teacher);
+        listView = findViewById(R.id.rv_teacher);
 
     }
 
@@ -102,33 +125,36 @@ public class TeacherViewActivity extends AppCompatActivity {
     private void initDrawer(){
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Teachers");
-        drawerLayout.bringToFront();
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.nav_open, R.string.nav_close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
     }
 
 
     /**
      * TODO: Allocate all teachers to the RecycleView
      */
-    private void initRecyclerView() {
-        recyclerView.setHasFixedSize(true);
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(linearLayoutManager);
-
-        teacherAdapter = new TeacherAdapter();
-        teacherAdapter.setData(getListTeacher());
-        recyclerView.setAdapter(teacherAdapter);
-        teacherAdapter.notifyDataSetChanged();
-    }
+//    private void initRecyclerView() {
+////        recyclerView.setHasFixedSize(true);
+////
+////        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+////        recyclerView.setLayoutManager(linearLayoutManager);
+//
+//        teacherAdapter = new TeacherAdapter();
+//        teacherAdapter.setData(getListTeacher());
+//        listView.setAdapter(teacherAdapter);
+//        teacherAdapter.notifyDataSetChanged();
+//    }
 
     /**
      * TODO: Get a list of all teachers
      * @return Either the list of teachers or null
      */
-    private List<Teacher> getListTeacher() {
+    private ArrayList<Teacher> getListTeacher() {
         teacherList = new ArrayList<>();
 
        String sql_select = "SELECT * FROM "  + TABLE_TEACHER;
@@ -234,41 +260,35 @@ public class TeacherViewActivity extends AppCompatActivity {
     /**
      * TODO: Set menu drawer item onClick
      */
-    private void onNavigationItemClick() {
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Intent intent = null;
-                switch (item.getItemId()) {
-                    case R.id.navHome:
-                        return true;
-                    case R.id.navTodo:
-                        return true;
-                    case R.id.navTimetable:
-                        return true;
-                    case R.id.navCalendar:
-                        intent = new Intent(TeacherViewActivity.this, CalendarViewActivity.class);
-                        startActivity(intent);
-                        return true;
-                    case R.id.navTeacher:
-                        intent = new Intent(TeacherViewActivity.this, TeacherViewActivity.class);
-                        startActivity(intent);
-                        return true;
-                    case R.id.navSubject:
-                        intent = new Intent(TeacherViewActivity.this, SubjectViewActivity.class);
-                        startActivity(intent);
-                        return true;
-                    case R.id.navSettings:
-                        return true;
-                    case R.id.navHelp:
-                        return true;
 
 
-                }
-                return false;
-            }
-        });
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Intent intent = null;
+        switch (item.getItemId()) {
+            case R.id.navHome:
+                return true;
+            case R.id.navTodo:
+                return true;
+            case R.id.navTimetable:
+                return true;
+            case R.id.navCalendar:
+                intent = new Intent(TeacherViewActivity.this, CalendarViewActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.navTeacher:
+                intent = new Intent(TeacherViewActivity.this, TeacherViewActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.navSubject:
+                intent = new Intent(TeacherViewActivity.this, SubjectViewActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.navSettings:
+                return true;
+            case R.id.navHelp:
+                return true;
+        }
+        return true;
     }
-
-
 }

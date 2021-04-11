@@ -15,6 +15,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.sqa.plannet.R;
 import com.sqa.plannet.activity.home.HomeActivity;
+import com.sqa.plannet.activity.todo.DetailActivity;
+import com.sqa.plannet.activity.todo.TodoMainActivity;
+import com.sqa.plannet.activity.todo.UpdateActivity;
+import com.sqa.plannet.model.Task;
 import com.sqa.plannet.model.Teacher;
 
 import static com.sqa.plannet.activity.home.HomeActivity.myDatabase;
@@ -30,13 +34,9 @@ public class TeacherDetailActivity extends AppCompatActivity implements View.OnC
     TextView teacherNameTxv;
     TextView teacherPhoneTxv;
     TextView teacherEmailTxv;
+    Teacher t;
 
     private int position;
-
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,17 +47,12 @@ public class TeacherDetailActivity extends AppCompatActivity implements View.OnC
         position =(int) intent.getExtras().get("position");
 
         initUI();
-loadData();
+        loadData();
         backBtn.setOnClickListener(this);
         editBtn.setOnClickListener(this);
         deleteBtn.setOnClickListener(this);
         phoneCallBtn.setOnClickListener(this);
         emailSendBtn.setOnClickListener(this);
-
-
-
-
-
 
 
     }
@@ -78,11 +73,11 @@ loadData();
 
 
     private void loadData(){
-        teacherNameTxv.setText(TeacherViewActivity.teacherList.get(position).getTeacherName());
-        teacherPhoneTxv.setText(TeacherViewActivity.teacherList.get(position).getPhone());
-        teacherEmailTxv.setText(TeacherViewActivity.teacherList.get(position).getEmail());
-
-
+        Intent intent = getIntent();
+        t = (Teacher) intent.getSerializableExtra("Teacher");
+        teacherNameTxv.setText(t.getTeacherName());
+        teacherPhoneTxv.setText(t.getPhone());
+        teacherEmailTxv.setText(t.getEmail());
     }
 
 
@@ -96,26 +91,9 @@ loadData();
                 finish();
                 break;
             case R.id.editBtn:
-                Teacher teacher = TeacherViewActivity.teacherList.get(position);
-               intent = new Intent(TeacherDetailActivity.this, TeacherEditActivity.class);
-                intent.putExtra("teacher", teacher);
-                intent.putExtra("position", position);
-                startActivity(intent);
+                Intent intent1 = new Intent(TeacherDetailActivity.this, TeacherEditActivity.class);
+                intent1.putExtra("TeacherEdit", t);
                 // TODO: INCOMPLETE
-                break;
-            case R.id.teacherPhoneBtn:
-                String phoneNumber = teacherPhoneTxv.getText().toString();
-                Toast.makeText(TeacherDetailActivity.this, phoneNumber, Toast.LENGTH_SHORT).show();
-                Uri call = Uri.parse("tel:" + phoneNumber);
-                Intent intent1 = new Intent(Intent.ACTION_DIAL);
-                intent1.setData(call);
-                startActivity(intent1);
-                break;
-            case R.id.teacherEmailBtn:
-                String mailAddress = teacherEmailTxv.getText().toString();
-                Intent intent2 = new Intent(Intent.ACTION_SENDTO);
-                intent2.setData(Uri.parse("mailto:"+Uri.encode(mailAddress)));
-                startActivity(intent2);
                 break;
             case R.id.deleteBtn:
                 AlertDialog deleteConfirm = new AlertDialog.Builder(TeacherDetailActivity.this)
@@ -151,5 +129,7 @@ loadData();
 
         }
 
+
     }
+
 }

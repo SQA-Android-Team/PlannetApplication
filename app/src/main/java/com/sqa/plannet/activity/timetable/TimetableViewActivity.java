@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.icu.text.CaseMap;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
@@ -12,15 +13,25 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.navigation.NavigationView;
 import com.sqa.plannet.R;
+import com.sqa.plannet.activity.calendar.CalendarViewActivity;
+import com.sqa.plannet.activity.helpAndFeedbacks.HelpAndFeedbacksActivity;
+import com.sqa.plannet.activity.home.HomeActivity;
+import com.sqa.plannet.activity.overview.OverviewMainActivity;
+import com.sqa.plannet.activity.settings.SettingsAboutActivity;
+import com.sqa.plannet.activity.subject.SubjectViewActivity;
+import com.sqa.plannet.activity.teacher.TeacherViewActivity;
+import com.sqa.plannet.activity.todo.TodoMainActivity;
 import com.sqa.plannet.model.Session;
 import com.sqa.plannet.model.Task;
 
@@ -28,7 +39,7 @@ import java.util.ArrayList;
 
 import static com.sqa.plannet.activity.home.HomeActivity.myDatabase;
 
-public class TimetableViewActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, EditSemesterNameDialog.EditSemesterNameListener {
+public class TimetableViewActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, EditSemesterNameDialog.EditSemesterNameListener, NavigationView.OnNavigationItemSelectedListener {
     private ImageButton btnAddClass;
     private Toolbar toolbar;
     private CollapsingToolbarLayout collapsingToolbarLayout;
@@ -46,16 +57,8 @@ public class TimetableViewActivity extends AppCompatActivity implements AdapterV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.timetable_view);
         initUI();
-        initToolbar();
+        //initToolbar();
         initDrawer();
-
-        drawerLayout = findViewById(R.id.timetableViewDrawer);
-        toolbar = findViewById(R.id.timetableViewToolbar);
-        navigationView = findViewById(R.id.navView);
-
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Timetable");
-        drawerLayout.bringToFront();
         listSesion = getAllSession();
 
 
@@ -106,18 +109,19 @@ public class TimetableViewActivity extends AppCompatActivity implements AdapterV
 //        v1.setLayoutParams(ll1);
 //        relTue.addView(v1);
 
+        navigationView.setNavigationItemSelectedListener(this::onNavigationItemSelected);
     }
 
     // not done yet
     private void initDrawer(){
-        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        drawerLayout = findViewById(R.id.timetableViewDrawer);
-        navigationView = findViewById(R.id.navView);
-        drawerLayout.bringToFront();
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.nav_open, R.string.nav_close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
 
     }
 
@@ -126,10 +130,13 @@ public class TimetableViewActivity extends AppCompatActivity implements AdapterV
         collapsingToolbarLayout = findViewById(R.id.colToolbar);
         toolbar = findViewById(R.id.timetableViewToolbar);
         sessionDetail= findViewById(R.id.sessionDetail);
+        drawerLayout = findViewById(R.id.timetableViewDrawer);
+        navigationView = findViewById(R.id.navView);
     }
 
     private void initToolbar(){
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Timetable");
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
@@ -194,5 +201,47 @@ public class TimetableViewActivity extends AppCompatActivity implements AdapterV
     }
 
 
-
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.navHome:
+                Intent intent = new Intent(TimetableViewActivity.this, HomeActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.navOverview:
+                Intent i2 = new Intent(TimetableViewActivity.this, OverviewMainActivity.class);
+                startActivity(i2);
+                break;
+            case R.id.navTodo:
+                Intent i3 = new Intent(TimetableViewActivity.this, TodoMainActivity.class);
+                startActivity(i3);
+                break;
+            case R.id.navTimetable:
+                Intent i4 = new Intent(TimetableViewActivity.this, TimetableViewActivity.class);
+                startActivity(i4);
+                break;
+            case R.id.navCalendar:
+                Intent i5 = new Intent(TimetableViewActivity.this, CalendarViewActivity.class);
+                startActivity(i5);
+                break;
+            case R.id.navSubject:
+                Intent i6 = new Intent(TimetableViewActivity.this, SubjectViewActivity.class);
+                startActivity(i6);
+                break;
+            case R.id.navTeacher:
+                Intent i7 = new Intent(TimetableViewActivity.this, TeacherViewActivity.class);
+                startActivity(i7);
+                break;
+            case R.id.navSettings:
+                Intent i8 = new Intent(TimetableViewActivity.this, SettingsAboutActivity.class);
+                startActivity(i8);
+                break;
+            case R.id.navHelp:
+                Intent i9 = new Intent(TimetableViewActivity.this, HelpAndFeedbacksActivity.class);
+                startActivity(i9);
+                break;
+            default:
+        }
+        return true;
+    }
 }
