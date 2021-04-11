@@ -62,11 +62,19 @@ public class TodoTaskAdapter extends BaseAdapter {
         ImageButton btnDelete = view.findViewById(R.id.btnDelete);
         LinearLayout lntask = view.findViewById(R.id.lntask);
 
+        LinearLayout completeTask = view.findViewById(R.id.completeTask);
+        TextView titledoes1 =  view.findViewById(R.id.titledoes1);
+        TextView typedoes1 =  view.findViewById(R.id.typedoes1);
+        TextView timedoes1 = view.findViewById(R.id.timedoes1);
 
         task = list.get(position);
         titledoes.setText(task.getTitle());
         timedoes.setText(task.getTime());
         typedoes.setText(task.getType());
+
+        titledoes1.setText(task.getTitle());
+        timedoes1.setText(task.getTime());
+        typedoes1.setText(task.getType());
 
 
         String Trang = typedoes.getText().toString();
@@ -78,6 +86,17 @@ public class TodoTaskAdapter extends BaseAdapter {
             typedoes.setBackgroundResource(R.drawable.btn_button_orange);
         }else if(Trang.equals("Others")){
             typedoes.setBackgroundResource(R.drawable.btn_button_purple);
+        }
+
+        String Trang1 = typedoes1.getText().toString();
+        if (Trang1.equals("Homework")) {
+            typedoes1.setBackgroundResource(R.drawable.btn_button_blue);
+        }else if(Trang1.equals("Fun")){
+            typedoes1.setBackgroundResource(R.drawable.btn_button_green);
+        }else if(Trang1.equals("School")){
+            typedoes1.setBackgroundResource(R.drawable.btn_button_orange);
+        }else if(Trang1.equals("Others")){
+            typedoes1.setBackgroundResource(R.drawable.btn_button_purple);
         }
 
         btnEdit.setOnClickListener(new View.OnClickListener() {
@@ -96,24 +115,16 @@ public class TodoTaskAdapter extends BaseAdapter {
             }
         });
 
-//        check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//           // int checkStatus;
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-////                if (isChecked) {
-////                   checkStatus = 1;
-//////                    Toast.makeText(context, "chẹck", Toast.LENGTH_SHORT).show();
-//////                    complete.setVisibility(LinearLayout.VISIBLE);
-//////                    lntask.setVisibility(LinearLayout.GONE);
-//////                    notifyDataSetChanged();
-////                } else if(!isChecked) {
-////                    checkStatus = 0;
-////                    complete.setVisibility(LinearLayout.GONE);
-////                    Toast.makeText(context, "uncheck", Toast.LENGTH_SHORT).show();
-////                    notifyDataSetChanged();
-//                }
-//            }
-//        });
+        check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (check.isChecked()){
+                    completeTask.setVisibility(View.VISIBLE);
+                }else {
+                    completeTask.setVisibility(View.GONE);
+                }
+            }
+        });
         return view;
     }
 
