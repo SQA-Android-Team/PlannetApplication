@@ -601,7 +601,6 @@
                                         android:background="#EDEDED" />
 
                                     <LinearLayout
-                                        android:id="@+id/sessionDetail"
                                         android:layout_width="fill_parent"
                                         android:layout_height="100dp"
                                         android:layout_marginLeft="0.5dp"
@@ -649,7 +648,7 @@
                                             android:layout_gravity="center"
                                             android:layout_weight="1"
                                             android:fontFamily="@font/pt_sans_caption_bold"
-                                            android:text="801C"
+                                            android:text="417C"
                                             android:textColor="#F9BB1E"
                                             android:textSize="12sp" />
 
@@ -764,6 +763,7 @@
                                     </LinearLayout>
 
                                     <LinearLayout
+                                        android:id="@+id/sessionDetail"
                                         android:layout_width="fill_parent"
                                         android:layout_height="100dp"
                                         android:layout_marginLeft="0.5dp"

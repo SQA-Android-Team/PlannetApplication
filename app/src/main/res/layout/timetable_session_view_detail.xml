@@ -90,7 +90,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/pt_bold"
-                    android:text="MPR"
+                    android:text="SQA"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -119,7 +119,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/pt_bold"
-                    android:text="Tutorial"
+                    android:text="Lecture"
                     android:textSize="18sp" />
 
             </LinearLayout>
@@ -150,7 +150,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/pt_bold"
-                    android:text="412C"
+                    android:text="801C"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -179,7 +179,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/pt_bold"
-                    android:text="07:20"
+                    android:text="14:30"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -208,7 +208,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/pt_bold"
-                    android:text="09:00"
+                    android:text="16:10"
                     android:textSize="18sp" />
             </LinearLayout>
 
