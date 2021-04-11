@@ -52,7 +52,9 @@ public class TeacherViewActivity extends AppCompatActivity {
     private Menu subMenu;
     private boolean isExpanded = true;
 
-    public static String TABLE_TEACHER = "teachers" ;
+    public static List<Teacher> teacherList;
+
+    public static String TABLE_TEACHER = "teacher" ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +67,7 @@ public class TeacherViewActivity extends AppCompatActivity {
         onAddBtnClick();
         initToolbarAnimation();
         initDrawer();
-//        initRecyclerView();
+        initRecyclerView();
     }
 
     /**
@@ -127,21 +129,21 @@ public class TeacherViewActivity extends AppCompatActivity {
      * @return Either the list of teachers or null
      */
     private List<Teacher> getListTeacher() {
-        List<Teacher> list = new ArrayList<>();
+        teacherList = new ArrayList<>();
 
        String sql_select = "SELECT * FROM "  + TABLE_TEACHER;
         Cursor cs = myDatabase.rawQuery(sql_select);
-        list.clear();
+        teacherList.clear();
         while (cs.moveToNext()){
             int teacherID = cs.getInt(0);
             String teacherName = cs.getString(1);
             String phone = cs.getString(2);
             String email = cs.getString(3);
             Teacher teacher = new Teacher(teacherID, teacherName, phone, email);
-            list.add(teacher);
+            teacherList.add(teacher);
         }
 
-        return list;
+        return teacherList;
     }
     /**
      * TODO: add event listener for add button

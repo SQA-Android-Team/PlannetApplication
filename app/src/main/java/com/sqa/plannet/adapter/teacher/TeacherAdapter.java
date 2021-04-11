@@ -1,5 +1,7 @@
 package com.sqa.plannet.adapter.teacher;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sqa.plannet.R;
+import com.sqa.plannet.activity.teacher.TeacherDetailActivity;
 import com.sqa.plannet.model.Teacher;
 
 import java.util.List;
@@ -32,11 +35,14 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.TeacherV
     @Override
     public void onBindViewHolder(@NonNull TeacherAdapter.TeacherViewHolder holder, int position) {
         Teacher teacher = listTeacher.get(position);
+
         if (teacher == null){
             return;
         }
 
         holder.teacherName.setText(teacher.getTeacherName());
+        holder.position = position;
+        holder.teacher = teacher;
     }
 
     @Override
@@ -47,14 +53,28 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.TeacherV
         return 0;
     }
 
-    public class TeacherViewHolder extends RecyclerView.ViewHolder {
+    public class TeacherViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        private Context context;
+        private Teacher teacher;
+        private int position;
 
         private TextView teacherName;
+
         public TeacherViewHolder(@NonNull View view){
             super(view);
             teacherName = view.findViewById(R.id.teacherNameTxv);
+            context = view.getContext();
+            view.setOnClickListener(this);
         }
 
 
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(context, TeacherDetailActivity.class);
+            intent.putExtra("teacher", teacher);
+            intent.putExtra("position", position);
+
+            context.startActivity(intent);
+        }
     }
 }

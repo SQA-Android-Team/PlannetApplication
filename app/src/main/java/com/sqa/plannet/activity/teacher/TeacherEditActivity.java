@@ -1,5 +1,6 @@
 package com.sqa.plannet.activity.teacher;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,13 +22,18 @@ public class TeacherEditActivity extends AppCompatActivity implements  View.OnCl
     private EditText teacherNameEdt;
     private EditText teacherPhoneEdt;
     private EditText teacherEmailEdt;
+    private int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.teacher_edit);
 
+
+        Intent intent = getIntent();
+        position =(int) intent.getExtras().get("position");
         initUI();
+        loadData();
         backBtn.setOnClickListener(this);
         editBtn.setOnClickListener(this);
 
@@ -50,12 +56,14 @@ public class TeacherEditActivity extends AppCompatActivity implements  View.OnCl
      * TODO: set text to all fields
      * INCOMPLETE
      */
-    private void setEdtText(Teacher teacher) {
-        teacherNameEdt.setText(teacher.getTeacherName());
-        teacherPhoneEdt.setText(teacher.getPhone());
-        teacherEmailEdt.setText(teacher.getEmail());
+    private void loadData(){
+        teacherNameEdt.setText(TeacherViewActivity.teacherList.get(position).getTeacherName());
+        teacherPhoneEdt.setText(TeacherViewActivity.teacherList.get(position).getPhone());
+        teacherEmailEdt.setText(TeacherViewActivity.teacherList.get(position).getEmail());
+
 
     }
+
 
     @Override
     public void onClick(View v) {

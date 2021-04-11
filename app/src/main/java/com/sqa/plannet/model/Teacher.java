@@ -1,6 +1,8 @@
 package com.sqa.plannet.model;
 
-public class Teacher {
+import java.io.Serializable;
+
+public class Teacher implements Serializable {
     private int teacherID;
     private String teacherName;
     private String phone;

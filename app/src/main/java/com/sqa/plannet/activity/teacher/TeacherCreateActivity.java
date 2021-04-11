@@ -75,7 +75,7 @@ public class TeacherCreateActivity extends AppCompatActivity implements View.OnC
                 HomeActivity.myDatabase.insertTask(TeacherViewActivity.TABLE_TEACHER, null, contentValues);
 
                 Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(TeacherCreateActivity.this, SubjectViewActivity.class);
+                Intent intent = new Intent(TeacherCreateActivity.this, TeacherViewActivity.class);
                 startActivity(intent);
 
                 finish();

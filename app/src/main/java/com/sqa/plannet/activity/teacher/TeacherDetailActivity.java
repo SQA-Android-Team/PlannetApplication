@@ -16,6 +16,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.sqa.plannet.R;
 import com.sqa.plannet.model.Teacher;
 
+import static com.sqa.plannet.activity.home.HomeActivity.myDatabase;
+import static com.sqa.plannet.activity.todo.TodoMainActivity.TABLE_TASK;
+
 public class TeacherDetailActivity extends AppCompatActivity implements View.OnClickListener{
 
     ImageButton backBtn;
@@ -27,6 +30,8 @@ public class TeacherDetailActivity extends AppCompatActivity implements View.OnC
     TextView teacherPhoneTxv;
     TextView teacherEmailTxv;
 
+    private int position;
+
 
 
 
@@ -37,8 +42,11 @@ public class TeacherDetailActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.teacher_detail);
 
-        initUI();
+        Intent intent = getIntent();
+        position =(int) intent.getExtras().get("position");
 
+        initUI();
+loadData();
         backBtn.setOnClickListener(this);
         editBtn.setOnClickListener(this);
         deleteBtn.setOnClickListener(this);
@@ -68,20 +76,28 @@ public class TeacherDetailActivity extends AppCompatActivity implements View.OnC
     }
 
 
+    private void loadData(){
+        teacherNameTxv.setText(TeacherViewActivity.teacherList.get(position).getTeacherName());
+        teacherPhoneTxv.setText(TeacherViewActivity.teacherList.get(position).getPhone());
+        teacherEmailTxv.setText(TeacherViewActivity.teacherList.get(position).getEmail());
+
+
+    }
 
 
 
 
     @Override
     public void onClick(View v) {
-
+        Intent intent;
         switch (v.getId()){
             case R.id.backBtn:
                 finish();
                 break;
             case R.id.editBtn:
-                Intent intent = new Intent(TeacherDetailActivity.this, TeacherEditActivity.class);
+               intent = new Intent(TeacherDetailActivity.this, TeacherEditActivity.class);
                 intent.putExtra("teacher", "");
+                intent.putExtra("position", position);
                 startActivity(intent);
                 // TODO: INCOMPLETE
                 break;
@@ -107,7 +123,16 @@ public class TeacherDetailActivity extends AppCompatActivity implements View.OnC
                         .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int i) {
-                                // deleting code
+                                Teacher teacher = TeacherViewActivity.teacherList.get(position);
+                                TeacherViewActivity.teacherList.remove(position);
+                                String delete =  "DELETE FROM " + TeacherViewActivity.TABLE_TEACHER + " WHERE id = " + teacher.getTeacherID();
+                                myDatabase.excuteSQL(delete);
+
+
+                                Toast.makeText(TeacherDetailActivity.this, "Delete Successfull", Toast.LENGTH_SHORT).show();
+//                                Intent intent = new Intent(TeacherDetailActivity.this, TeacherViewActivity.class);
+//                                startActivity(intent);
+                                finish();
                                 dialog.dismiss();
                             }
                         })
