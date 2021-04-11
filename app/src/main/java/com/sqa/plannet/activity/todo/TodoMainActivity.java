@@ -79,14 +79,14 @@ public class TodoMainActivity extends AppCompatActivity implements View.OnClickL
             int id = cs.getInt(0);
             String title = cs.getString(1);
             String type = cs.getString(2);
-            int status = cs.getInt(3);
-            String location = cs.getString(4);
-            String time = cs.getString(5);
-            String date = cs.getString(6);
-            String note = cs.getString(7);
-            int remind = cs.getInt(8);
-            int important = cs.getInt(9);
-            Task task = new Task(id, title, type, status, location, time, date, note, remind, important);
+
+            String location = cs.getString(3);
+            String time = cs.getString(4);
+            String date = cs.getString(5);
+            String note = cs.getString(6);
+            int remind = cs.getInt(7);
+            int important = cs.getInt(8);
+            Task task = new Task(id, title, type, location, time, date, note, remind, important);
             list.add(task);
         }
         return list;

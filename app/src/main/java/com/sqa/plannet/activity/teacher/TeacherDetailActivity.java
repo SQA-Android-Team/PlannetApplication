@@ -14,6 +14,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.sqa.plannet.R;
+import com.sqa.plannet.activity.home.HomeActivity;
 import com.sqa.plannet.model.Teacher;
 
 import static com.sqa.plannet.activity.home.HomeActivity.myDatabase;
@@ -95,8 +96,9 @@ loadData();
                 finish();
                 break;
             case R.id.editBtn:
+                Teacher teacher = TeacherViewActivity.teacherList.get(position);
                intent = new Intent(TeacherDetailActivity.this, TeacherEditActivity.class);
-                intent.putExtra("teacher", "");
+                intent.putExtra("teacher", teacher);
                 intent.putExtra("position", position);
                 startActivity(intent);
                 // TODO: INCOMPLETE
@@ -128,12 +130,12 @@ loadData();
                                 String delete =  "DELETE FROM " + TeacherViewActivity.TABLE_TEACHER + " WHERE id = " + teacher.getTeacherID();
                                 myDatabase.excuteSQL(delete);
 
-
-                                Toast.makeText(TeacherDetailActivity.this, "Delete Successfull", Toast.LENGTH_SHORT).show();
-//                                Intent intent = new Intent(TeacherDetailActivity.this, TeacherViewActivity.class);
-//                                startActivity(intent);
-                                finish();
                                 dialog.dismiss();
+                                Toast.makeText(TeacherDetailActivity.this, "Delete Successfull", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(TeacherDetailActivity.this, TeacherViewActivity.class);
+                                startActivity(intent);
+
+
                             }
                         })
                         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
