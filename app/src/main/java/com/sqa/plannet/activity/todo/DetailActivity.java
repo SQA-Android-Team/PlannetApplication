@@ -22,7 +22,7 @@ import java.util.List;
 
 public class DetailActivity extends AppCompatActivity  {
     ImageButton btnBack;
-    TextView titledoes, txtvType, txtvimportant,txtvTime, txtvLocation, txtvNote, txtvRemind, txtvDate ;
+    TextView titledoes, txtvType, txtvimportant, txtvTime, txtvLocation, txtvNote, txtvRemind, txtvDate ;
     Task t;
 
     @Override
@@ -40,11 +40,7 @@ public class DetailActivity extends AppCompatActivity  {
             }
         });
 
-        if(txtvType.equals("Homework")){
-            txtvType.setBackgroundColor(Color.parseColor("#FFF1CD99"));
-        }else if(titledoes.equals("Fun")){
-            txtvType.setBackgroundColor(Color.parseColor("#8087CF8A"));
-        }
+
     }
 
     private void mapping() {
@@ -69,6 +65,24 @@ public class DetailActivity extends AppCompatActivity  {
         txtvLocation.setText("Location : " + t.getLocation());
         txtvNote.setText("" + t.getNote());
         txtvRemind.setText("" + t.getRemind());
-        txtvimportant.setText("" + t.getLocation());
+        //xtvimportant.setText("" + t.getLocation());
+
+        int important = t.getImportant();
+        if (important == 1){
+            txtvimportant.setVisibility(View.VISIBLE);
+        }else {
+            txtvimportant.setVisibility(View.INVISIBLE);
+
+            String Trang = txtvType.getText().toString();
+            if (Trang.equals("Homework")) {
+                txtvType.setBackgroundResource(R.drawable.btn_button_blue);
+            }else if(Trang.equals("Fun")){
+                txtvType.setBackgroundResource(R.drawable.btn_button_green);
+            }else if(Trang.equals("School")){
+                txtvType.setBackgroundResource(R.drawable.btn_button_orange);
+            }else if(Trang.equals("Others")){
+                txtvType.setBackgroundResource(R.drawable.btn_button_purple);
+            }
+        }
     }
 }

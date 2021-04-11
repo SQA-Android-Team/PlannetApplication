@@ -30,6 +30,7 @@ import com.sqa.plannet.activity.calendar.CalendarViewActivity;
 import com.sqa.plannet.activity.helpAndFeedbacks.HelpAndFeedbacksActivity;
 import com.sqa.plannet.activity.home.HomeActivity;
 import com.sqa.plannet.activity.overview.OverviewMainActivity;
+import com.sqa.plannet.activity.settings.SettingsAboutActivity;
 import com.sqa.plannet.activity.settings.SettingsMenuActivity;
 import com.sqa.plannet.activity.teacher.TeacherViewActivity;
 import com.sqa.plannet.activity.timetable.TimetableViewActivity;
@@ -61,7 +62,7 @@ public class SubjectViewActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.subject_view);
         initUI();
-        initToolbar();
+//        initToolbar();
 
         initDrawer();
         initToolbarAnimation();
@@ -84,7 +85,7 @@ public class SubjectViewActivity extends AppCompatActivity implements View.OnCli
         appBarLayout = findViewById(R.id.appBarLayout);
         collapsingToolbarLayout = findViewById(R.id.colToolbar);
         recyclerView = findViewById(R.id.rv_subject);
-        navigationView = findViewById(R.id.navView);
+        navigationView = findViewById(R.id.nav_home);
 
     }
 
@@ -92,23 +93,28 @@ public class SubjectViewActivity extends AppCompatActivity implements View.OnCli
     /**
      * TODO: Initiate the toolbar
      */
-    private void initToolbar(){
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-    }
+//    private void initToolbar(){
+//
+//    }
 
     /**
      * TODO: Intitialise drawer menu
      */
     private void initDrawer(){
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setTitle("Subjects");
-        drawerLayout.bringToFront();
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.nav_open, R.string.nav_close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
+//        drawerLayout.bringToFront();
+//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.nav_open, R.string.nav_close);
+//        drawerLayout.addDrawerListener(toggle);
+//        toggle.syncState();
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
     }
 
 
@@ -237,53 +243,45 @@ public class SubjectViewActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-        Intent intent;
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.navHome:
-                intent = new Intent(SubjectViewActivity.this, HomeActivity.class);
-                Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(SubjectViewActivity.this, HomeActivity.class);
                 startActivity(intent);
                 break;
             case R.id.navOverview:
-                intent = new Intent(SubjectViewActivity.this, OverviewMainActivity.class);
-                Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
-                startActivity(intent);
+                Intent i2 = new Intent(SubjectViewActivity.this, OverviewMainActivity.class);
+                startActivity(i2);
                 break;
             case R.id.navTodo:
-                intent = new Intent(SubjectViewActivity.this, TodoMainActivity.class);
-                Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
-                startActivity(intent);
+                Intent i3 = new Intent(SubjectViewActivity.this, TodoMainActivity.class);
+                startActivity(i3);
                 break;
             case R.id.navTimetable:
-                intent = new Intent(SubjectViewActivity.this, TimetableViewActivity.class);
-                startActivity(intent);
+                Intent i4 = new Intent(SubjectViewActivity.this, TimetableViewActivity.class);
+                startActivity(i4);
                 break;
             case R.id.navCalendar:
-                intent = new Intent(SubjectViewActivity.this, CalendarViewActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.navTeacher:
-                intent = new Intent(SubjectViewActivity.this, TeacherViewActivity.class);
-                startActivity(intent);
+                Intent i5 = new Intent(SubjectViewActivity.this, CalendarViewActivity.class);
+                startActivity(i5);
                 break;
             case R.id.navSubject:
-                intent = new Intent(SubjectViewActivity.this, SubjectViewActivity.class);
-                startActivity(intent);
+                Intent i6 = new Intent(SubjectViewActivity.this, SubjectViewActivity.class);
+                startActivity(i6);
+                break;
+            case R.id.navTeacher:
+                Intent i7 = new Intent(SubjectViewActivity.this, TeacherViewActivity.class);
+                startActivity(i7);
                 break;
             case R.id.navSettings:
-                intent = new Intent(SubjectViewActivity.this, SettingsMenuActivity.class);
-                startActivity(intent);
+                Intent i8 = new Intent(SubjectViewActivity.this, SettingsAboutActivity.class);
+                startActivity(i8);
                 break;
             case R.id.navHelp:
-                intent = new Intent(SubjectViewActivity.this, HelpAndFeedbacksActivity.class);
-                startActivity(intent);
+                Intent i9 = new Intent(SubjectViewActivity.this, HelpAndFeedbacksActivity.class);
+                startActivity(i9);
                 break;
-
-
+            default:
         }
-
-        drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 }

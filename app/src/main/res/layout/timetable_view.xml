@@ -27,7 +27,6 @@
             android:id="@+id/btnAddClass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="addClass"
             android:layout_margin="16dp"
             android:backgroundTint="#FC70BF"
             android:src="@drawable/ic_baseline_add"
@@ -602,6 +601,7 @@
                                         android:background="#EDEDED" />
 
                                     <LinearLayout
+                                        android:id="@+id/sessionDetail"
                                         android:layout_width="fill_parent"
                                         android:layout_height="100dp"
                                         android:layout_marginLeft="0.5dp"
