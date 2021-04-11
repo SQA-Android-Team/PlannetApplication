@@ -39,7 +39,7 @@ public class TimetableViewActivity extends AppCompatActivity implements AdapterV
     private RelativeLayout relMon, relTue, relWed, relThu, relFri, relSat, relSun;
     private ImageButton btnEditSemesterName;
     private LinearLayout sessionDetail;
-    public static String TABLE_SESION = "sessions";
+    public static String TABLE_SESSION = "sessions";
     ArrayList<Session> listSesion = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -175,7 +175,7 @@ public class TimetableViewActivity extends AppCompatActivity implements AdapterV
 
     public static ArrayList<Session> getAllSession() {
         ArrayList<Session> list = new ArrayList<>();
-        String sql_select = "SELECT * FROM " + TABLE_SESION ;
+        String sql_select = "SELECT * FROM " + TABLE_SESSION ;
         Cursor cs = myDatabase.rawQuery(sql_select);
         list.clear();
         while (cs.moveToNext()) {

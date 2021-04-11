@@ -47,7 +47,7 @@ public class OverviewAdapter extends BaseAdapter {
         view = inflater.inflate(R.layout.overview_event_row, null);
         TextView titledoes =  view.findViewById(R.id.event_name);
         TextView datedoes =  view.findViewById(R.id.event_date);
-        LinearLayout lntask = view.findViewById(R.id.event);
+        LinearLayout lntask = view.findViewById(R.id.no_event);
 
         Task task = list.get(position);
         titledoes.setText(task.getTitle());

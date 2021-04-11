@@ -33,6 +33,7 @@ Context context;
     public void onCreate(SQLiteDatabase db) {
     }
 
+
     public long insertTask(String table, String nullColumnHack, ContentValues values){
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         return sqLiteDatabase.insert(table, nullColumnHack, values);

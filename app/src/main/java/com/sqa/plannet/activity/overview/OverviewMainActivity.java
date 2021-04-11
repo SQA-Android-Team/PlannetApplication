@@ -67,7 +67,6 @@ public class OverviewMainActivity extends AppCompatActivity implements OnChartVa
         ScheduleAdapter scheduleAdapter = new ScheduleAdapter(listSession);
         resentSession.setAdapter(scheduleAdapter);
 
-//
         pendingEvent= (RecyclerView)findViewById(R.id.event_recycler);
         pendingEvent.setLayoutManager(new LinearLayoutManager(this));
 
@@ -105,25 +104,6 @@ public class OverviewMainActivity extends AppCompatActivity implements OnChartVa
 
         mChart.setOnChartValueSelectedListener(this);
     }
-//    private void setRecentRecycler(List<ScheduleData> scheduleDataList) {
-//
-//        recentRecycler = findViewById(R.id.recent_recycler);
-//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
-//        recentRecycler.setLayoutManager(layoutManager);
-//        scheduleAdapter = new ScheduleAdapter(this, scheduleDataList);
-//        recentRecycler.setAdapter(scheduleAdapter);
-//
-//    }
-
-//    private void pendingEventRecycler(List<PendingEventData> pendingEventDataList) {
-//
-//        pendingEventRecycler = findViewById(R.id.event_recycler);
-//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
-//        pendingEventRecycler.setLayoutManager(layoutManager);
-//        pendingEventAdapter = new PendingEventAdapter(this, pendingEventDataList);
-//        pendingEventRecycler.setAdapter(pendingEventAdapter);
-//
-//    }
 
     @Override
     public void onValueSelected(Entry e, Highlight h) {

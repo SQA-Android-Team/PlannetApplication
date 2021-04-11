@@ -210,7 +210,7 @@ public class TimetableAddSession extends AppCompatActivity implements AdapterVie
             contentValues.put("startTime", startTime);
             contentValues.put("endTime", endTime);
 
-            HomeActivity.myDatabase.insertTask(TimetableViewActivity.TABLE_SESION, null, contentValues);
+            HomeActivity.myDatabase.insertTask(TimetableViewActivity.TABLE_SESSION, null, contentValues);
 
         }
     }

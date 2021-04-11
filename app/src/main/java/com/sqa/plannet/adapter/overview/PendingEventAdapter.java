@@ -33,9 +33,9 @@ public class PendingEventAdapter extends RecyclerView.Adapter<PendingEventAdapte
     }
 
     @Override
-  public void onBindViewHolder(@NonNull PendingEventViewHolder holder, int position) {
-      holder.eventDate.setText(eventList.get(position).getTitle());
-      holder.eventName.setText(eventList.get(position).getDate()); }
+    public void onBindViewHolder(@NonNull PendingEventViewHolder holder, int position) {
+        holder.eventName.setText(eventList.get(position).getTitle());
+        holder.eventDate.setText(eventList.get(position).getDate()); }
 
 
     @Override
