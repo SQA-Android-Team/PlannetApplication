@@ -18,8 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.sqa.plannet.R;
 import com.sqa.plannet.activity.todo.UpdateActivity;
-import com.sqa.plannet.adapter.subject.SubjectAdapter;
-import com.sqa.plannet.model.Subject;
 import com.sqa.plannet.model.Task;
 
 import java.util.List;

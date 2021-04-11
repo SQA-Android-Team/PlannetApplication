@@ -1,18 +1,14 @@
 package com.sqa.plannet.activity.calendar;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.CalendarView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.appbar.AppBarLayout;
@@ -20,21 +16,14 @@ import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.sqa.plannet.R;
-import com.sqa.plannet.activity.timetable.TimetableViewActivity;
-import com.sqa.plannet.activity.todo.TodoMainActivity;
 import com.sqa.plannet.adapter.calendar.SessionAdapter;
 import com.sqa.plannet.adapter.calendar.TaskAdapter;
-import com.sqa.plannet.adapter.todo.TodoTaskAdapter;
-import com.sqa.plannet.database.MyDatabase;
 import com.sqa.plannet.model.Session;
 import com.sqa.plannet.model.Task;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
-import static com.sqa.plannet.activity.home.HomeActivity.myDatabase;
 import static com.sqa.plannet.activity.timetable.TimetableViewActivity.getAllSession;
 import static com.sqa.plannet.activity.todo.TodoMainActivity.getAllTask;
 //import static com.sqa.plannet.activity.todo.TodoMainActivity.getTaskByDate;
