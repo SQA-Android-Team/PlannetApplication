@@ -333,7 +333,7 @@ g
                                 android:id="@+id/btnYellow"
                                 android:layout_width="25dp"
                                 android:layout_height="25dp"
-                                android:background="@drawable/select_session_yellow"
+                                android:background="@drawable/yellow_color_selector"
                                 android:button="@android:color/transparent"
                                 android:layout_marginRight="5dp"
                                 android:layout_weight="1"/>
@@ -341,6 +341,7 @@ g
                                 android:id="@+id/btnGreen"
                                 android:layout_width="25dp"
                                 android:layout_height="25dp"
+                                android:onClick="changeColor"
                                 android:background="@drawable/select_session_green"
                                 android:button="@android:color/transparent"
                                 android:layout_marginRight="5dp"

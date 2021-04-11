@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import com.sqa.plannet.R;
 
 public class TimetableSessionView extends AppCompatActivity {
+    private ImageButton btnBack;
 
 
     @Override
@@ -16,5 +17,12 @@ public class TimetableSessionView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.timetable_session_view_detail);
 
+        btnBack= findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

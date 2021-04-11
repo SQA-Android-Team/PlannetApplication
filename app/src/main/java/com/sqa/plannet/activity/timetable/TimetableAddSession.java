@@ -216,5 +216,6 @@ public class TimetableAddSession extends AppCompatActivity implements AdapterVie
     }
 
 
-
+    public void changeColor(View view) {
+    }
 }
