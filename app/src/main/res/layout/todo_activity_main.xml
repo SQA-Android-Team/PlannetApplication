@@ -1,120 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/white">
+
+<androidx.drawerlayout.widget.DrawerLayout
     android:layout_width="match_parent"
-    android:background="#16A49DB1"
     android:layout_height="match_parent"
-    tools:context=".activity.todo.TodoMainActivity">
-    <LinearLayout
-        android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:id="@+id/homeViewDrawer">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+    </RelativeLayout>
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:background="#16A49DB1"
+        android:layout_height="match_parent"
+        tools:context=".activity.todo.TodoMainActivity">
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:background="@drawable/header_todo"
-            android:layout_height="190dp">
+            android:layout_height="match_parent">
 
-            <ImageButton
-                android:id="@+id/btnBack"
-                android:layout_margin="10dp"
-                android:background="@drawable/icon_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"></ImageButton>
-            <TextView
-                android:layout_marginTop="130dp"
-                android:textSize="28sp"
-                android:textColor="#FDFCFC"
-                android:text="TODO"
-                android:padding="10dp"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"></TextView>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:background="@drawable/header_todo"
+                android:layout_height="190dp">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/homeToolbar"
+                    app:layout_collapseMode="pin"
+                    app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
+                    app:navigationIcon="@drawable/ic_menu">
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <ImageButton
+                            android:layout_alignParentRight="true"
+                            android:id="@+id/btnAccount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_baseline_account_circle_24"
+                            android:background="@null"
+                            android:layout_marginRight="20dp">
+
+                        </ImageButton>
+                    </RelativeLayout>
+
+
+                </androidx.appcompat.widget.Toolbar>
+
+                <TextView
+                    android:layout_marginTop="130dp"
+                    android:textSize="28sp"
+                    android:textColor="#FDFCFC"
+                    android:text="TODO"
+                    android:padding="10dp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"></TextView>
+
+                <TextView
+                    android:layout_marginTop="130dp"
+                    android:textSize="18sp"
+                    android:textColor="#FDFCFC"
+                    android:text="Finish them quickly"
+                    android:textStyle="italic"
+                    android:textAlignment="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"></TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:text="Today : "
+                    android:textStyle="bold"
+                    android:textColor="#111"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"></TextView>
+
+                <TextView
+                    android:id="@+id/txtvDate"
+                    android:textStyle="bold"
+                    android:textColor="#111"
+                    android:textSize="20sp"
+                    android:text="17 October"
+                    android:layout_weight="6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"></TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtvNumTask"
+                    android:layout_marginLeft="10dp"
+                    android:text="4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"></TextView>
+
+                <TextView
+                    android:text=" task(s) you need to do today"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"></TextView>
+
+            </LinearLayout>
+
+
+            <ListView
+                android:id="@+id/lstTask"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"></ListView>
+
+
 
             <TextView
-                android:layout_marginTop="130dp"
-                android:textSize="18sp"
-                android:textColor="#FDFCFC"
-                android:text="Finish them quickly"
-                android:textStyle="italic"
+                android:textSize="16sp"
+                android:textColor="#93839E"
+                android:text="No More Does"
+                android:layout_gravity="center"
                 android:textAlignment="center"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"></TextView>
+                android:layout_height="wrap_content"></TextView>
 
+            <Button
+                android:id="@+id/btnNew"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="right"
+                android:background="@drawable/btn_button"
+                android:text="+"
+                android:textColor="@color/white"
+                android:textSize="18sp"></Button>
         </LinearLayout>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_marginLeft="10dp"
-                android:text="Today : "
-                android:textStyle="bold"
-                android:textColor="#111"
-                android:textSize="20sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"></TextView>
-
-            <TextView
-                android:id="@+id/txtvDate"
-                android:textStyle="bold"
-                android:textColor="#111"
-                android:textSize="20sp"
-                android:text="17 October"
-                android:layout_weight="6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"></TextView>
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/txtvNumTask"
-                android:layout_marginLeft="10dp"
-                android:text="4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"></TextView>
-
-            <TextView
-                android:text=" task(s) you need to do today"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"></TextView>
-
-        </LinearLayout>
+    </ScrollView>
 
 
-        <ListView
-            android:id="@+id/lstTask"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"></ListView>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_home"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:headerLayout="@layout/header"
+        app:menu="@menu/menu_main"
+        android:layout_gravity="start"/>
 
+</androidx.drawerlayout.widget.DrawerLayout>
 
-
-        <TextView
-            android:textSize="16sp"
-            android:textColor="#93839E"
-            android:text="No More Does"
-            android:layout_gravity="center"
-            android:textAlignment="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"></TextView>
-
-        <Button
-            android:id="@+id/btnNew"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="right"
-            android:background="@drawable/btn_button"
-            android:text="+"
-            android:textColor="@color/white"
-            android:textSize="18sp"></Button>
-    </LinearLayout>
-
-</ScrollView>
+</LinearLayout>

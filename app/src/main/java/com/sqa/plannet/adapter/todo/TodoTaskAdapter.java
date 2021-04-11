@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,25 +57,26 @@ public class TodoTaskAdapter extends BaseAdapter {
         view = inflater.inflate(R.layout.todo_item_does, null);
         CheckBox check = view.findViewById(R.id.check);
         TextView titledoes =  view.findViewById(R.id.titledoes);
+        TextView done =  view.findViewById(R.id.done);
         TextView typedoes =  view.findViewById(R.id.typedoes);
         TextView timedoes = view.findViewById(R.id.timedoes);
         ImageButton btnEdit =  view.findViewById(R.id.btnEdit);
         ImageButton btnDelete = view.findViewById(R.id.btnDelete);
         LinearLayout lntask = view.findViewById(R.id.lntask);
 
-        LinearLayout completeTask = view.findViewById(R.id.completeTask);
-        TextView titledoes1 =  view.findViewById(R.id.titledoes1);
-        TextView typedoes1 =  view.findViewById(R.id.typedoes1);
-        TextView timedoes1 = view.findViewById(R.id.timedoes1);
+//        LinearLayout completeTask = view.findViewById(R.id.completeTask);
+//        TextView titledoes1 =  view.findViewById(R.id.titledoes1);
+//        TextView typedoes1 =  view.findViewById(R.id.typedoes1);
+//        TextView timedoes1 = view.findViewById(R.id.timedoes1);
 
         task = list.get(position);
         titledoes.setText(task.getTitle());
         timedoes.setText(task.getTime());
         typedoes.setText(task.getType());
 
-        titledoes1.setText(task.getTitle());
-        timedoes1.setText(task.getTime());
-        typedoes1.setText(task.getType());
+//        titledoes1.setText(task.getTitle());
+//        timedoes1.setText(task.getTime());
+//        typedoes1.setText(task.getType());
 
 
         String Trang = typedoes.getText().toString();
@@ -88,16 +90,16 @@ public class TodoTaskAdapter extends BaseAdapter {
             typedoes.setBackgroundResource(R.drawable.btn_button_purple);
         }
 
-        String Trang1 = typedoes1.getText().toString();
-        if (Trang1.equals("Homework")) {
-            typedoes1.setBackgroundResource(R.drawable.btn_button_blue);
-        }else if(Trang1.equals("Fun")){
-            typedoes1.setBackgroundResource(R.drawable.btn_button_green);
-        }else if(Trang1.equals("School")){
-            typedoes1.setBackgroundResource(R.drawable.btn_button_orange);
-        }else if(Trang1.equals("Others")){
-            typedoes1.setBackgroundResource(R.drawable.btn_button_purple);
-        }
+//        String Trang1 = typedoes1.getText().toString();
+//        if (Trang1.equals("Homework")) {
+//            typedoes1.setBackgroundResource(R.drawable.btn_button_blue);
+//        }else if(Trang1.equals("Fun")){
+//            typedoes1.setBackgroundResource(R.drawable.btn_button_green);
+//        }else if(Trang1.equals("School")){
+//            typedoes1.setBackgroundResource(R.drawable.btn_button_orange);
+//        }else if(Trang1.equals("Others")){
+//            typedoes1.setBackgroundResource(R.drawable.btn_button_purple);
+//        }
 
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,10 +120,13 @@ public class TodoTaskAdapter extends BaseAdapter {
         check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (check.isChecked()){
-                    completeTask.setVisibility(View.VISIBLE);
-                }else {
-                    completeTask.setVisibility(View.GONE);
+                if (check.isChecked()) {
+                    check.setBackgroundResource(R.drawable.btn_complete);
+                    done.setVisibility(View.VISIBLE);
+                } else if(!check.isChecked()) {
+                    done.setVisibility(View.GONE);
+                    check.setBackgroundResource(R.drawable.btn_button_white);
+                    notifyDataSetChanged();
                 }
             }
         });
