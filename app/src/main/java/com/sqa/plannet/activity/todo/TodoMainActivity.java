@@ -27,7 +27,7 @@ import static com.sqa.plannet.activity.home.HomeActivity.myDatabase;
 
 public class TodoMainActivity extends AppCompatActivity implements View.OnClickListener {
     ListView lstTask;
-    FloatingActionButton btnNew;
+    Button btnNew;
     ArrayList<Task> listTask = new ArrayList<>();
     TodoTaskAdapter adapter;
     public static String TABLE_TASK = "tasks" ;
