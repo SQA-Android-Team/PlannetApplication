@@ -11,7 +11,7 @@
         <ImageButton
             android:id="@+id/btnBack"
             android:layout_margin="10dp"
-            android:background="@drawable/back"
+            android:background="@drawable/icon_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"></ImageButton>
         <TextView
@@ -57,13 +57,15 @@
             android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:textSize="15sp"
+            android:visibility="gone"
             android:textAlignment="center"
             android:background="@drawable/btn_button_red"
-            android:hint="Important"
-            android:visibility="gone"
+            android:text="Important"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
+            android:gravity="center_horizontal">
         </TextView>
+
+
     </LinearLayout>
 
 

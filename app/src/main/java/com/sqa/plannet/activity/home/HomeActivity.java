@@ -19,6 +19,7 @@ import com.sqa.plannet.activity.calendar.CalendarViewActivity;
 import com.sqa.plannet.activity.helpAndFeedbacks.HelpAndFeedbacksActivity;
 import com.sqa.plannet.activity.overview.OverviewMainActivity;
 import com.sqa.plannet.activity.settings.SettingsAboutActivity;
+import com.sqa.plannet.activity.settings.SettingsMenuActivity;
 import com.sqa.plannet.activity.subject.SubjectViewActivity;
 import com.sqa.plannet.activity.teacher.TeacherViewActivity;
 import com.sqa.plannet.activity.timetable.TimetableViewActivity;
@@ -117,7 +118,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-
     }
 
     @Override
@@ -177,7 +177,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(i7);
                 break;
             case R.id.navSettings:
-                Intent i8 = new Intent(HomeActivity.this, SettingsAboutActivity.class);
+                Intent i8 = new Intent(HomeActivity.this, SettingsMenuActivity.class);
                 startActivity(i8);
                 break;
             case R.id.navHelp:

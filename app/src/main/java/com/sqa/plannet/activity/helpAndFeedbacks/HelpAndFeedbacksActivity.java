@@ -7,10 +7,12 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.sqa.plannet.R;
+import com.sqa.plannet.activity.home.HomeActivity;
 
 
 public class HelpAndFeedbacksActivity extends AppCompatActivity {
@@ -18,6 +20,7 @@ public class HelpAndFeedbacksActivity extends AppCompatActivity {
     EditText emailFb;
     EditText questionFb;
     Button sendFb_Btn;
+    ImageButton btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,8 @@ public class HelpAndFeedbacksActivity extends AppCompatActivity {
         emailFb = findViewById(R.id.emailFb);
         questionFb = findViewById(R.id.questionFb);
         sendFb_Btn = findViewById(R.id.sendFb_Btn);
+        btnBack = findViewById(R.id.backBtn);
+
         sendFb_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,6 +47,13 @@ public class HelpAndFeedbacksActivity extends AppCompatActivity {
                 it.putExtra(Intent.EXTRA_TEXT, questionFb.getText());
                 it.setType("message/rfc822"); //it.setType("plain/text");
                 startActivity(Intent.createChooser(it, "Choose Mail App"));
+            }
+        });
+        btnBack.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent i1 = new Intent(HelpAndFeedbacksActivity.this, HomeActivity.class);
+                startActivity(i1);
             }
         });
     }
