@@ -38,6 +38,7 @@ public class TimetableViewActivity extends AppCompatActivity implements AdapterV
     private TextView txtSemesterName;
     private RelativeLayout relMon, relTue, relWed, relThu, relFri, relSat, relSun;
     private ImageButton btnEditSemesterName;
+    private LinearLayout sessionDetail;
     public static String TABLE_SESION = "sessions";
     ArrayList<Session> listSesion = new ArrayList<>();
     @Override
@@ -56,6 +57,26 @@ public class TimetableViewActivity extends AppCompatActivity implements AdapterV
         getSupportActionBar().setTitle("Timetable");
         drawerLayout.bringToFront();
         listSesion = getAllSession();
+
+
+        sessionDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TimetableViewActivity.this, TimetableSessionView.class) );
+            }
+        });
+
+        btnAddClass = findViewById(R.id.btnAddClass);
+        btnAddClass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Intent i1 = new Intent(TimetableViewActivity.this, TimetableSessionView.class);
+               startActivity(i1);
+            }
+        });
+
+
+
 //        Session s = listSesion.get(0);
 //        String t = s.getType();
 //        Toast.makeText(this, "ok " , Toast.LENGTH_SHORT).show();
@@ -104,6 +125,7 @@ public class TimetableViewActivity extends AppCompatActivity implements AdapterV
         appBarLayout = findViewById(R.id.appBarLayout);
         collapsingToolbarLayout = findViewById(R.id.colToolbar);
         toolbar = findViewById(R.id.timetableViewToolbar);
+        sessionDetail= findViewById(R.id.sessionDetail);
     }
 
     private void initToolbar(){
@@ -123,18 +145,6 @@ public class TimetableViewActivity extends AppCompatActivity implements AdapterV
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
-    }
-
-    public void addClass(View view) {
-        btnAddClass = findViewById(R.id.btnAddClass);
-        btnAddClass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(TimetableViewActivity.this, TimetableAddSession.class));
-            }
-        });
-
 
     }
 
@@ -182,4 +192,7 @@ public class TimetableViewActivity extends AppCompatActivity implements AdapterV
         }
         return list;
     }
+
+
+
 }

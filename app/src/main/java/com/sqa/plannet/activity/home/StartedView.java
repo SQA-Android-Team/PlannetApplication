@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import com.sqa.plannet.R;
 
 public class StartedView extends AppCompatActivity {
-    private static int SPLASH_SCREEN = 2900;
+    private static int SPLASH_SCREEN = 2000;
     private Animation amin_turn_around;
     private ImageView stared_icon;
 
