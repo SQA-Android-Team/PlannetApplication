@@ -32,8 +32,7 @@ import java.util.List;
 public class OverviewMainActivity extends AppCompatActivity implements OnChartValueSelectedListener {
     private PieChart mChart;
     RecyclerView resentSession;
-    //    ScheduleAdapter scheduleAdapter;
-//    PendingEventAdapter pendingEventAdapter;
+
     RecyclerView pendingEvent;
     ArrayList<Task> eventList;
 
@@ -45,12 +44,6 @@ public class OverviewMainActivity extends AppCompatActivity implements OnChartVa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.overview_view);
 
-//        List<ScheduleData> scheduleDataList = new ArrayList<>();
-//        scheduleDataList.add(new ScheduleData("SE2", "N.T.D.Long", "801C"));
-//        scheduleDataList.add(new ScheduleData("IWS", "L.T.Trang", "801C"));
-//        scheduleDataList.add(new ScheduleData("MPR", "N.V.Cong", "801C"));
-//
-//
         resentSession = (RecyclerView) findViewById((R.id.recent_recycler)) ;
         resentSession.setLayoutManager(new LinearLayoutManager(this));
 
