@@ -46,18 +46,18 @@ public class SubjectDetailActivity extends AppCompatActivity implements  View.On
             subject = (Subject) intent.getExtras().get("subject");
             position = (int) intent.getExtras().get("position");
             Toast.makeText(this, subject.toString(), Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, ""+position, Toast.LENGTH_SHORT).show();
+             Toast.makeText(this, ""+position, Toast.LENGTH_SHORT).show();
 
             initUI();
             // TODO: fix the line below
-
+        loadData();
 //            initSpinner();
             backBtn.setOnClickListener(this);
             deleteBtn.setOnClickListener(this);
             editGradeBtn.setOnClickListener(this);
             editSubjectBtn.setOnClickListener(this);
 
-            loadData();
+
 
 
 
@@ -142,11 +142,14 @@ public class SubjectDetailActivity extends AppCompatActivity implements  View.On
             case R.id.editSubjectBtn:
                 intent = new Intent(SubjectDetailActivity.this, SubjectEditActivity.class);
                 intent.putExtra("subject" , subject);
+                intent.putExtra("position", position);
                 startActivity(intent);
                 break;
             case R.id.editGradeBtn:
+                Toast.makeText(this, "Edit grade", Toast.LENGTH_SHORT).show();
                 intent = new Intent(SubjectDetailActivity.this, GradeEditActivity.class);
                 intent.putExtra("subject" , subject);
+                intent.putExtra("position", position);
                 startActivity(intent);
                 break;
 

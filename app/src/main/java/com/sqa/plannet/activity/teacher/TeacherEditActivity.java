@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.sqa.plannet.R;
+import com.sqa.plannet.activity.home.HomeActivity;
 import com.sqa.plannet.model.Subject;
 import com.sqa.plannet.model.Teacher;
 
@@ -71,8 +72,23 @@ public class TeacherEditActivity extends AppCompatActivity implements  View.OnCl
             case R.id.backBtn:
                 finish();
                 break;
-            case R.id.editBtn:
+            case R.id.editTeacherBtn:
                 // TODO: editing code
+                Teacher teacher = TeacherViewActivity.teacherList.get(position);
+
+                String teacherName = teacherNameEdt.getText().toString();
+                String teacherPhone = teacherPhoneEdt.getText().toString();
+                String teacherEmail = teacherEmailEdt.getText().toString();
+
+                if (teacherName == null){
+                    Toast.makeText(TeacherEditActivity.this, "Invalid name", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                HomeActivity.myDatabase.updateTeacher(String.valueOf(teacher.getTeacherID()), teacherName, teacherPhone, teacherEmail);
+
+
+
                 Toast.makeText(this, "Edit a teacher", Toast.LENGTH_SHORT).show();
 
                 finish();

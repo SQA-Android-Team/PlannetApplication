@@ -61,6 +61,42 @@ Context context;
     }
 
 
+   public void updateTeacher(String rowID, String teacherName, String phone, String email){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("teacherName", teacherName);
+        contentValues.put("phone", phone);
+        contentValues.put("email", email);
+        long result = sqLiteDatabase.update("teacher", contentValues, "id=?", new String[]{rowID});
+       if (result == -1) {
+           Toast.makeText(context, "Fail", Toast.LENGTH_SHORT).show();
+       } else {
+           Toast.makeText(context, "Successfull", Toast.LENGTH_SHORT).show();
+       }
+   }
+
+   public void updateSubject(String rowID, String subjectTitle, int subjectCredit, String subjectNote, float attendance, float midterm, float finalTest){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("subjectTitle", subjectTitle);
+        contentValues.put("subjectCredit", subjectCredit);
+        contentValues.put("subjectNote", subjectNote);
+        contentValues.put("attendance", attendance);
+        contentValues.put("midterm", midterm);
+        contentValues.put("finalTest", finalTest);
+       long result = sqLiteDatabase.update("subject", contentValues, "id=?", new String[]{rowID});
+       if (result == -1) {
+           Toast.makeText(context, "Fail", Toast.LENGTH_SHORT).show();
+       } else {
+           Toast.makeText(context, "Successfull", Toast.LENGTH_SHORT).show();
+       }
+
+
+
+   }
+
+
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 

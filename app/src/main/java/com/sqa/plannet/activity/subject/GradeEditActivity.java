@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.sqa.plannet.R;
+import com.sqa.plannet.activity.home.HomeActivity;
 import com.sqa.plannet.model.Subject;
 
 public class GradeEditActivity extends AppCompatActivity implements View.OnClickListener{
@@ -17,6 +18,8 @@ public class GradeEditActivity extends AppCompatActivity implements View.OnClick
     private ImageButton backBtn;
     private Button editBtn;
     private EditText attendanceEdt,  midtermEdt, finalEdt;
+
+    private int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,7 @@ public class GradeEditActivity extends AppCompatActivity implements View.OnClick
         Intent intent = getIntent();
         subject = (Subject) intent.getExtras().get("subject");
 
+        position =(int) intent.getExtras().get("position");
         initUI();
         backBtn.setOnClickListener(this);
         editBtn.setOnClickListener(this);
@@ -59,11 +63,18 @@ public class GradeEditActivity extends AppCompatActivity implements View.OnClick
                 finish();
                 break;
             case R.id.editBtn:
+
+
                 float attendance = Float.parseFloat(attendanceEdt.getText().toString());
                 float midterm = Float.parseFloat(midtermEdt.getText().toString());
                 float finalTest = Float.parseFloat(finalEdt.getText().toString());
 
                 // TODO: complete this
+
+                HomeActivity.myDatabase.updateSubject(String.valueOf(subject.getSubjectID()), subject.getSubjectTitle(),subject.getSubjectCredit(), subject.getSubjectNote(), attendance, midterm, finalTest);
+                Intent intent = new Intent(GradeEditActivity.this, SubjectDetailActivity.class);
+                intent.putExtra("position", position);
+                startActivity(intent);
 
                 finish();
                 break;
