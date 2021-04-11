@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sqa.plannet.R;
 import com.sqa.plannet.adapter.todo.TodoTaskAdapter;
 import com.sqa.plannet.database.MyDatabase;
@@ -25,9 +24,9 @@ import java.util.ArrayList;
 import static com.sqa.plannet.activity.calendar.CalendarViewActivity.selectedDate;
 import static com.sqa.plannet.activity.home.HomeActivity.myDatabase;
 
-public class TodoMainActivity extends AppCompatActivity implements View.OnClickListener {
+public class TodoMainActivity<TABLE_TASK> extends AppCompatActivity implements View.OnClickListener {
     ListView lstTask;
-    FloatingActionButton btnNew;
+    Button btnNew;
     ArrayList<Task> listTask = new ArrayList<>();
     TodoTaskAdapter adapter;
     public static String TABLE_TASK = "tasks" ;
@@ -39,17 +38,16 @@ public class TodoMainActivity extends AppCompatActivity implements View.OnClickL
         mapping();
 
         listTask = getAllTask();
-        adapter = new TodoTaskAdapter(TodoMainActivity.this, R.layout.todo_item_does, listTask);
+        adapter = new TodoTaskAdapter(TodoMainActivity.this, R.layout.calendar_todayevent, listTask);
         lstTask.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
         btnNew.setOnClickListener(this);
-
         lstTask.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(TodoMainActivity.this, DetailActivity.class);
-                intent.putExtra("Tasks", listTask.get(position));
+                intent.putExtra("Task", listTask.get(position));
                 startActivity(intent);
             }
         });
@@ -79,14 +77,13 @@ public class TodoMainActivity extends AppCompatActivity implements View.OnClickL
             int id = cs.getInt(0);
             String title = cs.getString(1);
             String type = cs.getString(2);
-            int status = cs.getInt(3);
-            String location = cs.getString(4);
-            String time = cs.getString(5);
-            String date = cs.getString(6);
-            String note = cs.getString(7);
-            int remind = cs.getInt(8);
-            int important = cs.getInt(9);
-            Task task = new Task(id, title, type, status, location, time, date, note, remind, important);
+            String location = cs.getString(3);
+            String time = cs.getString(4);
+            String date = cs.getString(5);
+            String note = cs.getString(6);
+            int remind = cs.getInt(7);
+            int important = cs.getInt(8);
+            Task task = new Task(id, title, type, location, time, date, note, remind, important);
             list.add(task);
         }
         return list;
