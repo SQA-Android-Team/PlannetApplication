@@ -59,7 +59,7 @@ public class OverviewMainActivity extends AppCompatActivity implements OnChartVa
         Cursor cs = HomeActivity.myDatabase.rawQuery(sql_select);
         eventList.clear();
         while (cs.moveToNext()) {
-            Task ev = new Task(cs.getInt(0),cs.getString(1), cs.getString(2), cs.getInt(3),cs.getString(4), cs.getString(5),cs.getString(6),cs.getString(7),cs.getInt(8),cs.getInt(9));
+            Task ev = new Task(cs.getInt(0),cs.getString(1), cs.getString(2),cs.getString(3), cs.getString(4),cs.getString(5),cs.getString(6),cs.getInt(7),cs.getInt(8));
             eventList.add(ev);
 
         }

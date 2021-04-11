@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -25,7 +26,7 @@ import static com.sqa.plannet.activity.home.HomeActivity.myDatabase;
 
 public class TodoRvActivity extends AppCompatActivity {
     RecyclerView lstTask;
-    FloatingActionButton btnNew;
+    Button btnNew;
     public static List<Task> listTask ;
     TodoRvAdapter adapter;
     public static String TABLE_TASK = "tasks" ;
@@ -75,14 +76,14 @@ public class TodoRvActivity extends AppCompatActivity {
             int id = cs.getInt(0);
             String title = cs.getString(1);
             String type = cs.getString(2);
-            int status = cs.getInt(3);
-            String location = cs.getString(4);
-            String time = cs.getString(5);
-            String date = cs.getString(6);
-            String note = cs.getString(7);
-            int remind = cs.getInt(8);
-            int important = cs.getInt(9);
-            Task task = new Task(id, title, type, status, location, time, date, note, remind, important);
+
+            String location = cs.getString(3);
+            String time = cs.getString(4);
+            String date = cs.getString(5);
+            String note = cs.getString(6);
+            int remind = cs.getInt(7);
+            int important = cs.getInt(8);
+            Task task = new Task(id, title, type, location, time, date, note, remind, important);
             listTask.add(task);
         }
         return listTask;
