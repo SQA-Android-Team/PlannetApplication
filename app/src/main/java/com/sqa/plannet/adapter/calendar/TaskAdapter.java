@@ -9,19 +9,9 @@ import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.sqa.plannet.R;
 
-import com.sqa.plannet.activity.calendar.CalendarViewActivity;
-import com.sqa.plannet.activity.subject.SubjectDetailActivity;
-import com.sqa.plannet.activity.subject.SubjectViewActivity;
-import com.sqa.plannet.activity.timetable.Timetable_SessionDetail;
-
-import com.sqa.plannet.activity.todo.CreateActivity;
 import com.sqa.plannet.activity.todo.DetailActivity;
-import com.sqa.plannet.activity.todo.TodoMainActivity;
 import com.sqa.plannet.model.Task;
 
 import java.util.List;
