@@ -45,7 +45,7 @@ public class TodoTaskAdapter extends BaseAdapter {
     List<Task> list ;
     Task task;
 
-    public TodoTaskAdapter(Activity context, int item_does, ArrayList<Task> list) {
+    public TodoTaskAdapter(Activity context, int todo_item_does, ArrayList<Task> list) {
         this.context = context;
         this.layout = layout;
         this.list = list;
@@ -69,19 +69,17 @@ public class TodoTaskAdapter extends BaseAdapter {
         CheckBox check = view.findViewById(R.id.check);
         TextView titledoes =  view.findViewById(R.id.titledoes);
         TextView typedoes =  view.findViewById(R.id.typedoes);
-        TextView datedoes =  view.findViewById(R.id.txtvDate);
         TextView timedoes = view.findViewById(R.id.timedoes);
         ImageButton btnEdit =  view.findViewById(R.id.btnEdit);
         ImageButton btnDelete = view.findViewById(R.id.btnDelete);
         LinearLayout lntask = view.findViewById(R.id.lntask);
-        LinearLayout complete = view.findViewById(R.id.completeTask);
 
-         task = list.get(position);
+
+        task = list.get(position);
         titledoes.setText(task.getTitle());
         timedoes.setText(task.getTime());
         typedoes.setText(task.getType());
-        //datedoes.setText(task.getDate());
-        
+
 
         String Trang = typedoes.getText().toString();
         if (Trang.equals("Homework")) {
@@ -93,11 +91,6 @@ public class TodoTaskAdapter extends BaseAdapter {
         }else if(Trang.equals("Others")){
             typedoes.setBackgroundResource(R.drawable.btn_button_purple);
         }
-//        }else if (typedoes.equals("Fun")){
-//            typedoes.setBackgroundColor((Color.parseColor("#8087CF8A")));
-//        }else if (typedoes.equals("School")){
-//            typedoes.setBackgroundColor((Color.parseColor("#E6BCD0EA")));
-//        }
 
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,32 +107,25 @@ public class TodoTaskAdapter extends BaseAdapter {
             dialogClick(position);
             }
         });
-        check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    complete.setVisibility(LinearLayout.VISIBLE);
-                    notifyDataSetChanged();
-                }else if(!isChecked){
-                    Toast.makeText(context, "fail", Toast.LENGTH_SHORT).show();
-                    complete.setVisibility(LinearLayout.GONE);
-                }
-            }
-        });
-////        check.setOnClickListener(new View.OnClickListener() {
+
+//        check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//           // int checkStatus;
 //            @Override
-//            public void onClick(View v) {
-//            if(check.isChecked()){
-//                Toast.makeText(context, "ok", Toast.LENGTH_SHORT).show();
-//                complete.setVisibility(LinearLayout.VISIBLE);
-//                notifyDataSetChanged();
-//            }else if(!check.isChecked()){
-//                Toast.makeText(context, "fail", Toast.LENGTH_SHORT).show();
-//                complete.setVisibility(LinearLayout.GONE);
-//            }
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+////                if (isChecked) {
+////                   checkStatus = 1;
+//////                    Toast.makeText(context, "chẹck", Toast.LENGTH_SHORT).show();
+//////                    complete.setVisibility(LinearLayout.VISIBLE);
+//////                    lntask.setVisibility(LinearLayout.GONE);
+//////                    notifyDataSetChanged();
+////                } else if(!isChecked) {
+////                    checkStatus = 0;
+////                    complete.setVisibility(LinearLayout.GONE);
+////                    Toast.makeText(context, "uncheck", Toast.LENGTH_SHORT).show();
+////                    notifyDataSetChanged();
+//                }
 //            }
 //        });
-
         return view;
     }
 
@@ -162,7 +148,6 @@ public class TodoTaskAdapter extends BaseAdapter {
                 Toast.makeText(context, "Delete Successfull", Toast.LENGTH_SHORT).show();
             }
         });
-
         alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -171,4 +156,5 @@ public class TodoTaskAdapter extends BaseAdapter {
         });
         alert.show();
     }
+
 }

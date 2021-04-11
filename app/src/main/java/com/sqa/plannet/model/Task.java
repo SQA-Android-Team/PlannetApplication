@@ -6,19 +6,21 @@ public class Task implements Serializable {
    private int id;
    public String title ;
    public String type;
+   private int status;
    private String location;
    public String time;
-    public String date;
+   public String date;
    private String note;
    private int remind;
    private int important;
 
    public Task(){}
 
-    public Task(int id, String title, String type, String location, String time, String date, String note, int remind, int important) {
+    public Task(int id, String title, String type, int status, String location, String time, String date, String note, int remind, int important) {
         this.id = id;
         this.title = title;
         this.type = type;
+        this.status = status;
         this.location = location;
         this.time = time;
         this.date = date;
@@ -49,6 +51,14 @@ public class Task implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public String getLocation() {
@@ -105,6 +115,7 @@ public class Task implements Serializable {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", type='" + type + '\'' +
+                ", status=" + status +
                 ", location='" + location + '\'' +
                 ", time='" + time + '\'' +
                 ", date='" + date + '\'' +

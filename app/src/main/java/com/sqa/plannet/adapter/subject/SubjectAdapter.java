@@ -68,7 +68,6 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectV
 
         @Override
         public void onClick(View v) {
-
             Intent intent = new Intent(context, SubjectDetailActivity.class);
             intent.putExtra("subject", subject);
             intent.putExtra("position", position);

@@ -201,16 +201,6 @@ public class TimetableAddSession extends AppCompatActivity implements AdapterVie
         }else if(TextUtils.isEmpty(endTime)) {
              txtEndTimePicker.setError("Please pick the end time");
         } else{
-<<<<<<< HEAD
-            ContentValues cv = new ContentValues();
-            cv.put("sessionTitle", name);
-            cv.put("des", des);
-            cv.put("location", sessionLocation);
-            cv.put("weekDay", dateOfWeek);
-            cv.put("startTime", startTime);
-            cv.put("endTime", endTime);
-            HomeActivity.myDatabase.insertTask(TimetableViewActivity.TABLE_SESION, null, cv);
-=======
 
             ContentValues contentValues = new ContentValues();
             contentValues.put("name", name);
@@ -222,7 +212,6 @@ public class TimetableAddSession extends AppCompatActivity implements AdapterVie
 
             HomeActivity.myDatabase.insertTask(TimetableViewActivity.TABLE_SESION, null, contentValues);
 
->>>>>>> 8dbe71bcdcfb79022eafb05e50046e7a68f94f28
         }
     }
 
