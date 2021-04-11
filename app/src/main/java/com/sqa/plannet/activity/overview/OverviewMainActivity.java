@@ -51,8 +51,6 @@ public class OverviewMainActivity extends AppCompatActivity implements OnChartVa
 //        scheduleDataList.add(new ScheduleData("MPR", "N.V.Cong", "801C"));
 //
 //
-//        setRecentRecycler(scheduleDataList);
-
         resentSession = (RecyclerView) findViewById((R.id.recent_recycler)) ;
         resentSession.setLayoutManager(new LinearLayoutManager(this));
 
