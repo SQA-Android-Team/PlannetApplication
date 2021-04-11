@@ -45,12 +45,12 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="548dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="183dp">
 
         <LinearLayout
             android:id="@+id/body"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -67,8 +67,9 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recent_recycler"
-                android:layout_width="387dp"
+                android:layout_width="match_parent"
                 android:layout_height="144dp"
+                android:layout_marginLeft="15dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="10dp" />
@@ -86,7 +87,8 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/event_recycler"
-                android:layout_width="380dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="match_parent"
                 android:layout_height="158dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
@@ -104,38 +106,47 @@
                 android:textColor="#AC7FFC" />
 
 
-            <FrameLayout
+
+            <LinearLayout
+                android:weightSum="10"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <com.github.mikephil.charting.charts.PieChart
+                    android:layout_weight="6"
+                    android:layout_marginLeft="15dp"
                     android:id="@+id/piechart"
-                    android:layout_width="235dp"
-                    android:layout_height="202dp"
-                    android:layout_marginTop="20dp">
-
+                    android:layout_width="260dp"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="15sp">
                 </com.github.mikephil.charting.charts.PieChart>
 
-                <TextView
-                    android:id="@+id/textView7"
+                <LinearLayout
+                    android:layout_weight="3"
+                    android:orientation="vertical"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="200dp"
-                    android:fontFamily="@font/pt_sans_caption"
-                    android:text="You have more 3 tasks to done this week!" />
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/pt_sans_caption"
+                        android:text="You have more 3 tasks to done this week!" />
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/pt_sans_caption"
+                        android:text="Show more >"
+                        android:textColor="#F785A6" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="300dp"
-                    android:layout_marginTop="50dp"
-                    android:fontFamily="@font/pt_sans_caption"
-                    android:text="Show more >"
-                    android:textColor="#F785A6" />
-            </FrameLayout>
-
+            </LinearLayout>
         </LinearLayout>
+
     </ScrollView>
 
 </RelativeLayout>
