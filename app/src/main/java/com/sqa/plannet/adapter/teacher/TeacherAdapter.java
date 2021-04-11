@@ -1,10 +1,13 @@
 package com.sqa.plannet.adapter.teacher;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,69 +15,48 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.sqa.plannet.R;
 import com.sqa.plannet.activity.teacher.TeacherDetailActivity;
+import com.sqa.plannet.model.Task;
 import com.sqa.plannet.model.Teacher;
 
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
 import java.util.List;
 
-public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.TeacherViewHolder> {
-    private List<Teacher> listTeacher;
+public class TeacherAdapter extends BaseAdapter {
+    Context context;
+    int layout;
+    List<Teacher> list ;
+    Teacher teacher;
 
-    public void setData(List<Teacher> list){
-        this.listTeacher = list;
-        notifyDataSetChanged();
+    public TeacherAdapter(Activity context, int todo_item_does, ArrayList<Teacher> list) {
+        this.context = context;
+        this.layout = layout;
+        this.list = list;
     }
-
-
-    @NonNull
     @Override
-    public TeacherViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.teacher_item, parent, false);
-        return new TeacherViewHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull TeacherAdapter.TeacherViewHolder holder, int position) {
-        Teacher teacher = listTeacher.get(position);
-
-        if (teacher == null){
-            return;
-        }
-
-        holder.teacherName.setText(teacher.getTeacherName());
-        holder.position = position;
-        holder.teacher = teacher;
+    public int getCount() {
+        return list.size();
     }
 
     @Override
-    public int getItemCount() {
-        if (this.listTeacher != null){
-            return this.listTeacher.size();
-        }
-        return 0;
+    public Object getItem(int position) {
+        return list.get(position);
     }
 
-    public class TeacherViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private Context context;
-        private Teacher teacher;
-        private int position;
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
 
-        private TextView teacherName;
-
-        public TeacherViewHolder(@NonNull View view){
-            super(view);
-            teacherName = view.findViewById(R.id.teacherNameTxv);
-            context = view.getContext();
-            view.setOnClickListener(this);
-        }
-
-
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(context, TeacherDetailActivity.class);
-            intent.putExtra("teacher", teacher);
-            intent.putExtra("position", position);
-
-            context.startActivity(intent);
-        }
+    @Override
+    public View getView(int position, View view, ViewGroup parent) {
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        view = inflater.inflate(R.layout.teacher_item, null);
+        LinearLayout lnTeacher = view.findViewById(R.id.lnTeacher);
+        TextView teacherName = view.findViewById(R.id.teacherNameTxv);
+        teacher = list.get(position);
+        teacherName.setText(teacher.getTeacherName());
+        return null;
     }
 }

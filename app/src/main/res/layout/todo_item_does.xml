@@ -20,7 +20,16 @@
             android:layout_height="match_parent">
         </CheckBox>
 
-
+        <TextView
+            android:id="@+id/done"
+            android:visibility="gone"
+            android:background="#E4F4D2"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Completed"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+        </TextView>
         <LinearLayout
             android:layout_weight="9"
             android:layout_marginLeft="10dp"
