@@ -73,7 +73,7 @@ public class TimetableViewActivity extends AppCompatActivity implements AdapterV
         btnAddClass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Intent i1 = new Intent(TimetableViewActivity.this, TimetableSessionView.class);
+               Intent i1 = new Intent(TimetableViewActivity.this, TimetableAddSession.class);
                startActivity(i1);
             }
         });
