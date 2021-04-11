@@ -2,33 +2,21 @@ package com.sqa.plannet.adapter.todo;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sqa.plannet.R;
-import com.sqa.plannet.activity.todo.CreateActivity;
-import com.sqa.plannet.activity.todo.DetailActivity;
-import com.sqa.plannet.activity.todo.TodoMainActivity;
 import com.sqa.plannet.activity.todo.UpdateActivity;
-import com.sqa.plannet.database.MyDatabase;
 import com.sqa.plannet.model.Task;
 
 import java.util.ArrayList;
@@ -95,16 +83,16 @@ public class TodoTaskAdapter extends BaseAdapter {
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            Toast.makeText( context, "edit" + task.getId(), Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(context, UpdateActivity.class);
-            intent.putExtra("TaskEdit", task);
-            context.startActivity(intent);
+                Toast.makeText( context, "edit" + task.getId(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, UpdateActivity.class);
+                intent.putExtra("TaskEdit", task);
+                context.startActivity(intent);
             }
         });
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            dialogClick(position);
+                dialogClick(position);
             }
         });
 

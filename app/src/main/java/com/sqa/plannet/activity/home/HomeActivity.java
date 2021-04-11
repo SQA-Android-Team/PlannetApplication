@@ -6,10 +6,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -24,12 +22,8 @@ import com.sqa.plannet.activity.settings.SettingsAboutActivity;
 import com.sqa.plannet.activity.subject.SubjectViewActivity;
 import com.sqa.plannet.activity.teacher.TeacherViewActivity;
 import com.sqa.plannet.activity.timetable.TimetableViewActivity;
-import com.sqa.plannet.activity.todo.CreateActivity;
-import com.sqa.plannet.activity.todo.DetailActivity;
 import com.sqa.plannet.activity.todo.TodoMainActivity;
-import com.sqa.plannet.adapter.todo.TodoTaskAdapter;
 import com.sqa.plannet.database.MyDatabase;
-import com.sqa.plannet.model.Task;
 
 import static com.sqa.plannet.activity.subject.SubjectViewActivity.TABLE_SUBJECT;
 import static com.sqa.plannet.activity.teacher.TeacherViewActivity.TABLE_TEACHER;
