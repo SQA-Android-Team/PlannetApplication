@@ -9,8 +9,6 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import com.sqa.plannet.activity.todo.TodoMainActivity;
-
 public class MyDatabase extends SQLiteOpenHelper {
 
 Context context;

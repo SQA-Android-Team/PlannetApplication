@@ -574,7 +574,6 @@
                                 android:layout_alignParentRight="true"
                                 android:padding="0dp">
 
-                                // layout sunday
                                 <RelativeLayout
                                     android:id="@+id/relSun"
                                     android:layout_width="0dp"
@@ -590,7 +589,6 @@
 
                                 </RelativeLayout>
 
-                                //layout Monday
                                 <RelativeLayout
                                     android:id="@+id/relMon"
                                     android:layout_width="0dp"
@@ -657,9 +655,170 @@
 
                                     </LinearLayout>
 
+                                    <LinearLayout
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="100dp"
+                                        android:layout_marginLeft="0.5dp"
+                                        android:layout_marginTop="571dp"
+                                        android:layout_marginRight="0.5dp"
+                                        android:layout_marginBottom="0.5dp"
+                                        android:background="@drawable/violet_class"
+                                        android:gravity="center_vertical"
+                                        android:orientation="vertical"
+                                        android:weightSum="4">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption_bold"
+                                            android:text="SQA"
+                                            android:textColor="#A640E5"
+                                            android:textSize="14sp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption"
+                                            android:text="Tutorial"
+                                            android:textColor="#A640E5"
+                                            android:textSize="10sp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption"
+                                            android:text="9:30-11:10"
+                                            android:textColor="#A640E5"
+                                            android:textSize="8sp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption_bold"
+                                            android:text="406C"
+                                            android:textColor="#A640E5"
+                                            android:textSize="12sp" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="100dp"
+                                        android:layout_marginLeft="0.5dp"
+                                        android:layout_marginTop="741dp"
+                                        android:layout_marginRight="0.5dp"
+                                        android:layout_marginBottom="0.5dp"
+                                        android:background="@drawable/blue_class"
+                                        android:gravity="center_vertical"
+                                        android:orientation="vertical"
+                                        android:weightSum="4">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption_bold"
+                                            android:text="SE2"
+                                            android:textColor="#1969F8"
+                                            android:textSize="14sp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption"
+                                            android:text="Lecture"
+                                            android:textColor="#1969F8"
+                                            android:textSize="10sp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption"
+                                            android:text="12:20-14:00"
+                                            android:textColor="#1969F8"
+                                            android:textSize="8sp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption_bold"
+                                            android:text="801C"
+                                            android:textColor="#1969F8"
+                                            android:textSize="12sp" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="100dp"
+                                        android:layout_marginLeft="0.5dp"
+                                        android:layout_marginTop="871dp"
+                                        android:layout_marginRight="0.5dp"
+                                        android:layout_marginBottom="0.5dp"
+                                        android:background="@drawable/yellow_class"
+                                        android:gravity="center_vertical"
+                                        android:orientation="vertical"
+                                        android:weightSum="4">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption_bold"
+                                            android:text="SQA"
+                                            android:textColor="#F9BB1E"
+                                            android:textSize="14sp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption"
+                                            android:text="Lecture"
+                                            android:textColor="#F9BB1E"
+                                            android:textSize="10sp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption"
+                                            android:text="14:30-16:10"
+                                            android:textColor="#F9BB1E"
+                                            android:textSize="8sp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption_bold"
+                                            android:text="801C"
+                                            android:textColor="#F9BB1E"
+                                            android:textSize="12sp" />
+
+                                    </LinearLayout>
+
                                 </RelativeLayout>
 
-                                //tuesday
                                 <RelativeLayout
                                     android:id="@+id/relTue"
                                     android:layout_width="0dp"
@@ -672,9 +831,61 @@
                                         android:layout_alignParentRight="true"
                                         android:background="#EDEDED" />
 
+                                    <LinearLayout
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="100dp"
+                                        android:layout_marginLeft="0.5dp"
+                                        android:layout_marginTop="441dp"
+                                        android:layout_marginRight="0.5dp"
+                                        android:layout_marginBottom="0.5dp"
+                                        android:background="@drawable/pink_class"
+                                        android:orientation="vertical"
+                                        android:weightSum="4">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption_bold"
+                                            android:text="HCI"
+                                            android:textColor="#E77073"
+                                            android:textSize="14sp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption"
+                                            android:text="Tutorial"
+                                            android:textColor="#E77073"
+                                            android:textSize="10sp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption"
+                                            android:text="7:20-9:00"
+                                            android:textColor="#E77073"
+                                            android:textSize="8sp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption_bold"
+                                            android:text="412C"
+                                            android:textColor="#E77073"
+                                            android:textSize="12sp" />
+
+                                    </LinearLayout>
+
                                 </RelativeLayout>
 
-                                //wednesday
                                 <RelativeLayout
                                     android:id="@+id/relWed"
                                     android:layout_width="0dp"
@@ -687,9 +898,62 @@
                                         android:layout_alignParentRight="true"
                                         android:background="#EDEDED" />
 
+                                    <LinearLayout
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="230dp"
+                                        android:layout_marginLeft="0.5dp"
+                                        android:layout_marginTop="441dp"
+                                        android:layout_marginRight="0.5dp"
+                                        android:layout_marginBottom="0.5dp"
+                                        android:background="@drawable/green_class"
+                                        android:gravity="center_vertical"
+                                        android:orientation="vertical"
+                                        android:weightSum="4">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption_bold"
+                                            android:text="RMC"
+                                            android:textColor="#60CC20"
+                                            android:textSize="14sp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption"
+                                            android:text="Lecture"
+                                            android:textColor="#60CC20"
+                                            android:textSize="10sp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption"
+                                            android:text="7:20-11:10"
+                                            android:textColor="#60CC20"
+                                            android:textSize="8sp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption_bold"
+                                            android:text="612C"
+                                            android:textColor="#60CC20"
+                                            android:textSize="12sp" />
+
+                                    </LinearLayout>
+
                                 </RelativeLayout>
 
-                                //thurday
                                 <RelativeLayout
                                     android:id="@+id/relThu"
                                     android:layout_width="0dp"
@@ -702,10 +966,116 @@
                                         android:layout_alignParentRight="true"
                                         android:background="#EDEDED" />
 
+                                    <LinearLayout
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="130dp"
+                                        android:layout_marginLeft="0.5dp"
+                                        android:layout_marginTop="441dp"
+                                        android:layout_marginRight="0.5dp"
+                                        android:layout_marginBottom="0.5dp"
+                                        android:background="@drawable/grey_class"
+                                        android:gravity="center_vertical"
+                                        android:orientation="vertical"
+                                        android:weightSum="4">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption_bold"
+                                            android:text="SS2"
+                                            android:textColor="#838383"
+                                            android:textSize="14sp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption"
+                                            android:text="Tutorial"
+                                            android:textColor="#838383"
+                                            android:textSize="10sp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption"
+                                            android:text="7:20-9:30"
+                                            android:textColor="#838383"
+                                            android:textSize="8sp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption_bold"
+                                            android:text="417C"
+                                            android:textColor="#838383"
+                                            android:textSize="12sp" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="100dp"
+                                        android:layout_marginLeft="0.5dp"
+                                        android:layout_marginTop="871dp"
+                                        android:layout_marginRight="0.5dp"
+                                        android:layout_marginBottom="0.5dp"
+                                        android:background="@drawable/violet_class"
+                                        android:gravity="center_vertical"
+                                        android:orientation="vertical"
+                                        android:weightSum="4">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption_bold"
+                                            android:text="HCI"
+                                            android:textColor="#A640E5"
+                                            android:textSize="14sp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption"
+                                            android:text="Lecture"
+                                            android:textColor="#A640E5"
+                                            android:textSize="10sp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption"
+                                            android:text="14:30-16:10"
+                                            android:textColor="#A640E5"
+                                            android:textSize="8sp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption_bold"
+                                            android:text="801C"
+                                            android:textColor="#A640E5"
+                                            android:textSize="12sp" />
+
+                                    </LinearLayout>
 
                                 </RelativeLayout>
 
-                                //friday
                                 <RelativeLayout
                                     android:id="@+id/relFri"
                                     android:layout_width="0dp"
@@ -718,9 +1088,116 @@
                                         android:layout_alignParentRight="true"
                                         android:background="#EDEDED" />
 
+                                    <LinearLayout
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="100dp"
+                                        android:layout_marginLeft="0.5dp"
+                                        android:layout_marginTop="441dp"
+                                        android:layout_marginRight="0.5dp"
+                                        android:layout_marginBottom="0.5dp"
+                                        android:background="@drawable/blue_class"
+                                        android:gravity="center_vertical"
+                                        android:orientation="vertical"
+                                        android:weightSum="4">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption_bold"
+                                            android:text="SE2"
+                                            android:textColor="#1969F8"
+                                            android:textSize="14sp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption"
+                                            android:text="Tutorial"
+                                            android:textColor="#1969F8"
+                                            android:textSize="10sp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption"
+                                            android:text="7:20-9:00"
+                                            android:textColor="#1969F8"
+                                            android:textSize="8sp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption_bold"
+                                            android:text="801C"
+                                            android:textColor="#1969F8"
+                                            android:textSize="12sp" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="100dp"
+                                        android:layout_marginLeft="0.5dp"
+                                        android:layout_marginTop="571dp"
+                                        android:layout_marginRight="0.5dp"
+                                        android:layout_marginBottom="0.5dp"
+                                        android:background="@drawable/yellow_class"
+                                        android:gravity="center_vertical"
+                                        android:orientation="vertical"
+                                        android:weightSum="4">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption_bold"
+                                            android:text="MPR"
+                                            android:textColor="#F9BB1E"
+                                            android:textSize="14sp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption"
+                                            android:text="Lecture"
+                                            android:textColor="#F9BB1E"
+                                            android:textSize="10sp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption"
+                                            android:text="9:30-11:10"
+                                            android:textColor="#F9BB1E"
+                                            android:textSize="8sp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/pt_sans_caption_bold"
+                                            android:text="801C"
+                                            android:textColor="#F9BB1E"
+                                            android:textSize="12sp" />
+
+                                    </LinearLayout>
+
                                 </RelativeLayout>
 
-                                //saturday
                                 <RelativeLayout
                                     android:id="@+id/relSat"
                                     android:layout_width="0dp"

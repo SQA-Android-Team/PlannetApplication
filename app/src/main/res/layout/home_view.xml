@@ -48,119 +48,102 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="110dp"
+                android:layout_marginLeft="20dp">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="100dp">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginLeft="20dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <Button
-                            android:id="@+id/btnOverview"
-                            android:layout_width="186dp"
-                            android:layout_height="122dp"
-                            android:background="@drawable/button_home"
-                            android:drawableTop="@drawable/icon_overview"
-                            android:fontFamily="@font/pt_sans_caption_bold"
-                            android:onClick="btnChooseActivity"
-                            android:paddingTop="18dp"
-                            android:paddingBottom="8dp"
-                            android:text="@string/overview"
-                            android:textAllCaps="false"
-                            android:textColor="#AC7FFC"
-                            android:textSize="22sp" />
-
-                        <Button
-                            android:id="@+id/btnCalendar"
-                            android:layout_width="163dp"
-                            android:layout_height="91dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="25dp"
-                            android:layout_marginTop="30dp"
-                            android:background="@drawable/button_home"
-                            android:drawableTop="@drawable/icon_calendar"
-                            android:fontFamily="@font/pt_sans_caption_bold"
-                            android:gravity="center_horizontal"
-                            android:onClick="btnChooseActivity"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="8dp"
-                            android:text="@string/calendar"
-                            android:textAllCaps="false"
-                            android:textColor="#AC7FFC"
-                            android:textSize="22sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginTop="70dp"
-                        android:layout_marginRight="20dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <Button
-                            android:id="@+id/btnTodo"
-                            android:layout_width="145dp"
-                            android:layout_height="85dp"
-                            android:background="@drawable/button_home"
-                            android:drawableTop="@drawable/icon_todo"
-                            android:fontFamily="@font/pt_sans_caption_bold"
-                            android:onClick="btnChooseActivity"
-                            android:paddingTop="10dp"
-                            android:text="@string/todo"
-                            android:textAllCaps="false"
-                            android:textColor="#AC7FFC"
-                            android:textSize="22sp" />
-
-                        <Button
-                            android:id="@+id/btnTimetable"
-                            android:layout_width="168dp"
-                            android:layout_height="110dp"
-                            android:layout_marginTop="50dp"
-                            android:background="@drawable/button_home"
-                            android:drawableTop="@drawable/icon_timetable"
-                            android:fontFamily="@font/pt_sans_caption_bold"
-                            android:onClick="btnChooseActivity"
-                            android:paddingTop="15dp"
-                            android:text="@string/btnTimetable"
-                            android:textAllCaps="false"
-                            android:textColor="#AC7FFC"
-                            android:textSize="22sp" />
-
-
-                    </LinearLayout>
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <ImageButton
-                    android:id="@+id/btnExitApp"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:onClick="exitApp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginBottom="15dp"
-                    android:layout_marginRight="15dp"
-                    android:src="@drawable/btn_logout" />
+                    android:orientation="vertical">
 
-            </RelativeLayout>
+                    <Button
+                        android:id="@+id/btnOverview"
+                        android:layout_width="186dp"
+                        android:layout_height="122dp"
+                        android:background="@drawable/button_home"
+                        android:drawableTop="@drawable/icon_overview"
+                        android:fontFamily="@font/pt_sans_caption_bold"
+                        android:paddingTop="18dp"
+                        android:onClick="btnChooseActivity"
+                        android:paddingBottom="8dp"
+                        android:text="@string/overview"
+                        android:textAllCaps="false"
+                        android:textColor="#AC7FFC"
+                        android:textSize="22sp" />
 
+                    <Button
+                        android:id="@+id/btnCalendar"
+                        android:layout_width="163dp"
+                        android:layout_height="91dp"
+                        android:drawableTop="@drawable/icon_calendar"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="30dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="8dp"
+                        android:onClick="btnChooseActivity"
+                        android:background="@drawable/button_home"
+                        android:fontFamily="@font/pt_sans_caption_bold"
+                        android:textAllCaps="false"
+                        android:text="@string/calendar"
+                        android:textColor="#AC7FFC"
+                        android:textSize="22sp"
+                        android:gravity="center_horizontal" />
+                </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="60dp">
 
+                    <Button
+                        android:id="@+id/btnTodo"
+                        android:layout_width="145dp"
+                        android:layout_height="85dp"
+                        android:background="@drawable/button_home"
+                        android:fontFamily="@font/pt_sans_caption_bold"
+                        android:textAllCaps="false"
+                        android:onClick="btnChooseActivity"
+                        android:drawableTop="@drawable/icon_todo"
+                        android:paddingTop="10dp"
+                        android:textColor="#AC7FFC"
+                        android:text="@string/todo"
+                        android:textSize="22sp"
+                        />
 
+                    <Button
+                        android:id="@+id/btnTimetable"
+                        android:layout_width="168dp"
+                        android:layout_height="110dp"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/button_home"
+                        android:drawableTop="@drawable/icon_timetable"
+                        android:fontFamily="@font/pt_sans_caption_bold"
+                        android:onClick="btnChooseActivity"
+                        android:paddingTop="15dp"
+                        android:text="@string/btnTimetable"
+                        android:textAllCaps="false"
+                        android:textColor="#AC7FFC"
+                        android:textSize="22sp" />
+
+                    <ImageButton
+                        android:id="@+id/btnExitApp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:onClick="exitApp"
+                        android:src="@drawable/btn_logout"
+                        android:layout_marginTop="270dp"
+                        android:layout_marginLeft="100dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
         <com.google.android.material.navigation.NavigationView

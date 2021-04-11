@@ -10,12 +10,19 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:background="@drawable/header_todo"
             android:layout_height="190dp">
 
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_margin="10dp"
+                android:background="@drawable/icon_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></ImageButton>
             <TextView
                 android:layout_marginTop="130dp"
                 android:textSize="28sp"
