@@ -61,7 +61,7 @@ public class DetailActivity extends AppCompatActivity  {
 
     private  void loadData(){
         Intent intent = getIntent();
-        t = (Task) intent.getSerializableExtra("Task");
+        t = (Task) intent.getSerializableExtra("Tasks");
         titledoes.setText("Title : " + t.getTitle());
         txtvType.setText("" + t.getType());
         txtvTime.setText("Time : " + t.getTime());

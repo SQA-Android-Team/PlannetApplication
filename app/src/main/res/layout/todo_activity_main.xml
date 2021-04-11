@@ -99,15 +99,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"></TextView>
 
-        <Button
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btnNew"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="right"
-            android:background="@drawable/btn_button"
-            android:text="+"
-            android:textColor="@color/white"
-            android:textSize="18sp"></Button>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="32dp"
+            android:backgroundTint="@color/chosen_date"
+            android:src="@drawable/ic_baseline_add_24"
+            android:layout_alignParentRight="true" />
     </LinearLayout>
 
 </ScrollView>
