@@ -19,7 +19,7 @@ import com.sqa.plannet.model.Teacher;
 public class TeacherEditActivity extends AppCompatActivity implements  View.OnClickListener{
 
     private ImageButton backBtn;
-    private Button editBtn;
+    private Button editTeacherBtn;
     private EditText teacherNameEdt;
     private EditText teacherPhoneEdt;
     private EditText teacherEmailEdt;
@@ -36,7 +36,7 @@ public class TeacherEditActivity extends AppCompatActivity implements  View.OnCl
         initUI();
         loadData();
         backBtn.setOnClickListener(this);
-        editBtn.setOnClickListener(this);
+        editTeacherBtn.setOnClickListener(this);
 
 
 
@@ -47,7 +47,7 @@ public class TeacherEditActivity extends AppCompatActivity implements  View.OnCl
      */
     private void initUI() {
         backBtn = findViewById(R.id.backBtn);
-        editBtn = findViewById(R.id.editTeacherBtn);
+        editTeacherBtn = findViewById(R.id.editTeacherBtn);
         teacherNameEdt = findViewById(R.id.teacherNameEdt);
         teacherPhoneEdt = findViewById(R.id.teacherPhoneEdt);
         teacherEmailEdt = findViewById(R.id.teacherEmailEdt);
@@ -74,27 +74,30 @@ public class TeacherEditActivity extends AppCompatActivity implements  View.OnCl
                 break;
             case R.id.editTeacherBtn:
                 // TODO: editing code
-                Teacher teacher = TeacherViewActivity.teacherList.get(position);
-
-                String teacherName = teacherNameEdt.getText().toString();
-                String teacherPhone = teacherPhoneEdt.getText().toString();
-                String teacherEmail = teacherEmailEdt.getText().toString();
-
-                if (teacherName == null){
-                    Toast.makeText(TeacherEditActivity.this, "Invalid name", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                HomeActivity.myDatabase.updateTeacher(String.valueOf(teacher.getTeacherID()), teacherName, teacherPhone, teacherEmail);
-
-
-
-                Toast.makeText(this, "Edit a teacher", Toast.LENGTH_SHORT).show();
-
-                finish();
+                update(editTeacherBtn);
                 break;
 
         }
     }
+    private void update(Button btnUpdate) {
+        Teacher teacher = TeacherViewActivity.teacherList.get(position);
+
+        String teacherName = teacherNameEdt.getText().toString();
+        String teacherPhone = teacherPhoneEdt.getText().toString();
+        String teacherEmail = teacherEmailEdt.getText().toString();
+
+        if (teacherName == null){
+            Toast.makeText(TeacherEditActivity.this, "Invalid name", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        HomeActivity.myDatabase.updateTeacher(String.valueOf(teacher.getTeacherID()), teacherName, teacherPhone, teacherEmail);
+
+        Toast.makeText(this, "Edit a teacher", Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(TeacherEditActivity.this, TeacherViewActivity.class);
+        startActivity(intent);
+    }
+
 }
 
