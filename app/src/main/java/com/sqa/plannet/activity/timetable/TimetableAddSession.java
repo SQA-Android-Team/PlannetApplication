@@ -47,8 +47,6 @@ public class TimetableAddSession extends AppCompatActivity implements AdapterVie
         initToolbar();
         mapping();
 
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Add Session");
         drawerLayout.bringToFront();
 
         // date of week picker
@@ -101,6 +99,7 @@ public class TimetableAddSession extends AppCompatActivity implements AdapterVie
 
     private void initToolbar(){
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Add Session");
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }

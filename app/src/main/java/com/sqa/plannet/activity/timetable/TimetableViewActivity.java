@@ -57,7 +57,7 @@ public class TimetableViewActivity extends AppCompatActivity implements AdapterV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.timetable_view);
         initUI();
-        //initToolbar();
+        initToolbar();
         initDrawer();
         listSesion = getAllSession();
 
