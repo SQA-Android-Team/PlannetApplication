@@ -44,7 +44,7 @@ public class TimetableAddSession extends AppCompatActivity implements AdapterVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.timetable_add_session);
         initUI();
-        initToolbar();
+//        initToolbar();
         mapping();
 
         drawerLayout.bringToFront();

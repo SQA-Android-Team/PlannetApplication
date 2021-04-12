@@ -115,7 +115,6 @@ public class TodoMainActivity extends AppCompatActivity implements View.OnClickL
             int id = cs.getInt(0);
             String title = cs.getString(1);
             String type = cs.getString(2);
-
             String location = cs.getString(3);
             String time = cs.getString(4);
             String date = cs.getString(5);

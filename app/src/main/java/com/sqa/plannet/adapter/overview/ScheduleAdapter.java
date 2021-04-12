@@ -50,13 +50,13 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
         holder.sessDesc.setText(listSession.get(position).getType());
 
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(context, DetailsActivity.class);
-                context.startActivity(i);
-            }
-        });
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent i = new Intent(context, DetailsActivity.class);
+//                context.startActivity(i);
+//            }
+//        });
 
     }
 
