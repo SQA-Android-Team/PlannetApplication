@@ -61,13 +61,13 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         String table_todo = "create table if not exists " + TABLE_TASK + "(id integer primary key autoincrement NOT NULL, " +
                 "title varchar(100) NOT NULL, " +
                 "type varchar(15) NOT NULL, " +
-                "status integer NOT NULL, " +
                 "location varchar(50) NOT NULL, " +
                 "time varchar(20) NOT NULL, " +
                 "date varchar(20) NOT NULL, " +
                 "note varchar(300), " +
                 "remind integer, " +
                 "important integer)";
+//            String d = "DROP TABLE " + TABLE_TASK;
         myDatabase.excuteSQL(table_todo);
 
         String table_teacher = "create table if not exists " + TABLE_TEACHER + "(teacherID integer primary key autoincrement," +
