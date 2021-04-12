@@ -1,583 +1,382 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:openDrawer="start"
-    android:id="@+id/timetableViewDrawer"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".activity.timetable.TimetableViewActivity"
-    android:background="#F8F8F8">
+    android:background="@drawable/background_home">
 
-    <com.google.android.material.navigation.NavigationView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/navView"
-        app:headerLayout="@layout/header"
-        app:menu="@menu/menu_main"
-        android:layout_gravity="start"/>
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btnAddClass"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:backgroundTint="#FC70BF"
-            android:src="@drawable/ic_baseline_add"
-            app:backgroundTint="#002B2B2B"
-            app:backgroundTintMode="src_in"
-            app:fabSize="normal"
-            app:layout_anchor="@id/appBarLayout"
-            app:layout_anchorGravity="bottom|end|right"/>
-
-            <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBarLayout"
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            >
-
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/colToolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            >
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/timetable_header_bg"
-                android:scaleType="centerCrop"
-                app:layout_collapseMode="parallax" />
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/timetableViewToolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:theme="@style/ThemeOverlay.AppCompat.Light"
-                app:layout_collapseMode="pin"
-                app:navigationIcon="@drawable/ic_menu"
-                />
-
-
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+    <androidx.drawerlayout.widget.DrawerLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+        android:id="@+id/timetableViewDrawer">
 
-        <LinearLayout
-            android:id="@+id/linearLayout2"
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="match_parent">
 
-            <LinearLayout
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btnAddClass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="center"
+                android:onClick="addClass"
+                android:layout_margin="16dp"
+                android:backgroundTint="#FC70BF"
+                android:src="@drawable/ic_baseline_add"
+                app:backgroundTint="#002B2B2B"
+                app:backgroundTintMode="src_in"
+                app:fabSize="normal"
+                app:layout_anchor="@id/appBarLayout"
+                app:layout_anchorGravity="bottom|end|right"/>
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 >
 
-                <TextView
-                    android:id="@+id/txtSemesterName"
-                    android:layout_width="wrap_content"
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:id="@+id/colToolbar"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/pt_sans_caption_bold"
-                    android:text="Name of Semester"
-                    android:textColor="#487DFF"
-                    android:textSize="18sp" />
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                    >
 
-                <ImageButton
-                    android:id="@+id/btnEditSemesterName"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/icon_edit"
-                    android:onClick="editSemesterName"
-                    android:scaleType="centerCrop"
-                    android:background="@null">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/timetable_header_bg"
+                        android:scaleType="centerCrop"
+                        app:layout_collapseMode="parallax" />
 
-                </ImageButton>
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/timetableViewToolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        android:theme="@style/ThemeOverlay.AppCompat.Light"
+                        app:layout_collapseMode="pin"
+                        app:navigationIcon="@drawable/ic_menu"
+                        />
 
-            </LinearLayout>
 
-            <RelativeLayout
-                android:id="@+id/relativeLayout1"
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:background="@color/white"
+                android:id="@+id/constraintLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp">
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
                 <LinearLayout
-                    android:id="@+id/lineLayout1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/day_box"
-                    android:orientation="horizontal"
-                    android:paddingTop="3dp"
-                    android:paddingBottom="3dp">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1.5"
-                        android:text="" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:fontFamily="@font/pt_sans_caption_bold"
-                        android:gravity="center"
-                        android:text="SUN"
-                        android:textColor="#FF6C6C" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:fontFamily="@font/pt_sans_caption_bold"
-                        android:gravity="center"
-                        android:text="MON"
-                        android:textColor="#487DFF" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:fontFamily="@font/pt_sans_caption_bold"
-                        android:gravity="center"
-                        android:text="TUE"
-                        android:textColor="#487DFF" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:fontFamily="@font/pt_sans_caption_bold"
-                        android:gravity="center"
-                        android:text="WED"
-                        android:textColor="#487DFF" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:fontFamily="@font/pt_sans_caption_bold"
-                        android:gravity="center"
-                        android:text="THU"
-                        android:textColor="#487DFF" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:fontFamily="@font/pt_sans_caption_bold"
-                        android:gravity="center"
-                        android:text="FRI"
-                        android:textColor="#487DFF" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:fontFamily="@font/pt_sans_caption_bold"
-                        android:gravity="center"
-                        android:text="SAT"
-                        android:textColor="#487DFF" />
-
-                </LinearLayout>
-
-            </RelativeLayout>
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scrollbars="none">
-
-                <RelativeLayout
+                    android:id="@+id/linearLayout2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="0dp"
-                        android:background="#EDEDED" />
-
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="60dp"
-                        android:background="#EDEDED" />
-
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="120dp"
-                        android:background="#EDEDED" />
-
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="180dp"
-                        android:background="#EDEDED" />
-
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="240dp"
-                        android:background="#EDEDED" />
-
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="300dp"
-                        android:background="#EDEDED" />
-
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="360dp"
-                        android:background="#EDEDED" />
-
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="420dp"
-                        android:background="#EDEDED" />
-
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="480dp"
-                        android:background="#EDEDED" />
-
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="540dp"
-                        android:background="#EDEDED" />
-
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="600dp"
-                        android:background="#EDEDED" />
-
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="660dp"
-                        android:background="#EDEDED" />
-
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="720dp"
-                        android:background="#EDEDED" />
-
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="780dp"
-                        android:background="#EDEDED" />
-
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="840dp"
-                        android:background="#EDEDED" />
-
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="900dp"
-                        android:background="#EDEDED" />
-
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="960dp"
-                        android:background="#EDEDED" />
-
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="1020dp"
-                        android:background="#EDEDED" />
-
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="1080dp"
-                        android:background="#EDEDED" />
-
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="1140dp"
-                        android:background="#EDEDED" />
-
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="1200dp"
-                        android:background="#EDEDED" />
-
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="1260dp"
-                        android:background="#EDEDED" />
-
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="1320dp"
-                        android:background="#EDEDED" />
-
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="1380dp"
-                        android:background="#EDEDED" />
-
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="1440dp"
-                        android:background="#EDEDED" />
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="20dp"
+                        android:layout_gravity="center"
+                        >
+
+                        <TextView
+                            android:id="@+id/txtSemesterName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/pt_sans_caption_bold"
+                            android:text="Name of Semester"
+                            android:textColor="#487DFF"
+                            android:textSize="18sp" />
+
+                        <ImageButton
+                            android:id="@+id/btnEditSemesterName"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_marginLeft="10dp"
+                            android:src="@drawable/icon_edit"
+                            android:onClick="editSemesterName"
+                            android:scaleType="centerCrop"
+                            android:background="@null">
+
+                        </ImageButton>
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/relativeLayout1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="0dp">
+                        android:layout_marginTop="15dp">
+
+                        <LinearLayout
+                            android:id="@+id/lineLayout1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/day_box"
+                            android:orientation="horizontal"
+                            android:paddingTop="3dp"
+                            android:paddingBottom="3dp">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:text="" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:fontFamily="@font/pt_sans_caption_bold"
+                                android:gravity="center"
+                                android:text="SUN"
+                                android:textColor="#FF6C6C" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:fontFamily="@font/pt_sans_caption_bold"
+                                android:gravity="center"
+                                android:text="MON"
+                                android:textColor="#487DFF" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:fontFamily="@font/pt_sans_caption_bold"
+                                android:gravity="center"
+                                android:text="TUE"
+                                android:textColor="#487DFF" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:fontFamily="@font/pt_sans_caption_bold"
+                                android:gravity="center"
+                                android:text="WED"
+                                android:textColor="#487DFF" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:fontFamily="@font/pt_sans_caption_bold"
+                                android:gravity="center"
+                                android:text="THU"
+                                android:textColor="#487DFF" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:fontFamily="@font/pt_sans_caption_bold"
+                                android:gravity="center"
+                                android:text="FRI"
+                                android:textColor="#487DFF" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:fontFamily="@font/pt_sans_caption_bold"
+                                android:gravity="center"
+                                android:text="SAT"
+                                android:textColor="#487DFF" />
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="none">
 
                         <RelativeLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1.5"
-                            android:padding="0dp">
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
 
                             <View
-                                android:layout_width="1dp"
-                                android:layout_height="fill_parent"
-                                android:layout_alignParentRight="true"
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="0dp"
                                 android:background="#EDEDED" />
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="0dp"
-                                android:gravity="center"
-                                android:text="00:00" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                            <View
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dp"
                                 android:layout_marginTop="60dp"
-                                android:gravity="center"
-                                android:text="1:00" />
+                                android:background="#EDEDED" />
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                            <View
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dp"
                                 android:layout_marginTop="120dp"
-                                android:gravity="center"
-                                android:text="2:00" />
+                                android:background="#EDEDED" />
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                            <View
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dp"
                                 android:layout_marginTop="180dp"
-                                android:gravity="center"
-                                android:text="3:00" />
+                                android:background="#EDEDED" />
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                            <View
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dp"
                                 android:layout_marginTop="240dp"
-                                android:gravity="center"
-                                android:text="4:00" />
+                                android:background="#EDEDED" />
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                            <View
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dp"
                                 android:layout_marginTop="300dp"
-                                android:gravity="center"
-                                android:text="5:00" />
+                                android:background="#EDEDED" />
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                            <View
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dp"
                                 android:layout_marginTop="360dp"
-                                android:gravity="center"
-                                android:text="6:00" />
+                                android:background="#EDEDED" />
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                            <View
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dp"
                                 android:layout_marginTop="420dp"
-                                android:gravity="center"
-                                android:text="7:00" />
+                                android:background="#EDEDED" />
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                            <View
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dp"
                                 android:layout_marginTop="480dp"
-                                android:gravity="center"
-                                android:text="8:00" />
+                                android:background="#EDEDED" />
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                            <View
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dp"
                                 android:layout_marginTop="540dp"
-                                android:gravity="center"
-                                android:text="9:00" />
+                                android:background="#EDEDED" />
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                            <View
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dp"
                                 android:layout_marginTop="600dp"
-                                android:gravity="center"
-                                android:text="10:00" />
+                                android:background="#EDEDED" />
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                            <View
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dp"
                                 android:layout_marginTop="660dp"
-                                android:gravity="center"
-                                android:text="11:00" />
+                                android:background="#EDEDED" />
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                            <View
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dp"
                                 android:layout_marginTop="720dp"
-                                android:gravity="center"
-                                android:text="12:00" />
+                                android:background="#EDEDED" />
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                            <View
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dp"
                                 android:layout_marginTop="780dp"
-                                android:gravity="center"
-                                android:text="13:00" />
+                                android:background="#EDEDED" />
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                            <View
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dp"
                                 android:layout_marginTop="840dp"
-                                android:gravity="center"
-                                android:text="14:00" />
+                                android:background="#EDEDED" />
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                            <View
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dp"
                                 android:layout_marginTop="900dp"
-                                android:gravity="center"
-                                android:text="15:00" />
+                                android:background="#EDEDED" />
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                            <View
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dp"
                                 android:layout_marginTop="960dp"
-                                android:gravity="center"
-                                android:text="16:00" />
+                                android:background="#EDEDED" />
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                            <View
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dp"
                                 android:layout_marginTop="1020dp"
-                                android:gravity="center"
-                                android:text="17:00" />
+                                android:background="#EDEDED" />
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                            <View
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dp"
                                 android:layout_marginTop="1080dp"
-                                android:gravity="center"
-                                android:text="18:00" />
+                                android:background="#EDEDED" />
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                            <View
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dp"
                                 android:layout_marginTop="1140dp"
-                                android:gravity="center"
-                                android:text="19:00" />
+                                android:background="#EDEDED" />
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                            <View
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dp"
                                 android:layout_marginTop="1200dp"
-                                android:gravity="center"
-                                android:text="20:00" />
+                                android:background="#EDEDED" />
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                            <View
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dp"
                                 android:layout_marginTop="1260dp"
-                                android:gravity="center"
-                                android:text="21:00" />
+                                android:background="#EDEDED" />
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                            <View
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dp"
                                 android:layout_marginTop="1320dp"
-                                android:gravity="center"
-                                android:text="22:00" />
+                                android:background="#EDEDED" />
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                            <View
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dp"
                                 android:layout_marginTop="1380dp"
-                                android:gravity="center"
-                                android:text="23:00" />
+                                android:background="#EDEDED" />
 
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="14"
-                            android:padding="0dp">
-
+                            <View
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="1440dp"
+                                android:background="#EDEDED" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_alignParentLeft="true"
-                                android:layout_alignParentTop="true"
-                                android:layout_alignParentRight="true"
                                 android:padding="0dp">
 
                                 <RelativeLayout
-                                    android:id="@+id/relSun"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="1">
+                                    android:layout_weight="1.5"
+                                    android:padding="0dp">
 
                                     <View
                                         android:layout_width="1dp"
@@ -585,647 +384,852 @@
                                         android:layout_alignParentRight="true"
                                         android:background="#EDEDED" />
 
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="0dp"
+                                        android:gravity="center"
+                                        android:text="00:00" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="60dp"
+                                        android:gravity="center"
+                                        android:text="1:00" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="120dp"
+                                        android:gravity="center"
+                                        android:text="2:00" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="180dp"
+                                        android:gravity="center"
+                                        android:text="3:00" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="240dp"
+                                        android:gravity="center"
+                                        android:text="4:00" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="300dp"
+                                        android:gravity="center"
+                                        android:text="5:00" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="360dp"
+                                        android:gravity="center"
+                                        android:text="6:00" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="420dp"
+                                        android:gravity="center"
+                                        android:text="7:00" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="480dp"
+                                        android:gravity="center"
+                                        android:text="8:00" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="540dp"
+                                        android:gravity="center"
+                                        android:text="9:00" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="600dp"
+                                        android:gravity="center"
+                                        android:text="10:00" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="660dp"
+                                        android:gravity="center"
+                                        android:text="11:00" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="720dp"
+                                        android:gravity="center"
+                                        android:text="12:00" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="780dp"
+                                        android:gravity="center"
+                                        android:text="13:00" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="840dp"
+                                        android:gravity="center"
+                                        android:text="14:00" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="900dp"
+                                        android:gravity="center"
+                                        android:text="15:00" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="960dp"
+                                        android:gravity="center"
+                                        android:text="16:00" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="1020dp"
+                                        android:gravity="center"
+                                        android:text="17:00" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="1080dp"
+                                        android:gravity="center"
+                                        android:text="18:00" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="1140dp"
+                                        android:gravity="center"
+                                        android:text="19:00" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="1200dp"
+                                        android:gravity="center"
+                                        android:text="20:00" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="1260dp"
+                                        android:gravity="center"
+                                        android:text="21:00" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="1320dp"
+                                        android:gravity="center"
+                                        android:text="22:00" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="1380dp"
+                                        android:gravity="center"
+                                        android:text="23:00" />
 
                                 </RelativeLayout>
 
                                 <RelativeLayout
-                                    android:id="@+id/relMon"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="1">
+                                    android:layout_weight="14"
+                                    android:padding="0dp">
 
-                                    <View
-                                        android:layout_width="1dp"
-                                        android:layout_height="fill_parent"
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentLeft="true"
+                                        android:layout_alignParentTop="true"
                                         android:layout_alignParentRight="true"
-                                        android:background="#EDEDED" />
+                                        android:padding="0dp">
 
-                                    <LinearLayout
-                                        android:layout_width="fill_parent"
-                                        android:layout_height="100dp"
-                                        android:layout_marginLeft="0.5dp"
-                                        android:layout_marginTop="441dp"
-                                        android:layout_marginRight="0.5dp"
-                                        android:layout_marginBottom="0.5dp"
-                                        android:background="@drawable/yellow_class"
-                                        android:gravity="center_vertical"
-                                        android:orientation="vertical"
-                                        android:weightSum="4">
+                                        <RelativeLayout
+                                            android:id="@+id/relSun"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1">
 
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption_bold"
-                                            android:text="MPR"
-                                            android:textColor="#F9BB1E"
-                                            android:textSize="14sp" />
+                                            <View
+                                                android:layout_width="1dp"
+                                                android:layout_height="fill_parent"
+                                                android:layout_alignParentRight="true"
+                                                android:background="#EDEDED" />
 
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption"
-                                            android:text="Tutorial"
-                                            android:textColor="#F9BB1E"
-                                            android:textSize="10sp" />
 
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption"
-                                            android:text="7:20-9:00"
-                                            android:textColor="#F9BB1E"
-                                            android:textSize="8sp" />
+                                        </RelativeLayout>
 
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption_bold"
-                                            android:text="417C"
-                                            android:textColor="#F9BB1E"
-                                            android:textSize="12sp" />
+                                        <RelativeLayout
+                                            android:id="@+id/relMon"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1">
+
+                                            <View
+                                                android:layout_width="1dp"
+                                                android:layout_height="fill_parent"
+                                                android:layout_alignParentRight="true"
+                                                android:background="#EDEDED" />
+
+                                            <LinearLayout
+                                                android:id="@+id/sessionDetail"
+                                                android:layout_width="fill_parent"
+                                                android:layout_height="100dp"
+                                                android:layout_marginLeft="0.5dp"
+                                                android:layout_marginTop="441dp"
+                                                android:layout_marginRight="0.5dp"
+                                                android:layout_marginBottom="0.5dp"
+                                                android:background="@drawable/yellow_class"
+                                                android:gravity="center_vertical"
+                                                android:orientation="vertical"
+                                                android:weightSum="4">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption_bold"
+                                                    android:text="MPR"
+                                                    android:textColor="#F9BB1E"
+                                                    android:textSize="14sp" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption"
+                                                    android:text="Tutorial"
+                                                    android:textColor="#F9BB1E"
+                                                    android:textSize="10sp" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption"
+                                                    android:text="7:20-9:00"
+                                                    android:textColor="#F9BB1E"
+                                                    android:textSize="8sp" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption_bold"
+                                                    android:text="801C"
+                                                    android:textColor="#F9BB1E"
+                                                    android:textSize="12sp" />
+
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="fill_parent"
+                                                android:layout_height="100dp"
+                                                android:layout_marginLeft="0.5dp"
+                                                android:layout_marginTop="571dp"
+                                                android:layout_marginRight="0.5dp"
+                                                android:layout_marginBottom="0.5dp"
+                                                android:background="@drawable/violet_class"
+                                                android:gravity="center_vertical"
+                                                android:orientation="vertical"
+                                                android:weightSum="4">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption_bold"
+                                                    android:text="SQA"
+                                                    android:textColor="#A640E5"
+                                                    android:textSize="14sp" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption"
+                                                    android:text="Tutorial"
+                                                    android:textColor="#A640E5"
+                                                    android:textSize="10sp" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption"
+                                                    android:text="9:30-11:10"
+                                                    android:textColor="#A640E5"
+                                                    android:textSize="8sp" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption_bold"
+                                                    android:text="406C"
+                                                    android:textColor="#A640E5"
+                                                    android:textSize="12sp" />
+
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="fill_parent"
+                                                android:layout_height="100dp"
+                                                android:layout_marginLeft="0.5dp"
+                                                android:layout_marginTop="741dp"
+                                                android:layout_marginRight="0.5dp"
+                                                android:layout_marginBottom="0.5dp"
+                                                android:background="@drawable/blue_class"
+                                                android:gravity="center_vertical"
+                                                android:orientation="vertical"
+                                                android:weightSum="4">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption_bold"
+                                                    android:text="SE2"
+                                                    android:textColor="#1969F8"
+                                                    android:textSize="14sp" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption"
+                                                    android:text="Lecture"
+                                                    android:textColor="#1969F8"
+                                                    android:textSize="10sp" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption"
+                                                    android:text="12:20-14:00"
+                                                    android:textColor="#1969F8"
+                                                    android:textSize="8sp" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption_bold"
+                                                    android:text="801C"
+                                                    android:textColor="#1969F8"
+                                                    android:textSize="12sp" />
+
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="fill_parent"
+                                                android:layout_height="100dp"
+                                                android:layout_marginLeft="0.5dp"
+                                                android:layout_marginTop="871dp"
+                                                android:layout_marginRight="0.5dp"
+                                                android:layout_marginBottom="0.5dp"
+                                                android:background="@drawable/yellow_class"
+                                                android:gravity="center_vertical"
+                                                android:orientation="vertical"
+                                                android:weightSum="4">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption_bold"
+                                                    android:text="SQA"
+                                                    android:textColor="#F9BB1E"
+                                                    android:textSize="14sp" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption"
+                                                    android:text="Lecture"
+                                                    android:textColor="#F9BB1E"
+                                                    android:textSize="10sp" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption"
+                                                    android:text="14:30-16:10"
+                                                    android:textColor="#F9BB1E"
+                                                    android:textSize="8sp" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption_bold"
+                                                    android:text="801C"
+                                                    android:textColor="#F9BB1E"
+                                                    android:textSize="12sp" />
+
+                                            </LinearLayout>
+
+                                        </RelativeLayout>
+
+                                        <RelativeLayout
+                                            android:id="@+id/relTue"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1">
+
+                                            <View
+                                                android:layout_width="1dp"
+                                                android:layout_height="fill_parent"
+                                                android:layout_alignParentRight="true"
+                                                android:background="#EDEDED" />
+
+                                            <LinearLayout
+                                                android:layout_width="fill_parent"
+                                                android:layout_height="100dp"
+                                                android:layout_marginLeft="0.5dp"
+                                                android:layout_marginTop="441dp"
+                                                android:layout_marginRight="0.5dp"
+                                                android:layout_marginBottom="0.5dp"
+                                                android:background="@drawable/pink_class"
+                                                android:orientation="vertical"
+                                                android:weightSum="4">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption_bold"
+                                                    android:text="HCI"
+                                                    android:textColor="#E77073"
+                                                    android:textSize="14sp" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption"
+                                                    android:text="Tutorial"
+                                                    android:textColor="#E77073"
+                                                    android:textSize="10sp" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption"
+                                                    android:text="7:20-9:00"
+                                                    android:textColor="#E77073"
+                                                    android:textSize="8sp" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption_bold"
+                                                    android:text="412C"
+                                                    android:textColor="#E77073"
+                                                    android:textSize="12sp" />
+
+                                            </LinearLayout>
+
+                                        </RelativeLayout>
+
+                                        <RelativeLayout
+                                            android:id="@+id/relWed"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1">
+
+                                            <View
+                                                android:layout_width="1dp"
+                                                android:layout_height="fill_parent"
+                                                android:layout_alignParentRight="true"
+                                                android:background="#EDEDED" />
+
+                                            <LinearLayout
+                                                android:layout_width="fill_parent"
+                                                android:layout_height="230dp"
+                                                android:layout_marginLeft="0.5dp"
+                                                android:layout_marginTop="441dp"
+                                                android:layout_marginRight="0.5dp"
+                                                android:layout_marginBottom="0.5dp"
+                                                android:background="@drawable/green_class"
+                                                android:gravity="center_vertical"
+                                                android:orientation="vertical"
+                                                android:weightSum="4">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption_bold"
+                                                    android:text="RMC"
+                                                    android:textColor="#60CC20"
+                                                    android:textSize="14sp" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption"
+                                                    android:text="Lecture"
+                                                    android:textColor="#60CC20"
+                                                    android:textSize="10sp" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption"
+                                                    android:text="7:20-11:10"
+                                                    android:textColor="#60CC20"
+                                                    android:textSize="8sp" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption_bold"
+                                                    android:text="612C"
+                                                    android:textColor="#60CC20"
+                                                    android:textSize="12sp" />
+
+                                            </LinearLayout>
+
+                                        </RelativeLayout>
+
+                                        <RelativeLayout
+                                            android:id="@+id/relThu"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1">
+
+                                            <View
+                                                android:layout_width="1dp"
+                                                android:layout_height="fill_parent"
+                                                android:layout_alignParentRight="true"
+                                                android:background="#EDEDED" />
+
+                                            <LinearLayout
+                                                android:layout_width="fill_parent"
+                                                android:layout_height="130dp"
+                                                android:layout_marginLeft="0.5dp"
+                                                android:layout_marginTop="441dp"
+                                                android:layout_marginRight="0.5dp"
+                                                android:layout_marginBottom="0.5dp"
+                                                android:background="@drawable/grey_class"
+                                                android:gravity="center_vertical"
+                                                android:orientation="vertical"
+                                                android:weightSum="4">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption_bold"
+                                                    android:text="SS2"
+                                                    android:textColor="#838383"
+                                                    android:textSize="14sp" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption"
+                                                    android:text="Tutorial"
+                                                    android:textColor="#838383"
+                                                    android:textSize="10sp" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption"
+                                                    android:text="7:20-9:30"
+                                                    android:textColor="#838383"
+                                                    android:textSize="8sp" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption_bold"
+                                                    android:text="417C"
+                                                    android:textColor="#838383"
+                                                    android:textSize="12sp" />
+
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="fill_parent"
+                                                android:layout_height="100dp"
+                                                android:layout_marginLeft="0.5dp"
+                                                android:layout_marginTop="871dp"
+                                                android:layout_marginRight="0.5dp"
+                                                android:layout_marginBottom="0.5dp"
+                                                android:background="@drawable/violet_class"
+                                                android:gravity="center_vertical"
+                                                android:orientation="vertical"
+                                                android:weightSum="4">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption_bold"
+                                                    android:text="HCI"
+                                                    android:textColor="#A640E5"
+                                                    android:textSize="14sp" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption"
+                                                    android:text="Lecture"
+                                                    android:textColor="#A640E5"
+                                                    android:textSize="10sp" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption"
+                                                    android:text="14:30-16:10"
+                                                    android:textColor="#A640E5"
+                                                    android:textSize="8sp" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption_bold"
+                                                    android:text="801C"
+                                                    android:textColor="#A640E5"
+                                                    android:textSize="12sp" />
+
+                                            </LinearLayout>
+
+                                        </RelativeLayout>
+
+                                        <RelativeLayout
+                                            android:id="@+id/relFri"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1">
+
+                                            <View
+                                                android:layout_width="1dp"
+                                                android:layout_height="fill_parent"
+                                                android:layout_alignParentRight="true"
+                                                android:background="#EDEDED" />
+
+                                            <LinearLayout
+                                                android:layout_width="fill_parent"
+                                                android:layout_height="100dp"
+                                                android:layout_marginLeft="0.5dp"
+                                                android:layout_marginTop="441dp"
+                                                android:layout_marginRight="0.5dp"
+                                                android:layout_marginBottom="0.5dp"
+                                                android:background="@drawable/blue_class"
+                                                android:gravity="center_vertical"
+                                                android:orientation="vertical"
+                                                android:weightSum="4">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption_bold"
+                                                    android:text="SE2"
+                                                    android:textColor="#1969F8"
+                                                    android:textSize="14sp" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption"
+                                                    android:text="Tutorial"
+                                                    android:textColor="#1969F8"
+                                                    android:textSize="10sp" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption"
+                                                    android:text="7:20-9:00"
+                                                    android:textColor="#1969F8"
+                                                    android:textSize="8sp" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption_bold"
+                                                    android:text="801C"
+                                                    android:textColor="#1969F8"
+                                                    android:textSize="12sp" />
+
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="fill_parent"
+                                                android:layout_height="100dp"
+                                                android:layout_marginLeft="0.5dp"
+                                                android:layout_marginTop="571dp"
+                                                android:layout_marginRight="0.5dp"
+                                                android:layout_marginBottom="0.5dp"
+                                                android:background="@drawable/yellow_class"
+                                                android:gravity="center_vertical"
+                                                android:orientation="vertical"
+                                                android:weightSum="4">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption_bold"
+                                                    android:text="MPR"
+                                                    android:textColor="#F9BB1E"
+                                                    android:textSize="14sp" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption"
+                                                    android:text="Lecture"
+                                                    android:textColor="#F9BB1E"
+                                                    android:textSize="10sp" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption"
+                                                    android:text="9:30-11:10"
+                                                    android:textColor="#F9BB1E"
+                                                    android:textSize="8sp" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_weight="1"
+                                                    android:fontFamily="@font/pt_sans_caption_bold"
+                                                    android:text="801C"
+                                                    android:textColor="#F9BB1E"
+                                                    android:textSize="12sp" />
+
+                                            </LinearLayout>
+
+                                        </RelativeLayout>
+
+                                        <RelativeLayout
+                                            android:id="@+id/relSat"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1">
+
+                                            <View
+                                                android:layout_width="1dp"
+                                                android:layout_height="fill_parent"
+                                                android:layout_alignParentRight="true"
+                                                android:background="#EDEDED" />
+
+
+                                        </RelativeLayout>
+
 
                                     </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="fill_parent"
-                                        android:layout_height="100dp"
-                                        android:layout_marginLeft="0.5dp"
-                                        android:layout_marginTop="571dp"
-                                        android:layout_marginRight="0.5dp"
-                                        android:layout_marginBottom="0.5dp"
-                                        android:background="@drawable/violet_class"
-                                        android:gravity="center_vertical"
-                                        android:orientation="vertical"
-                                        android:weightSum="4">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption_bold"
-                                            android:text="SQA"
-                                            android:textColor="#A640E5"
-                                            android:textSize="14sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption"
-                                            android:text="Tutorial"
-                                            android:textColor="#A640E5"
-                                            android:textSize="10sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption"
-                                            android:text="9:30-11:10"
-                                            android:textColor="#A640E5"
-                                            android:textSize="8sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption_bold"
-                                            android:text="406C"
-                                            android:textColor="#A640E5"
-                                            android:textSize="12sp" />
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="fill_parent"
-                                        android:layout_height="100dp"
-                                        android:layout_marginLeft="0.5dp"
-                                        android:layout_marginTop="741dp"
-                                        android:layout_marginRight="0.5dp"
-                                        android:layout_marginBottom="0.5dp"
-                                        android:background="@drawable/blue_class"
-                                        android:gravity="center_vertical"
-                                        android:orientation="vertical"
-                                        android:weightSum="4">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption_bold"
-                                            android:text="SE2"
-                                            android:textColor="#1969F8"
-                                            android:textSize="14sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption"
-                                            android:text="Lecture"
-                                            android:textColor="#1969F8"
-                                            android:textSize="10sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption"
-                                            android:text="12:20-14:00"
-                                            android:textColor="#1969F8"
-                                            android:textSize="8sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption_bold"
-                                            android:text="801C"
-                                            android:textColor="#1969F8"
-                                            android:textSize="12sp" />
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:id="@+id/sessionDetail"
-                                        android:layout_width="fill_parent"
-                                        android:layout_height="100dp"
-                                        android:layout_marginLeft="0.5dp"
-                                        android:layout_marginTop="871dp"
-                                        android:layout_marginRight="0.5dp"
-                                        android:layout_marginBottom="0.5dp"
-                                        android:background="@drawable/yellow_class"
-                                        android:gravity="center_vertical"
-                                        android:orientation="vertical"
-                                        android:weightSum="4">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption_bold"
-                                            android:text="SQA"
-                                            android:textColor="#F9BB1E"
-                                            android:textSize="14sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption"
-                                            android:text="Lecture"
-                                            android:textColor="#F9BB1E"
-                                            android:textSize="10sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption"
-                                            android:text="14:30-16:10"
-                                            android:textColor="#F9BB1E"
-                                            android:textSize="8sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption_bold"
-                                            android:text="801C"
-                                            android:textColor="#F9BB1E"
-                                            android:textSize="12sp" />
-
-                                    </LinearLayout>
-
                                 </RelativeLayout>
-
-                                <RelativeLayout
-                                    android:id="@+id/relTue"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1">
-
-                                    <View
-                                        android:layout_width="1dp"
-                                        android:layout_height="fill_parent"
-                                        android:layout_alignParentRight="true"
-                                        android:background="#EDEDED" />
-
-                                    <LinearLayout
-                                        android:layout_width="fill_parent"
-                                        android:layout_height="100dp"
-                                        android:layout_marginLeft="0.5dp"
-                                        android:layout_marginTop="441dp"
-                                        android:layout_marginRight="0.5dp"
-                                        android:layout_marginBottom="0.5dp"
-                                        android:background="@drawable/pink_class"
-                                        android:orientation="vertical"
-                                        android:weightSum="4">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption_bold"
-                                            android:text="HCI"
-                                            android:textColor="#E77073"
-                                            android:textSize="14sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption"
-                                            android:text="Tutorial"
-                                            android:textColor="#E77073"
-                                            android:textSize="10sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption"
-                                            android:text="7:20-9:00"
-                                            android:textColor="#E77073"
-                                            android:textSize="8sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption_bold"
-                                            android:text="412C"
-                                            android:textColor="#E77073"
-                                            android:textSize="12sp" />
-
-                                    </LinearLayout>
-
-                                </RelativeLayout>
-
-                                <RelativeLayout
-                                    android:id="@+id/relWed"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1">
-
-                                    <View
-                                        android:layout_width="1dp"
-                                        android:layout_height="fill_parent"
-                                        android:layout_alignParentRight="true"
-                                        android:background="#EDEDED" />
-
-                                    <LinearLayout
-                                        android:layout_width="fill_parent"
-                                        android:layout_height="230dp"
-                                        android:layout_marginLeft="0.5dp"
-                                        android:layout_marginTop="441dp"
-                                        android:layout_marginRight="0.5dp"
-                                        android:layout_marginBottom="0.5dp"
-                                        android:background="@drawable/green_class"
-                                        android:gravity="center_vertical"
-                                        android:orientation="vertical"
-                                        android:weightSum="4">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption_bold"
-                                            android:text="RMC"
-                                            android:textColor="#60CC20"
-                                            android:textSize="14sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption"
-                                            android:text="Lecture"
-                                            android:textColor="#60CC20"
-                                            android:textSize="10sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption"
-                                            android:text="7:20-11:10"
-                                            android:textColor="#60CC20"
-                                            android:textSize="8sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption_bold"
-                                            android:text="612C"
-                                            android:textColor="#60CC20"
-                                            android:textSize="12sp" />
-
-                                    </LinearLayout>
-
-                                </RelativeLayout>
-
-                                <RelativeLayout
-                                    android:id="@+id/relThu"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1">
-
-                                    <View
-                                        android:layout_width="1dp"
-                                        android:layout_height="fill_parent"
-                                        android:layout_alignParentRight="true"
-                                        android:background="#EDEDED" />
-
-                                    <LinearLayout
-                                        android:layout_width="fill_parent"
-                                        android:layout_height="130dp"
-                                        android:layout_marginLeft="0.5dp"
-                                        android:layout_marginTop="441dp"
-                                        android:layout_marginRight="0.5dp"
-                                        android:layout_marginBottom="0.5dp"
-                                        android:background="@drawable/grey_class"
-                                        android:gravity="center_vertical"
-                                        android:orientation="vertical"
-                                        android:weightSum="4">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption_bold"
-                                            android:text="SS2"
-                                            android:textColor="#838383"
-                                            android:textSize="14sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption"
-                                            android:text="Tutorial"
-                                            android:textColor="#838383"
-                                            android:textSize="10sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption"
-                                            android:text="7:20-9:30"
-                                            android:textColor="#838383"
-                                            android:textSize="8sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption_bold"
-                                            android:text="417C"
-                                            android:textColor="#838383"
-                                            android:textSize="12sp" />
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="fill_parent"
-                                        android:layout_height="100dp"
-                                        android:layout_marginLeft="0.5dp"
-                                        android:layout_marginTop="871dp"
-                                        android:layout_marginRight="0.5dp"
-                                        android:layout_marginBottom="0.5dp"
-                                        android:background="@drawable/violet_class"
-                                        android:gravity="center_vertical"
-                                        android:orientation="vertical"
-                                        android:weightSum="4">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption_bold"
-                                            android:text="HCI"
-                                            android:textColor="#A640E5"
-                                            android:textSize="14sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption"
-                                            android:text="Lecture"
-                                            android:textColor="#A640E5"
-                                            android:textSize="10sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption"
-                                            android:text="14:30-16:10"
-                                            android:textColor="#A640E5"
-                                            android:textSize="8sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption_bold"
-                                            android:text="801C"
-                                            android:textColor="#A640E5"
-                                            android:textSize="12sp" />
-
-                                    </LinearLayout>
-
-                                </RelativeLayout>
-
-                                <RelativeLayout
-                                    android:id="@+id/relFri"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1">
-
-                                    <View
-                                        android:layout_width="1dp"
-                                        android:layout_height="fill_parent"
-                                        android:layout_alignParentRight="true"
-                                        android:background="#EDEDED" />
-
-                                    <LinearLayout
-                                        android:layout_width="fill_parent"
-                                        android:layout_height="100dp"
-                                        android:layout_marginLeft="0.5dp"
-                                        android:layout_marginTop="441dp"
-                                        android:layout_marginRight="0.5dp"
-                                        android:layout_marginBottom="0.5dp"
-                                        android:background="@drawable/blue_class"
-                                        android:gravity="center_vertical"
-                                        android:orientation="vertical"
-                                        android:weightSum="4">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption_bold"
-                                            android:text="SE2"
-                                            android:textColor="#1969F8"
-                                            android:textSize="14sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption"
-                                            android:text="Tutorial"
-                                            android:textColor="#1969F8"
-                                            android:textSize="10sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption"
-                                            android:text="7:20-9:00"
-                                            android:textColor="#1969F8"
-                                            android:textSize="8sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption_bold"
-                                            android:text="801C"
-                                            android:textColor="#1969F8"
-                                            android:textSize="12sp" />
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="fill_parent"
-                                        android:layout_height="100dp"
-                                        android:layout_marginLeft="0.5dp"
-                                        android:layout_marginTop="571dp"
-                                        android:layout_marginRight="0.5dp"
-                                        android:layout_marginBottom="0.5dp"
-                                        android:background="@drawable/yellow_class"
-                                        android:gravity="center_vertical"
-                                        android:orientation="vertical"
-                                        android:weightSum="4">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption_bold"
-                                            android:text="MPR"
-                                            android:textColor="#F9BB1E"
-                                            android:textSize="14sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption"
-                                            android:text="Lecture"
-                                            android:textColor="#F9BB1E"
-                                            android:textSize="10sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption"
-                                            android:text="9:30-11:10"
-                                            android:textColor="#F9BB1E"
-                                            android:textSize="8sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/pt_sans_caption_bold"
-                                            android:text="801C"
-                                            android:textColor="#F9BB1E"
-                                            android:textSize="12sp" />
-
-                                    </LinearLayout>
-
-                                </RelativeLayout>
-
-                                <RelativeLayout
-                                    android:id="@+id/relSat"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1">
-
-                                    <View
-                                        android:layout_width="1dp"
-                                        android:layout_height="fill_parent"
-                                        android:layout_alignParentRight="true"
-                                        android:background="#EDEDED" />
-
-
-                                </RelativeLayout>
-
-
                             </LinearLayout>
+
                         </RelativeLayout>
-                    </LinearLayout>
-
-                </RelativeLayout>
-            </ScrollView>
-        </LinearLayout>
+                    </ScrollView>
+                </LinearLayout>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navTimeView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:menu="@menu/menu_main"
+            android:layout_gravity="start"/>
 
-</androidx.drawerlayout.widget.DrawerLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</LinearLayout>

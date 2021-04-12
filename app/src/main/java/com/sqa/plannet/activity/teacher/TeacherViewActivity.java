@@ -52,7 +52,7 @@ public class TeacherViewActivity extends AppCompatActivity implements Navigation
     private FloatingActionButton addBtn;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
-    private ListView listView;
+    private ListView lstTeacher;
     private TeacherAdapter teacherAdapter;
 
     private Menu subMenu;
@@ -67,21 +67,19 @@ public class TeacherViewActivity extends AppCompatActivity implements Navigation
         setContentView(R.layout.teacher_view);
 
         initUI();
-        initToolbar();
 
-        //onNavigationItemClick();
         onAddBtnClick();
         initToolbarAnimation();
         initDrawer();
-        //initRecyclerView();
+
 
         teacherList = getListTeacher();
         teacherAdapter = new TeacherAdapter(TeacherViewActivity.this, R.layout.teacher_item, teacherList);
-        listView.setAdapter(teacherAdapter);
+        lstTeacher.setAdapter(teacherAdapter);
         teacherAdapter.notifyDataSetChanged();
 
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        lstTeacher.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(TeacherViewActivity.this, TeacherDetailActivity.class);
@@ -103,21 +101,11 @@ public class TeacherViewActivity extends AppCompatActivity implements Navigation
         drawerLayout= findViewById(R.id.teacherViewDrawer);
         navigationView= findViewById(R.id.navTeacherView);
         toolbar = findViewById(R.id.teacherViewToolbar);
-        listView = findViewById(R.id.rv_teacher);
+        lstTeacher = findViewById(R.id.lstTeacher);
 
     }
 
 
-    /**
-     * TODO: Initiate the toolbar
-     */
-    private void initToolbar(){
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        }
-    }
 
     /**
      * TODO: Intitialise drawer menu
@@ -250,17 +238,6 @@ public class TeacherViewActivity extends AppCompatActivity implements Navigation
 
         return super.onOptionsItemSelected(item);
     }
-
-
-
-
-
-
-
-    /**
-     * TODO: Set menu drawer item onClick
-     */
-
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

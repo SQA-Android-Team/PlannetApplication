@@ -1,11 +1,18 @@
 package com.sqa.plannet.activity.overview;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,8 +24,16 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
+import com.google.android.material.navigation.NavigationView;
 import com.sqa.plannet.R;
+import com.sqa.plannet.activity.calendar.CalendarViewActivity;
+import com.sqa.plannet.activity.helpAndFeedbacks.HelpAndFeedbacksActivity;
 import com.sqa.plannet.activity.home.HomeActivity;
+import com.sqa.plannet.activity.settings.SettingsMenuActivity;
+import com.sqa.plannet.activity.subject.SubjectViewActivity;
+import com.sqa.plannet.activity.teacher.TeacherViewActivity;
+import com.sqa.plannet.activity.timetable.TimetableViewActivity;
+import com.sqa.plannet.activity.todo.TodoMainActivity;
 import com.sqa.plannet.adapter.overview.PendingEventAdapter;
 import com.sqa.plannet.adapter.overview.ScheduleAdapter;
 import com.sqa.plannet.model.ScheduleData;
@@ -29,12 +44,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class OverviewMainActivity extends AppCompatActivity implements OnChartValueSelectedListener {
+public class OverviewMainActivity extends AppCompatActivity implements OnChartValueSelectedListener, NavigationView.OnNavigationItemSelectedListener  {
     private PieChart mChart;
     RecyclerView resentSession;
 
     RecyclerView pendingEvent;
     ArrayList<Task> eventList;
+    private Toolbar toolbar;
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
 
     public static String TABLE_TASK = "tasks";
     public static String TABLE_SESSION = "sessions";
@@ -43,6 +61,8 @@ public class OverviewMainActivity extends AppCompatActivity implements OnChartVa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.overview_view);
+        mapping();
+        initDrawer();
 
         resentSession = (RecyclerView) findViewById((R.id.recent_recycler)) ;
         resentSession.setLayoutManager(new LinearLayoutManager(this));
@@ -103,6 +123,13 @@ public class OverviewMainActivity extends AppCompatActivity implements OnChartVa
         addDataSet(mChart);
 
         mChart.setOnChartValueSelectedListener(this);
+        navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    private void mapping() {
+        drawerLayout = findViewById(R.id.homeViewDrawer);
+        navigationView = findViewById(R.id.nav_home);
+        toolbar = findViewById(R.id.homeToolbar);
     }
 
     @Override
@@ -156,4 +183,59 @@ public class OverviewMainActivity extends AppCompatActivity implements OnChartVa
         pieChart.invalidate();
     }
 
+    private void initDrawer() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+
+    }
+
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.navHome:
+                Intent intent = new Intent(OverviewMainActivity.this, HomeActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.navOverview:
+                Intent i2 = new Intent(OverviewMainActivity.this, OverviewMainActivity.class);
+                startActivity(i2);
+                break;
+            case R.id.navTodo:
+                Intent i3 = new Intent(OverviewMainActivity.this, TodoMainActivity.class);
+                startActivity(i3);
+                break;
+            case R.id.navTimetable:
+                Intent i4 = new Intent(OverviewMainActivity.this, TimetableViewActivity.class);
+                startActivity(i4);
+                break;
+            case R.id.navCalendar:
+                Intent i5 = new Intent(OverviewMainActivity.this, CalendarViewActivity.class);
+                startActivity(i5);
+                break;
+            case R.id.navSubject:
+                Intent i6 = new Intent(OverviewMainActivity.this, SubjectViewActivity.class);
+                startActivity(i6);
+                break;
+            case R.id.navTeacher:
+                Intent i7 = new Intent(OverviewMainActivity.this, TeacherViewActivity.class);
+                startActivity(i7);
+                break;
+            case R.id.navSettings:
+                Intent i8 = new Intent(OverviewMainActivity.this, SettingsMenuActivity.class);
+                startActivity(i8);
+                break;
+            case R.id.navHelp:
+                Intent i9 = new Intent(OverviewMainActivity.this, HelpAndFeedbacksActivity.class);
+                startActivity(i9);
+                break;
+            default:
+        }
+        return true;
+    }
 }

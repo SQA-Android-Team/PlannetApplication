@@ -67,7 +67,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 "note varchar(300), " +
                 "remind integer, " +
                 "important integer)";
-//            String d = "DROP TABLE " + TABLE_TASK;
         myDatabase.excuteSQL(table_todo);
 
         String table_teacher = "create table if not exists " + TABLE_TEACHER + "(teacherID integer primary key autoincrement," +

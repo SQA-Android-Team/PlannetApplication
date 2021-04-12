@@ -41,8 +41,8 @@ import static com.sqa.plannet.activity.home.HomeActivity.myDatabase;
 
 public class TimetableViewActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, EditSemesterNameDialog.EditSemesterNameListener, NavigationView.OnNavigationItemSelectedListener {
     private ImageButton btnAddClass;
-    private Toolbar toolbar;
     private CollapsingToolbarLayout collapsingToolbarLayout;
+    private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private AppBarLayout appBarLayout;
@@ -57,7 +57,6 @@ public class TimetableViewActivity extends AppCompatActivity implements AdapterV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.timetable_view);
         initUI();
-        initToolbar();
         initDrawer();
         listSesion = getAllSession();
 
@@ -113,9 +112,11 @@ public class TimetableViewActivity extends AppCompatActivity implements AdapterV
     }
 
     // not done yet
-    private void initDrawer(){
+
+    private void initDrawer() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,23 +125,16 @@ public class TimetableViewActivity extends AppCompatActivity implements AdapterV
         });
 
     }
-
     private void initUI(){
         appBarLayout = findViewById(R.id.appBarLayout);
         collapsingToolbarLayout = findViewById(R.id.colToolbar);
         toolbar = findViewById(R.id.timetableViewToolbar);
         sessionDetail= findViewById(R.id.sessionDetail);
         drawerLayout = findViewById(R.id.timetableViewDrawer);
-        navigationView = findViewById(R.id.navView);
+        navigationView = findViewById(R.id.navTimeView);
     }
 
-    private void initToolbar(){
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Timetable");
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-    }
+
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

@@ -58,29 +58,33 @@ public class TeacherCreateActivity extends AppCompatActivity implements View.OnC
                 finish();
                 break;
             case R.id.addBtn:
-                String teacherName = teacherNameEdt.getText().toString();
-                String teacherPhone = teacherPhoneEdt.getText().toString();
-                String teacherEmail = teacherEmailEdt.getText().toString();
-
-                if (teacherName == null){
-                    Toast.makeText(TeacherCreateActivity.this, "Invalid name", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                ContentValues contentValues = new ContentValues();
-                contentValues.put("teacherName", teacherName);
-                contentValues.put("phone", teacherPhone);
-                contentValues.put("email", teacherEmail);
-
-                HomeActivity.myDatabase.insertTask(TeacherViewActivity.TABLE_TEACHER, null, contentValues);
-
-                Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(TeacherCreateActivity.this, TeacherViewActivity.class);
-                startActivity(intent);
-
-                finish();
+                create(addBtn);
                 break;
         }
 
     }
+
+    private void create(Button addBtn) {
+        String teacherName = teacherNameEdt.getText().toString();
+        String teacherPhone = teacherPhoneEdt.getText().toString();
+        String teacherEmail = teacherEmailEdt.getText().toString();
+
+        if (teacherName == null){
+            Toast.makeText(TeacherCreateActivity.this, "Invalid name", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("teacherName", teacherName);
+        contentValues.put("phone", teacherPhone);
+        contentValues.put("email", teacherEmail);
+
+        HomeActivity.myDatabase.insertTask(TeacherViewActivity.TABLE_TEACHER, null, contentValues);
+
+        Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(TeacherCreateActivity.this, TeacherViewActivity.class);
+        startActivity(intent);
+    }
+
+
 }

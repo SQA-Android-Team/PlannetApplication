@@ -63,7 +63,6 @@ public class CalendarViewActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.navView);
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(R.string.calendar_header);
         drawerLayout.bringToFront();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.nav_open, R.string.nav_close);
         drawerLayout.addDrawerListener(toggle);
