@@ -45,7 +45,7 @@ public class OverviewMainActivity extends AppCompatActivity implements OnChartVa
         setContentView(R.layout.overview_view);
 
         resentSession = (RecyclerView) findViewById((R.id.recent_recycler)) ;
-        resentSession.setLayoutManager(new LinearLayoutManager(this));
+        resentSession.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
 
         ArrayList<Session> listSession = new ArrayList<>();
         String select_sess = "SELECT * FROM " + TABLE_SESSION;
